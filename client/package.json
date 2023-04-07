@@ -17,7 +17,6 @@
     "chartjs-plugin-datalabels": "^2.1.0",
     "date-fns": "^2.29.3",
     "fscreen": "^1.2.0",
-    "moment": "^2.29.4",
     "normalize.css": "^8.0.1",
     "papaparse": "^5.3.2",
     "prop-types": "^15.8.1",

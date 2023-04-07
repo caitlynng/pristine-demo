@@ -12,7 +12,8 @@ import {
 } from "../utils/paypalTcode.js";
 
 import Realm from "realm";
-import { subDays, eachDayOfInterval, format } from "date-fns";
+import { subDays, eachDayOfInterval, format, parse } from "date-fns";
+import { zonedTimeToUtc } from "date-fns-tz";
 
 export const searchAutoComplete = async (req, res) => {
   const app = new Realm.App({ id: process.env.REALM_APP_ID });
@@ -40,39 +41,49 @@ export const getReport = async (req, res) => {
 export const showStats = async (req, res) => {
   const { dates, datesDuration, yesterday } = req.body;
 
-  const formatedYesterday = format(new Date(yesterday), "MM/dd/yy")
-  const startDate = format(new Date(dates[0]), "MM/dd/yy");
-  const endDate = format(new Date(dates[1]), "MM/dd/yy");
+  const formatedYesterday = format(yesterday, "yyyy-MM-dd");
+  const yesterdayToUTC = zonedTimeToUtc(formatedYesterday, "UTC")
 
-  const isDatePresent = await TransactionDetail.find({ Date: formatedYesterday });
+  const formatedStartD = format(new Date(dates[0]), "yyyy-MM-dd")
+  const startDate = zonedTimeToUtc(formatedStartD, "UTC")
+  
+  const formatedEndD = format(new Date(dates[1]), "yyyy-MM-dd")
+  const endDate = zonedTimeToUtc(formatedEndD, "UTC")
 
-  const twoYearsBeforeTodayDate = subDays(new Date(yesterday), 365);
+  const isDatePresent = await TransactionDetail.find({
+    Date: yesterdayToUTC,
+  });
+
+  const twoYearsBeforeTodayDate = subDays(new Date(), 365);
+
 
   if (!isDatePresent.length) {
     const datesInterval = eachDayOfInterval({
       start: new Date(twoYearsBeforeTodayDate),
-      end: new Date(formatedYesterday),
+      end: new Date(),
     });
 
-    let controlInd = 0;
     if (datesInterval.length) {
-      const docs = await TransactionDetail.find({}).sort({No: -1})
+      let controlNum = 0;
+      const docs = await TransactionDetail.find({}).sort({ No: -1 });
       if (docs.length) {
         docs.forEach(async function (doc, ind) {
-          let date = datesInterval[controlInd];
-          if (ind % 5 === 0) {
-            controlInd += 1;
+          let date = datesInterval[controlNum];
+          if (date) {
+            if (ind % 5 === 0) {
+              controlNum += 1;
+            }
+            doc.Date = zonedTimeToUtc(date, "UTC");
+            await doc.save();
           }
-          doc.Date = format(date, "MM/dd/yy")
-          await doc.save();
         });
-        }
+      }
     }
   }
 
-  const sales = await getSales(startDate,endDate);
-  const expenses = await getExpenses(startDate,endDate);
-  const shippings = await getShippingCost(startDate,endDate);
+  const sales = await getSales(startDate, endDate);
+  const expenses = await getExpenses(startDate, endDate);
+  const shippings = await getShippingCost(startDate, endDate);
 
   res.status(StatusCodes.OK).json({
     sales,

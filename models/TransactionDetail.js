@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const TransactionDetailSchema = mongoose.Schema({
   No: { type: Number, trim: true },
-  Date: {type: String, trim: true},
+  Date: {type: Date, trim: true},
   Time: { type: String, trim: true },
   TimeZone: { type: String, trim: true },
   Name: { type: String, trim: true },

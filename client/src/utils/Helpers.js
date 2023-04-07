@@ -297,12 +297,12 @@ export const toLowerCaseAndCompare = (firstW, secondW) => {
     .startsWith(secondW.toString().toLowerCase());
 };
 export const getDate = (dates) => {
-  const defaultDate = ["1/01/2022", "1/31/2022"];
+  const defaultDate = ["2023/01/01", "2023/01/31"];
   let updatedDates = [];
   if (dates) {
     updatedDates = [
-      format(dates[0], "MM/dd/yyyy"),
-      format(dates[1], "MM/dd/yyyy"),
+      format(dates[0], "yyyy/MM/dd"),
+      format(dates[1], "yyyy/MM/dd"),
     ];
     saveDataToSessionStorage("selectedDate", updatedDates);
   } else if (sessionStorageDate()) {
