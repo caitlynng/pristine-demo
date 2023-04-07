@@ -1,0 +1,492 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+/* fonts */
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap');
+
+html {
+  font-size: 100%;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+/*16px*/
+
+:root {
+  --primary-100: #ecebfa;
+  --primary-200: #e9ebf7;
+  --primary-300: #dcdcef;
+  --primary-400: #cbcbe7;
+  --primary-500: #b9b9df;
+  --primary-600: #a8a8d7;
+  --primary-700: #9696cf;
+  --primary-800: #848cc8;
+  --primary-900: #727bc0;
+  --primary-1000: #5863b4;
+  --primary-1100: #40408c;
+  --primary-1200: #38387a;
+  --primary-1300: #303069;
+  --primary-1400: #282857;
+  --primary-1500: #202046;
+  --primary-1600: #181834;
+  --primary-1700: #101023;
+  --primary-1800: #080811;
+
+  /* grey */
+  --grey-50: #f8f9fa;
+  --grey-100: #e9ecef;
+  --grey-200: #eaeaf0;
+  --grey-300: #ced4da;
+  --grey-400: #adb5bd;
+  --grey-500: #6c757d;
+  --grey-600: #495057;
+  --grey-700: #343a40;
+  --grey-800: #212529;
+  --grey-900: #000814;
+  --orange-light: #efcb69;
+  --gold-light: #e8bc40;
+  --gold-dark: #ffe14c;
+  --dark-brown: #a5682a;
+  
+  /* errors */
+  --error-border: rgba(234,76,137,0.2);
+  --error-text: rgba(234,76,137);
+  /* fonts  */
+  --headingFont:'Arimo', sans-serif;
+  --bodyFont: 'Arimo', sans-serif;
+  --small-text: 0.95em;
+  --extra-small-text: 0.7em;
+  /* rest of the vars */
+  /* --backgroundColor: var(--grey-50); */
+  --backgroundColor: white;
+  --textColor: var(--grey-900);
+  --borderRadius: 0.75em;
+  --borderRadius-btn: 1.5em;
+  --border: 2px solid var(--grey-300);
+  --letterSpacing: 1px;
+  --transition: 0.3s ease all;
+  --max-width: 1120px;
+  --fixed-width: 500px;
+  --square-chart-width: 200px;
+  --breakpoint-lg: 750px;
+  --nav-height: 4em;
+  --smallSidebar-width: calc(100vw / 2);
+  /* box shadow*/
+  --shadow-dark: 0 1px 6px rgba(32, 33, 36, 0.28);
+  --shadow-light: 0px 8px 24px rgb(149 157 165 / 20%);
+  --shadow-hover: 0px 7px 29px 0px rgba(100, 100, 111, 0.1);
+  /* swiper in Analytics page */
+  --swiper-navigation-color: var(--grey-600);
+  --swiper-pagination-color: var(--grey-600);
+  --swiper-theme-color: var(--grey-600);
+  --swiper-navigation-size: 20px !important;
+  /* select */
+  --select-border: #777;
+  --select-focus: var(--primary-1000);
+  --select-arrow: var(--select-border);
+  /* rsuite date picker */
+  --rs-bg-active: var(--grey-600) !important;
+  --rs-btn-primary-bg: var(--grey-600) !important;
+  --rs-input-focus-border: var(--grey-800) !important;
+}
+
+body {
+  background: var(--backgroundColor);
+  font-family: var(--bodyFont);
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--textColor);
+  margin: 0;
+}
+
+p {
+  margin-bottom: 1.5em;
+  font-size: var(--small-text);
+  /* max-width: 40em; */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  text-transform: capitalize;
+}
+fieldset {
+  border: none;
+  padding: 0;
+}
+/* input[type="text"],
+input[type="number"],
+input[type="search"],
+input[type="password"],
+input[type="email"],
+textarea,
+select
+{
+  font-weight: 400;
+    line-height: 28px;
+    width: 100%;
+    height: 40px;
+    padding: 10px 16px;
+    transition: background-color 200ms ease, outline 200ms ease, color 200ms ease, box-shadow 200ms ease;
+    border-radius: 8px;
+    outline: none;
+    background-color: var(--grey-200);
+    color: #0d0c22;
+    appearance: none;
+    border: 1px solid var(--grey-200);
+} */
+
+small,
+.text-small {
+  font-size: var(--small-text);
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a,
+button {
+  line-height: 1.15;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+select {
+  border: 1px solid var(--select-border);
+  border-radius: 1em;
+  padding: 0 1em 0 0;
+  font-size: 1.25rem;
+  cursor: pointer;
+  height: 2.2em;
+  background-color: #fff;
+  padding-left: 1em;
+}
+
+/* https://stackoverflow.com/questions/16603979/how-to-remove-the-default-arrow-icon-from-a-dropdown-list-select-element */
+select::-ms-expand {
+  /* for IE */
+  display: none; 
+}
+
+select:focus,
+select:focus-visible {
+  outline: none;
+  border: 2px solid var(--grey-700);
+}
+
+
+.img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* alerts */
+.alert {
+  width: 100%;
+  margin: 1em auto;
+  border-radius: 5px;
+  padding: 1em;
+  text-align: center;
+  font-weight: 600;
+}
+
+.alert-danger {
+  border-left: 4px solid #721c24;
+  color: #721c24;
+  background-color: #f8d7da;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  border-left: 4px solid #155724;
+  color: #155724;
+}
+.alert-info {
+  background-color: #ffeecf;
+  border-left: 4px solid var(--dark-brown);
+  color: var(--dark-brown)
+}
+/* Loading spinner */
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-container {
+  position: absolute;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.788);
+  height: 100%;
+  width: 100%;
+}
+
+.loading-wheel-container {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  color: black;
+  top: 3em;
+}
+
+.loading-wheel-container p {
+  font-weight: 600;
+  font-size: 1.1em;
+  margin-top: 2em;
+}
+
+.loading-wheel {
+  width: 75px;
+  height: 75px;
+  margin: 0;
+  background: transparent;
+  border-top: 4px solid var(--grey-800);
+  border-right: 4px solid transparent;
+  border-radius: 50%;
+  animation: spinner 1s linear infinite;
+  background: transparent;
+  margin: 0 auto;
+}
+
+/* title */
+
+.title {
+  text-align: center;
+}
+
+.title-underline {
+  background: var(--primary-500);
+  width: 7em;
+  height: 0.25em;
+  margin: 0 auto;
+  margin-top: -1em;
+}
+
+.container {
+  width: var(--fluid-width);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.full-page {
+  min-height: 100vh;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin-top: 1em;
+  margin-bottom: 2em;
+  height: 3em;
+  width: 7em;
+}
+
+.logo {
+  height: 100%;
+  margin-left: 1.8em;
+  margin-right: 1em;
+}
+
+.logo-name {
+  height: 100%;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.page-title {
+  color: var(--grey-900);
+  font-size: 1.5em;
+  margin-right: auto;
+}
+
+.no-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-style: italic;
+  text-align: center;
+}
+
+div[role="dialog"] {
+  z-index: 10;
+}
+
+.bold-text {
+  font-weight: 600;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: var(--grey-600) #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--grey-600);
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  /* border-bottom: 1px dotted black; */
+  /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  font-size: 12px;
+  background-color: var(--grey-600);
+  color: #fff;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 6px;
+  text-transform: capitalize;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 100;
+}
+
+/* tooltip position */
+.tooltip .tooltiptext.right {
+  top: -15px;
+  left: 15%;
+}
+.tooltip .tooltiptext.left {
+  top: -5px;
+  right: 105%;
+}
+.tooltip .tooltiptext.top {
+  bottom: 150%;
+  left: 50%;
+  margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+}
+.tooltip .tooltiptext.bottom {
+  top: 100%;
+  margin-left: -35px; /* Use half of the width (120/2 = 60), to center the tooltip */
+}
+
+/* Show the tooltip text mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+.tooltip.hide .tooltiptext {
+  visibility: hidden;
+}
+
+/* DROPDOWN */
+.dropdown {
+  position: absolute;
+  padding: 0.75em 1.5em;
+  background: white;
+  border: 1px solid var(--grey-600);
+  box-shadow: 0px 3px 5px -1px #ccc;
+  border-radius: var(--borderRadius);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.dropdown.nav-btn-height {
+  top: 2.5em;
+  height: 6em;
+  width: 9em;
+  right: 0;
+}
+.dropdown.chart-btn-height {
+  top: 4em;
+  height: 6em;
+  width: 9.5em;
+  right: 1.5em;
+}
+
+/* pop up */
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0,0,0, 0.1);
+  z-index: 100;
+}
+.popup_inner {
+  position: absolute;
+  padding: 3em 2em;
+  left: 35%;
+  right: 35%;
+  top: 38%;
+  bottom: 38%;
+  margin: auto;
+  background: white;
+  text-align: center;
+  border-radius: var(--borderRadius);
+}
+.popup_inner p {
+  font-size: 1em;
+  font-weight: 600;
+  margin-bottom: 2em;
+}
+
+@media screen and (min-width: 450px) {
+  .page-header {
+    height: 3em;
+  }
+
+  .date-picker-container {
+    margin-left: auto;
+  }
+
+}
+
+@media screen and (min-width: 1000px) {
+  .logo-container {
+    width: 12em;
+  }
+
+  .max-width {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2em;
+  }
+}
