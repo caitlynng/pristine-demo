@@ -16,7 +16,9 @@ import {
   HANDLE_DATA_SUCCESS,
   HANDLE_SEARCH_TO_REPORT,
   MANAGE_UPLOADS_SUCCESS,
-  LOADING_ERROR
+  LOADING_ERROR,
+  SHOW_DEMO_MESSAGE,
+  CLOSE_DEMO_MESSAGE,
 } from "./actions";
 
 import { initialState } from "./appContext.js";
@@ -43,7 +45,17 @@ const reducer = (state, action) => {
         user: null,
         token: null,
       };
-
+    
+    case SHOW_DEMO_MESSAGE:
+      return {
+        ...initialState,
+        demoMessage: true
+      };
+    case CLOSE_DEMO_MESSAGE:
+      return {
+        ...initialState,
+        demoMessage: false
+      };
     case LOADING_BEGIN:
       return { ...state, isLoading: true, showAlert: false, };
 

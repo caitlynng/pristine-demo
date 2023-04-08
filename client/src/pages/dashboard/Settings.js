@@ -3,7 +3,7 @@ import { InputForm, Button, Loading, ManageUpload } from "../../components";
 import { useAppContext } from "../../context/appContext";
 import Wrapper from "../../assets/wrappers/Settings";
 const Settings = () => {
-  const { handleSettingsUpdate, showAlert, isLoading } = useAppContext();
+  const { isLoading, showDemoMessage } = useAppContext();
 
   const formRows = [
     {
@@ -36,13 +36,8 @@ const Settings = () => {
     },
   ];
 
-  const handleSubmit = (data) => {
-    const updatedData = Object.keys(data)
-      .flatMap((i) => ({ [i]: data[i].value }))
-      .reduce((acc, curr) => {
-        return Object.assign(acc, curr);
-      }, {});
-    handleSettingsUpdate(updatedData);
+  const handleSubmit = () => {
+    showDemoMessage()
   };
   const tabs = [
     {

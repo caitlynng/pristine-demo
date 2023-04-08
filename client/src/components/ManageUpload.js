@@ -2,29 +2,13 @@ import { useEffect, useState } from "react";
 import { useAppContext } from "../context/appContext";
 import ReportTable from "./ReportTable";
 import Loading from './Loading'
-import Button from './Button'
-import { ExportCsv, ExportPdf } from "@material-table/exporters";
+import PopUp from "./Popup";
 
-const PopUp = (props) => {
-  return (
-    <div className="popup">
-      <div className="popup_inner">
-        <p>{props?.text}</p>
-        {props?.isLoading && <Loading />}
-        <Button onSetActive={props.confirmPopup} title="confirm" classList="save-btn"/>
-        <Button onSetActive={props.closePopup} title="cancel" />
-      </div>
-    </div>
-  );
-};
 
 const ManageUpload = () => {
-  const { manageUpload, uploads, deleteUpload, isLoading } = useAppContext();
+  const {  uploads, isLoading, showDemoMessage } = useAppContext();
 
   const [data, setData] = useState(uploads);
-  const [deleted, setDeleted] = useState([])
-  const [popup, setPopup] = useState(false);
-
   if (data != uploads) {
     setData(uploads);
   }
@@ -46,8 +30,7 @@ const ManageUpload = () => {
       tooltip: "Remove All Selected Rows",
       icon: "delete",
       onClick: (evt, data) => {
-        setPopup(true)
-        setDeleted(data)
+        showDemoMessage()
       },
     },
   ];
@@ -62,29 +45,8 @@ const ManageUpload = () => {
     setData(dataCopy);
   };
 
-  const confirmPopup = () => {
-    deleteUpload(deleted);
-    setPopup(false)
-  };
-  const cancelPopup = () => {
-    setDeleted([])
-    setPopup(false)
-  }
-
-  useEffect(() => {
-    manageUpload();
-  }, []);
-
   return (
     <div>
-      {popup && (
-        <PopUp
-          confirmPopup={confirmPopup}
-          closePopup={cancelPopup}
-          isLoading={isLoading}
-          text="Do you want to delete all report data under selected upload(s)?"
-        />
-      )}
       {isLoading && <Loading />}
       <ReportTable
         columns={headers}

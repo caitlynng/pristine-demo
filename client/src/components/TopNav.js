@@ -7,9 +7,12 @@ import Button from "./Button";
 import Logo from "./Logo";
 const TopBar = () => {
   const [showSearchPanel, setShowSearchPanel] = useState(false);
-  const {  showSidebar, toggleSidebar } =
-    useAppContext();
+    const [showLogout, setShowLogout] = useState(false);
+  const { showSidebar, toggleSidebar, showDemoMessage } = useAppContext();
 
+  const handleDropDown = () => {
+    setShowLogout(!showLogout);
+  };
   return (
     <Wrapper>
       <button
@@ -31,12 +34,28 @@ const TopBar = () => {
 
         <SearchBar visible={showSearchPanel} />
 
-        <span className="username-display">Demo</span>
+        <span className="username-display">Demo User</span>
         <div
           className="btn-container"
           tabIndex="0" //https://stackoverflow.com/questions/18504139/div-onblur-function
+          onClick={handleDropDown}
+          onBlur={handleDropDown}
         >
           <FaUserAlt className="user-logout-btn" />
+          {showLogout && (
+            <div className="dropdown nav-btn-height">
+              <Button
+                onSetActive={showDemoMessage}
+                classList="dropdown-btn"
+                title="log out"
+              />
+              <Button
+                title="settings"
+                classList="dropdown-btn"
+                onSetActive={showDemoMessage}
+              />
+            </div>
+          )}
         </div>
       </div>
       {showSearchPanel && (
@@ -48,7 +67,10 @@ const TopBar = () => {
             >
               <FaAngleLeft />
             </button>
-            <SearchBar visible={showSearchPanel} setShowSearchPanel={setShowSearchPanel} />
+            <SearchBar
+              visible={showSearchPanel}
+              setShowSearchPanel={setShowSearchPanel}
+            />
           </div>
         </div>
       )}

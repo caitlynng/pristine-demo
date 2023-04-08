@@ -15,6 +15,7 @@ import {
 } from "date-fns";
 import { zonedTimeToUtc } from "date-fns-tz";
 
+
 export const getIndexIfSameDate = ( obj, date, type) => {
   if (type === "month"){
     return obj.findIndex((i) =>
@@ -54,7 +55,7 @@ export const getYearsBetween = (startDate, endDate) => {
 export const isNameValid = (name) => {
   let message = [];
 
-  if (!/^[a-zA-Z]+$/.test(name)) {
+  if (!/^[a-zA-Z ]+$/.test(name)) {
     message.push("Name should include only A-Z (a-z) letters");
   }
   if (name.length <= 3 || name.length >= 20) {

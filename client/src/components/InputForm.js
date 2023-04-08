@@ -6,18 +6,15 @@ import Wrapper from "../assets/wrappers/InputForm";
 import { isEmailValid, isPWValid, isRequired, isRetypePWValid, isNameValid } from "../utils/Helpers";
 
 const InputForm = ({ formRows, handleSubmit, btnTitle }) => {
-  const { user } = useAppContext();
-  //https://codepen.io/Dannzzor/pen/XELxwv
-
 
   const [value, setValue] = useState({
     name: {
-      value: user ? user.name : "",
+      value: "Demo User",
       isValid: false,
       errors: [],
     },
     email: {
-      value: user ? user.email : "",
+      value: "Demo_user@fakeemail.com",
       isValid: false,
       errors: [],
     },

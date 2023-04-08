@@ -6,10 +6,10 @@ import Wrapper from "../../assets/wrappers/Uploads";
 // import Loading from "../../components/Loading";
 // import Alert from "../../components/Alert";
 import FormRowDropDown from "../../components/FormRowDropDown";
-import {Button, Loading, Alert} from '../../components'
+import { Button, Loading, Alert } from '../../components'
 
 const Uploads = () => {
-  const { fileUpload, showAlert, isLoading, fileType, shippingCompany } =
+  const { fileUpload, showDemoMessage, fileType, shippingCompany } =
     useAppContext();
 
   const [type, setType] = useState(fileType[0]);
@@ -66,7 +66,7 @@ const Uploads = () => {
   // }
   return (
     <Wrapper className="max-width">
-       <div className="page-header analytics__page-header">
+      <div className="page-header analytics__page-header">
         <h4 className="page-title">Uploads</h4>
       </div>
       <div className="type-selection-container">
@@ -105,43 +105,33 @@ const Uploads = () => {
           </select>
         </div>
       )}
-      <form
-        className="form-file-upload"
-        onDragEnter={handleDrag}
-        onSubmit={(e) => e.preventDefault()}
-      >
-        {isLoading && <Loading center />}
-        <input
-          ref={inputRef}
-          type="file"
-          className="input-file-upload"
-          // multiple={true}
-          onChange={handleClick}
-        />
-        <label
-          htmlFor="input-file-upload"
-          className={dragActive ? "drag-active" : ""}
+      <div>
+        <div></div>
+        <form
+          className="form-file-upload"
+          onDragEnter={showDemoMessage}
         >
-          <div>
-            <IoCloudUploadOutline className="upload-icon" />
-            <p>Drag and drop to upload</p>
-            <Button
-              classList="plain-btn"
-              onSetActive={onButtonClick}
-              title="or browse"
-            />
-          </div>
-        </label>
-        {dragActive && (
-          <div
-            id="drag-file-element"
-            onDragEnter={handleDrag}
-            onDragLeave={handleDrag}
-            onDragOver={handleDrag}
-            onDrop={handleDrop}
-          ></div>
-        )}
-      </form>
+          <input
+            ref={inputRef}
+            type="file"
+            className="input-file-upload"
+          />
+          <label
+            htmlFor="input-file-upload"
+            className={dragActive ? "drag-active" : ""}
+          >
+            <div>
+              <IoCloudUploadOutline className="upload-icon" />
+              <p>Drag and drop to upload</p>
+              <Button
+                classList="plain-btn"
+                onSetActive={showDemoMessage}
+                title="or browse"
+              />
+            </div>
+          </label>
+        </form>
+      </div>
     </Wrapper>
   );
 };

@@ -2,23 +2,14 @@ import React, { useReducer, useContext } from "react";
 import {
   sessionStorageDate,
   getDate,
-  addUserToLocalStorage,
-  removeUserFromLocalStorage,
-  saveDataToSessionStorage,
-  getCOGS,
   groupedByCategory,
   addNewCategoryToStatementTable,
   addPaypalFeeToIncomeTableData,
   getChartDataAndLabels,
   isValue,
-  getUniqueValues,
-  removeWhiteSpace,
-  toLowerCaseAndCompare,
-  addSpaceBeforeEachCapitalLetter,
   getDatesBetween,
   getIndexIfSameDate,
   getMonthsBetween,
-  getWeeksBetween,
   getYearsBetween,
 } from "../utils/Helpers";
 
@@ -45,6 +36,8 @@ import {
   HANDLE_SEARCH_TO_REPORT,
   MANAGE_UPLOADS_SUCCESS,
   LOADING_ERROR,
+  SHOW_DEMO_MESSAGE,
+  CLOSE_DEMO_MESSAGE,
 } from "./actions";
 import {
   differenceInCalendarDays,
@@ -61,6 +54,7 @@ export const initialState = {
   showAlert: false,
   alertText: "",
   alertType: "",
+  demoMessage: false,
   showSidebar: true,
   screenSize: 0,
 
@@ -131,6 +125,12 @@ const AppProvider = ({ children }) => {
     }
   );
 
+  const showDemoMessage = () => {
+    dispatch({type: SHOW_DEMO_MESSAGE})
+  }
+  const closeDemoMessage = () => {
+    dispatch({ type: CLOSE_DEMO_MESSAGE });
+  }
   const getAPISuggestions = async (query) => {
     const { data } = await axiosFetch.post("/autocomplete", {
       query,
@@ -454,6 +454,8 @@ const AppProvider = ({ children }) => {
         handleScreenResize,
         getAPISuggestions,
         handleSearchResults,
+        showDemoMessage,
+        closeDemoMessage
       }}
     >
       {children}

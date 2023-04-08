@@ -19,6 +19,7 @@ import MultiColorBar from './MultiColorBar'
 import DoughnutChart from './DoughnutChart'
 import InputForm from './InputForm'
 import ManageUpload from './ManageUpload'
+import PopUp from './Popup'
 
 export {
   Logo,
@@ -41,5 +42,6 @@ export {
   MultiColorBar,
   DoughnutChart,
   InputForm,
-  ManageUpload
+  ManageUpload,
+  PopUp
 };

@@ -2,13 +2,20 @@ import { Outlet } from "react-router-dom";
 import Wrapper from "../../assets/wrappers/SharedLayout";
 import { useState, useEffect, useRef } from "react";
 import { useAppContext } from "../../context/appContext";
-import { TopNav, BigSideNav, SmallSideNav, Alert } from "../../components";
+import {
+  TopNav,
+  BigSideNav,
+  SmallSideNav,
+  Alert,
+  PopUp,
+} from "../../components";
 
 const SharedLayout = () => {
-  const { showSidebar, showAlert } = useAppContext();
+  const { showSidebar, showAlert, demoMessage } = useAppContext();
 
   return (
     <Wrapper>
+      {demoMessage && <PopUp />}
       <SmallSideNav />
       {/* <TopNav /> */}
       <main>
