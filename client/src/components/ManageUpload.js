@@ -6,9 +6,10 @@ import PopUp from "./Popup";
 
 
 const ManageUpload = () => {
-  const {  uploads, isLoading, showDemoMessage } = useAppContext();
+  const { manageUpload, uploads, isLoading, showDemoMessage } = useAppContext();
 
   const [data, setData] = useState(uploads);
+
   if (data != uploads) {
     setData(uploads);
   }
@@ -45,6 +46,10 @@ const ManageUpload = () => {
     setData(dataCopy);
   };
 
+    useEffect(() => {
+      manageUpload();
+    }, []);
+  
   return (
     <div>
       {isLoading && <Loading />}

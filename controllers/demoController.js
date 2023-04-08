@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import TransactionDetail from "../models/TransactionDetail.js";
 import Shipping from "../models/Shipping.js";
 import UserSettings from "../models/UserSettings.js";
+import Upload from "../models/Upload.js";
 import { StatusCodes } from "http-status-codes";
 import {
   codeByCategory,
@@ -32,10 +33,61 @@ export const searchResults = async (req, res) => {
   res.status(StatusCodes.OK).json({ result });
 };
 
+export const manageUpload = async (req, res) => {
+  let uploads = await Upload.aggregate([
+    { $match: {} },
+    {
+      $project: {
+        createdAt: {
+          $dateToString: { format: "%m/%d/%Y", date: "$createdAt" },
+        },
+        fileName: 1,
+        fileSize: 1,
+        type: 1,
+        _id: 1,
+      },
+    },
+  ]);
+  res.status(StatusCodes.OK).json({ uploads });
+};
+
 export const getReport = async (req, res) => {
-  // const result = await TransactionDetail.find({});
-  // const headers = await UserSettings.find({});
-  // res.status(StatusCodes.OK).json({ result, headers });
+   const formatedStartD = format(new Date(req.body.dates[0]), "yyyy-MM-dd");
+   const startDate = zonedTimeToUtc(formatedStartD, "UTC");
+
+   const formatedEndD = format(new Date(req.body.dates[1]), "yyyy-MM-dd");
+  const endDate = zonedTimeToUtc(formatedEndD, "UTC");
+  
+   const result = await TransactionDetail.aggregate([
+     {
+       $match: {
+         $and: [
+           {
+             Date: {
+               $gte: startDate,
+               $lte: endDate,
+             },
+           },
+         ],
+       },
+     },
+     {
+       $addFields: {
+         Date: {
+           $dateToString: { format: "%m/%d/%Y", date: "$Date" },
+         },
+       },
+     },
+     {
+       $sort: { Date: 1 },
+     },
+     {
+       $unset: ["No", "__v"],
+     },
+   ]);
+
+   const headers = await UserSettings.find({});
+   res.status(StatusCodes.OK).json({ result, headers });
 };
 
 export const showStats = async (req, res) => {

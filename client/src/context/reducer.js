@@ -48,12 +48,12 @@ const reducer = (state, action) => {
     
     case SHOW_DEMO_MESSAGE:
       return {
-        ...initialState,
+        ...state,
         demoMessage: true
       };
     case CLOSE_DEMO_MESSAGE:
       return {
-        ...initialState,
+        ...state,
         demoMessage: false
       };
     case LOADING_BEGIN:

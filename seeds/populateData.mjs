@@ -61,15 +61,6 @@ const seedDB = async () => {
   let parsedData = await readCSV(csvFilePath);
   await TransactionDetail.deleteMany({});
   await UserSettings.deleteMany({});
-  // parsedData
-  //     .map((i) => {
-  //       //filter empty values
-  //       return Object.fromEntries(
-  //         //convert array back to object
-  //         Object.entries(i).filter(([_, v]) => v !== "") //convert obj to a new nested array of key-value pairs  { key1: 'value1'} -> ["key1", "value1"]
-  //       );
-  //     })
-  //     .filter((i) => Object.keys(i).length !== 0);
 
   await Promise.all(
     parsedData.map(async (data) => {

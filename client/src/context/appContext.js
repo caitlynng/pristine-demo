@@ -195,6 +195,30 @@ const AppProvider = ({ children }) => {
     dispatch({ type: HANDLE_SCREEN_RESIZE, payload: screenSize });
   };
 
+  const manageUpload = async () => {
+     dispatch({ type: LOADING_BEGIN });
+     try {
+       const { data } = await axiosFetch.get("/settings/manage-upload");
+
+       let result = data.uploads.length > 0 ? data.uploads : [];
+       dispatch({
+         type: MANAGE_UPLOADS_SUCCESS,
+         payload: {
+           uploads: result,
+         },
+       });
+     } catch (error) {
+       dispatch({
+         type: LOADING_ERROR,
+         payload: {
+           msg: "There was an error. Please try again later",
+         },
+       });
+     }
+     clearAlert();
+   };
+
+
   const getReport = async () => {
     dispatch({ type: LOADING_BEGIN });
     try {
@@ -204,8 +228,8 @@ const AppProvider = ({ children }) => {
       });
 
       const reportData = data.result;
-      const activeHeaders = data.headers.paypalActiveHeaders;
-      const filterHeaders = data.headers.paypalFilterHeaders;
+      const activeHeaders = data.headers[0].paypalActiveHeaders;
+      const filterHeaders = data.headers[0].paypalFilterHeaders;
 
       dispatch({
         type: GET_REPORT_SUCCESS,
@@ -283,18 +307,6 @@ const AppProvider = ({ children }) => {
         ...(salesStats ? { ...salesStats } : {}),
         ...(expensesStats ? { ...expensesStats } : {}),
       };
-
-      // let expensesLineChart_data = expensesData?.groupByDay[0].data;
-      // let expensesLineChart_date = expensesData?.groupByDay[0].labels;
-      // let salesLineChart_date = salesData?.groupByDay[0].labels;
-      // let salesLineChart_data = salesData?.groupByDay[0].data;
-
-      // if (monthsDuration > 6) {
-      //   expensesLineChart_data = expensesData?.groupByMonth[0].data;
-      //   expensesLineChart_date = expensesData?.groupByMonth[0].labels;
-      //   salesLineChart_date = salesData?.groupByMonth[0].labels;
-      //   salesLineChart_data = salesData?.groupByMonth[0].data;
-      // }
 
       //Statements Table data
       const statementsTable__sales = groupedByCategory(salesData?.groupByType);
@@ -455,7 +467,8 @@ const AppProvider = ({ children }) => {
         getAPISuggestions,
         handleSearchResults,
         showDemoMessage,
-        closeDemoMessage
+        closeDemoMessage,
+        manageUpload
       }}
     >
       {children}

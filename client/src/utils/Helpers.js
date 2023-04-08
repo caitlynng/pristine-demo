@@ -11,45 +11,35 @@ import {
   eachYearOfInterval,
   isEqual,
   getWeek,
-  getMonth
+  getMonth,
 } from "date-fns";
 import { zonedTimeToUtc } from "date-fns-tz";
 
-
-export const getIndexIfSameDate = ( obj, date, type) => {
-  if (type === "month"){
-    return obj.findIndex((i) =>
-          isEqual(i, getMonth(date)+1)
-        );
+export const getIndexIfSameDate = (obj, date, type) => {
+  if (type === "month") {
+    return obj.findIndex((i) => isEqual(i, getMonth(date) + 1));
   }
   // const formatedDate = format(date, "yyyy-MM-dd");
-  const dateToUTC = zonedTimeToUtc(date, "UTC").toISOString()
-  return obj.findIndex((i) =>
-          {
-            console.log(i)
-            // console.log(formatedDate)
-            console.log(dateToUTC)
-            return i === dateToUTC
-          }
-        );
-} 
+  const dateToUTC = zonedTimeToUtc(date, "UTC").toISOString();
+  return obj.findIndex((i) => i === dateToUTC);
+};
 export const getDatesBetween = (startDate, endDate) => {
   return eachDayOfInterval({
     start: new Date(startDate),
-    end: new Date(endDate)
-})
+    end: new Date(endDate),
+  });
 };
 export const getMonthsBetween = (startDate, endDate) => {
   return eachMonthOfInterval({
     start: new Date(startDate),
-    end: new Date(endDate)
-})
+    end: new Date(endDate),
+  });
 };
 export const getYearsBetween = (startDate, endDate) => {
   return eachYearOfInterval({
     start: new Date(startDate),
-    end: new Date(endDate)
-})
+    end: new Date(endDate),
+  });
 };
 
 export const isNameValid = (name) => {
@@ -109,7 +99,9 @@ export const getUniqueValues = (obj, key) => {
     ...new Set(
       obj.map((item) => item[noWhiteSpaceKey]).filter((i) => i !== undefined)
     ),
-  ].sort().reduce((o, key) => Object.assign(o, { [key]: key }), {});
+  ]
+    .sort()
+    .reduce((o, key) => Object.assign(o, { [key]: key }), {});
 }; //https://stackoverflow.com/questions/15125920/how-to-get-distinct-values-from-an-array-of-objects-in-javascript
 export const removeWhiteSpace = (word) => {
   return word.replace(/\/|\s/g, "").trim();
@@ -324,9 +316,11 @@ export const getDate = (dates) => {
 };
 
 export const isValue = (value) => {
-  const isNotEmpty = value && Object.values(value)
-    .map((i) => i.length > 0)
-    .filter(Boolean); //filter out falsy values
+  const isNotEmpty =
+    value &&
+    Object.values(value)
+      .map((i) => i.length > 0)
+      .filter(Boolean); //filter out falsy values
   if (value && isNotEmpty.length) return value;
   return 0;
 };
