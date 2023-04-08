@@ -25,7 +25,6 @@ import {
 import reducer from "./reducer";
 import axios from "axios";
 
-import papa from "papaparse";
 
 import {
   CLEAR_ALERT,
@@ -258,178 +257,179 @@ const AppProvider = ({ children }) => {
         differenceInCalendarYears(new Date(dates[1]), new Date(dates[0])) + 1;
 
       const { data } = await axiosFetch.post("/analytics", {
-        yesterday,dates, datesDuration
+        yesterday,dates
       });
       console.log(data);
 
-      // let cogs = getCOGS(data.cogs, dates[0], dates[1]);
-      // let expensesData = isValue(data.expenses[0]);
-      // let salesData = isValue(data.sales[0]);
-      // let shippingData = isValue(data.shippings[0]);
+      let cogs = 0
+      let expensesData = isValue(data.expenses[0]);
+      let salesData = isValue(data.sales[0]);
+      let shippingData = isValue(data.shippings[0]);
 
-      // if (expensesData === 0 && salesData === 0) {
-      //   dispatch({
-      //     type: LOADING_ERROR,
-      //     payload: {
-      //       msg: `No records to display`,
-      //     },
-      //   });
-      //   return;
+      if (expensesData === 0 && salesData === 0) {
+        dispatch({
+          type: LOADING_ERROR,
+          payload: {
+            msg: `No records to display`,
+          },
+        });
+        return;
+      }
+
+      //prepare stats container data
+      const expensesStats = expensesData?.refunds;
+      const salesStats = salesData?.groupByStats[0];
+      const stats = {
+        ...(salesStats ? { ...salesStats } : {}),
+        ...(expensesStats ? { ...expensesStats } : {}),
+      };
+
+      // let expensesLineChart_data = expensesData?.groupByDay[0].data;
+      // let expensesLineChart_date = expensesData?.groupByDay[0].labels;
+      // let salesLineChart_date = salesData?.groupByDay[0].labels;
+      // let salesLineChart_data = salesData?.groupByDay[0].data;
+
+      // if (monthsDuration > 6) {
+      //   expensesLineChart_data = expensesData?.groupByMonth[0].data;
+      //   expensesLineChart_date = expensesData?.groupByMonth[0].labels;
+      //   salesLineChart_date = salesData?.groupByMonth[0].labels;
+      //   salesLineChart_data = salesData?.groupByMonth[0].data;
       // }
 
-      // //prepare stats container data
-      // const expensesStats = expensesData?.refunds;
-      // const salesStats = salesData?.groupByStats[0];
-      // const stats = {
-      //   ...(salesStats ? { ...salesStats } : {}),
-      //   ...(expensesStats ? { ...expensesStats } : {}),
-      // };
+      //Statements Table data
+      const statementsTable__sales = groupedByCategory(salesData?.groupByType);
+      let statementsTable__expenses = groupedByCategory(
+        expensesData?.groupByType
+      );
 
-      // // let expensesLineChart_data = expensesData?.groupByDay[0].data;
-      // // let expensesLineChart_date = expensesData?.groupByDay[0].labels;
-      // // let salesLineChart_date = salesData?.groupByDay[0].labels;
-      // // let salesLineChart_data = salesData?.groupByDay[0].data;
+      const datesArr = ((startD, endD) => {
+        let dates = { day: [], month: [], year: [] };
+        if (monthsDuration >= 2)
+          dates.month.push(...getMonthsBetween(startD, endD));
+        if (yearsDuration >= 2)
+          dates.year.push(...getYearsBetween(startD, endD));
+        dates.day.push(...getDatesBetween(startD, endD));
+        return dates;
+      })(dates[0], dates[1]);
 
-      // // if (monthsDuration > 6) {
-      // //   expensesLineChart_data = expensesData?.groupByMonth[0].data;
-      // //   expensesLineChart_date = expensesData?.groupByMonth[0].labels;
-      // //   salesLineChart_date = salesData?.groupByMonth[0].labels;
-      // //   salesLineChart_data = salesData?.groupByMonth[0].data;
-      // // }
+      const expensesAddedOn =
+        (cogs && cogs / datesDuration) +
+        (salesData?.groupByStats[0].fees &&
+          salesData?.groupByStats[0].fees / datesDuration);
 
-      // //Statements Table data
-      // const statementsTable__sales = groupedByCategory(salesData?.groupByType);
-      // let statementsTable__expenses = groupedByCategory(
-      //   expensesData?.groupByType
-      // );
+      let final_expensesLineChart_data = { day: [], month: [], year: [] };
+      let final_salesLineChart_data = { day: [], month: [], year: [] };
+      if (datesArr) {
+        for (const date in datesArr) {
+          
+          if (datesArr[date].length) {
+            datesArr[date].map((d) => {
+              let exp_ind = getIndexIfSameDate(
+                expensesData[date][0].labels,
+                d,
+                date
+              );
+              let sales_ind = getIndexIfSameDate(
+                salesData[date][0].labels,
+                d,
+                date
+              );
 
-      // const datesArr = ((startD, endD) => {
-      //   let dates = { day: [], month: [], year: [] };
-      //   if (monthsDuration >= 2)
-      //     dates.month.push(...getMonthsBetween(startD, endD));
-      //   if (yearsDuration >= 2)
-      //     dates.year.push(...getYearsBetween(startD, endD));
-      //   dates.day.push(...getDatesBetween(startD, endD));
-      //   return dates;
-      // })(dates[0], dates[1]);
+              if (exp_ind > -1) {
+                final_expensesLineChart_data[date].push(
+                  expensesData[date][0].data[exp_ind] + expensesAddedOn
+                );
+              } else {
+                final_expensesLineChart_data[date].push(expensesAddedOn);
+              }
 
-      // const expensesAddedOn =
-      //   (cogs && cogs / datesDuration) +
-      //   (salesData?.groupByStats[0].fees &&
-      //     salesData?.groupByStats[0].fees / datesDuration);
+              if (sales_ind > -1) {
+                final_salesLineChart_data[date].push(
+                  salesData[date][0].data[sales_ind]
+                );
+              } else {
+                final_salesLineChart_data[date].push(0);
+              }
+            });
+          }
+        }
+      }
 
-      // let final_expensesLineChart_data = { day: [], month: [], year: [] };
-      // let final_salesLineChart_data = { day: [], month: [], year: [] };
-      // if (datesArr) {
-      //   for (const date in datesArr) {
-      //     if (datesArr[date].length) {
-      //       datesArr[date].map((d) => {
-      //         let exp_ind = getIndexIfSameDate(
-      //           expensesData[date][0].labels,
-      //           d,
-      //           date
-      //         );
-      //         let sales_ind = getIndexIfSameDate(
-      //           salesData[date][0].labels,
-      //           d,
-      //           date
-      //         );
+      // console.log(final_expensesLineChart_data);
 
-      //         if (exp_ind > -1) {
-      //           final_expensesLineChart_data[date].push(
-      //             expensesData[date][0].data[exp_ind] + expensesAddedOn
-      //           );
-      //         } else {
-      //           final_expensesLineChart_data[date].push(expensesAddedOn);
-      //         }
+      //add shipping cost to Statement Table
+      if (shippingData && shippingData !== 0) {
+        statementsTable__expenses = addNewCategoryToStatementTable(
+          statementsTable__expenses,
+          "Third-party Shipping",
+          shippingData.groupByCompany,
+          shippingData.total[0].sum
+        );
+        //add shipping cost to Line chart expenses
+        datesArr.day.map((date) => {
+          const ind = shippingData.groupByDay.findIndex((i) =>
+            isEqual(new Date(i._id), date)
+          );
+          if (ind > -1) {
+            final_expensesLineChart_data[ind] +=
+              shippingData.groupByDate[ind].total;
+          }
+        });
+      }
 
-      //         if (sales_ind > -1) {
-      //           final_salesLineChart_data[date].push(
-      //             salesData[date][0].data[sales_ind]
-      //           );
-      //         } else {
-      //           final_salesLineChart_data[date].push(0);
-      //         }
-      //       });
-      //     }
-      //   }
-      // }
+      //add COGS
+      if (cogs || cogs === 0) {
+        statementsTable__expenses = addNewCategoryToStatementTable(
+          statementsTable__expenses,
+          "Cost of Goods Sold",
+          "Estimated Cost",
+          cogs
+        );
+      }
+      //paypal fees are categorized as "Credit" under "Express Checkout Payment"
+      //so need to swap them out to put them under Expense, Partner fees
+      addPaypalFeeToIncomeTableData(
+        statementsTable__expenses,
+        salesData?.groupByStats[0].fees
+      );
 
-      // // console.log(final_expensesLineChart_data);
+      //Doughnut Chart Data
+      const doughnutChartData__sales = getChartDataAndLabels(
+        statementsTable__sales?.incomeTableData
+      );
+      const doughnutChartData__expenses = getChartDataAndLabels(
+        statementsTable__expenses?.incomeTableData
+      );
 
-      // //add shipping cost to Statement Table
-      // if (shippingData && shippingData !== 0) {
-      //   statementsTable__expenses = addNewCategoryToStatementTable(
-      //     statementsTable__expenses,
-      //     "Third-party Shipping",
-      //     shippingData.groupByCompany,
-      //     shippingData.total[0].sum
-      //   );
-      //   //add shipping cost to Line chart expenses
-      //   datesArr.day.map((date) => {
-      //     const ind = shippingData.groupByDay.findIndex((i) =>
-      //       isEqual(new Date(i._id), date)
-      //     );
-      //     if (ind > -1) {
-      //       final_expensesLineChart_data[ind] +=
-      //         shippingData.groupByDate[ind].total;
-      //     }
-      //   });
-      // }
+      //profit
+      const totalProfits =
+        statementsTable__sales?.total - statementsTable__expenses?.total;
 
-      // //add COGS
-      // if (cogs || cogs === 0) {
-      //   statementsTable__expenses = addNewCategoryToStatementTable(
-      //     statementsTable__expenses,
-      //     "Cost of Goods Sold",
-      //     "Estimated Cost",
-      //     cogs
-      //   );
-      // }
-      // //paypal fees are categorized as "Credit" under "Express Checkout Payment"
-      // //so need to swap them out to put them under Expense, Partner fees
-      // addPaypalFeeToIncomeTableData(
-      //   statementsTable__expenses,
-      //   salesData?.groupByStats[0].fees
-      // );
+      dispatch({
+        type: SHOW_STATS_SUCCESS,
+        payload: {
+          dashboardTable_TotalSales: statementsTable__sales.total,
+          dashboardTable_TotalExpenses: statementsTable__expenses.total,
+          dashboardTable_TotalProfits: totalProfits,
 
-      // //Doughnut Chart Data
-      // const doughnutChartData__sales = getChartDataAndLabels(
-      //   statementsTable__sales?.incomeTableData
-      // );
-      // const doughnutChartData__expenses = getChartDataAndLabels(
-      //   statementsTable__expenses?.incomeTableData
-      // );
+          dashboardStats_Sales: stats,
 
-      // //profit
-      // const totalProfits =
-      //   statementsTable__sales?.total - statementsTable__expenses?.total;
+          dashboardLineChart_Date: datesArr,
+          dashboardLineChart_SalesData: final_salesLineChart_data,
+          dashboardLineChart_ExpensesData: final_expensesLineChart_data,
 
-      // dispatch({
-      //   type: SHOW_STATS_SUCCESS,
-      //   payload: {
-      //     dashboardTable_TotalSales: statementsTable__sales.total,
-      //     dashboardTable_TotalExpenses: statementsTable__expenses.total,
-      //     dashboardTable_TotalProfits: totalProfits,
+          dashboardDoughnutChart_SalesData: doughnutChartData__sales,
+          dashboardDoughnutChart_ExpensesData: doughnutChartData__expenses,
 
-      //     dashboardStats_Sales: stats,
+          statementTable_SalesData: statementsTable__sales.incomeTableData,
+          statementTable_ExpensesData:
+            statementsTable__expenses.incomeTableData,
 
-      //     dashboardLineChart_Date: datesArr,
-      //     dashboardLineChart_SalesData: final_salesLineChart_data,
-      //     dashboardLineChart_ExpensesData: final_expensesLineChart_data,
-
-      //     dashboardDoughnutChart_SalesData: doughnutChartData__sales,
-      //     dashboardDoughnutChart_ExpensesData: doughnutChartData__expenses,
-
-      //     statementTable_SalesData: statementsTable__sales.incomeTableData,
-      //     statementTable_ExpensesData:
-      //       statementsTable__expenses.incomeTableData,
-
-      //     cogs: cogs,
-      //     monthsDuration: monthsDuration,
-      //     yearsDuration: yearsDuration,
-      //   },
-      // });
+          cogs: cogs,
+          monthsDuration: monthsDuration,
+          yearsDuration: yearsDuration,
+        },
+      });
     } catch (error) {
       console.log(error);
       dispatch({

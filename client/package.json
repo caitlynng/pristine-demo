@@ -16,6 +16,7 @@
     "chartjs-adapter-date-fns": "^2.0.0",
     "chartjs-plugin-datalabels": "^2.1.0",
     "date-fns": "^2.29.3",
+    "date-fns-tz": "^2.0.0",
     "fscreen": "^1.2.0",
     "normalize.css": "^8.0.1",
     "papaparse": "^5.3.2",

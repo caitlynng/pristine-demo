@@ -13,6 +13,7 @@ import {
   getWeek,
   getMonth
 } from "date-fns";
+import { zonedTimeToUtc } from "date-fns-tz";
 
 export const getIndexIfSameDate = ( obj, date, type) => {
   if (type === "month"){
@@ -20,8 +21,15 @@ export const getIndexIfSameDate = ( obj, date, type) => {
           isEqual(i, getMonth(date)+1)
         );
   }
+  // const formatedDate = format(date, "yyyy-MM-dd");
+  const dateToUTC = zonedTimeToUtc(date, "UTC").toISOString()
   return obj.findIndex((i) =>
-          isEqual(new Date(i), date)
+          {
+            console.log(i)
+            // console.log(formatedDate)
+            console.log(dateToUTC)
+            return i === dateToUTC
+          }
         );
 } 
 export const getDatesBetween = (startDate, endDate) => {
@@ -315,10 +323,10 @@ export const getDate = (dates) => {
 };
 
 export const isValue = (value) => {
-  const isNotEmpty = Object.values(value)
+  const isNotEmpty = value && Object.values(value)
     .map((i) => i.length > 0)
     .filter(Boolean); //filter out falsy values
-  if (value && isNotEmpty.length > 0) return value;
+  if (value && isNotEmpty.length) return value;
   return 0;
 };
 export const groupedByCategory = (arr) => {

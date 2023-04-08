@@ -39,7 +39,7 @@ export const getReport = async (req, res) => {
 };
 
 export const showStats = async (req, res) => {
-  const { dates, datesDuration, yesterday } = req.body;
+  const { dates, yesterday } = req.body;
 
   const formatedYesterday = format(yesterday, "yyyy-MM-dd");
   const yesterdayToUTC = zonedTimeToUtc(formatedYesterday, "UTC")
