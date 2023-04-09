@@ -2,6 +2,7 @@ import { useAppContext } from "../context/appContext";
 import { useEffect, useState } from "react";
 import Wrapper from "../assets/wrappers/DatePicker";
 import DateRangePicker from "rsuite/DateRangePicker";
+import isAfter from "date-fns/isAfter";
 import "rsuite/dist/rsuite.min.css";
 import subDays from "date-fns/subDays";
 import startOfWeek from "date-fns/startOfWeek";
@@ -19,8 +20,17 @@ import { isFullMonth } from "../utils/Helpers";
 const DatePicker = () => {
   const { handleDateChange, dashboardDate } = useAppContext();
   
+  const {
+    allowedMaxDays,
+    allowedDays,
+    allowedRange,
+    beforeToday,
+    afterToday,
+    combine,
+  } = DateRangePicker;
 
-
+  const twoYearsBeforeTodayDate = subDays(new Date(), 365);
+  
   const predefinedRanges = [
           {
             label: "Today",
@@ -115,8 +125,7 @@ const DatePicker = () => {
         format={"M/dd/yy"}
         size="sm" //	'lg' | 'md' | 'sm' | 'xs'
         value={dashboardDate}
-        // defaultValue={[subDays(new Date(), 6), new Date()]}
-        // defaultValue={[(new Date("2021-01-01"), new Date("2021-01-31"))]}
+        disabledDate={allowedRange(twoYearsBeforeTodayDate, afterToday())}
         renderValue={(value) => {
           //return label names if selected days are in predefined range
           for (const range of predefinedRanges) {
@@ -128,9 +137,7 @@ const DatePicker = () => {
             }
           }
           //return month name if selected days are in specific month
-          if (
-           isFullMonth(value[0], value[1])
-          ) {
+          if (isFullMonth(value[0], value[1])) {
             return format(new Date(value[0]), "MMM yyyy");
           }
           return (

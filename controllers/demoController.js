@@ -13,7 +13,12 @@ import {
 } from "../utils/paypalTcode.js";
 
 import Realm from "realm";
-import { subDays, eachDayOfInterval, format, parse } from "date-fns";
+import {
+  subDays,
+  eachDayOfInterval,
+  format,
+  differenceInCalendarDays,
+} from "date-fns";
 import { zonedTimeToUtc } from "date-fns-tz";
 
 export const searchAutoComplete = async (req, res) => {
@@ -94,21 +99,34 @@ export const getReport = async (req, res) => {
 export const showStats = async (req, res) => {
   const { dates, yesterday } = req.body;
 
-  const formatedYesterday = format(yesterday, "yyyy-MM-dd");
-  const yesterdayToUTC = zonedTimeToUtc(formatedYesterday, "UTC")
+  const datesDuration =
+    differenceInCalendarDays(new Date(dates[1]), new Date(dates[0])) + 1;
+  if (datesDuration > 730) {
+    res.status(StatusCodes.BAD_REQUEST).json({
+      msg: "Out of range: selected time frame should not be more than two years.",
+    });
+  }
+  if (new Date(dates[1]) > new Date()) {
+   res.status(StatusCodes.BAD_REQUEST).json({
+     msg: "Out of range: selected date cannot be greater than today's date",
+   });
+  }
 
-  const formatedStartD = format(new Date(dates[0]), "yyyy-MM-dd")
-  const startDate = zonedTimeToUtc(formatedStartD, "UTC")
-  
-  const formatedEndD = format(new Date(dates[1]), "yyyy-MM-dd")
-  const endDate = zonedTimeToUtc(formatedEndD, "UTC")
+  const formatedYesterday = format(yesterday, "yyyy-MM-dd");
+  const yesterdayToUTC = zonedTimeToUtc(formatedYesterday, "UTC");
+
+  const formatedStartD = format(new Date(dates[0]), "yyyy-MM-dd");
+  const startDate = zonedTimeToUtc(formatedStartD, "UTC");
+
+  const formatedEndD = format(new Date(dates[1]), "yyyy-MM-dd");
+  const endDate = zonedTimeToUtc(formatedEndD, "UTC");
 
   const isDatePresent = await TransactionDetail.find({
     Date: yesterdayToUTC,
   });
 
+  console.log(isDatePresent);
   const twoYearsBeforeTodayDate = subDays(new Date(), 365);
-
 
   if (!isDatePresent.length) {
     const datesInterval = eachDayOfInterval({

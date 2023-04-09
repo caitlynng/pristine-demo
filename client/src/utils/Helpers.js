@@ -12,6 +12,7 @@ import {
   isEqual,
   getWeek,
   getMonth,
+  subDays
 } from "date-fns";
 import { zonedTimeToUtc } from "date-fns-tz";
 
@@ -298,7 +299,8 @@ export const toLowerCaseAndCompare = (firstW, secondW) => {
     .startsWith(secondW.toString().toLowerCase());
 };
 export const getDate = (dates) => {
-  const defaultDate = ["2023/01/01", "2023/01/31"];
+  // const defaultDate = ["2023/01/01", "2023/01/31"];
+  const defaultDate = [subDays(new Date(), 6), new Date()];
   let updatedDates = [];
   if (dates) {
     updatedDates = [

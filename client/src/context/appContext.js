@@ -185,7 +185,7 @@ const AppProvider = ({ children }) => {
   const clearAlert = () => {
     setTimeout(() => {
       dispatch({ type: CLEAR_ALERT });
-    }, 3000);
+    }, 5000);
   };
 
   const toggleSidebar = () => {
@@ -256,24 +256,24 @@ const AppProvider = ({ children }) => {
       const today =  new Date()
       const yesterday = today.setDate(today.getDate() - 1);
 
-      if (datesDuration > 730){
-        dispatch({
-          type: LOADING_ERROR,
-          payload: {
-            msg: "Out of range: selected time frame should not be more than two years."
-          },
-        });
-        return
-      }
-      if (new Date(dates[1]) > yesterday){
-        dispatch({
-          type: LOADING_ERROR,
-          payload: {
-            msg: "Out of range: selected date cannot be greater than today's date."
-          },
-        });
-        return
-      }
+      // if (datesDuration > 730){
+      //   dispatch({
+      //     type: LOADING_ERROR,
+      //     payload: {
+      //       msg: "Out of range: selected time frame should not be more than two years."
+      //     },
+      //   });
+      //   return
+      // }
+      // if (new Date(dates[1]) > new Date()) {
+      //   dispatch({
+      //     type: LOADING_ERROR,
+      //     payload: {
+      //       msg: "Out of range: selected date cannot be greater than today's date."
+      //     },
+      //   });
+      //   return
+      // }
 
       //prepare line chart data
       const monthsDuration =
@@ -446,10 +446,12 @@ const AppProvider = ({ children }) => {
       });
     } catch (error) {
       console.log(error);
+      let msg = error.response.data.msg
+      
       dispatch({
         type: LOADING_ERROR,
         payload: {
-          msg: `There was an error. Try again later`,
+          msg: `${msg? msg : "There was an error. Try again later"}`,
         },
       });
     }

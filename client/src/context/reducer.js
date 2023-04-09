@@ -57,7 +57,7 @@ const reducer = (state, action) => {
         demoMessage: false
       };
     case LOADING_BEGIN:
-      return { ...state, isLoading: true, showAlert: false, };
+      return { ...state, isLoading: true };
 
     case SETUP_USER_SUCCESS:
       return {

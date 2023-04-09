@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
     padding: 1em 0;
     margin: 2em 0;
     border-radius: 10px;
+    overflow: auto;
   }
   .chart-container {
     width: 100%;
@@ -20,6 +21,7 @@ export const Wrapper = styled.div`
   }
   .legend-container-outer {
     margin-bottom: 2em;
+    flex:1
   }
   .legend-container-inner {
     width: 50%;
