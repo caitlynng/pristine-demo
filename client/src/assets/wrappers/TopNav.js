@@ -18,9 +18,9 @@ const Wrapper = styled.nav`
     align-items: center;
     justify-content: end;
     gap: 1em;
-    & svg {
+    /* & svg {
       color: var(--grey-100);
-    }
+    } */
   }
   .user-logout-btn {
     /* display: none; */
@@ -42,7 +42,6 @@ const Wrapper = styled.nav`
   .toggle-btn.active {
     color: var(--orange-light);
   }
-  
 
   .btn-container {
     display: flex;
@@ -55,7 +54,9 @@ const Wrapper = styled.nav`
     padding: 5px;
     background: var(--grey-500);
     cursor: pointer;
-    &
+    & svg {
+      color: var(--grey-100);
+    }
   }
   .user-logout-btn {
     position: relative;
@@ -72,17 +73,16 @@ const Wrapper = styled.nav`
   .btn-container .dropdown .show-dropdown {
     background-color: var(--grey-100);
   }
-  
+
   .search-overlay-wrapper {
     position: fixed;
     top: 0;
     bottom: 0;
-    right: 0; 
+    right: 0;
     width: 100%;
-    
   }
   .search-overlay {
-    transition: 1s  ease-out;
+    transition: 1s ease-out;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -106,24 +106,23 @@ const Wrapper = styled.nav`
     display: none;
   }
   .logo-name {
-      margin-left: 10px;
+    margin-left: 10px;
   }
   .logo-container {
-      svg {
-        fill: var(--grey-700);
-      }
+    svg {
+      fill: var(--grey-700);
+    }
   }
   .logo-container {
     margin: 0;
   }
-  
+
   @media (min-width: 499px) {
-    
     .btn-container.smallscreen {
       display: none;
     }
   }
-  
+
   @media screen and (min-width: 1000px) {
     border-bottom: var(--border);
     .toggle-btn {

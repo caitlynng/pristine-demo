@@ -18,6 +18,7 @@ const IncomeTable = () => {
     cogs,
     dashboardTable_TotalProfits,
     isLoading,
+    showDemoMessage
   } = useAppContext();
   const [expanded, setExpanded] = useState({
     expandedRows: [],
@@ -47,7 +48,9 @@ const IncomeTable = () => {
         break;
       case "overwrite":
       case "add on":
-        handleDataSave({ select: key, cost: COGS });
+        // handleDataSave({ select: key, cost: COGS });
+        showDemoMessage()
+        setCOGS(cogs);
         showSelection(!selection);
         break;
       default:

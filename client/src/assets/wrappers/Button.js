@@ -5,7 +5,6 @@ const Wrapper = styled.button`
     cursor: pointer;
     border: transparent;
     padding: 0.375em 1.5em;
-    box-shadow: var(--shadow-2);
     text-transform: capitalize;
     display: inline-block;
     border-radius: 0.75em;
@@ -103,10 +102,7 @@ const Wrapper = styled.button`
   .icon-btn {
     color: var(--grey-100);
   }
-  &:hover .icon-btn,
-  &:focus .icon-btn {
-    color: var(--grey-700);
-  }
+
   &.float-right-btn {
     float: right;
     margin: 1em 0;
@@ -134,6 +130,10 @@ const Wrapper = styled.button`
   @media screen and (min-width: 499px) {
     .icon-btn {
       color: var(--grey-500);
+    }
+    &:hover .icon-btn,
+    &:focus .icon-btn {
+      color: var(--grey-700);
     }
   }
 `;

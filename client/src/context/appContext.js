@@ -285,7 +285,7 @@ const AppProvider = ({ children }) => {
       });
       console.log(data);
 
-      let cogs = 0
+
       let expensesData = isValue(data.expenses[0]);
       let salesData = isValue(data.sales[0]);
       let shippingData = isValue(data.shippings[0]);
@@ -324,6 +324,7 @@ const AppProvider = ({ children }) => {
         return dates;
       })(dates[0], dates[1]);
 
+      let cogs = statementsTable__sales.total ? statementsTable__sales.total*0.15 : 0;
       const expensesAddedOn =
         (cogs && cogs / datesDuration) +
         (salesData?.groupByStats[0].fees &&
