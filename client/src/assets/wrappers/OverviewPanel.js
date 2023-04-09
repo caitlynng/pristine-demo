@@ -31,16 +31,17 @@ export const Wrapper = styled.div`
     padding: 2em;
     height: 93.5%;
     .overview-header {
-    display: none;
-  }
-  .profit-title {
-    color: var(--grey-600);
-    /* padding-bottom: 1em; */
-    display: flex;
-   flex-direction: column;
+      display: none;
+    }
+    .profit-title {
+      color: var(--grey-600);
+      /* padding-bottom: 1em; */
+      display: flex;
+      flex-direction: column;
       border-bottom: 1px solid var(--primary-300);
       margin-bottom: 1em;
       gap: 0;
+      flex:1;
     }
   }
 `;

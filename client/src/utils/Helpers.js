@@ -21,7 +21,7 @@ export const getIndexIfSameDate = (obj, date, type) => {
   }
   // const formatedDate = format(date, "yyyy-MM-dd");
   const dateToUTC = zonedTimeToUtc(date, "UTC").toISOString();
-  return obj.findIndex((i) => i === dateToUTC);
+  return obj.findIndex((i) => i === dateToUTC); 
 };
 export const getDatesBetween = (startDate, endDate) => {
   return eachDayOfInterval({

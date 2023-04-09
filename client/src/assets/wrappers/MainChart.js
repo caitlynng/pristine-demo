@@ -96,7 +96,7 @@ export const Wrapper = styled.div`
 
     .chart-container {
       overflow-y: hidden;
-      margin-top: auto;
+      margin: auto;
       background-color: transparent;
     }
     .header-wrapper {

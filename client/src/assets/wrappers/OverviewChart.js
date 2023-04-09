@@ -8,25 +8,22 @@ export const Wrapper = styled.div`
     padding: 1em 0;
     margin: 2em 0;
     border-radius: 10px;
-    min-width: 200px;
-    min-height: 200px;
-    max-width: 500px;
-    max-height: 500px;
   }
   .chart-container {
     width: 100%;
-    /* min-width: 200px;
+    min-width: 200px;
     min-height: 200px;
-    max-width: 500px;
-    max-height: 500px; */
+    max-width: 400px;
+    max-height: 400px;
     overflow: auto;
+    margin: 0 auto;
   }
   .legend-container-outer {
     margin-bottom: 2em;
     flex: 1;
   }
   .legend-container-inner {
-    width: 80%;
+    width: 50%;
     margin: 0 auto;
   }
 
@@ -50,6 +47,10 @@ export const Wrapper = styled.div`
       display: flex;
       padding-right: 2em;
     }
+    .chart-container {
+      max-width: 50%;
+      overflow: hidden;
+    }
     .legend-container-outer {
       margin-bottom: 0;
     }
@@ -57,7 +58,8 @@ export const Wrapper = styled.div`
   @media screen and (min-width: 1000px) {
     display: flex;
     flex-direction: column;
-    flex: 1;
+    flex: 10;
+    justify-content: space-around;
     .legend-container-outer {
       display: none;
     }
@@ -71,12 +73,14 @@ export const Wrapper = styled.div`
       background-color: transparent;
       margin: 0;
       border-radius: 10px;
-      padding-right: 0;
+      padding: 0;
       overflow: auto;
     }
     .chart-container {
       border-bottom: 1px solid var(--grey-300);
       margin-bottom: 1em;
+      overflow: auto;
+      max-width: 100%;
     }
   }
   /* @media screen and (min-width: 1000px) and (min-height: 1100px) {

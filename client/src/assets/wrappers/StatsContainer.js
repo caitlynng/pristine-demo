@@ -15,6 +15,7 @@ const Wrapper = styled.div`
     border-radius: var(--borderRadius);
     cursor: pointer;
     display: flex;
+    min-height: 100px;
   }
 
   .swiper-pagination,
