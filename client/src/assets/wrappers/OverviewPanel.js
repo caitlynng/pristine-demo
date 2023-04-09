@@ -41,7 +41,7 @@ export const Wrapper = styled.div`
       border-bottom: 1px solid var(--primary-300);
       margin-bottom: 1em;
       gap: 0;
-      flex:1;
+      flex: 1;
     }
   }
 `;

@@ -62,6 +62,11 @@ const Wrapper = styled.div`
     margin-left: 2px;
     vertical-align: middle;
   }
+  @media screen and (min-width: 1300px) and (min-height: 1100px) {
+     .multicolorbar-container {
+      gap:1em
+     }
+  }
 `;
 
 export default Wrapper;

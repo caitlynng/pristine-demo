@@ -55,17 +55,19 @@ export const Wrapper = styled.div`
   }
   @media screen and (min-width: 1000px) {
     padding: 1em;
+    max-height: 7em;
     .content-container {
       & .amount {
         padding-right: 0;
       }
     }
   }
-  /* @media screen and (min-width: 1000px) and (min-height: 1100px) {
+  @media screen and (min-width: 1000px) and (min-height: 1100px) {
+    padding: 2em 1em;
     .content-container {
       & .amount {
         padding-right: 1em;
       }
     }
-  } */
+  }
 `;
