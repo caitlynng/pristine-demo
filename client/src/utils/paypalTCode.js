@@ -184,6 +184,7 @@ export const transaction_details = [
 export const customer_info = [
   "Name",
   "FromEmailAddress",
+  "ToEmailAddress",
   "ShippingAddress",
   "AddressStatus",
   "AddressLine1",

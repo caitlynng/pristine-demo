@@ -41,17 +41,17 @@ const updateValue = (newValue) => {
 };
   const handleSelect = (id) => {
     handleSearchResults(id)
-    setShowSearchPanel(false)
     setSearch("");
     setOptions([]);
+    if (visible) {setShowSearchPanel(false)}
     navigate("/reports");
   };
   const handleSearch = (e) => {
     e.preventDefault();
-    setShowSearchPanel(false)
     setSearch("");
     setOptions([]);
     handleSearchResults(search)
+    if (visible) {setShowSearchPanel(false)}
     navigate("/reports");
   };
   return (

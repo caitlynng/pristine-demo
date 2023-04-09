@@ -13,6 +13,7 @@ const TopBar = () => {
   const handleDropDown = () => {
     setShowLogout(!showLogout);
   };
+
   return (
     <Wrapper>
       <button

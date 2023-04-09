@@ -146,7 +146,7 @@ const Reports = () => {
         <div className="onbackbtn-container">
           <BiArrowBack />
           <Button
-            title="Back to previous results"
+            title="Back"
             onSetActive={() => handleDateChange()}
             classList="plain-btn"
           />

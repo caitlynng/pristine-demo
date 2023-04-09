@@ -20,7 +20,7 @@ export const searchAutoComplete = async (req, res) => {
   const app = new Realm.App({ id: process.env.REALM_APP_ID });
   const credentials = Realm.Credentials.anonymous();
   const user = await app.logIn(credentials);
-  const result = await user.functions.searchAutoComplete(req.body.query);
+  const result = await user.functions.searchAutoCompleteDemo(req.body.query);
   res.status(StatusCodes.OK).json({ result });
 };
 
@@ -29,7 +29,8 @@ export const searchResults = async (req, res) => {
   const credentials = Realm.Credentials.anonymous();
 
   const user = await app.logIn(credentials);
-  const result = await user.functions.searchTransactions(req.body.query);
+  const result = await user.functions.searchTransactionDemo(req.body.query);
+  console.log(result)
   res.status(StatusCodes.OK).json({ result });
 };
 

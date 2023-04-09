@@ -144,14 +144,15 @@ const AppProvider = ({ children }) => {
         const { data } = await axiosFetch.post("/search", {
           query,
         });
-        const dataWithScoreGT1 = data.result.filter((i) => {
-          if (i.score >= 1) return i;
-        });
-        // console.log(data)
+        
+        // const dataWithScoreGT1 = data.result.filter((i) => {
+        //   if (i.score >= 1) return i;
+        // });
+        console.log(data.result)
         dispatch({
           type: HANDLE_SEARCH_TO_REPORT,
           payload: {
-            reportData: dataWithScoreGT1,
+            reportData: data.result,
           },
         });
       } catch (error) {
