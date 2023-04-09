@@ -8,7 +8,8 @@ import DeleteOutline from "@material-ui/icons/DeleteOutline";
 import { ExportCsv, ExportPdf } from "@material-table/exporters";
 
 const tableIcons = {
-  Filter: forwardRef((props, ref) => <ArrowDropDown {...props} ref={ref} />),
+  // Filter: forwardRef((props, ref) => <ArrowDropDown {...props} ref={ref} />),
+  Filter: forwardRef((props, ref) => <span />),
   Delete: forwardRef((props, ref) => <DeleteOutline {...props} ref={ref} />),
 };
 //https://material-table-core.com/demos/sort/multi
@@ -22,6 +23,9 @@ const useStyles = makeStyles(theme => ({
     },
     "& .MuiBox-root h6": {
       fontSize: '1.1em'
+    },
+    "& .css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root": {
+      paddingLeft: '4px'
     }
   }
 }));

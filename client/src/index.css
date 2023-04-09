@@ -47,6 +47,7 @@ html {
   --grey-800: #212529;
   --grey-900: #000814;
   --orange-light: #efcb69;
+  --orange-ligh: #efcb6994;
   --gold-light: #e8bc40;
   --gold-dark: #ffe14c;
   --dark-brown: #a5682a;
@@ -91,6 +92,8 @@ html {
   --rs-bg-active: var(--grey-600) !important;
   --rs-btn-primary-bg: var(--grey-600) !important;
   --rs-input-focus-border: var(--grey-800) !important;
+  --rs-calendar-range-bg: #efcb696e !important;
+
 }
 
 body {

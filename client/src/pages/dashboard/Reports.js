@@ -131,9 +131,7 @@ const Reports = () => {
     ? { backgroundColor: "white" }
     : { backgroundColor: "transparent" };
 
-  const handleOnBackClick = () => {
-    console.log("back");
-  };
+
   return (
     <Wrapper className="max-width" style={fullscreenStyle}>
       <div className="page-header analytics__page-header">
