@@ -35,7 +35,6 @@ export const searchResults = async (req, res) => {
 
   const user = await app.logIn(credentials);
   const result = await user.functions.searchTransactionDemo(req.body.query);
-  console.log(result)
   res.status(StatusCodes.OK).json({ result });
 };
 
@@ -124,8 +123,6 @@ export const showStats = async (req, res) => {
   const isDatePresent = await TransactionDetail.find({
     Date: yesterdayToUTC,
   });
-
-  console.log(isDatePresent);
   const twoYearsBeforeTodayDate = subDays(new Date(), 365);
 
   if (!isDatePresent.length) {

@@ -1,12 +1,13 @@
-import { Chart } from "react-chartjs-2";
+import { Chart, Line } from "react-chartjs-2";
 import { useEffect, useState } from "react";
 import { format } from "date-fns";
 import { useAppContext } from "../context/appContext.js";
 import "chartjs-adapter-date-fns";
 import {
   Chart as ChartJS,
+  LineController,
+  BarController,
   CategoryScale,
-  // TimeScale,
   LinearScale,
   PointElement,
   LineElement,
@@ -14,18 +15,21 @@ import {
   Title,
   Tooltip,
   Legend,
+  // registerables,
 } from "chart.js";
 
 ChartJS.register(
+  LineController,
+  BarController,
   CategoryScale,
-  // TimeScale,
   LinearScale,
   PointElement,
   LineElement,
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  // ...registerables
 );
 
 const ChartJs = ({ chartType, viewBy }) => {

@@ -1,4 +1,4 @@
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { useAppContext } from "../../context/appContext";
 import { useWindowDimensions } from "../../utils/Helpers";
 
@@ -12,18 +12,18 @@ import {
 } from "../../components";
 
 const Analytics = () => {
-  const { handleDateChange, isLoading, handleScreenResize} = useAppContext();
+  const { handleDateChange, isLoading, handleScreenResize } = useAppContext();
 
-  const { width, height} = useWindowDimensions();
- 
+  const { width, height } = useWindowDimensions();
+
   useEffect(() => {
     // a "-" in date will give RangeError: Invalid Date (Safari & Firefox)
     handleDateChange();
   }, []);
 
   useEffect(() => {
-    if(width) handleScreenResize(width)
-  }, [width])
+    if (width) handleScreenResize(width);
+  }, [width]);
 
   return (
     <Wrapper className="max-width">
@@ -35,7 +35,7 @@ const Analytics = () => {
         </div>
       </div>
       <div className="analytics__banner"></div>
-      <StatsContainer/>
+      <StatsContainer />
       <MainChart />
       <OverviewPanel />
     </Wrapper>
