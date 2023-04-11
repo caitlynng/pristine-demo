@@ -7,9 +7,9 @@ const Wrapper = styled.section`
     height: 100%;
     margin-left: 0; //transition to left when .toggle-sidebar is removed
     transition: 0.5s;
-    padding: 0 1.5em 2em 1.5em;
+    background-color: #fafafa;
   }
-  
+
   @media (min-width: 400px) {
     .dashboard-container.toggle-sidebar {
       /*push the page content to the right when open the side navigation */

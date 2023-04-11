@@ -3,7 +3,6 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2em;
   width: 100%;
   position: relative;
   .analytics__banner {
@@ -29,12 +28,9 @@ const Wrapper = styled.div`
     .analytics__banner {
       grid-row: 1/3;
       grid-column: 1/5;
-      height:70%;
+      height:73%;
       display: block;
       margin-top: auto;
-      /* background-color: var(--primary-300); */
-      border-radius: var(--borderRadius);
-      border: var(--border)
     }
   }
 `;

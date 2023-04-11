@@ -30,7 +30,7 @@ const Wrapper = styled.section`
 
   .upload-icon {
     font-size: 5em;
-    color: var(--grey-500);
+    color: var(--grey-600);
   }
   .form-file-upload label {
     height: 100%;

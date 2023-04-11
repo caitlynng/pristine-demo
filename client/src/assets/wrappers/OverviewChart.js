@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
   }
   .legend-container-outer {
     margin-bottom: 2em;
-    flex:1
+    flex: 1;
   }
   .legend-container-inner {
     width: 50%;
@@ -36,6 +36,7 @@ export const Wrapper = styled.div`
     display: flex;
     align-items: end;
     gap: 10px;
+    color: var(--blue-700);
   }
   .contentpill-container {
     display: flex;
@@ -84,7 +85,7 @@ export const Wrapper = styled.div`
       max-width: 100%;
     }
   }
-   /* @media screen and (min-width: 1000px) and (min-height: 1100px) {
+  /* @media screen and (min-width: 1000px) and (min-height: 1100px) {
     .chart-container {
       border-bottom: none;
       margin-bottom: none;
@@ -94,10 +95,10 @@ export const Wrapper = styled.div`
     .contentpill-container {
       flex-direction: column;
     }
-     .overview-title {
+    .overview-title {
       margin-top: -2em;
-     }
-  } 
+    }
+  }
 `;
 
 export const LegendItem = styled.div`

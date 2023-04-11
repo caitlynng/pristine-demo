@@ -173,11 +173,6 @@ const IncomeTable = () => {
                     title="save"
                     disabled={disabled}
                   />
-                  {/* {uploaded && (
-                    <span className="statements__check-mark col-3">
-                      &#10003;
-                    </span>
-                  )} */}
                 </div>
               </>
             ) : (
@@ -185,7 +180,6 @@ const IncomeTable = () => {
                 {currencyFormatter.format(i.total).replace(/\.00$/, "")}
               </div>
             )}
-            {/* <div className="col-italic col-3">Third Column</div> */}
           </>
         ));
         rows.push(subRowList);
@@ -223,7 +217,7 @@ const IncomeTable = () => {
 
   //https://codesandbox.io/s/react-expandable-table-rows-uzzqz?from-embed=&file=/src/mytable.js
   return (
-    <Wrapper>
+    <Wrapper className="item-box">
       {isLoading && <Loading center />}
       <div className="statement-table-container">
         <div className="statement-table">

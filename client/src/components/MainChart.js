@@ -40,10 +40,10 @@ const MainChart = () => {
 
   const fullscreenStyle = fullscreenActive
     ? { backgroundColor: "#f8f9fa" }
-    : { backgroundColor: "transparent" };
+    : { };
 
   return (
-    <Wrapper ref={fullscreenRef} style={fullscreenStyle}>
+    <Wrapper ref={fullscreenRef} style={fullscreenStyle} className="item-box">
       <div className="header-wrapper">
         <div className="title-wrapper">
           <h6>General Activities</h6>
@@ -58,7 +58,7 @@ const MainChart = () => {
           >
             {viewByOptions().map((item) => {
               return (
-                <option key={`viewby-${item}`} value={item} >
+                <option key={`viewby-${item}`} value={item}>
                   {item}
                 </option>
               );
@@ -106,9 +106,7 @@ const MainChart = () => {
       </div>
 
       {noData ? (
-        <div className="no-data">
-          No records to display
-        </div>
+        <div className="no-data">No records to display</div>
       ) : (
         <ChartJs chartType={chartType} viewBy={viewBy} />
       )}

@@ -13,7 +13,6 @@ import OverviewPanel from "./OverviewPanel";
 import MainChart from './MainChart'
 import OverviewChart from './OverviewChart'
 import IncomeTable from './IncomeTable'
-import TaxStatement from './TaxStatement'
 import Button from './Button'
 import MultiColorBar from './MultiColorBar'
 import DoughnutChart from './DoughnutChart'
@@ -37,7 +36,6 @@ export {
   MainChart,
   OverviewChart,
   IncomeTable,
-  TaxStatement,
   Button,
   MultiColorBar,
   DoughnutChart,

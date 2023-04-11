@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
-  border: 2px solid var(--grey-100);
   margin: 1em 0;
   position: relative;
   z-index: 1;
@@ -110,9 +109,6 @@ export const Wrapper = styled.div`
     }
   }
 
-  .profit-title {
-    margin-bottom: 2em;
-  }
   .dashboard-btn {
     height: 3em;
     width: 100%;
@@ -199,17 +195,18 @@ const selectedFilter = css`
     transform: rotate(90deg);
     transition: 0.5s;
   }
-  .category-btn {
-    color: var(--grey-900);
+  .category-btn,
+  .dropdown-icon {
+    color: var(--primary);
   }
 `;
 const noneSelectedFilter = css`
   .dropdown-icon {
-    color: var(--grey-500);
+    color: var(--blue-700);
     transition: 0.5s;
   }
 
   .category-btn {
-    color: var(--grey-500);
+    color: var(--blue-700);
   }
 `;

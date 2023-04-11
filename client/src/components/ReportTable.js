@@ -15,19 +15,19 @@ const tableIcons = {
 //https://material-table-core.com/demos/sort/multi
 
 //override MU global styles
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     "& .css-wk9895-MuiToolbar-root": {
-      backgroundColor: '#efcb69',
-      color: '#343a40',
+      backgroundColor: "#0eb9c552",
+      color: "#343a40",
     },
     "& .MuiBox-root h6": {
-      fontSize: '1.1em'
+      fontSize: "1.1em",
     },
     "& .css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root": {
-      paddingLeft: '4px'
-    }
-  }
+      paddingLeft: "4px",
+    },
+  },
 }));
 
 const ReportTable = (props) => {

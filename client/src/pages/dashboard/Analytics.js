@@ -34,7 +34,7 @@ const Analytics = () => {
           <DatePicker />
         </div>
       </div>
-      <div className="analytics__banner"></div>
+      <div className="analytics__banner item-box"></div>
       <StatsContainer />
       <MainChart />
       <OverviewPanel />

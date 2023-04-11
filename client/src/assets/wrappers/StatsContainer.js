@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   position: relative;
   margin-top: auto;
-  height: 75%;
+  height: 85%;
   .swiper {
     width: 100%;
     height: 100%;
@@ -11,8 +11,6 @@ const Wrapper = styled.div`
   }
   .swiper-slide {
     background-color: transparent;
-   border: var(--border);
-    border-radius: var(--borderRadius);
     cursor: pointer;
     display: flex;
     min-height: 100px;
@@ -41,13 +39,15 @@ const Wrapper = styled.div`
       }
     }
     .swiper-pagination {
-      bottom: 5% !important;
+      bottom: 15% !important;
     }
     .next-button {
       right: 35%;
+      bottom: 13%;
     }
     .prev-button {
       left: 35%;
+      bottom: 13%;
     }
     &:hover .swiper-pagination,
     &:hover .prev-button,

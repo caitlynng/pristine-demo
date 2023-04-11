@@ -25,8 +25,6 @@ export const Wrapper = styled.div`
     grid-column: 5/ 7;
     display: flex;
     flex-direction: column;
-    border: var(--border);
-    border-radius: var(--borderRadius);
     margin-left: 2em;
     padding: 2em;
     height: 93.5%;
@@ -34,14 +32,15 @@ export const Wrapper = styled.div`
       display: none;
     }
     .profit-title {
-      color: var(--grey-600);
-      /* padding-bottom: 1em; */
       display: flex;
       flex-direction: column;
-      border-bottom: 1px solid var(--primary-300);
+      border-bottom: var(--border);
       margin-bottom: 1em;
       gap: 0;
       flex: 1;
+      & h3 {
+        color: var(--primary);
+      }
     }
   }
 `;

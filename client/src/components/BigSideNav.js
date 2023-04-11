@@ -7,7 +7,7 @@ import Logo from './Logo'
 const BigSidebar = () => {
   const { showSidebar, toggleSidebar } = useAppContext();
   return (
-    <Wrapper>
+    <Wrapper className="primary-dark">
       <div
         className={
           showSidebar ? "sidebar-container " : "sidebar-container hide-sidebar"

@@ -68,7 +68,7 @@ const Wrapper = styled.button`
   }
   &.view-more-btn {
     min-height: 4em;
-    background-color: var(--gold-light);
+    background-color: var(--primary);
     color: white;
     font-weight: 700;
     letter-spacing: 2px;
@@ -86,7 +86,7 @@ const Wrapper = styled.button`
     flex: 1;
     &:hover {
       padding-right: 10px;
-      border-right: 3px solid var(--grey-600);
+      border-right: 3px solid var(--primary);
       transition: all 0.3s ease;
     }
   }
@@ -122,7 +122,7 @@ const Wrapper = styled.button`
   &.plain-btn {
     cursor: pointer;
     font-size: 1em;
-    color: var(--grey-600);
+    color: var(--primary);
     font-weight: 600;
     background-color: transparent;
     padding: 0;

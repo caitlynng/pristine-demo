@@ -8,7 +8,7 @@ const OverviewPanel = () => {
   const { dashboardTable_TotalProfits } = useAppContext();
 
   return (
-    <Wrapper>
+    <Wrapper className="item-box">
       <h6 className="overview-header">Overview</h6>
       <div className="profit-title">
         <p>Total {dashboardTable_TotalProfits > 0 ? "profits" : "loss"}</p>

@@ -23,7 +23,7 @@ export const Wrapper = styled.div`
     font-size: 1.3em;
     display: grid;
     place-items: center;
-    color: var(--grey-500);
+    color: var(--blue-700);
     cursor: pointer;
     &:hover {
       color: var(--grey-600);
@@ -83,14 +83,10 @@ export const Wrapper = styled.div`
   @media screen and (min-width: 600px) {
   }
   @media screen and (min-width: 1000px) {
-    border-radius: 1.75em;
-    border-radius: var(--borderRadius);
-    border: var(--border);
     grid-row: 5/9;
     grid-column: 1/5;
     width: 100%;
     margin-top: -2em;
-
     display: flex;
     flex-direction: column;
 
@@ -101,7 +97,7 @@ export const Wrapper = styled.div`
     }
     .header-wrapper {
       padding: 1em 2em 1em 1.5em;
-      border-bottom: 2px solid var(--grey-200);
+      border-bottom: var(--border);
     }
   }
 `;

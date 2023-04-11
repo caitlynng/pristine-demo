@@ -10,24 +10,9 @@ export const Wrapper = styled.div`
   ${({ active }) =>
     active
       ? css`
-          /* &::before {
-            content: "";
-            position: absolute;
-            background-color: var(--primary-800);
-            left: 0px;
-            top: 3px;
-            bottom: 3px;
-            width: 5px;
-            border-radius: 0px 6px 6px 0px;
-            -webkit-transition: -webkit-transform 150ms ease-in-out 0s;
-            -webkit-transition: transform 150ms ease-in-out 0s;
-            transition: transform 150ms ease-in-out 0s;
-            -webkit-transform: scaleY(1);
-            -ms-transform: scaleY(1);
-            transform: scaleY(1);
-          } */
           & {
-            background-color: var(--grey-300);
+            background-color: var(--blue-700);
+            color: var(--grey-200);
           }
         `
       : css`
@@ -41,9 +26,7 @@ export const Wrapper = styled.div`
       padding-right: 1em;
       font-weight: 700;
       font-size: 16px;
-      color: var(--grey-600);
       letter-spacing: 1.5px;
-
       line-height: 1.5;
     }
     & .subtitle {

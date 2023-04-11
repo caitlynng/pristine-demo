@@ -19,12 +19,12 @@ const Wrapper = styled.div`
   .amount {
     font-weight: 700;
     font-size: calc(12px + 3vw);
-    color: var(--grey-500);
+    color: var(--grey-700);
     margin-top: auto;
   }
   .subtitle {
     font-size: 1em;
-    color: var(--grey-600);
+    color: var(--grey-700);
   }
   @media screen and (min-width: 1000px) {
     align-items: center;
@@ -48,12 +48,11 @@ const Wrapper = styled.div`
     ${({ isActive }) =>
       isActive &&
       css`
-        border-radius: 1em;
         .icon-container {
-          background-color: var(--gold-light);
-          /* svg {
-            color: var(--gold-light);
-          } */
+          background-color: var(--blue-700);
+          & svg {
+            color: white
+          }
         }
       `}
   }

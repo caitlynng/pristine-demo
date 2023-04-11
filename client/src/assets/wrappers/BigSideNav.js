@@ -4,7 +4,6 @@ const Wrapper = styled.aside`
   display: none;
   @media screen and (min-width: 1000px) {
     display: block;
-    background-color: var(--grey-300);
     .sidebar-container {
       height: 100%;
       width: 200px;
@@ -22,9 +21,9 @@ const Wrapper = styled.aside`
     /* .sidebar-container:hover {
       width: 200px;
     } */
-    .logo {
+    .logo, .logo-name {
       svg {
-        fill: var(--grey-900);
+        fill: white;
       }
     }
     .nav-links {
@@ -38,7 +37,7 @@ const Wrapper = styled.aside`
       position: relative;
       padding-left: 1.8em;
       min-height: 50px;
-      color: var(--grey-500);
+      color: var(--grey-400);
       font-weight: 600;
       text-transform: capitalize;
       height: 100%;
@@ -46,7 +45,7 @@ const Wrapper = styled.aside`
     }
 
     .icon {
-      color: var(--grey-500);
+      color: var(--grey-400);
       font-weight: 300;
       font-size: 1.5em;
       margin-right: 1.5em;
@@ -56,14 +55,17 @@ const Wrapper = styled.aside`
     }
 
     .active .icon,
-    .nav-link.active {
-      color: var(--grey-900);
+    .nav-link.active,
+    .nav-link.active:hover,
+    .nav-link.active:hover .icon{
+      color: var(--primary);
       font-weight: 700;
+      background-color: var(--blue-700);
     }
-    .nav-link.active::before {
+    /* .nav-link.active::before {
       content: "";
       position: absolute;
-      background-color: var(--grey-900);
+      background-color: var(--primary);
       left: 0px;
       top: 3px;
       bottom: 3px;
@@ -71,28 +73,14 @@ const Wrapper = styled.aside`
       border-radius: 0px 6px 6px 0px;
       transition: transform 150ms ease-in-out 0s;
       transform: scaleY(1);
-    }
+    } */
     .nav-link:hover {
-      color: var(--grey-900);
+      color: var(--grey-200);
       .icon {
-        color: var(--grey-900);
+        color: var(--grey-200);
       }
     }
-    .nav-link.active:hover {
-      color: var(--grey-700);
-      .icon {
-        color: var(--grey-700);
-      }
-    }
+    
   }
-  /* @media (min-width: 950px) {
-    display: block;
-    .sidebar-container {
-      width: 230px;
-    }
-    .sidebar-container:hover {
-      width: 230px;
-    }
-  } */
 `;
 export default Wrapper

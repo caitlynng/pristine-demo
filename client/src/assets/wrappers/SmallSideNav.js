@@ -63,7 +63,7 @@ const Wrapper = styled.aside`
   }
   .active,
   .active .icon {
-    color: var(--gold-light);
+    color: var(--primary);
     font-weight: 600;
   }
   .nav-link:hover {

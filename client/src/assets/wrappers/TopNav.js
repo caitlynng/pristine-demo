@@ -11,6 +11,9 @@ const Wrapper = styled.nav`
   top: 0;
   margin-bottom: 1.5em;
   background-color: white;
+  border-bottom: 1px solid #ececec;
+  box-shadow: 0 2px 4px 0 #0000000a;
+
   .nav-container {
     height: 100%;
     width: 100%;
@@ -52,7 +55,7 @@ const Wrapper = styled.nav`
     width: 27px;
     border-radius: 50%;
     padding: 5px;
-    background: var(--grey-500);
+    background: var(--blue-700);
     cursor: pointer;
     & svg {
       color: var(--grey-100);
@@ -110,7 +113,7 @@ const Wrapper = styled.nav`
   }
   .logo-container {
     svg {
-      fill: var(--grey-700);
+      fill: var(--primary);
     }
   }
   .logo-container {
@@ -124,7 +127,6 @@ const Wrapper = styled.nav`
   }
 
   @media screen and (min-width: 1000px) {
-    border-bottom: var(--border);
     .toggle-btn {
       display: none;
     }

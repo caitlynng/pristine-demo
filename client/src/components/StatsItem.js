@@ -11,7 +11,10 @@ const StatsItem = ({
 }) => {
 
   return (
-    <Wrapper isActive={isActive.isActive} color={color} bgc={bgc}>
+    <Wrapper
+      isActive={isActive.isActive}
+      className="item-box"
+    >
       <div className="icon-container">{icon}</div>
 
       <div className="stats-content-container">
