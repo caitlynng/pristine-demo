@@ -19,7 +19,8 @@ const DatePicker = () => {
   const { allowedRange } = DateRangePicker;
 
   const twoYearsBeforeTodayDate = subDays(new Date(), 365);
-
+ const today = new Date();
+ const yesterday = today.setDate(today.getDate() - 1);
   const predefinedRanges = [
     // {
     //   label: "Today",
@@ -41,7 +42,7 @@ const DatePicker = () => {
     // },
     {
       label: "Last 7 days",
-      value: [subDays(new Date(), 6), new Date()],
+      value: [subDays(new Date(), 7), yesterday],
       placement: "left",
       appearance: "subtle",
     },

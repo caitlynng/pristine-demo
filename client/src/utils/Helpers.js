@@ -12,7 +12,7 @@ import {
   isEqual,
   getWeek,
   getMonth,
-  subDays
+  subDays,
 } from "date-fns";
 import { zonedTimeToUtc } from "date-fns-tz";
 
@@ -22,7 +22,7 @@ export const getIndexIfSameDate = (obj, date, type) => {
   }
   // const formatedDate = format(date, "yyyy-MM-dd");
   const dateToUTC = zonedTimeToUtc(date, "UTC").toISOString();
-  return obj.findIndex((i) => i === dateToUTC); 
+  return obj.findIndex((i) => i === dateToUTC);
 };
 export const getDatesBetween = (startDate, endDate) => {
   return eachDayOfInterval({
@@ -300,7 +300,9 @@ export const toLowerCaseAndCompare = (firstW, secondW) => {
 };
 export const getDate = (dates) => {
   // const defaultDate = ["2023/01/01", "2023/01/31"];
-  const defaultDate = [subDays(new Date(), 6), new Date()];
+  const today = new Date();
+  const yesterday = today.setDate(today.getDate() - 1);
+  const defaultDate = [subDays(new Date(), 7), yesterday];
   let updatedDates = [];
   if (dates) {
     updatedDates = [
