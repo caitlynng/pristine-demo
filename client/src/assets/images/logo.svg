@@ -3,14 +3,14 @@
 <svg version="1.1" viewBox="0 0 250 209" xmlns="http://www.w3.org/2000/svg">
 
 <g transform="translate(-.60606 -.35347)">
-<svg width="1e3" height="209" data-background-color="#469d89" viewBox="0 0 396 83" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg  width="1e3" height="209" data-background-color="#469d89" viewBox="0 0 396 83" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g transform="translate(.24 .14037)">
-<svg width="395.52" height="82.719" viewBox="0 0 532.1671712111498 111.29770871080143">
+<svg  width="395.52" height="82.719" viewBox="0 0 532.1671712111498 111.29770871080143">
 <svg width="111.3" height="111.3" viewBox="0 0 111.29770871080143 111.29770871080143">
 <svg class="icon-icon-0" width="111.3" height="111.3" enable-background="new 0 0 100 100" data-fill-palette-color="accent" version="1.1" viewBox="13 12.999999999999996 74.25 74.25" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="m60.25 60.25 19.108-6.369c1.687-3.824 3.018-7.774 4.06-11.63h-14.168l15.41-5.137c2.585-11.989 2.59-21.864 2.59-21.864s-45-9-63 9-9 36-9 36l36-18-36 27v18h9v-9s27 9 45-9c2.662-2.662 4.922-5.725 6.855-9h-15.855z" data-fill-palette-color="accent"/></svg>
 </svg>
 </svg>
-<rect width="395.52" height="82.719" fill="none" visibility="hidden"/>
+<rect width="395.52" height="82.719" fill="#0ebac5" visibility="hidden"/>
 </g>
 </svg>
 </g>

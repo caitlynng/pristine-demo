@@ -93,7 +93,7 @@ const ChartJs = ({ chartType, viewBy }) => {
     expenses_hoverPoint: "#adb5bd",
     axesLabel: "#6c757d",
     lineShadow: "#7b838a",
-    chart_bgc: "#f8f9fa",
+    chart_bgc: "white",
   };
 
   // const lollipop = {

@@ -338,13 +338,12 @@ export const groupedByCategory = (arr) => {
       (n) => n.category === i.category[0]
     );
     if (foundCategory === -1) {
-      incomeTableData.push(createRow(i.category[0], i.Sum, i._id, total));
+      incomeTableData.push(createRow(i.category[0], i.Sum, i._id, i.Sum));
     } else {
       incomeTableData[foundCategory].total += i.Sum;
       incomeTableData[foundCategory].subRows.push(createSubRow(i._id, i.Sum));
     }
   });
-
   return { incomeTableData, total };
 };
 
@@ -356,7 +355,7 @@ export const getCOGS = (data) => {
 };
 export const addPaypalFeeToIncomeTableData = (obj, totalPaypalFee) => {
   return obj.incomeTableData.findIndex((i) => {
-    if (i.category === "Fees") {
+    if (i.category === "Fee") {
       i.total += totalPaypalFee;
       i.subRows.push(createSubRow("Paypal Partner Fees", totalPaypalFee));
     }
@@ -379,6 +378,8 @@ export const filteredByType = (arr) => {
 };
 
 export const createRow = (category, total, type, subRowTotal) => {
+  // console.log(type)
+  // console.log(subRowTotal)
   return {
     _id: Math.floor(Math.random() * 200),
     category: category,

@@ -34,7 +34,7 @@ const addSpaceBeforeEachCapitalLetter = (string) => {
   return string;
 };
 
-const csvFilePath = "MOCK_DATA.csv";
+const csvFilePath = "MOCK_DATA_.csv";
 
 const readCSV = async (filePath) => {
   const csvFile = fs.readFileSync(filePath);

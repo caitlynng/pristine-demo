@@ -38,12 +38,8 @@ const MainChart = () => {
   const { fullscreenRef, enterFullscreen, exitFullscreen, fullscreenActive } =
     useFullscreen();
 
-  const fullscreenStyle = fullscreenActive
-    ? { backgroundColor: "#f8f9fa" }
-    : { };
-
   return (
-    <Wrapper ref={fullscreenRef} style={fullscreenStyle} className="item-box">
+    <Wrapper ref={fullscreenRef} className="item-box">
       <div className="header-wrapper">
         <div className="title-wrapper">
           <h6>General Activities</h6>

@@ -22,17 +22,10 @@ import {
   DISPLAY_ALERT,
   TOGGLE_SIDEBAR,
   LOADING_BEGIN,
-  SETUP_USER_SUCCESS,
-  UPDATE_USER_SUCCESS,
-  LOGOUT_USER,
   GET_REPORT_SUCCESS,
-  UPLOAD_FILE_SUCCESS,
-  UPDATE_COLUMN_HIDDEN,
   SHOW_STATS_SUCCESS,
   HANDLE_DATE_CHANGE,
-  HANDLE_ELEMENT_SIZE,
   HANDLE_SCREEN_RESIZE,
-  HANDLE_DATA_SUCCESS,
   HANDLE_SEARCH_TO_REPORT,
   MANAGE_UPLOADS_SUCCESS,
   LOADING_ERROR,
@@ -82,7 +75,6 @@ export const initialState = {
   dashboardDoughnutChart_SalesData: {},
   dashboardDoughnutChart_ExpensesData: {},
   monthsDuration: 0,
-  yearsDuration: 0,
 
   //statements
   statementTable_ExpensesData: [],
@@ -319,8 +311,6 @@ const AppProvider = ({ children }) => {
         let dates = { day: [], month: [], year: [] };
         if (monthsDuration >= 2)
           dates.month.push(...getMonthsBetween(startD, endD));
-        if (yearsDuration >= 2)
-          dates.year.push(...getYearsBetween(startD, endD));
         dates.day.push(...getDatesBetween(startD, endD));
         return dates;
       })(dates[0], dates[1]);
@@ -337,7 +327,7 @@ const AppProvider = ({ children }) => {
         for (const date in datesArr) {
           
           if (datesArr[date].length) {
-            datesArr[date].map((d) => {
+            datesArr[date].forEach((d) => {
               let exp_ind = getIndexIfSameDate(
                 expensesData[date][0].labels,
                 d,
@@ -380,7 +370,7 @@ const AppProvider = ({ children }) => {
           shippingData.total[0].sum
         );
         //add shipping cost to Line chart expenses
-        datesArr.day.map((date) => {
+        datesArr.day.forEach((date) => {
           const ind = shippingData.groupByDay.findIndex((i) =>
             isEqual(new Date(i._id), date)
           );
@@ -393,6 +383,7 @@ const AppProvider = ({ children }) => {
 
       //add COGS
       if (cogs || cogs === 0) {
+        cogs = +cogs.toFixed(2)
         statementsTable__expenses = addNewCategoryToStatementTable(
           statementsTable__expenses,
           "Cost of Goods Sold",
@@ -407,6 +398,7 @@ const AppProvider = ({ children }) => {
         salesData?.groupByStats[0].fees
       );
 
+    
       //Doughnut Chart Data
       const doughnutChartData__sales = getChartDataAndLabels(
         statementsTable__sales?.incomeTableData
@@ -419,34 +411,35 @@ const AppProvider = ({ children }) => {
       const totalProfits =
         statementsTable__sales?.total - statementsTable__expenses?.total;
 
-      dispatch({
-        type: SHOW_STATS_SUCCESS,
-        payload: {
-          dashboardTable_TotalSales: statementsTable__sales.total,
-          dashboardTable_TotalExpenses: statementsTable__expenses.total,
-          dashboardTable_TotalProfits: totalProfits,
+      
+         dispatch({
+           type: SHOW_STATS_SUCCESS,
+           payload: {
+             dashboardTable_TotalSales: statementsTable__sales.total,
+             dashboardTable_TotalExpenses: statementsTable__expenses.total,
+             dashboardTable_TotalProfits: totalProfits,
 
-          dashboardStats_Sales: stats,
+             dashboardStats_Sales: stats,
 
-          dashboardLineChart_Date: datesArr,
-          dashboardLineChart_SalesData: final_salesLineChart_data,
-          dashboardLineChart_ExpensesData: final_expensesLineChart_data,
+             dashboardLineChart_Date: datesArr,
+             dashboardLineChart_SalesData: final_salesLineChart_data,
+             dashboardLineChart_ExpensesData: final_expensesLineChart_data,
 
-          dashboardDoughnutChart_SalesData: doughnutChartData__sales,
-          dashboardDoughnutChart_ExpensesData: doughnutChartData__expenses,
+             dashboardDoughnutChart_SalesData: doughnutChartData__sales,
+             dashboardDoughnutChart_ExpensesData: doughnutChartData__expenses,
 
-          statementTable_SalesData: statementsTable__sales.incomeTableData,
-          statementTable_ExpensesData:
-            statementsTable__expenses.incomeTableData,
+             statementTable_SalesData: statementsTable__sales.incomeTableData,
+             statementTable_ExpensesData:
+               statementsTable__expenses.incomeTableData,
 
-          cogs: cogs,
-          monthsDuration: monthsDuration,
-          yearsDuration: yearsDuration,
-        },
-      });
+             cogs: cogs,
+             monthsDuration: monthsDuration,
+           },
+         });
+       
     } catch (error) {
-      console.log(error);
-      let msg = error.response.data.msg
+      let msg = error.response.data
+      console.log(error.response.data);
       
       dispatch({
         type: LOADING_ERROR,
