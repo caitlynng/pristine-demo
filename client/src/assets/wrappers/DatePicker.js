@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   .rs-picker-default .rs-picker-toggle,
   .rs-picker-input .rs-btn,
   .rs-picker-input .rs-picker-toggle {
-    background-color: var(--grey-200)!important;
+    background-color: var(--grey-100)!important;
   }
   @media screen and (min-width: 1000px) {
   }

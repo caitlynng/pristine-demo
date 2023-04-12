@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
+padding: 1em;
   .multicolorbar-container {
     margin: 5% 0;
     width: 100%;
@@ -62,10 +63,13 @@ const Wrapper = styled.div`
     margin-left: 2px;
     vertical-align: middle;
   }
+  @media screen and (min-width: 1000px) {
+   padding: 0;
+  }
   @media screen and (min-width: 1300px) and (min-height: 1100px) {
-     .multicolorbar-container {
-      gap:1em
-     }
+    .multicolorbar-container {
+      gap: 1em;
+    }
   }
 `;
 

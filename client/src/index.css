@@ -89,8 +89,8 @@ html {
   background-color: var(--blue-100);
 }
 .item-box {
-    background: #fff;
-    box-shadow: 0 3px 9px -8px rgba(0,0,0,.23);
+  background: #fff;
+  box-shadow: 0 3px 9px -8px rgba(0, 0, 0, 0.23);
 }
 
 body {
@@ -112,7 +112,7 @@ h1,
 h2,
 h3,
 h4,
-h5, 
+h5,
 h6 {
   text-transform: capitalize;
 }
@@ -270,10 +270,6 @@ select:focus-visible {
   align-items: center;
   height: 4em;
   width: 7em;
-  background-color: var(--primary);
-  padding-top: 1em;
-  padding-bottom: 0.5em;
-  padding-right: 2em;
 }
 
 .logo {
@@ -446,6 +442,11 @@ div[role="dialog"] {
   font-weight: 600;
   margin-bottom: 2em;
 }
+ .max-width {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1em;
+  }
 
 @media screen and (min-width: 450px) {
   .page-header {
@@ -460,11 +461,11 @@ div[role="dialog"] {
 @media screen and (min-width: 1000px) {
   .logo-container {
     width: 15em;
+    background-color: var(--primary);
+    padding-top: 1em;
+    padding-bottom: 0.5em;
+    padding-right: 2em;
   }
 
-  .max-width {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2em;
-  }
+ 
 }

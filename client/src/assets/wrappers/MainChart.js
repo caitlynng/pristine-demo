@@ -13,8 +13,6 @@ export const Wrapper = styled.div`
     position: relative;
   }
   .chart-container {
-    background-color: var(--grey-50);
-    border-radius: 10px;
     width: 100%;
     overflow: auto;
   }
@@ -68,8 +66,9 @@ export const Wrapper = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 1em 0;
+    padding: 1em;
     gap: 10px;
+    border-bottom: var(--border);
     & .title-wrapper {
       margin-right: auto;
       color: var(--grey-900);
@@ -80,8 +79,6 @@ export const Wrapper = styled.div`
     }
   }
 
-  @media screen and (min-width: 600px) {
-  }
   @media screen and (min-width: 1000px) {
     grid-row: 5/9;
     grid-column: 1/5;
@@ -94,10 +91,6 @@ export const Wrapper = styled.div`
       overflow-y: hidden;
       margin: auto;
       background-color: transparent;
-    }
-    .header-wrapper {
-      padding: 1em 2em 1em 1.5em;
-      border-bottom: var(--border);
     }
   }
 `;

@@ -4,10 +4,6 @@ export const Wrapper = styled.div`
   width: 100%;
 
   .doughnut-chart-container {
-    background-color: var(--grey-50);
-    padding: 1em 0;
-    margin: 2em 0;
-    border-radius: 10px;
     overflow: auto;
   }
   .chart-container {
@@ -32,22 +28,18 @@ export const Wrapper = styled.div`
     width: 100%;
   }
   .overview-title {
-    margin-bottom: 1em;
-    display: flex;
-    align-items: end;
-    gap: 10px;
-    color: var(--blue-700);
+    display: none;
   }
   .contentpill-container {
     display: flex;
     gap: 2em;
     flex-wrap: wrap;
+    padding: 1em;
   }
   @media (min-width: 650px) {
     .doughnut-chart-container {
       align-items: center;
       display: flex;
-      padding-right: 2em;
     }
     .chart-container {
       max-width: 50%;
@@ -69,6 +61,7 @@ export const Wrapper = styled.div`
     .contentpill-container {
       gap: 1em;
       flex-wrap: wrap;
+      padding: 0;
     }
     .doughnut-chart-container {
       display: flex;
@@ -84,13 +77,15 @@ export const Wrapper = styled.div`
       overflow: auto;
       max-width: 100%;
     }
-  }
-  /* @media screen and (min-width: 1000px) and (min-height: 1100px) {
-    .chart-container {
-      border-bottom: none;
-      margin-bottom: none;
+    .overview-title {
+      margin-bottom: 1em;
+      display: flex;
+      align-items: end;
+      gap: 10px;
+      color: var(--blue-700);
     }
-  } */
+  }
+
   @media screen and (min-width: 1300px) and (min-height: 1100px) {
     .contentpill-container {
       flex-direction: column;

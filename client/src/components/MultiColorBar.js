@@ -127,7 +127,7 @@ const MultiColorBar = ({ category, profitPercentage }) => {
 
   return (
     <Wrapper>
-      <div className="overview-title tooltip">
+      <div className="tooltip">
         <h6>Ratio</h6>
         <span className="tooltiptext right">ratio is {category === 'Sales'? 'profits' : 'expenses'} divided by sales</span>
       </div>

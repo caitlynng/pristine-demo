@@ -32,7 +32,7 @@ const Wrapper = styled.div`
       display: inline-block;
       width: 23%;
       height: 4em;
-      background: var(--grey-300);
+      background: var(--grey-100);
       padding: 1em;
       border-radius: 1.5em;
 

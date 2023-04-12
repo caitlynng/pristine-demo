@@ -13,6 +13,7 @@ const Wrapper = styled.nav`
   background-color: white;
   border-bottom: 1px solid #ececec;
   box-shadow: 0 2px 4px 0 #0000000a;
+  padding: 0 0.5em;
 
   .nav-container {
     height: 100%;
@@ -43,7 +44,7 @@ const Wrapper = styled.nav`
     padding: 0;
   }
   .toggle-btn.active {
-    color: var(--orange-light);
+    color: var(--primary);
   }
 
   .btn-container {
@@ -111,26 +112,30 @@ const Wrapper = styled.nav`
   .logo-name {
     margin-left: 10px;
   }
-  .logo-container {
-    svg {
-      fill: var(--primary);
-    }
-  }
+
   .logo-container {
     margin: 0;
   }
 
   @media (min-width: 499px) {
+    padding: 0 2em;
     .btn-container.smallscreen {
       display: none;
     }
   }
 
   @media screen and (min-width: 1000px) {
+    padding: 0;
+    
     .toggle-btn {
       display: none;
     }
 
+    .logo-container {
+      svg {
+        fill: var(--primary);
+      }
+    }
     .logo-name,
     .logo,
     .logo-container {

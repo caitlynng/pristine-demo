@@ -5,6 +5,9 @@ const Wrapper = styled.div`
   flex-direction: column;
   width: 100%;
   position: relative;
+  gap: 1em;
+  padding: 2em;
+
   .analytics__banner {
     display: none;
   }
@@ -15,6 +18,8 @@ const Wrapper = styled.div`
     max-height: calc(100vh - var(--nav-height));
     min-height: 900px;
     height: 100%;
+    padding: 2em;
+
     .analytics__date-picker-container {
       justify-self: end;
       grid-row: 1;

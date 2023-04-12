@@ -7,7 +7,9 @@ export const Wrapper = styled.div`
     background-color: white;
   }
   .overview-header {
-    margin: 1em 0;
+    padding: 1em;
+    color: var(--blue-700);
+    border-bottom: var(--border);
   }
   .profit-title {
     color: var(--grey-600);
@@ -17,6 +19,10 @@ export const Wrapper = styled.div`
     align-items: baseline;
     justify-content: start;
     gap: 10px;
+    padding: 1em;
+    & h3 {
+      color: var(--primary);
+    }
   }
 
   @media screen and (min-width: 1000px) {
@@ -38,9 +44,6 @@ export const Wrapper = styled.div`
       margin-bottom: 1em;
       gap: 0;
       flex: 1;
-      & h3 {
-        color: var(--primary);
-      }
     }
   }
 `;
