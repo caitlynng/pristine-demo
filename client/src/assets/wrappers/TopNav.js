@@ -13,7 +13,6 @@ const Wrapper = styled.nav`
   background-color: white;
   border-bottom: 1px solid #ececec;
   box-shadow: 0 2px 4px 0 #0000000a;
-  padding: 0 0.5em;
 
   .nav-container {
     height: 100%;
@@ -42,6 +41,7 @@ const Wrapper = styled.nav`
     align-items: center;
     height: 100%;
     padding: 0;
+    padding-left: 1em;
   }
   .toggle-btn.active {
     color: var(--primary);
@@ -118,7 +118,6 @@ const Wrapper = styled.nav`
   }
 
   @media (min-width: 499px) {
-    padding: 0 2em;
     .btn-container.smallscreen {
       display: none;
     }

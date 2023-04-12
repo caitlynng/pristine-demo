@@ -22,6 +22,7 @@ html {
   --blue-700: #232e42;
 
   /* grey */
+  --grey-10: rgb(243,244,245);
   --grey-50: #f8f9fa;
   --grey-100: #e9ecef;
   --grey-200: #eaeaf0;

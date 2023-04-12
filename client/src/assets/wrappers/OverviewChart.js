@@ -24,9 +24,6 @@ export const Wrapper = styled.div`
     margin: 0 auto;
   }
 
-  .link-btn-container {
-    width: 100%;
-  }
   .overview-title {
     display: none;
   }
@@ -35,6 +32,21 @@ export const Wrapper = styled.div`
     gap: 2em;
     flex-wrap: wrap;
     padding: 1em;
+  }
+  .view-more {
+    display: grid;
+    place-items: center;
+    min-height: 4em;
+    width: 80%;
+    padding: 0.375em 1.5em;
+    border-radius: 0.75em;
+    margin: 0 auto;
+    background-color: var(--primary);
+    color: white;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+    cursor: pointer;
   }
   @media (min-width: 650px) {
     .doughnut-chart-container {

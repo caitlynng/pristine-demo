@@ -66,15 +66,6 @@ const Wrapper = styled.button`
       width: 40%;
     }
   }
-  &.view-more-btn {
-    min-height: 4em;
-    background-color: var(--primary);
-    color: white;
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin: 0;
-    width: 100%;
-  }
   &.dropdown-btn {
     margin: 0;
     padding: 0.2em 0;

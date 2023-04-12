@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   width: 100%;
   position: relative;
   gap: 1em;
-  padding: 2em;
+  padding: 1em;
 
   .analytics__banner {
     display: none;
@@ -17,7 +17,7 @@ const Wrapper = styled.div`
     grid-template-rows: repeat(8, 1fr);
     max-height: calc(100vh - var(--nav-height));
     min-height: 900px;
-    height: 100%;
+    height: 95%;
     padding: 2em;
 
     .analytics__date-picker-container {

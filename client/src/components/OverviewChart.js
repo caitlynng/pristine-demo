@@ -119,7 +119,7 @@ const OverviewChart = () => {
   //compute inside padding for chart
   const getPadding = () => {
     if (screenSize >= 450 && screenSize < 1000) {
-      return Math.round(((screenSize * 2) / 3) * 0.2);
+      return Math.round(((screenSize * 2) / 3) * 0.19);
     }
     if (screenSize > 1000 && screenSize < 1300) {
       return 30;
@@ -191,12 +191,8 @@ const OverviewChart = () => {
         </div>
       </div>
       <MultiColorBar category={active} profitPercentage={profitPercentage} />
-      <a href="/statements" className="link-btn-container">
-        <Button
-          classList="view-more-btn"
-          title="View More"
-          href="/statements"
-        />
+      <a href="/statements" className="view-more">
+        View More
       </a>
     </Wrapper>
   );

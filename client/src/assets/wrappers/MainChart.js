@@ -45,7 +45,7 @@ export const Wrapper = styled.div`
     gap: 3px;
 
     border-radius: 25px;
-    background-color: var(--grey-200);
+    background-color: var(--grey-10);
     &:hover {
       box-shadow: var(--shadow-dark);
     }

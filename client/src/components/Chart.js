@@ -85,12 +85,14 @@ const ChartJs = ({ chartType, viewBy }) => {
   ]);
 
   const chart_colors = {
-    sales_line: "#495057",
+    // sales_line: "#495057",
+    sales_line: "#0ebac5",
     expenses_line: "#adb5bd",
+    // expenses_line: "#495057",
     tooltip_bgc: "#343a40",
     expenses_hoverPoint: "#adb5bd",
     axesLabel: "#6c757d",
-    lineShadow: "#f2f2f2",
+    lineShadow: "#7b838a",
     chart_bgc: "#f8f9fa",
   };
 
@@ -195,7 +197,7 @@ const ChartJs = ({ chartType, viewBy }) => {
       let _stroke = ctx.stroke;
       ctx.stroke = function () {
         ctx.save();
-        ctx.shadowColor = chart_colors.sales_line;
+        ctx.shadowColor = chart_colors.lineShadow;
         ctx.shadowBlur = 10;
         ctx.shadowOffsetX = 2;
         ctx.shadowOffsetY = 5;
