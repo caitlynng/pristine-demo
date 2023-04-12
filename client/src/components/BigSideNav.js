@@ -6,7 +6,7 @@ import Logo from './Logo'
 import { MdArrowRight, MdArrowLeft } from "react-icons/md";
 
 const BigSidebar = () => {
-  const { showSidebar, toggleSidebar } = useAppContext();
+  const { showSidebar, toggleSidebar, screenSize } = useAppContext();
   return (
     <Wrapper className="primary-dark">
       <div
@@ -16,7 +16,7 @@ const BigSidebar = () => {
       >
         <Logo />
         <div className="content">
-          <NavLinks toggleSidebar={toggleSidebar} />
+          <NavLinks toggleSidebar={screenSize < 1000 && toggleSidebar} />
         </div>
       </div>
       <span className="toggle-icon" onClick={toggleSidebar}>

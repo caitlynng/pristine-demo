@@ -86,7 +86,7 @@ const Wrapper = styled.aside`
       position: absolute;
       display: grid;
       place-items: center;
-      bottom: 8%;
+      bottom: 5%;
       height: 1.1em;
       width: 1.1em;
       border: 2px solid var(--primary);
@@ -95,7 +95,7 @@ const Wrapper = styled.aside`
       border-radius: 50%;
       color: var(--primary);
       cursor: pointer;
-      left: 178px;
+      left: 183px;
       transition: left 0.5s ease-in;
     }
     .sidebar-container.hide-sidebar ~ .toggle-icon {
