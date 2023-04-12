@@ -227,7 +227,7 @@ const IncomeTable = () => {
             "sales"
           )}
           <span className="col-2 bold-text">Total: </span>
-          <span className="col-3 bold-text">
+          <span className="col-3 bold-text ">
             {currencyFormatter
               .format(dashboardTable_TotalSales)
               .replace(/\.00$/, "")}
@@ -239,13 +239,13 @@ const IncomeTable = () => {
           )}
           {selection && getUserSelection()}
           <span className="col-2 bold-text">Total: </span>
-          <span className="col-3 bold-text">
+          <span className="col-3 bold-text ">
             {currencyFormatter
               .format(dashboardTable_TotalExpenses)
               .replace(/\.00$/, "")}
           </span>
-          <span className="col-2 bold-text">Total Profits: </span>
-          <span className="col-3 bold-text">
+          <span className="col-2 bold-text border no-border-right">Total Profits: </span>
+          <span className="col-3 bold-text border highlight no-border-left">
             {currencyFormatter
               .format(dashboardTable_TotalProfits)
               .replace(/\.00$/, "")}

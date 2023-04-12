@@ -3,6 +3,7 @@ import { useAppContext } from "../context/appContext.js";
 import NavLinks from "./NavLinks";
 import Wrapper from "../assets/wrappers/BigSideNav";
 import Logo from './Logo'
+import { MdArrowRight, MdArrowLeft } from "react-icons/md";
 
 const BigSidebar = () => {
   const { showSidebar, toggleSidebar } = useAppContext();
@@ -12,13 +13,15 @@ const BigSidebar = () => {
         className={
           showSidebar ? "sidebar-container " : "sidebar-container hide-sidebar"
         }
-        onClick={toggleSidebar}
       >
         <Logo />
         <div className="content">
           <NavLinks toggleSidebar={toggleSidebar} />
         </div>
       </div>
+      <span className="toggle-icon" onClick={toggleSidebar}>
+        {showSidebar ? <MdArrowLeft /> : <MdArrowRight />}
+      </span>
     </Wrapper>
   );
 };

@@ -8,6 +8,7 @@ const Wrapper = styled.section`
     margin-left: 0; //transition to left when .toggle-sidebar is removed
     transition: 0.5s;
     background-color: #fafafa;
+    min-height: 100vh;
   }
 
   @media (min-width: 400px) {

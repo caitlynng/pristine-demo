@@ -35,6 +35,18 @@ export const Wrapper = styled.div`
     border-bottom: 2px solid var(--grey-300);
     cursor: pointer;
   }
+  .highlight {
+    color: var(--primary);
+  }
+  .border {
+    border: var(--border);
+  }
+  .no-border-left {
+    border-left: none;
+  }
+  .no-border-right {
+    border-right: none;
+  }
   .col {
     background-color: var(--grey-200);
     margin: 2px 0;
@@ -65,10 +77,6 @@ export const Wrapper = styled.div`
   .table-title {
     text-align: center;
     padding: 2em 0;
-    background-color: var(--primary-1200);
-    & h5 {
-      color: var(--primary-200);
-    }
     & p {
       color: var(--grey-300);
       font-style: italic;

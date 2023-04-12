@@ -4,6 +4,7 @@ const Wrapper = styled.aside`
   display: none;
   @media screen and (min-width: 1000px) {
     display: block;
+    position: relative;
     .sidebar-container {
       height: 100%;
       width: 200px;
@@ -21,7 +22,8 @@ const Wrapper = styled.aside`
     /* .sidebar-container:hover {
       width: 200px;
     } */
-    .logo, .logo-name {
+    .logo,
+    .logo-name {
       svg {
         fill: white;
       }
@@ -57,7 +59,7 @@ const Wrapper = styled.aside`
     .active .icon,
     .nav-link.active,
     .nav-link.active:hover,
-    .nav-link.active:hover .icon{
+    .nav-link.active:hover .icon {
       color: var(--primary);
       font-weight: 700;
       background-color: var(--blue-700);
@@ -80,7 +82,26 @@ const Wrapper = styled.aside`
         color: var(--grey-200);
       }
     }
-    
+    .sidebar-container ~ .toggle-icon {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      bottom: 8%;
+      height: 1.1em;
+      width: 1.1em;
+      border: 2px solid var(--primary);
+      font-size: 2em;
+      background-color: white;
+      border-radius: 50%;
+      color: var(--primary);
+      cursor: pointer;
+      left: 178px;
+      transition: left 0.5s ease-in;
+    }
+    .sidebar-container.hide-sidebar ~ .toggle-icon {
+      left: 55px;
+      transition: left 0.5s ease-in;
+    }
   }
 `;
 export default Wrapper
