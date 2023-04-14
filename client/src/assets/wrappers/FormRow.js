@@ -40,9 +40,13 @@ const Wrapper = styled.div`
     font-size: 0.9em;
     display: block;
     margin-top: 5px;
-    padding-left: 15em;
-    & span:nth-child(2){
+    & span:nth-child(2) {
       color: var(--grey-600);
+    }
+  }
+  @media screen and (min-width: 1000px) {
+    .error-message {
+      padding-left: 15em;
     }
   }
 `;

@@ -48,7 +48,7 @@ export const Wrapper = styled.div`
     border-right: none;
   }
   .col {
-    background-color: var(--grey-200);
+    background-color: var(--grey-10);
     margin: 2px 0;
   }
   .col-1 {

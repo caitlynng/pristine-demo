@@ -429,10 +429,9 @@ div[role="dialog"] {
 .popup_inner {
   position: absolute;
   padding: 3em 2em;
-  left: 35%;
-  right: 35%;
+  left: 5%;
+  right: 5%;
   top: 40%;
-  bottom: 40%;
   margin: auto;
   background: white;
   text-align: center;
@@ -467,6 +466,9 @@ div[role="dialog"] {
     padding-bottom: 0.5em;
     padding-right: 2em;
   }
-
+  .popup_inner {
+    left: 35%;
+    right: 35%;
+  }
  
 }

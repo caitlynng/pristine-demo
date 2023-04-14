@@ -13,7 +13,7 @@ const PopUp = () => {
         <p>This is only a demo version. Please sign in to use the full features.</p>
         <Button
           onSetActive={closeDemoMessage}
-          title="ok"
+          title="got it"
           classList="save-btn"
         />
       </div>
