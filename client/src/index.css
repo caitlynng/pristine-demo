@@ -22,7 +22,7 @@ html {
   --blue-700: #232e42;
 
   /* grey */
-  --grey-10: rgb(243,244,245);
+  --grey-10: rgb(243, 244, 245);
   --grey-50: #f8f9fa;
   --grey-100: #e9ecef;
   --grey-200: #eaeaf0;
@@ -336,57 +336,6 @@ div[role="dialog"] {
   border: 3px solid #ffffff;
 }
 
-/* Tooltip container */
-.tooltip {
-  position: relative;
-  display: inline-block;
-  /* border-bottom: 1px dotted black; */
-  /* If you want dots under the hoverable text */
-}
-
-/* Tooltip text */
-.tooltip .tooltiptext {
-  visibility: hidden;
-  font-size: 12px;
-  background-color: var(--grey-600);
-  color: #fff;
-  text-align: center;
-  padding: 5px 10px;
-  border-radius: 6px;
-  text-transform: capitalize;
-
-  /* Position the tooltip text - see examples below! */
-  position: absolute;
-  z-index: 100;
-}
-
-/* tooltip position */
-.tooltip .tooltiptext.right {
-  top: -15px;
-  left: 15%;
-}
-.tooltip .tooltiptext.left {
-  top: -5px;
-  right: 105%;
-}
-.tooltip .tooltiptext.top {
-  bottom: 150%;
-  left: 50%;
-  margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
-}
-.tooltip .tooltiptext.bottom {
-  top: 100%;
-  margin-left: -35px; /* Use half of the width (120/2 = 60), to center the tooltip */
-}
-
-/* Show the tooltip text mouse over the tooltip container */
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-}
-.tooltip.hide .tooltiptext {
-  visibility: hidden;
-}
-
 /* DROPDOWN */
 .dropdown {
   position: absolute;
@@ -442,11 +391,23 @@ div[role="dialog"] {
   font-weight: 600;
   margin-bottom: 2em;
 }
- .max-width {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1em;
-  }
+.max-width {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+
+/* Tooltip container */
+.tooltip {
+ display: none
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  display: none
+}
+
 
 @media screen and (min-width: 450px) {
   .page-header {
@@ -470,5 +431,56 @@ div[role="dialog"] {
     left: 35%;
     right: 35%;
   }
- 
+  /* Tooltip container */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    /* border-bottom: 1px dotted black; */
+    /* If you want dots under the hoverable text */
+  }
+
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    display: grid;
+    place-items: center;
+    visibility: hidden;
+    font-size: 12px;
+    background-color: var(--grey-600);
+    color: #fff;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 6px;
+    text-transform: capitalize;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 100;
+  }
+
+  /* tooltip position */
+  .tooltip .tooltiptext.right {
+    top: -25px;
+    left: 110%;
+  }
+  .tooltip .tooltiptext.left {
+    top: -5px;
+    right: 105%;
+  }
+  .tooltip .tooltiptext.top {
+    bottom: 150%;
+    left: 50%;
+    margin-left: -60px; 
+  }
+  .tooltip .tooltiptext.bottom {
+    top: 100%;
+    margin-left: -35px; 
+  }
+
+  /* Show the tooltip text mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+  .tooltip.hide .tooltiptext {
+    visibility: hidden;
+  }
 }

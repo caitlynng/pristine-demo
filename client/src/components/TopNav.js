@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Wrapper from "../assets/wrappers/TopNav";
-import { FaUserAlt, FaBars, FaSearch, FaAngleLeft } from "react-icons/fa";
+import { FaUserAlt, FaBars, FaSearch} from "react-icons/fa";
+import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useAppContext } from "../context/appContext.js";
 import SearchBar from "./SearchBar.js";
 import Button from "./Button";
@@ -66,7 +67,7 @@ const TopBar = () => {
               className="back-btn"
               onClick={() => setShowSearchPanel(false)}
             >
-              <FaAngleLeft />
+              <MdKeyboardArrowLeft />
             </button>
             <SearchBar
               visible={showSearchPanel}

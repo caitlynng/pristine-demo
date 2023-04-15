@@ -95,7 +95,7 @@ const Wrapper = styled.nav`
     background: #333;
     color: #eee;
     overflow: auto;
-    padding: 1em;
+    padding: 1em 1.5em 1em 0;
     display: flex;
     align-items: start;
   }

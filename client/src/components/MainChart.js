@@ -11,7 +11,7 @@ import Button from "./Button.js";
 import ChartJs from "./Chart.js";
 import { useFullscreen } from "../context/fullscreenContext.js";
 const MainChart = () => {
-  const { noData, monthsDuration, yearsDuration } = useAppContext();
+  const { noData, monthsDuration, yearsDuration, screenSize } = useAppContext();
 
   const viewByOptions = () => {
     let options = ["Daily"];
@@ -45,7 +45,6 @@ const MainChart = () => {
           <h6>General Activities</h6>
         </div>
         <div className="viewby-container">
-          {/* <label htmlFor="view-by">View By:</label> */}
           <select
             id="view-by"
             className="no-border"
@@ -85,7 +84,7 @@ const MainChart = () => {
             />
           </div>
         )}
-        {fullscreenActive ? (
+        {screenSize <= 450 ? null : fullscreenActive && screenSize >= 450 ? (
           <div className="chart-settings-icon tooltip" onClick={exitFullscreen}>
             <MdOutlineCloseFullscreen />
             <span className="tooltiptext bottom">Exit full screen</span>

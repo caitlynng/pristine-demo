@@ -3,7 +3,6 @@ import {  useEffect } from "react";
 
 import MaterialTable from "@material-table/core";
 import { makeStyles } from '@material-ui/core/styles';
-import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
 import DeleteOutline from "@material-ui/icons/DeleteOutline";
 import { ExportCsv, ExportPdf } from "@material-table/exporters";
 

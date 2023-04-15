@@ -15,7 +15,7 @@ import { useFullscreen } from "../../context/fullscreenContext";
 const Reports = () => {
   const { fullscreenRef, enterFullscreen, exitFullscreen, fullscreenActive } =
     useFullscreen();
-  const { handleDateChange, isLoading, reportData, activeHeaders, isBack } =
+  const { handleDateChange, isLoading, reportData, activeHeaders, isBack , screenSize} =
     useAppContext();
 
   useEffect(() => {
@@ -65,7 +65,7 @@ const Reports = () => {
     pageSize: 15,
     searchFieldAlignment: "left",
   };
-  const actions = fullscreenActive
+  const fullscreen = fullscreenActive
     ? [
         {
           icon: "fullscreen_exit",
@@ -90,6 +90,15 @@ const Reports = () => {
           onClick: () => enterFullscreen(),
         },
       ];
+  const actions = screenSize <= 450 ? [{
+          icon: "filter_alt",
+          tooltip: "Enable Filter",
+          isFreeAction: true,
+          onClick: () => {
+            setIsFilter(!isFilter);
+          },
+  }] : fullscreen
+  
   const detailPanel = [
     {
       //https://stackoverflow.com/questions/50303454/how-to-use-the-new-material-design-icon-themes-outlined-rounded-two-tone-and
@@ -151,7 +160,7 @@ const Reports = () => {
         </div>
       )}
       {isLoading && <Loading />}
-      <div style={{ overflow: "auto" }} ref={fullscreenRef}>
+      <div style={{ overflow: "auto", marginTop: '1em' }} ref={fullscreenRef}>
         <ReportTable
           data={reportData}
           columns={activeHeaders}

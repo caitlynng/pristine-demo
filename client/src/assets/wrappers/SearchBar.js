@@ -35,7 +35,7 @@ export const Wrapper = styled.div`
   .search-autocomplete {
     position: absolute;
     top: 4em;
-    width: 85%;
+    width: 80%;
     background-color: white;
     border-radius: 5px;
     max-height: 15em;
