@@ -17,10 +17,8 @@ const SharedLayout = () => {
     <Wrapper>
       {demoMessage && <PopUp />}
       <SmallSideNav />
-      {/* <TopNav /> */}
       <main>
         <BigSideNav />
-        {/* <div className="curved-background"></div> */}
         <div
           className={
             showSidebar

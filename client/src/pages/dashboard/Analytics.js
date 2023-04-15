@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useAppContext } from "../../context/appContext";
 import { useWindowDimensions } from "../../utils/Helpers";
-
+import banner from "../../assets/images/banner.svg";
+import SVG from "react-inlinesvg";
 import Wrapper from "../../assets/wrappers/Analytics";
 import {
   DatePicker,
@@ -34,7 +35,13 @@ const Analytics = () => {
           <DatePicker />
         </div>
       </div>
-      <div className="analytics__banner item-box"></div>
+      <div className="banner-container item-box">
+        <div className="banner-content">
+          <h4>Welcome!</h4>
+          <p> You're viewing the Demo Version of Pristine. </p>
+        </div>
+        <SVG src={banner} alt="banner" />
+      </div>
       <StatsContainer />
       <MainChart />
       <OverviewPanel />

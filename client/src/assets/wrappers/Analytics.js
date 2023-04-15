@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   gap: 1em;
   padding: 1em;
 
-  .analytics__banner {
+  .banner-container {
     display: none;
   }
   @media screen and (min-width: 1000px) {
@@ -30,12 +30,25 @@ const Wrapper = styled.div`
       grid-column: 1/7;
       margin: 0;
     }
-    .analytics__banner {
+    .banner-container {
       grid-row: 1/3;
       grid-column: 1/5;
-      height:73%;
-      display: block;
+      height: 73%;
+      display: flex;
       margin-top: auto;
+      & .banner-content {
+        flex: 1;
+        padding: 1.5em;
+        line-height:1.7;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
+      }
+      & svg {
+        height: 100%;
+        flex: 1;
+      }
     }
   }
 `;
