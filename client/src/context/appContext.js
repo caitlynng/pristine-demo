@@ -10,7 +10,6 @@ import {
   getDatesBetween,
   getIndexIfSameDate,
   getMonthsBetween,
-  getYearsBetween,
 } from "../utils/Helpers";
 
 import reducer from "./reducer";
@@ -48,7 +47,7 @@ export const initialState = {
   alertText: "",
   alertType: "",
   demoMessage: false,
-  showSidebar: true,
+  showSidebar: false,
   screenSize: 0,
 
   // user: user ? JSON.parse(user) : null,
