@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 
-import { Error } from "./pages";
+import { Error, Landing } from "./pages";
 import {
   SharedLayout,
   Analytics,
@@ -26,6 +26,7 @@ function App() {
           <Route path="uploads" element={<Uploads />}></Route>
           <Route path="settings" element={<Settings />}></Route>
         </Route>
+        <Route path="/landing" element={<Landing />}></Route>
         <Route path="*" element={<Error />}></Route>
       </Routes>
     </BrowserRouter>

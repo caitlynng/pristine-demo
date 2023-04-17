@@ -1,2 +1,3 @@
 import Error from './Error'
-export { Error };
+import Landing from './Landing'
+export { Error, Landing};
