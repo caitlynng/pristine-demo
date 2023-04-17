@@ -6,6 +6,7 @@
 
 /* fonts */
 @import url("https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
 
 html {
   font-size: 100%;
@@ -409,6 +410,22 @@ div[role="dialog"] {
 }
 
 
+/* reusable classes */
+.flex {
+  display: flex;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.align-center {
+  align-items: center;
+}
+.w-full {
+  width: 100%;
+}
+.hide-smscreen {
+  display: none;
+}
 @media screen and (min-width: 450px) {
   .page-header {
     height: 3em;
@@ -418,8 +435,13 @@ div[role="dialog"] {
     margin-left: auto;
   }
 }
-
+@media screen and (min-width: 650px) {
+  .show-650mw {
+    display: inline-block;
+  }
+}
 @media screen and (min-width: 1000px) {
+  
   .logo-container {
     width: 15em;
     background-color: var(--primary);

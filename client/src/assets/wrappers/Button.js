@@ -6,8 +6,8 @@ const Wrapper = styled.button`
     border: transparent;
     padding: 0.375em 1.5em;
     text-transform: capitalize;
-    display: inline-block;
-    border-radius: 0.75em;
+    /* display: inline-block; */
+    border-radius: 0.25em;
     margin: 0 10px;
     height: 100%;
     letter-spacing: 1px;
@@ -117,6 +117,25 @@ const Wrapper = styled.button`
     font-weight: 600;
     background-color: transparent;
     padding: 0;
+  }
+  &.contact-btn {
+    font-size: 17px;
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    &:hover {
+      background: linear-gradient(90deg,#235af4,#a208d9);
+      transition: 0.3s all;
+    }
+  }
+  &.clear-btn {
+    background: transparent;
+    border: 2px solid black;
+    color: black;
+    &:hover {
+      box-shadow: var(--shadow-dark);
+      background: var(--grey-100);
+    }
   }
   @media screen and (min-width: 499px) {
     .icon-btn {
