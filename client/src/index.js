@@ -1,9 +1,9 @@
 import React from "react";
 import { render } from "react-dom";
 
-import "normalize.css";
-import "./index.css";
 import "swiper/css/bundle";
+import "./index.css";
+import "normalize.css";
 
 import App from "./App";
 import { AppProvider } from "./context/appContext";

@@ -137,6 +137,13 @@ const Wrapper = styled.button`
       background: var(--grey-100);
     }
   }
+  &.nav-btn {
+    color: black;
+    letter-spacing: normal;
+    &:hover {
+      color: var(--primary)
+    }
+  }
   @media screen and (min-width: 499px) {
     .icon-btn {
       color: var(--grey-500);
