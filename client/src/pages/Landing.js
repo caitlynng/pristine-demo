@@ -7,7 +7,7 @@ import SVG from "react-inlinesvg";
 import uploadIcon from "../assets/images/upload-icon.svg";
 import costIcon from "../assets/images/cost-icon.svg";
 import chartIcon from "../assets/images/chart-icon.svg";
-
+import analytics from "../assets/images/analytics.svg";
 
 //https://www.emburse.com/
 //https://quickbooks.intuit.com/
@@ -79,30 +79,55 @@ const Landing = () => {
             </div>
           </div>
         </section>
+        {/* how it works */}
         <section
-          className="section-container"
+          className="section-container bgc-bot"
           ref={(el) => (scrollToRef[0] = el)}
         >
           <div className="functions-container flex flex-column align-center justify-between margin-auto">
-            <h3>Experience Less Financial Stress</h3>
-            <p>
-              Pristine lets you keep track of your sales and expenses in 3
-              simple steps
-            </p>
+            <div className="section-intro">
+              <h2 className="section-title">
+                Experience <b>less</b> financial stress
+              </h2>
+              <p>
+                Pristine lets you keep track of your sales and expenses in 3
+                simple steps
+              </p>
+            </div>
             <div className="w-full flex functions-content flex-column">
               <div className="cubicle">
                 <SVG src={uploadIcon} alt="upload-icon" />
                 <p>Upload your reports from Paypal and third-party shippings</p>
               </div>
               <div className="cubicle">
-                {" "}
                 <SVG src={costIcon} alt="total-cost-icon" />
                 <p>Input total cost of goods sold for the selected period</p>
               </div>
               <div className="cubicle">
-                {" "}
                 <SVG src={chartIcon} alt="chart-icon" />
                 <p>Get insights of how your business is performing</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* what you get */}
+        <section
+          className="section-container"
+          ref={(el) => (scrollToRef[1] = el)}
+        >
+          <div className="features-container w-full">
+            <div className="section-intro">
+              <h2 className="section-title">
+                Stay in complete <b>control</b>
+              </h2>
+              <p>
+                Pristine lets you keep track of your sales and expenses in 3
+                simple steps
+              </p>
+            </div>
+            <div className="features-content">
+              <div className="feature-img-container margin-auto">
+                <SVG src={analytics} alt="dashboard-img" />
               </div>
             </div>
           </div>

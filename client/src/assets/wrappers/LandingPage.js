@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  height: 200vh;
   font-size: 16px;
   header {
     z-index: 1000;
@@ -21,8 +20,8 @@ const Wrapper = styled.div`
   }
   .left-nav {
     margin-right: auto;
-  } 
-  
+  }
+
   .logo-container {
     background-color: transparent;
     padding: 0;
@@ -97,23 +96,57 @@ const Wrapper = styled.div`
     margin: 4em 2em;
     gap: 6em;
   }
-
+  .section-intro {
+    margin: 1em auto;
+    text-align: center;
+    & p {
+      font-size: 18px;
+    }
+  }
+  .section-title {
+    color: #009499;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+    & b {
+      font-weight: 900;
+    }
+  }
+  .features-container {
+  }
+  .feature-img-container {
+    max-width: 80%;
+    & svg {
+      width: 100%;
+    }
+  }
   @media (min-width: 1000px) {
     .wrapper {
       &:after {
         content: " ";
-        height: 99vh;
+        height: 150vh;
         position: absolute;
         top: 0;
         right: 0;
         width: 40vw;
-        background-color: #eef5ff;
+        background-color: #e5ffff;
         z-index: 0;
       }
+      /* &:before {
+        content: " ";
+        height: 50vh;
+        position: absolute;
+        top: 120vh;
+        left: 0;
+        width: 100vw;
+        background-color: #eef5ff;
+        z-index: 0;
+        border-bottom-left-radius: 5em;
+        border-bottom-right-radius: 5em;
+      } */
     }
     .section-container {
       max-width: 1616px;
-      margin: 0 auto;
+      margin: 3em auto;
     }
     .banner-container {
       display: flex;
@@ -156,7 +189,26 @@ const Wrapper = styled.div`
     .functions-container {
       width: 80%;
     }
+    .bgc-bot {
+      background-color: #e5ffff;
+      padding-bottom: 7em;
+      border-bottom-right-radius: 5em;
+      position: relative;
+      &:before {
+        content: " ";
+        height: 15em;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        background-color: white;
+        z-index: 0;
+      }
+    }
     .functions-content {
+      flex-direction: row;
+    }
+    .features-item {
       flex-direction: row;
     }
   }
