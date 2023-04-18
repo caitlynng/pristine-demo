@@ -8,6 +8,13 @@ import uploadIcon from "../assets/images/upload-icon.svg";
 import costIcon from "../assets/images/cost-icon.svg";
 import chartIcon from "../assets/images/chart-icon.svg";
 
+
+//https://www.emburse.com/
+//https://quickbooks.intuit.com/
+//https://www.rydoo.com/expense/
+//https://www.ynab.com/
+//https://goodbudget.com/what-you-get/
+
 const Landing = () => {
   const [scroll, setScroll] = useState(false);
   const scrollToRef = [];
