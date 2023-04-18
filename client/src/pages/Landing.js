@@ -1,21 +1,29 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Wrapper from "../assets/wrappers/LandingPage";
 import homeBanner from "../assets/images/home_banner.png";
 import { Link } from "react-router-dom";
 import { Logo, Button } from "../components/index.js";
 import SVG from "react-inlinesvg";
-import uploadIcon from '../assets/images/upload-icon.svg'
-import costIcon from '../assets/images/cost-icon.svg'
-import chartIcon from '../assets/images/chart-icon.svg'
+import uploadIcon from "../assets/images/upload-icon.svg";
+import costIcon from "../assets/images/cost-icon.svg";
+import chartIcon from "../assets/images/chart-icon.svg";
 
 const Landing = () => {
   const [scroll, setScroll] = useState(false);
+  const scrollToRef = [];
   useEffect(() => {
     window.addEventListener("scroll", () => {
       setScroll(window.scrollY > 56);
     });
   }, []);
 
+  const executeScroll = (ind) => {
+    scrollToRef[ind].scrollIntoView({ behavior: "smooth" });
+    //to prevent window.scrollBy from cancelling on scrollIntoView if the latter hasn't finished scrolling before former runs
+    setTimeout(() => {
+      window.scrollBy(0, -100);
+    }, 500);
+  };
   return (
     <Wrapper>
       <header className={scroll ? "header-fixed" : ""}>
@@ -25,6 +33,7 @@ const Landing = () => {
             <Button
               title="How it works"
               classList="plain-btn hide-smscreen show-1000mw nav-btn"
+              onSetActive={() => executeScroll(0)}
             />
             <Button
               title="What you get"
@@ -63,7 +72,10 @@ const Landing = () => {
             </div>
           </div>
         </section>
-        <section className="section-container">
+        <section
+          className="section-container"
+          ref={(el) => (scrollToRef[0] = el)}
+        >
           <div className="functions-container flex flex-column align-center justify-between margin-auto">
             <h3>Experience Less Financial Stress</h3>
             <p>
