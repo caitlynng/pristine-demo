@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  font-size: 16px;
   header {
     z-index: 1000;
     position: sticky;
@@ -58,6 +57,7 @@ const Wrapper = styled.div`
       font-size: 2.5em;
       line-height: 40px;
       font-weight: 700;
+      color: black;
       text-transform: none;
       & .gradient-text {
         background: linear-gradient(91.42deg, #2b56f3 18.38%, #a505d8 62.2%);
@@ -68,7 +68,6 @@ const Wrapper = styled.div`
     }
   }
   .banner-text {
-    font-size: 15px;
     margin: 25px auto;
     width: 75%;
   }
@@ -97,7 +96,7 @@ const Wrapper = styled.div`
     gap: 6em;
   }
   .section-intro {
-    margin: 1em auto;
+    margin: 2em auto;
     text-align: center;
     & p {
       font-size: 18px;
@@ -111,19 +110,32 @@ const Wrapper = styled.div`
       font-weight: 900;
     }
   }
-  .features-container {
-  }
-  .feature-img-container {
-    max-width: 80%;
+  .feature-content {
+    padding: 1em;
+    & h3 {
+      font-size: 2em;
+      margin-left: 0.5em;
+    }
     & svg {
-      width: 100%;
+      font-size: 2em;
+      fill: #0c8b8d;
+    }
+    & .fill-none {
+      fill: none;
+    }
+    & .dark {
+      color: #773509;
+    }
+    & .light {
+      color: #0c8b8d;
     }
   }
+
   @media (min-width: 1000px) {
     .wrapper {
       &:after {
         content: " ";
-        height: 150vh;
+        height: 99vh;
         position: absolute;
         top: 0;
         right: 0;
@@ -146,7 +158,9 @@ const Wrapper = styled.div`
     }
     .section-container {
       max-width: 1616px;
-      margin: 3em auto;
+      margin: 5em auto;
+      padding-right: 3em;
+      padding-left: 3em;
     }
     .banner-container {
       display: flex;
@@ -161,9 +175,9 @@ const Wrapper = styled.div`
     }
     .banner-img {
       display: block;
-      width: 50%;
-      padding-bottom: 9em;
-      padding-top: 7em;
+      width: 45%;
+      padding-bottom: 3em;
+      padding-top: 3em;
       & img {
         width: 100%;
         z-index: 100;
@@ -186,8 +200,9 @@ const Wrapper = styled.div`
         background: #000;
       }
     }
-    .functions-container {
-      width: 80%;
+    .functions-container,
+    .feature-content-wrapper {
+      width: 90%;
     }
     .bgc-bot {
       background-color: #e5ffff;
@@ -208,8 +223,39 @@ const Wrapper = styled.div`
     .functions-content {
       flex-direction: row;
     }
+    .feature-content-wrapper {
+      margin: 7em auto;
+    }
+    .feature-bgc {
+      background-color: #e5ffff;
+      border-radius: 3.2em;
+      padding: 3em 1em;
+    }
+    .feature-img-container {
+      &.grid {
+        display: grid;
+      }
+    }
+    .feature-content {
+      & h3 {
+        font-size: 2.5em;
+      }
+      & svg {
+        font-size: 3em;
+      }
+    }
     .features-item {
       flex-direction: row;
+    }
+  }
+  @media (min-width: 1200px) {
+    .feature-content-wrapper {
+      flex-direction: row;
+    }
+    .feature-content {
+      &.padding-6 {
+        padding-left: 6em;
+      }
     }
   }
 `;

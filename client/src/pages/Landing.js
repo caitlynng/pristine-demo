@@ -1,14 +1,18 @@
 import { useState, useEffect, useRef } from "react";
 import Wrapper from "../assets/wrappers/LandingPage";
-import homeBanner from "../assets/images/home_banner.png";
 import { Link } from "react-router-dom";
 import { Logo, Button } from "../components/index.js";
+import { IoIosAnalytics } from "react-icons/io";
+import {HiOutlineReceiptTax} from 'react-icons/hi'
+import {TbReportSearch} from 'react-icons/tb'
 import SVG from "react-inlinesvg";
+import homeBanner from "../assets/images/home_banner.png";
 import uploadIcon from "../assets/images/upload-icon.svg";
 import costIcon from "../assets/images/cost-icon.svg";
 import chartIcon from "../assets/images/chart-icon.svg";
 import analytics from "../assets/images/analytics.svg";
-
+import statements from "../assets/images/statements.svg";
+import report from "../assets/images/report.svg";
 //https://www.emburse.com/
 //https://quickbooks.intuit.com/
 //https://www.rydoo.com/expense/
@@ -28,7 +32,7 @@ const Landing = () => {
     scrollToRef[ind].scrollIntoView({ behavior: "smooth" });
     //to prevent window.scrollBy from cancelling on scrollIntoView if the latter hasn't finished scrolling before former runs
     setTimeout(() => {
-      window.scrollBy(0, -100);
+      window.scrollBy(0, -80);
     }, 500);
   };
   return (
@@ -45,6 +49,7 @@ const Landing = () => {
             <Button
               title="What you get"
               classList="plain-btn hide-smscreen show-1000mw nav-btn"
+              onSetActive={() => executeScroll(1)}
             />
           </div>
           <Button
@@ -81,7 +86,7 @@ const Landing = () => {
         </section>
         {/* how it works */}
         <section
-          className="section-container bgc-bot"
+          className="section-container"
           ref={(el) => (scrollToRef[0] = el)}
         >
           <div className="functions-container flex flex-column align-center justify-between margin-auto">
@@ -125,9 +130,58 @@ const Landing = () => {
                 simple steps
               </p>
             </div>
-            <div className="features-content">
-              <div className="feature-img-container margin-auto">
+
+            <div className="feature-content-wrapper flex align-center flex-column-rev feature-bgc">
+              <div className="feature-img-container hide-smscreen show-850mw flex-2 grid grid-center">
                 <SVG src={analytics} alt="dashboard-img" />
+              </div>
+              <div className="feature-content flex-1">
+                <div className="flex align-center row-margin-2">
+                  <IoIosAnalytics className="light"/>
+                  <h3 className="light">Analytics</h3>
+                </div>
+                <p>
+                  Test your native hybrid of web mobile apps using LambdaTest’s
+                  online real device cloud and virtual mobile device platform of
+                  emulators and simulators. Eliminating your in-house device
+                  labs and bring high scalability to your mobile app testing.
+                </p>
+              </div>
+            </div>
+
+            <div className="feature-content-wrapper flex align-center flex-column">
+              <div className="feature-content flex-1 padding-6">
+                <div className="flex align-center row-margin-2">
+                  <HiOutlineReceiptTax className="fill-none dark"/>
+                  <h3 className="dark">Statements</h3>
+                </div>
+                <p>
+                  Test your native hybrid of web mobile apps using LambdaTest’s
+                  online real device cloud and virtual mobile device platform of
+                  emulators and simulators. Eliminating your in-house device
+                  labs and bring high scalability to your mobile app testing.
+                </p>
+              </div>
+              <div className="feature-img-container hide-smscreen show-850mw grid grid-center flex-1">
+                <img src={statements}></img>
+              </div>
+            </div>
+            
+            <div className="feature-content-wrapper flex align-center flex-column-rev feature-bgc">
+              <div className="feature-img-container hide-smscreen show-850mw flex-2 grid grid-center">
+                <img src={report} alt="dashboard-img" />
+              </div>
+              <div className="feature-content flex-1">
+                <div className="flex align-center row-margin-2">
+                  <TbReportSearch className="light fill-none"/>
+                  <h3 className="light">Reports</h3>
+                </div>
+                <p>
+                  Test your native hybrid of web mobile apps using LambdaTest’s
+                  online real device cloud and virtual mobile device platform of
+                  emulators and simulators. Eliminating your in-house device
+                  labs and bring high scalability to your mobile app testing.
+                </p>
               </div>
             </div>
           </div>
