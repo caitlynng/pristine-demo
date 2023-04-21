@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAppContext } from "../context/appContext.js";
 import { Wrapper } from "../assets/wrappers/MainChart.js";
-import {
-  MdWidgets,
-  MdOpenInFull,
-  MdOutlineCloseFullscreen,
-  MdKeyboardArrowDown,
-} from "react-icons/md";
-import Button from "./Button.js";
+import { RiFullscreenLine, RiFullscreenExitLine } from "react-icons/ri";
 import ChartJs from "./Chart.js";
 import { useFullscreen } from "../context/fullscreenContext.js";
 import FormRowDropDown from "./FormRowDropDown.js";
@@ -40,12 +34,12 @@ const MainChart = () => {
   const viewByList = viewByOptions();
 
   const viewByHandle = (val) => {
-    setViewBy(val)
-  }
+    setViewBy(val);
+  };
   const chartTypeHandle = (val) => {
-    setChartType(val)
-  }
-  console.log(viewBy)
+    setChartType(val);
+  };
+
   return (
     <Wrapper ref={fullscreenRef} className="item-box">
       <div className="header-wrapper">
@@ -61,14 +55,14 @@ const MainChart = () => {
         <FormRowDropDown
           labelText="Chart Type"
           name="viewBy"
-          list={["line", "bar"]}
+          list={["Line", "Bar"]}
           inputType="radio"
           onClickHandle={chartTypeHandle}
         />
 
         {screenSize <= 450 ? null : fullscreenActive && screenSize >= 450 ? (
           <div className="chart-settings-icon tooltip" onClick={exitFullscreen}>
-            <MdOutlineCloseFullscreen />
+            <RiFullscreenExitLine />
             <span className="tooltiptext bottom">Exit full screen</span>
           </div>
         ) : (
@@ -76,7 +70,7 @@ const MainChart = () => {
             className="chart-settings-icon tooltip"
             onClick={enterFullscreen}
           >
-            <MdOpenInFull />
+            <RiFullscreenLine />
             <span className="tooltiptext bottom">Enter full screen</span>
           </div>
         )}

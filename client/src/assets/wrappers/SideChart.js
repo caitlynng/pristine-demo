@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 100%;
   padding: 2em;
 
   .doughnut-chart-container {
@@ -30,7 +29,7 @@ export const Wrapper = styled.div`
     gap: 2em;
     flex-wrap: wrap;
   }
-  
+
   @media (min-width: 650px) {
     .doughnut-chart-container {
       align-items: center;
@@ -44,8 +43,8 @@ export const Wrapper = styled.div`
       margin-bottom: 0;
     }
     .legend-container-inner {
-    width: 100%;
-  }
+      width: 100%;
+    }
   }
   @media screen and (min-width: 1000px) {
     display: flex;
@@ -62,10 +61,9 @@ export const Wrapper = styled.div`
       overflow: auto;
     }
     .chart-container {
-        padding: 20%;
+      padding: 20%;
     }
   }
-
 `;
 
 export const LegendItem = styled.div`

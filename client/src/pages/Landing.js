@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Wrapper from "../assets/wrappers/LandingPage";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Logo, Button } from "../components/index.js";
 import { IoIosAnalytics } from "react-icons/io";
 import {HiOutlineReceiptTax} from 'react-icons/hi'
@@ -13,6 +13,7 @@ import chartIcon from "../assets/images/chart-icon.svg";
 import analytics from "../assets/images/analytics.svg";
 import statements from "../assets/images/statements.svg";
 import report from "../assets/images/report.svg";
+
 //https://www.emburse.com/
 //https://quickbooks.intuit.com/
 //https://www.rydoo.com/expense/
@@ -20,6 +21,7 @@ import report from "../assets/images/report.svg";
 //https://goodbudget.com/what-you-get/
 
 const Landing = () => {
+  const navigate = useNavigate()
   const [scroll, setScroll] = useState(false);
   const scrollToRef = [];
   useEffect(() => {
@@ -35,6 +37,7 @@ const Landing = () => {
       window.scrollBy(0, -80);
     }, 500);
   };
+  const navigateToDemo = () => navigate("/demo")
   return (
     <Wrapper>
       <header className={scroll ? "header-fixed" : ""}>
@@ -55,6 +58,7 @@ const Landing = () => {
           <Button
             title="View A Demo"
             classList="contact-btn clear-btn hide-smscreen show-850mw"
+            onSetActive={() => navigateToDemo()}
           />
           <Button
             title="Contact Us"

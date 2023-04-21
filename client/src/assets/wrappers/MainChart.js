@@ -12,8 +12,9 @@ export const Wrapper = styled.div`
     }
     position: relative;
   }
-  .chart-container {
+  .main-chart-container {
     width: 100%;
+    height: 100%;
     overflow: auto;
   }
   .chart-settings-icon {
@@ -79,15 +80,14 @@ export const Wrapper = styled.div`
   }
 
   @media screen and (min-width: 1000px) {
-    width: 100%;
-    flex: 3;
+    flex: 4;
     display: flex;
     flex-direction: column;
-
-    .chart-container {
+    min-width: 0; //https://stackoverflow.com/questions/38382734/flex-items-not-shrinking-when-window-gets-smaller
+    .main-chart-container {
       overflow-y: hidden;
       margin: auto;
-      background-color: transparent;
+      background-color: white;
     }
   }
 `;

@@ -13,7 +13,7 @@ const StatsItem = ({
   return (
     <Wrapper
       isActive={isActive.isActive}
-      className="item-box"
+      className="item-box flex flex-wrap"
     >
       <div className="icon-container">{icon}</div>
 

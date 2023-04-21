@@ -5,8 +5,7 @@ import { MdSettings } from 'react-icons/md'
 import { FiUploadCloud } from "react-icons/fi";
 
 const links = [
-  { id: 0, text: "analytics", path: "/demo", icon: <BsFillGridFill /> },
-  { id: 1, text: "dashboard", path: "dashboard", icon: <BsFillGridFill /> },
+  { id: 1, text: "dashboard", path: "/demo", icon: <BsFillGridFill /> },
   { id: 2, text: "statements", path: "statements", icon: <FaWpforms /> },
   { id: 3, text: "reports", path: "reports", icon: <MdQueryStats /> },
   { id: 4, text: "uploads", path: "uploads", icon: <FiUploadCloud /> },

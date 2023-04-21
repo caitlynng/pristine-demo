@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route} from "react-router-dom";
 import { Error, Landing } from "./pages";
 import {
   SharedLayout,
-  Analytics,
   Reports,
   Statements,
   Settings,
@@ -15,20 +14,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/demo"
-          element={
-              <SharedLayout />
-          }
-        >
-          <Route index element={<Analytics />} />
-          <Route path="dashboard" element={<Dashboard />} />
+        <Route path="/demo" element={<SharedLayout />}>
+          <Route index element={<Dashboard />} />
           <Route path="statements" element={<Statements />}></Route>
           <Route path="reports" element={<Reports />}></Route>
           <Route path="uploads" element={<Uploads />}></Route>
           <Route path="settings" element={<Settings />}></Route>
         </Route>
-        <Route path="/landing" element={<Landing />}></Route>
+        <Route path="/" element={<Landing />}></Route>
         <Route path="*" element={<Error />}></Route>
       </Routes>
     </BrowserRouter>

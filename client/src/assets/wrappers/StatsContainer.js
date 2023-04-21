@@ -2,12 +2,11 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   position: relative;
-  margin-top: auto;
-  height: 85%;
   .swiper {
     width: 100%;
     height: 100%;
     background-color: transparent;
+    padding: 1em;
   }
   .swiper-slide {
     background-color: transparent;
@@ -22,10 +21,10 @@ const Wrapper = styled.div`
     display: none;
   }
   @media screen and (min-width: 1000px) {
-    grid-row: 3/5;
-    grid-column: 1/5;
+
     .swiper {
-    padding-bottom: 4em;
+    padding-bottom: 1em;
+    padding-top: 1em;
     }
     .next-button,
     .prev-button {

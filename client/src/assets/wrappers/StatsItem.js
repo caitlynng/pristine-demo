@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 
 const Wrapper = styled.div`
-  display: flex;
   width: 100%;
   gap: 2em;
   cursor: pointer;
@@ -14,6 +13,7 @@ const Wrapper = styled.div`
     flex: 1;
     display: flex;
     flex-direction: column;
+    min-width: 5em;
   }
 
   .amount {
@@ -30,6 +30,7 @@ const Wrapper = styled.div`
     .icon-container {
       display: inline-block;
       width: 23%;
+      min-width: 4em;
       height: 4em;
       background: var(--grey-10);
       padding: 1em;

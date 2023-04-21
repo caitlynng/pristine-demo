@@ -116,7 +116,7 @@ const StatsContainer = () => {
       >
         {dashboardStats.map((item, index) => {
           return (
-            <SwiperSlide style={{ height: 'auto', width: '49%' }} key={index}>
+            <SwiperSlide style={{ height: 'auto', width: '24%', minWidth: '165px' }} key={index}>
               {(isActive) => (
                 <StatsItem
                   {...item}

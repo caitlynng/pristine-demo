@@ -6,7 +6,7 @@
 
 /* fonts */
 @import url("https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
 
 html {
   font-size: 100%;
@@ -45,20 +45,22 @@ html {
   --error-border: rgba(234, 76, 137, 0.2);
   --error-text: rgba(234, 76, 137);
   /* fonts  */
-  --headingFont: "Arimo", sans-serif;
+  --headingFont: "Inter", sans-serif;
   --bodyFont: "Arimo", sans-serif;
-  --small-text: 1.2rem;
-  --extra-small-text: 0.7em;
+  --small-text: 0.8rem;
+  --extra-small-text: 0.7rem;
   /* rest of the vars */
   /* --backgroundColor: var(--grey-50); */
   --backgroundColor: white;
   --textColor: var(--grey-1000);
   --borderRadius: 0.75em;
   --borderRadius-btn: 1.5em;
+  --boxBorder: 5px;
   --border: 1px solid rgb(238, 238, 238, 1);
   --letterSpacing: 1px;
   --transition: 0.3s ease all;
-  --max-width: 1120px;
+  --nav-height: 200px;
+  --max-width: calc(99vw - var(--nav-height));
   --fixed-width: 500px;
   --square-chart-width: 200px;
   --breakpoint-lg: 750px;
@@ -93,14 +95,17 @@ html {
 .item-box {
   box-shadow: 0 3px 9px -8px rgba(0, 0, 0, 0.23);
   border: var(--border);
+  background-color: white;
+  margin:1em;
+  border-radius: var(--boxBorder);
 }
 
 body {
-  background: var(--backgroundColor);
-  font-family: var(--bodyFont);
+  font-family: var(--bodyFont) !important;
+  font-size: var(--small-text);
   font-weight: 400;
   line-height: 1.75;
-  color: var(--textColor);
+  color: var(--textColor) !important;
   margin: 0;
 }
 
@@ -110,14 +115,15 @@ p {
   /* max-width: 40em; */
 }
 
-/* h1,
+h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
   text-transform: capitalize;
-} */
+  font-family: var(--headingFont) !important;
+}
 fieldset {
   border: none;
   padding: 0;
@@ -244,29 +250,6 @@ select:focus-visible {
 }
 
 /* title */
-
-.title {
-  text-align: center;
-}
-
-.title-underline {
-  background: var(--primary-500);
-  width: 7em;
-  height: 0.25em;
-  margin: 0 auto;
-  margin-top: -1em;
-}
-
-.container {
-  width: var(--fluid-width);
-  max-width: var(--max-width);
-  margin: 0 auto;
-}
-
-.full-page {
-  min-height: 100vh;
-}
-
 .logo-container {
   display: flex;
   align-items: center;
@@ -392,22 +375,16 @@ div[role="dialog"] {
   font-weight: 600;
   margin-bottom: 2em;
 }
-.max-width {
-  margin: 0 auto;
-  padding: 2em;
-}
-
-
 
 /* reusable classes */
 .flex {
   display: flex;
 }
 .flex-1 {
-  flex: 1
+  flex: 1;
 }
 .flex-2 {
-  flex: 2
+  flex: 2;
 }
 .justify-between {
   justify-content: space-between;
@@ -420,6 +397,12 @@ div[role="dialog"] {
 }
 .flex-column-rev {
   flex-direction: column-reverse;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-nowrap {
+  flex-wrap: nowrap;
 }
 .justify-end {
   justify-content: end;
@@ -436,6 +419,9 @@ div[role="dialog"] {
 .w-full {
   width: 100%;
 }
+.padding-0-1 {
+  padding: 0 1em;
+}
 .margin-auto {
   margin: 0 auto;
 }
@@ -449,9 +435,6 @@ div[role="dialog"] {
   margin-top: 2em;
   margin-bottom: 2em;
 }
-
-
-
 
 /* Tooltip container */
 .tooltip {
@@ -490,14 +473,14 @@ div[role="dialog"] {
 .tooltip .tooltiptext.top {
   bottom: 150%;
   left: 50%;
-  margin-left: -60px; 
+  margin-left: -60px;
 }
 .tooltip .tooltiptext.bottom {
   top: 100%;
-  margin-left: -35px; 
+  margin-left: -35px;
 }
 .tooltip-gap {
-  gap: 5px
+  gap: 5px;
 }
 
 /* Show the tooltip text mouse over the tooltip container */
@@ -523,6 +506,12 @@ div[role="dialog"] {
   }
 }
 @media screen and (min-width: 1000px) {
+  .max-width {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2em;
+  }
+
   .show-1000mw {
     display: inline-block;
   }
@@ -537,5 +526,4 @@ div[role="dialog"] {
     left: 35%;
     right: 35%;
   }
-  
 }

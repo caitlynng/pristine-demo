@@ -209,7 +209,7 @@ const ChartJs = ({ chartType, viewBy }) => {
 
   const options = {
     responsive: true,
-    // maintainAspectRatio: true,
+    maintainAspectRatio: false,
     animation: false,
     onHover: (context) => {
       // console.log(context)
@@ -401,13 +401,14 @@ const ChartJs = ({ chartType, viewBy }) => {
     ],
   };
   return (
-    <div className="chart-container flex align-center justify-center">
+    <div className="main-chart-container flex align-center">
       <div
         style={{
           minWidth: "600px",
           minHeight: "300px",
           overflow: "auto",
-          flex: 1
+          height: '80%',
+          width: '100%'
         }}
       >
         <Chart
