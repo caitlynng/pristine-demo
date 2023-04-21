@@ -10,6 +10,7 @@ import {
 import Button from "./Button.js";
 import ChartJs from "./Chart.js";
 import { useFullscreen } from "../context/fullscreenContext.js";
+import FormRowDropDown from "./FormRowDropDown.js";
 const MainChart = () => {
   const { noData, monthsDuration, yearsDuration, screenSize } = useAppContext();
 
@@ -21,7 +22,6 @@ const MainChart = () => {
     return options;
   };
   const [chartType, setChartType] = useState("line");
-  const [dropDown, setDropDown] = useState(false);
   const [viewBy, setViewBy] = useState("");
 
   useEffect(() => {
@@ -31,59 +31,41 @@ const MainChart = () => {
       setViewBy("Monthly");
     } else {
       setViewBy("Daily");
-    }  
-  },[yearsDuration, monthsDuration])
+    }
+  }, [yearsDuration, monthsDuration]);
 
-  
   const { fullscreenRef, enterFullscreen, exitFullscreen, fullscreenActive } =
     useFullscreen();
 
+  const viewByList = viewByOptions();
+
+  const viewByHandle = (val) => {
+    setViewBy(val)
+  }
+  const chartTypeHandle = (val) => {
+    setChartType(val)
+  }
+  console.log(viewBy)
   return (
     <Wrapper ref={fullscreenRef} className="item-box">
       <div className="header-wrapper">
-        <div className="title-wrapper">
-          <h6>General Activities</h6>
-        </div>
-        <div className="viewby-container">
-          <select
-            id="view-by"
-            className="no-border"
-            onChange={(e) => setViewBy(e.target.value)}
-            value={viewBy}
-          >
-            {viewByOptions().map((item) => {
-              return (
-                <option key={`viewby-${item}`} value={item}>
-                  {item}
-                </option>
-              );
-            })}
-          </select>
-          <MdKeyboardArrowDown />
-        </div>
-        <div
-          className={`chart-settings-icon tooltip ${dropDown ? "hide" : ""}`}
-          onClick={() => setDropDown(!dropDown)}
-          onBlur={() => setDropDown(false)}
-          tabIndex="1"
-        >
-          <MdWidgets />
-          <span className="tooltiptext bottom">chart type</span>
-        </div>
-        {dropDown && (
-          <div className="dropdown chart-btn-height">
-            <Button
-              classList="dropdown-btn"
-              title="bar chart"
-              onSetActive={() => setChartType("bar")}
-            />
-            <Button
-              title="line chart"
-              classList="dropdown-btn"
-              onSetActive={() => setChartType("line")}
-            />
-          </div>
-        )}
+        <FormRowDropDown
+          labelText="View By"
+          name="viewBy"
+          list={viewByList}
+          inputType="radio"
+          defaultChecked={viewByList.findIndex((i) => i === viewBy)}
+          onClickHandle={viewByHandle}
+        />
+
+        <FormRowDropDown
+          labelText="Chart Type"
+          name="viewBy"
+          list={["line", "bar"]}
+          inputType="radio"
+          onClickHandle={chartTypeHandle}
+        />
+
         {screenSize <= 450 ? null : fullscreenActive && screenSize >= 450 ? (
           <div className="chart-settings-icon tooltip" onClick={exitFullscreen}>
             <MdOutlineCloseFullscreen />

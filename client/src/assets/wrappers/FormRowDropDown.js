@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   border-radius: 1.625em;
   margin: 0.5em;
   position: relative;
+  cursor: pointer;
 
   .form-label-container {
     display: flex;
@@ -15,6 +16,7 @@ const Wrapper = styled.div`
   .form-label {
     text-transform: capitalize;
     padding-left: 10px;
+    cursor: pointer;
   }
 
   .form-dropdown-icon {
@@ -31,38 +33,42 @@ const Wrapper = styled.div`
     cursor: pointer;
     transition: all 0.5s;
     z-index: 20;
-    min-width: 18em;
+    min-width: 10em;
     max-height: 15em;
 
     border-radius: 5px;
-    border: 1px solid var(--grey-700);
+    border: var(--border);
+    box-shadow: var(--shadow-dark);
     background: white;
     & > li {
       display: flex;
       gap: 10px;
       margin: 10px 0;
-    }
-    & > li:hover {
-      font-weight: 600;
+      & * {
+        cursor: pointer;
+      }
     }
   }
 
   ${({ isFilter }) => (isFilter ? selectedFilter : noneSelectedFilter)}
 
   @media screen and (min-width: 1000px) {
-    
   }
 `;
 const selectedFilter = css`
   border: 1px solid var(--grey-800);
-  .form-subtitle, .form-dropdown-icon, .form-label{
-    color: var(--grey-800)
+  .form-subtitle,
+  .form-dropdown-icon,
+  .form-label {
+    color: var(--grey-800);
   }
 `;
 const noneSelectedFilter = css`
   border: 1px solid #dadce0;
-  .form-subtitle, .form-dropdown-icon, .form-label{
-    color: var(--grey-500)
+  .form-subtitle,
+  .form-dropdown-icon,
+  .form-label {
+    color: var(--grey-500);
   }
 `;
 export default Wrapper;

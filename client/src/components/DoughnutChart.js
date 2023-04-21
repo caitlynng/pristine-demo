@@ -171,9 +171,9 @@ const DoughnutChart = ({
       //   },
       // },
     },
-    layout: {
-      padding: padding,
-    },
+    // layout: {
+    //   padding: padding,
+    // },
   };
   const data = {
     labels: labels,

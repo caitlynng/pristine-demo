@@ -11,7 +11,7 @@ const OverviewPanel = () => {
     <Wrapper className="item-box">
       <h6 className="overview-header">Overview</h6>
       <div className="profit-title">
-        <p>Total {dashboardTable_TotalProfits > 0 ? "profits" : "loss"}</p>
+        <p>Total {dashboardTable_TotalProfits >= 0 ? "profits" : "loss"}</p>
         <h3>{currencyFormatter.format(dashboardTable_TotalProfits)}</h3>
       </div>
       <OverviewChart />

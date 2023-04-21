@@ -100,7 +100,6 @@ const DatePicker = () => {
       <DateRangePicker
         placement="autoVerticalEnd"
         ranges={predefinedRanges}
-        showOneCalendar
         preventOverflow={true}
         cleanable={false} //	Whether the selected value can be cleared
         character="-" //The character that separates two dates

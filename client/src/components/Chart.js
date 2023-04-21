@@ -401,12 +401,13 @@ const ChartJs = ({ chartType, viewBy }) => {
     ],
   };
   return (
-    <div className="chart-container">
+    <div className="chart-container flex align-center justify-center">
       <div
         style={{
           minWidth: "600px",
-          minHeight: "200px",
+          minHeight: "300px",
           overflow: "auto",
+          flex: 1
         }}
       >
         <Chart

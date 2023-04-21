@@ -68,7 +68,6 @@ export const Wrapper = styled.div`
     align-items: center;
     padding: 1em;
     gap: 10px;
-    border-bottom: var(--border);
     & .title-wrapper {
       margin-right: auto;
       color: var(--grey-900);
@@ -80,10 +79,8 @@ export const Wrapper = styled.div`
   }
 
   @media screen and (min-width: 1000px) {
-    grid-row: 5/9;
-    grid-column: 1/5;
     width: 100%;
-    margin-top: -2em;
+    flex: 3;
     display: flex;
     flex-direction: column;
 
@@ -94,171 +91,3 @@ export const Wrapper = styled.div`
     }
   }
 `;
-export const Toggle = styled.div`
-  //https://codepen.io/zbluebugz/pen/pojxLwP
-  width: 11rem;
-  position: relative;
-  display: flex;
-  margin-left: auto;
-  padding: 0;
-  position: relative;
-  line-height: 2rem;
-  border-radius: 10px 10px 0 0;
-
-  & input {
-    visibility: hidden;
-    position: absolute;
-    top: 0;
-  }
-  & label {
-    width: 50%;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-    cursor: pointer;
-    color: var(--grey-500);
-    font-weight: 600;
-  }
-  .switch-wrapper {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 50%;
-    z-index: 3;
-    cursor: pointer;
-  }
-  .switch {
-    border-top-left-radius: 1em;
-    border-top-right-radius: 1em;
-    height: 100%;
-    & div {
-      width: 100%;
-      text-align: center;
-      font-weight: 600;
-      opacity: 0;
-      display: block;
-      color: var(--grey-600);
-      /* transition: opacity 0.2s cubic-bezier(0.77, 0, 0.175, 1) 0.125s; */
-      /* will-change: opacity; */
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-  }
-  /* slide the switch box from right to left */
-  & input:nth-of-type(1):checked ~ .switch-wrapper {
-    transform: translateX(0%);
-  }
-
-  /* slide the switch box from left to right */
-  & input:nth-of-type(2):checked ~ .switch-wrapper {
-    transform: translateX(100%);
-  }
-
-  /* toggle the switch box labels - first checkbox:checked - show first switch div */
-  & input:nth-of-type(1):checked ~ .switch-wrapper .switch div:nth-of-type(1) {
-    opacity: 1;
-  }
-
-  /* toggle the switch box labels - second checkbox:checked - show second switch div */
-  & input:nth-of-type(2):checked ~ .switch-wrapper .switch div:nth-of-type(2) {
-    opacity: 1;
-  }
-  @media screen and (min-width: 1000px) {
-  }
-`;
-
-// export const Toggle = styled.div`
-//   //https://codepen.io/zbluebugz/pen/pojxLwP
-//   width: 11rem;
-//   position: relative;
-//   display: flex;
-//   margin-left: auto;
-//   padding: 0;
-//   position: relative;
-//   line-height: 2rem;
-//   border-radius: 10px 10px 0 0;
-
-//   & input {
-//     visibility: hidden;
-//     position: absolute;
-//     top: 0;
-//   }
-//   & label {
-//     width: 50%;
-//     padding: 0;
-//     margin: 0;
-//     text-align: center;
-//     cursor: pointer;
-//     color: var(--primary-1000);
-//   }
-//   .switch-wrapper {
-//     position: absolute;
-//     top: 0;
-//     bottom: 0;
-//     width: 50%;
-//     z-index: 3;
-//     transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-//     transition: transform 0.5s;
-//   }
-//   .switch {
-//     border-top-left-radius: 1em;
-//     border-top-right-radius: 1em;
-//     height: 100%;
-//     border-bottom: 32px solid white;
-//     & div {
-//       width: 100%;
-//       text-align: center;
-//       font-weight: 600;
-//       opacity: 0;
-//       display: block;
-//       color: var(--grey-500);
-//       transition: opacity 0.2s cubic-bezier(0.77, 0, 0.175, 1) 0.125s;
-//       will-change: opacity;
-//       position: absolute;
-//       top: 0;
-//       left: 0;
-//     }
-//   }
-//   /* slide the switch box from right to left */
-//   & input:nth-of-type(1):checked ~ .switch-wrapper {
-//     transform: translateX(0%);
-//   }
-
-//   /* slide the switch box from left to right */
-//   & input:nth-of-type(2):checked ~ .switch-wrapper {
-//     transform: translateX(100%);
-//   }
-
-//   /* toggle the switch box labels - first checkbox:checked - show first switch div */
-//   & input:nth-of-type(1):checked ~ .switch-wrapper .switch div:nth-of-type(1) {
-//     opacity: 1;
-//   }
-
-//   /* toggle the switch box labels - second checkbox:checked - show second switch div */
-//   & input:nth-of-type(2):checked ~ .switch-wrapper .switch div:nth-of-type(2) {
-//     opacity: 1;
-//   }
-//   @media screen and (min-width: 1000px) {
-//     border-radius: 3rem;
-//     background: var(--primary-400);
-//     margin: 0;
-//     border-radius: 3rem;
-//     & label {
-//       color: var(--primary-1000);
-//     }
-//     .switch {
-//       border-radius: 3rem;
-//       background: var(--primary-1000);
-//       height: 100%;
-//       border: none;
-//       & div {
-//         color: white;
-//       }
-//     }
-//     .switch-wrapper {
-//       padding: 0.15rem;
-
-//     }
-//   }
-// `;

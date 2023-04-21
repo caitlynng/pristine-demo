@@ -7,7 +7,8 @@ import {
   Reports,
   Statements,
   Settings,
-  Uploads
+  Uploads,
+  Dashboard
 } from "./pages/dashboard";
 
 function App() {
@@ -15,12 +16,13 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/"
+          path="/demo"
           element={
               <SharedLayout />
           }
         >
           <Route index element={<Analytics />} />
+          <Route path="dashboard" element={<Dashboard />} />
           <Route path="statements" element={<Statements />}></Route>
           <Route path="reports" element={<Reports />}></Route>
           <Route path="uploads" element={<Uploads />}></Route>

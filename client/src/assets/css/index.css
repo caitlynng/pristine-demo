@@ -214,12 +214,6 @@ ul {
 .form:hover {
   box-shadow: var(--shadow-4);
 }
-.form-label {
-  display: block;
-  font-size: var(--smallText);
-  margin-bottom: 0.5em;
-  text-transform: capitalize;
-}
 .form-input,
 .form-textarea,
 .form-select {

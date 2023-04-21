@@ -7,37 +7,35 @@ const FormRowDropDown = ({
   labelText,
   name,
   value,
-  handleChange,
   list,
   inputType,
-  isChecked,
+  onClickHandle,
+  defaulChecked
 }) => {
   const [isActive, setIsActive] = useState(false);
 
   const [checkedState, setCheckedState] = useState([]);
 
 
-  if (checkedState.length === 0 && checkedState !== isChecked) {
-    setCheckedState(isChecked);
-  }
-
-  const handleCheckState = (position) => {
-    const updatedCheckedState = checkedState.map((item, index) => {
-      let key = Object.keys(item);
-      if (index === position) {
-        return { [key]: !item[key] };
-      } else {
-        return item;
-      }
-    });
-    setCheckedState(updatedCheckedState);
-    handleChange({ [name]: updatedCheckedState });
-  };
+  // const handleCheckState = (position) => {
+  //   const updatedCheckedState = checkedState.map((item, index) => {
+  //     let key = Object.keys(item);
+  //     if (index === position) {
+  //       return { [key]: !item[key] };
+  //     } else {
+  //       return item;
+  //     }
+  //   });
+  //   setCheckedState(updatedCheckedState);
+  //   handleChange({ [name]: updatedCheckedState });
+  // };
   return (
     <Wrapper isFilter={isActive}>
       <div
         className="form-label-container"
         onClick={() => setIsActive(!isActive)}
+        onBlur={() => setIsActive(false)}
+        tabIndex="0"
       >
         <label htmlFor={name} className="form-label">
           {labelText || name}
@@ -50,15 +48,16 @@ const FormRowDropDown = ({
         <ul value={value} className="form-dropdown-content">
           {list.map((itemValue, ind) => {
             return (
-              <li key={`${itemValue}+${ind}`}>
+              <li key={itemValue}>
                 <input
+                  id={itemValue}
                   type={inputType}
                   value={itemValue}
-                  checked={Object.values(checkedState[ind])[0]}
+                  defaultChecked={defaulChecked ?? (ind === 0 && true)}
                   name={name}
-                  onChange={() => handleCheckState(ind)}
+                  onChange={() => console.log(value)}
                 />
-                <label htmlFor={`${itemValue}+${ind}`}>{itemValue}</label>
+                <label htmlFor={`${itemValue}`}>{itemValue}</label>
               </li>
             );
           })}

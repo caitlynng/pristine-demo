@@ -33,15 +33,15 @@ const MultiColorBar = ({ category, profitPercentage }) => {
     return 0;
   };
   const filterValue = (value) => {
-    if (value < 0 ) {
-      txtAlign.textAlign = 'left'
+    if (value < 0) {
+      txtAlign.textAlign = "left";
       return 100;
     }
-    if ( value > 100) {
-      txtAlign.textAlign = 'right'
+    if (value > 100) {
+      txtAlign.textAlign = "right";
       return 100;
     }
-    txtAlign.textAlign = 'center'
+    txtAlign.textAlign = "center";
     return value;
   };
   let readings = [
@@ -69,7 +69,7 @@ const MultiColorBar = ({ category, profitPercentage }) => {
             color: item.color,
             width: filterValue(item.value) + "%",
             maxWidth: "100%",
-            textAlign: txtAlign.textAlign
+            textAlign: txtAlign.textAlign,
           }}
           key={i}
         >
@@ -89,7 +89,7 @@ const MultiColorBar = ({ category, profitPercentage }) => {
             color: item.color,
             width: filterValue(item.value) + "%",
             maxWidth: "100%",
-            textAlign: txtAlign.textAlign
+            textAlign: txtAlign.textAlign,
           }}
           key={i}
         >
@@ -107,7 +107,15 @@ const MultiColorBar = ({ category, profitPercentage }) => {
           className="bar"
           style={{ width: value + "%", maxWidth: "100%" }}
           key={i}
-        >{i === 0 && <span className="tooltiptext top">{item.name}: {value}%</span>}</div>
+        >
+          {i === 0 && (
+            value > 0 ? <span className="tooltiptext top">
+            {item.name} add up to {value}% of the total Sales
+          </span> : <span className="tooltiptext top">
+            there is no {item.name} for this period
+          </span>
+          )}
+        </div>
       );
     });
 
@@ -127,9 +135,14 @@ const MultiColorBar = ({ category, profitPercentage }) => {
 
   return (
     <Wrapper>
-      <div className="tooltip">
+      <div className="flex align-center tooltip-gap">
         <h6>Ratio</h6>
-        <span className="tooltiptext right">ratio is {category === 'Sales'? 'profits' : 'expenses'} divided by sales</span>
+        <div className="tooltip">
+          ?{" "}
+          <span className="tooltiptext right">
+            Ratio shows the percentage of total profits or costs compared to total sales.
+          </span>
+        </div>
       </div>
       <div className="multicolorbar-container">
         <div className="bars tooltip">{bars == "" ? "" : bars}</div>

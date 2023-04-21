@@ -131,14 +131,14 @@ const Landing = () => {
               </p>
             </div>
 
-            <div className="feature-content-wrapper flex align-center flex-column-rev feature-bgc">
+            <div className="feature-content-wrapper flex align-center flex-column-rev feature-bg bgc-1">
               <div className="feature-img-container hide-smscreen show-850mw flex-2 grid grid-center">
                 <SVG src={analytics} alt="dashboard-img" />
               </div>
               <div className="feature-content flex-1">
                 <div className="flex align-center row-margin-2">
-                  <IoIosAnalytics className="light"/>
-                  <h3 className="light">Analytics</h3>
+                  <IoIosAnalytics className="color-2"/>
+                  <h3 className="color-2">Analytics</h3>
                 </div>
                 <p>
                   Test your native hybrid of web mobile apps using LambdaTest’s
@@ -167,14 +167,14 @@ const Landing = () => {
               </div>
             </div>
             
-            <div className="feature-content-wrapper flex align-center flex-column-rev feature-bgc">
+            <div className="feature-content-wrapper flex align-center flex-column-rev feature-bg bgc-2">
               <div className="feature-img-container hide-smscreen show-850mw flex-2 grid grid-center">
                 <img src={report} alt="dashboard-img" />
               </div>
               <div className="feature-content flex-1">
                 <div className="flex align-center row-margin-2">
-                  <TbReportSearch className="light fill-none"/>
-                  <h3 className="light">Reports</h3>
+                  <TbReportSearch className="color-3 fill-none"/>
+                  <h3 className="color-3">Reports</h3>
                 </div>
                 <p>
                   Test your native hybrid of web mobile apps using LambdaTest’s

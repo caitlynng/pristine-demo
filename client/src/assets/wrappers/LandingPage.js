@@ -103,7 +103,7 @@ const Wrapper = styled.div`
     }
   }
   .section-title {
-    color: #009499;
+    color: black;
     font-weight: 600;
     font-family: "Inter", sans-serif;
     & b {
@@ -126,8 +126,11 @@ const Wrapper = styled.div`
     & .dark {
       color: #773509;
     }
-    & .light {
+    & .color-2 {
       color: #0c8b8d;
+    }
+    & .color-3 {
+      color: #410497;
     }
   }
 
@@ -226,10 +229,15 @@ const Wrapper = styled.div`
     .feature-content-wrapper {
       margin: 7em auto;
     }
-    .feature-bgc {
-      background-color: #e5ffff;
+    .feature-bg {
       border-radius: 3.2em;
       padding: 3em 1em;
+    }
+    .bgc-1 {
+      background-color: #e5ffff;
+    }
+    .bgc-2 {
+      background-color: #f9f5ff;   
     }
     .feature-img-container {
       &.grid {
