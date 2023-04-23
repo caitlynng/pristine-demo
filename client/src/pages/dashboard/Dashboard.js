@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useAppContext } from "../../context/appContext";
-import { useWindowDimensions } from "../../utils/Helpers";
 import banner from "../../assets/images/banner.svg";
 import SVG from "react-inlinesvg";
 import Wrapper from "../../assets/wrappers/Dashboard";
@@ -17,16 +16,11 @@ import FormRowDropDown from "../../components/FormRowDropDown";
 const Dashboard = () => {
   const { handleDateChange, isLoading, handleScreenResize } = useAppContext();
 
-  const { width, height } = useWindowDimensions();
-
   useEffect(() => {
     // a "-" in date will give RangeError: Invalid Date (Safari & Firefox)
     handleDateChange();
   }, []);
 
-  useEffect(() => {
-    if (width) handleScreenResize(width);
-  }, [width]);
 
   const compareToList = ["Last week", "Last month", "Last Year"];
   return (

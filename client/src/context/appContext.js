@@ -132,7 +132,6 @@ const AppProvider = ({ children }) => {
     }})
   }
   const closeDemoMessage = () => {
-    console.log('close')
     dispatch({ type: CLOSE_DEMO_MESSAGE });
   }
   const getAPISuggestions = async (query) => {

@@ -1,12 +1,17 @@
 import { useAppContext } from "../context/appContext.js";
-
+import { forwardRef, useRef, useImperativeHandle } from "react";
 import NavLinks from "./NavLinks";
 import Wrapper from "../assets/wrappers/BigSideNav";
 import Logo from './Logo'
 import { MdArrowRight, MdArrowLeft } from "react-icons/md";
 
-const BigSidebar = (props, ref) => {
+const BigSidebar =  forwardRef((props, ref) => {
   const { showSidebar, toggleSidebar, screenSize } = useAppContext();
+
+    const grandChildRef = useRef(null);
+
+   useImperativeHandle(ref, () => grandChildRef.current);
+  
   return (
     <Wrapper className="primary-dark">
       <div
@@ -16,7 +21,7 @@ const BigSidebar = (props, ref) => {
       >
         <Logo />
         <div className="content">
-          <NavLinks toggleSidebar={screenSize < 1000 && toggleSidebar} />
+          <NavLinks toggleSidebar={screenSize < 1000 && toggleSidebar} ref={grandChildRef}/>
         </div>
       </div>
       <span className="toggle-icon" onClick={toggleSidebar}>
@@ -24,6 +29,6 @@ const BigSidebar = (props, ref) => {
       </span>
     </Wrapper>
   );
-};
+});
 
 export default BigSidebar;

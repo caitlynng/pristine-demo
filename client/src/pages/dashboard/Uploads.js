@@ -24,50 +24,11 @@ const Uploads = () => {
     setShipping(e.target.value);
   };
 
-  // handle drag events
-  const handleDrag = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (e.type === "dragenter" || e.type === "dragover") {
-      setDragActive(true);
-    } else if (e.type === "dragleave") {
-      setDragActive(false);
-    }
-  };
 
-  // triggers when file is dropped
-  const handleDrop = function (e) {
-    e.preventDefault();
-    setDragActive(false);
-    e.stopPropagation();
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      fileUpload(e.dataTransfer.files, type, shipping);
-    }
-  };
-
-  // triggers when file is selected with click
-  const handleClick = function (e) {
-    e.preventDefault();
-    if (e.target.files && e.target.files[0]) {
-      fileUpload(e.target.files[0], type, shipping);
-    }
-  };
-
-  // triggers the input when the button is clicked
-  const onButtonClick = () => {
-    inputRef.current.click();
-  };
-
-  //https://www.codemzy.com/blog/react-drag-drop-file-upload
-
-  // if (isLoading) {
-  //   //set loading spinning center css in index.css
-  //   return <Loading center />;
-  // }
   return (
     <Wrapper className="max-width">
-      <div className="page-header analytics__page-header">
-        <h4 className="page-title">Uploads</h4>
+      <div className="page-header">
+        <h4 className="page-title uploads-header">Uploads</h4>
       </div>
       <div className="type-selection-container">
         <label htmlFor="fileType">Select file type to upload:</label>
@@ -107,15 +68,8 @@ const Uploads = () => {
       )}
       <div>
         <div></div>
-        <form
-          className="form-file-upload"
-          onDragEnter={showDemoMessage}
-        >
-          <input
-            ref={inputRef}
-            type="file"
-            className="input-file-upload"
-          />
+        <form className="form-file-upload" onDragEnter={showDemoMessage}>
+          <input ref={inputRef} type="file" className="input-file-upload" />
           <label
             htmlFor="input-file-upload"
             className={dragActive ? "drag-active" : ""}
