@@ -8,7 +8,7 @@ const links = [
   { id: 1, text: "dashboard", path: "/demo", icon: <BsFillGridFill /> },
   { id: 2, text: "statements", path: "statements", icon: <FaWpforms /> },
   { id: 3, text: "reports", path: "reports", icon: <MdQueryStats /> },
-  { id: 4, text: "uploads", path: "uploads", icon: <FiUploadCloud /> },
+  { id: 4, text: "uploads", path: "uploads", icon: <FiUploadCloud className="joyride-upload"/> },
   { id: 5, text: "settings", path: "settings", icon: <MdSettings /> },
 ];
 

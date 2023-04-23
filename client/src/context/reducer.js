@@ -49,7 +49,11 @@ const reducer = (state, action) => {
     case SHOW_DEMO_MESSAGE:
       return {
         ...state,
-        demoMessage: true
+        demoMessage: true,
+        defaultDemoText: action.payload.defaultDemoText,
+       callbackDemo: action.payload.callbackDemo,
+       callbackBtnText: action.payload.callbackBtnText, 
+       closeBtnText: action.payload.closeBtnText
       };
     case CLOSE_DEMO_MESSAGE:
       return {

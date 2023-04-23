@@ -59,8 +59,7 @@ html {
   --border: 1px solid rgb(238, 238, 238, 1);
   --letterSpacing: 1px;
   --transition: 0.3s ease all;
-  --nav-height: 200px;
-  --max-width: calc(99vw - var(--nav-height));
+  --max-width: calc(99vw - 200px);
   --fixed-width: 500px;
   --square-chart-width: 200px;
   --breakpoint-lg: 750px;
@@ -92,13 +91,6 @@ html {
 .primary-dark {
   background-color: var(--blue-100);
 }
-.item-box {
-  box-shadow: 0 3px 9px -8px rgba(0, 0, 0, 0.23);
-  border: var(--border);
-  background-color: white;
-  margin:1em;
-  border-radius: var(--boxBorder);
-}
 
 body {
   font-family: var(--bodyFont) !important;
@@ -112,7 +104,6 @@ body {
 p {
   margin-bottom: 1.5em;
   font-size: var(--small-text);
-  /* max-width: 40em; */
 }
 
 h1,
@@ -361,7 +352,7 @@ div[role="dialog"] {
 
 .popup_inner {
   position: absolute;
-  padding: 3em 2em;
+  padding: 2em;
   left: 5%;
   right: 5%;
   top: 40%;
@@ -373,7 +364,7 @@ div[role="dialog"] {
 .popup_inner p {
   font-size: 1em;
   font-weight: 600;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 /* reusable classes */
@@ -434,6 +425,13 @@ div[role="dialog"] {
 .row-margin-2 {
   margin-top: 2em;
   margin-bottom: 2em;
+}
+.item-box {
+  box-shadow: 0 3px 9px -8px rgba(0, 0, 0, 0.23);
+  border: var(--border);
+  background-color: white;
+  margin:0.5em;
+  border-radius: var(--boxBorder);
 }
 
 /* Tooltip container */

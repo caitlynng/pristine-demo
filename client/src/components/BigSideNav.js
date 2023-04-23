@@ -5,7 +5,7 @@ import Wrapper from "../assets/wrappers/BigSideNav";
 import Logo from './Logo'
 import { MdArrowRight, MdArrowLeft } from "react-icons/md";
 
-const BigSidebar = () => {
+const BigSidebar = (props, ref) => {
   const { showSidebar, toggleSidebar, screenSize } = useAppContext();
   return (
     <Wrapper className="primary-dark">

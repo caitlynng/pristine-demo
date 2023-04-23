@@ -23,8 +23,7 @@ const Wrapper = styled.div`
   @media screen and (min-width: 1000px) {
 
     .swiper {
-    padding-bottom: 1em;
-    padding-top: 1em;
+      padding: 1em 0;
     }
     .next-button,
     .prev-button {

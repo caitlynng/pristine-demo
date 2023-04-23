@@ -85,6 +85,12 @@ export const initialState = {
 
   //settings
   uploads: [],
+
+  //demo popup
+  defaultDemoText: "",
+  callbackBtnText: "",
+  closeBtnText: "",
+  callbackDemo: ""
 };
 
 const AppContext = React.createContext();
@@ -116,10 +122,17 @@ const AppProvider = ({ children }) => {
     }
   );
 
-  const showDemoMessage = () => {
-    dispatch({type: SHOW_DEMO_MESSAGE})
+  const showDemoMessage = (callback,defaultText, callbackBtnText, closeBtnText) => {
+    dispatch({type: SHOW_DEMO_MESSAGE,
+    payload: {
+        defaultDemoText: defaultText ?? "This is only a demo version. Please sign in to use the full features.",
+       callbackDemo: callback ?? undefined,
+       callbackBtnText: callbackBtnText ?? "", 
+       closeBtnText: closeBtnText ?? "Got it"
+    }})
   }
   const closeDemoMessage = () => {
+    console.log('close')
     dispatch({ type: CLOSE_DEMO_MESSAGE });
   }
   const getAPISuggestions = async (query) => {
