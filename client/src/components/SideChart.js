@@ -151,7 +151,7 @@ const SideChart = () => {
     dashboardTable_TotalProfits,
   ]);
   return (
-    <Wrapper className="item-box">
+    <Wrapper className="item-box sidechart-joyride">
       <div className="contentpill-container">
         {contentPillData.map((i, ind) => {
           return (

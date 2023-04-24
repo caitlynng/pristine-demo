@@ -142,7 +142,7 @@ const Reports = () => {
 
 
   return (
-    <Wrapper className="max-width" style={fullscreenStyle}>
+    <Wrapper className="max-width reports-joyride" style={fullscreenStyle}>
       <div className="page-header analytics__page-header">
         <h4 className="page-title">Filter</h4>
         <div className="date-picker-container">

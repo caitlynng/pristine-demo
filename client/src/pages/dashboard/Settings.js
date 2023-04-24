@@ -42,6 +42,7 @@ const Settings = () => {
   const tabs = [
     {
       id: 0,
+      key: "profiles-joyride",
       name: "profiles",
       content: (
         <InputForm
@@ -53,6 +54,7 @@ const Settings = () => {
     },
     {
       id: 1,
+      key: "manageUploads-joyride",
       name: "manage uploads",
       content: <ManageUpload />,
     },
@@ -74,6 +76,7 @@ const Settings = () => {
         {tabs.map((item) => (
           <Button
             key={item.id}
+            id={item.key}
             title={item.name}
             classList={`tab-btn ${activeTabId === item.id ? "active" : ""}`}
             onSetActive={() => setActiveTab(item.id)}

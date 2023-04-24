@@ -41,7 +41,7 @@ const MainChart = () => {
   };
 
   return (
-    <Wrapper ref={fullscreenRef} className="item-box">
+    <Wrapper ref={fullscreenRef} className="item-box mainchart-joyride">
       <div className="header-wrapper">
         <FormRowDropDown
           labelText="View By"
@@ -50,14 +50,16 @@ const MainChart = () => {
           inputType="radio"
           defaultChecked={viewByList.findIndex((i) => i === viewBy)}
           onClickHandle={viewByHandle}
+          id="viewBy"
         />
 
         <FormRowDropDown
           labelText="Chart Type"
-          name="viewBy"
+          name="chartType"
           list={["Line", "Bar"]}
           inputType="radio"
           onClickHandle={chartTypeHandle}
+          id="chartType"
         />
 
         {screenSize <= 450 ? null : fullscreenActive && screenSize >= 450 ? (

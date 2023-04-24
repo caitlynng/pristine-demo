@@ -33,12 +33,12 @@ const SharedLayout = () => {
 
   const [stepIndex, setStepIndex] = useState(0);
   const [run, setRun] = useState(false);
-  const childRef = useRef();
+  const BigSideNavRef = useRef();
 
   const steps = [
     {
       content: "Click Upload",
-      target: childRef.current?.uploads,
+      target: BigSideNavRef.current?.uploads,
       placement: "right",
       disableBeacon: true,
     },
@@ -46,6 +46,115 @@ const SharedLayout = () => {
       content: "Now you're in Uploads",
       target: ".uploads-header",
       placement: "right",
+    },
+    {
+      content: "Select file type",
+      target: "#fileType",
+      placement: "right",
+    },
+    {
+      content: "Click Dashboard",
+      target: BigSideNavRef.current?.dashboard,
+      placement: "right",
+      disableBeacon: true,
+    },
+    {
+      content: "date range picker",
+      target: ".daterangpicker-joyride",
+      placement: "bottom",
+    },
+    {
+      content: "compare to",
+      target: "#comparedTo",
+      placement: "bottom",
+    },
+    {
+      content: "mainchart",
+      target: ".mainchart-joyride",
+      placement: "right",
+    },
+    {
+      content: "view by",
+      target: "#viewBy",
+      placement: "bottom",
+    },
+    {
+      content: "chart type",
+      target: "#chartType",
+      placement: "bottom",
+    },
+    {
+      content: "chart",
+      target: ".main-chart-container",
+      placement: "right",
+    },
+    {
+      content: "side chart",
+      target: ".sidechart-joyride",
+      placement: "left",
+    },
+    {
+      content: "side chart",
+      target: ".contentpill-container",
+      placement: "left",
+    },
+    {
+      content: "doughnut-chart-container",
+      target: ".doughnut-chart-container",
+      placement: "left",
+    },
+    {
+      content: "multicolorbar",
+      target: ".multicolorbar-joyride",
+      placement: "left",
+    },
+    {
+      content: "statscontainer-joyride",
+      target: ".statscontainer-joyride",
+      placement: "bottom",
+    },
+    {
+      content: "Click Statements",
+      target: BigSideNavRef.current?.statements,
+      placement: "right",
+      disableBeacon: true,
+    },
+    {
+      content: "statements-joyride",
+      target: ".statements-joyride",
+      placement: "top",
+    },
+    {
+      content: "Click Reports",
+      target: BigSideNavRef.current?.reports,
+      placement: "right",
+      disableBeacon: true,
+    },
+    {
+      content: "reports-joyride",
+      target: ".reports-joyride",
+      placement: "top",
+    },
+    {
+      content: "search",
+      target: ".search-form",
+      placement: "right",
+    },
+    {
+      content: "Click Settings",
+      target: BigSideNavRef.current?.settings,
+      placement: "right",
+      disableBeacon: true,
+    },
+    {
+      content: "profiles",
+      target: ".profiles-joyride",
+      placement: "bottom",
+    },
+    {
+      content: "profiles",
+      target: ".manageUploads-joyride",
+      placement: "bottom",
     },
   ];
   const handleClickStart = () => {
@@ -60,6 +169,14 @@ const SharedLayout = () => {
     if ([EVENTS.STEP_AFTER, EVENTS.TARGET_NOT_FOUND].includes(type)) {
       if (index === 0) {
         navigate("/demo/uploads");
+      } else if (index === 3) {
+        navigate('/demo')
+      } else if (index === 15) {
+        navigate('/demo/statements')
+      } else if (index === 18) {
+        navigate('/demo/reports')
+      } else if (index === 21) {
+        navigate('/demo/settings')
       }
       // Update state to advance the tour
       setStepIndex(index + (action === ACTIONS.PREV ? -1 : 1));
@@ -81,7 +198,6 @@ const SharedLayout = () => {
     if (width) handleScreenResize(width);
   }, [width]);
 
-  console.log(stepIndex);
   return (
     <Wrapper>
       <Joyride
@@ -94,8 +210,9 @@ const SharedLayout = () => {
         showSkipButton
         steps={steps}
         stepIndex={stepIndex}
-        debug={true}
-        disableOverlayClose={true}
+        debug
+        disableOverlayClose
+        spotlightClicks
         styles={{
           options: {
             zIndex: 10000,
@@ -105,7 +222,7 @@ const SharedLayout = () => {
       {demoMessage && <PopUp />}
       <SmallSideNav />
       <main className="joyride-start">
-        <BigSideNav ref={childRef} />
+        <BigSideNav ref={BigSideNavRef} />
         <div
           className={
             showSidebar

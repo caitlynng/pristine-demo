@@ -10,7 +10,8 @@ const FormRowDropDown = ({
   list,
   inputType,
   onClickHandle,
-  defaulChecked
+  defaulChecked,
+  id
 }) => {
   const [isActive, setIsActive] = useState(false);
 
@@ -30,7 +31,7 @@ const FormRowDropDown = ({
   //   handleChange({ [name]: updatedCheckedState });
   // };
   return (
-    <Wrapper isFilter={isActive}>
+    <Wrapper isFilter={isActive} id={id}>
       <div
         className="form-label-container"
         onClick={() => setIsActive(!isActive)}

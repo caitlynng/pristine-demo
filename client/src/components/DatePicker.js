@@ -96,7 +96,7 @@ const DatePicker = () => {
 
 
   return (
-    <Wrapper>
+    <Wrapper className="daterangpicker-joyride">
       <DateRangePicker
         placement="autoVerticalEnd"
         ranges={predefinedRanges}

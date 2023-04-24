@@ -97,7 +97,7 @@ const StatsContainer = () => {
 
   //https://swiperjs.com/swiper-api#param-initialSlide
   return (
-    <Wrapper>
+    <Wrapper className="statscontainer-joyride">
       <Swiper
         slidesPerView={'auto'}
         loop={true}

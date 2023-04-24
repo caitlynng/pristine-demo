@@ -1,26 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useAppContext } from "../../context/appContext";
-import banner from "../../assets/images/banner.svg";
-import SVG from "react-inlinesvg";
 import Wrapper from "../../assets/wrappers/Dashboard";
 import {
   DatePicker,
   StatsContainer,
   Loading,
-  OverviewChart,
   MainChart,
 } from "../../components";
 import SideChart from "../../components/SideChart";
 import FormRowDropDown from "../../components/FormRowDropDown";
 
 const Dashboard = () => {
-  const { handleDateChange, isLoading, handleScreenResize } = useAppContext();
+  const { handleDateChange, isLoading } = useAppContext();
 
   useEffect(() => {
     // a "-" in date will give RangeError: Invalid Date (Safari & Firefox)
     handleDateChange();
   }, []);
-
 
   const compareToList = ["Last week", "Last month", "Last Year"];
   return (
@@ -34,12 +30,13 @@ const Dashboard = () => {
         <div className="flex align-center justify-end flex-wrap padding-0-1">
           <h5 className="margin-auto-r">Sales activities</h5>
           <div className="flex flex-nowrap align-center">
-            <DatePicker />
+            <DatePicker/>
             <FormRowDropDown
               labelText="compare to"
               name="compareTo"
               list={compareToList}
               inputType="radio"
+              id="comparedTo"
             />
           </div>
         </div>
