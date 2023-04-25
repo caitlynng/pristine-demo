@@ -5,10 +5,11 @@ import {
   SmallSideNav,
   Alert,
   PopUp,
-  Button
+  Button,
+  InputForm,
 } from "../../components";
-import logo from '../../assets/images/logo.svg'
-import {BiMessageDots, BiX} from 'react-icons/bi'
+import logo from "../../assets/images/logo.svg";
+import { BiMessageDots, BiX } from "react-icons/bi";
 import { useWindowDimensions } from "../../utils/Helpers";
 import { useState, useRef, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
@@ -21,6 +22,7 @@ import Joyride, {
   Step,
 } from "react-joyride";
 import SVG from "react-inlinesvg";
+import { registerFields, contactUsFields } from "../../utils/Helpers";
 
 const SharedLayout = () => {
   const {
@@ -36,7 +38,9 @@ const SharedLayout = () => {
 
   const [stepIndex, setStepIndex] = useState(0);
   const [run, setRun] = useState(false);
-  const [showSupportWidget, setShowSupportWidget] = useState(false)
+  const [showSupportWidget, setShowSupportWidget] = useState(false);
+  const [showRegister, setShowRegister] = useState(false);
+  const [showContactUs, setShowContactUs] = useState(false);
   const BigSideNavRef = useRef();
 
   const steps = [
@@ -65,7 +69,7 @@ const SharedLayout = () => {
       content: "Now you're in Dashboard",
       target: ".dashboard-joyride",
       placement: "top-end",
-      spotlightPadding: 0
+      spotlightPadding: 0,
     },
     {
       content: "date range picker",
@@ -168,7 +172,21 @@ const SharedLayout = () => {
   ];
   const handleClickStart = () => {
     closeDemoMessage();
+    setShowContactUs(false)
+    setShowRegister(false)
     setRun(true);
+  };
+  const handleRegister = () => {
+    closeDemoMessage();
+    setShowContactUs(false)
+    setRun(false);
+    setShowRegister(true)
+  };
+  const handleContactUs = () => {
+    closeDemoMessage();
+    setShowContactUs(true)
+    setShowRegister(false)
+    setRun(false);
   };
 
   const handleJoyrideCallback = (data) => {
@@ -187,8 +205,7 @@ const SharedLayout = () => {
         navigate("/demo/settings");
       }
 
-        setStepIndex(index + (action === ACTIONS.PREV ? -1 : 1));
-      
+      setStepIndex(index + (action === ACTIONS.PREV ? -1 : 1));
     } else if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status)) {
       setRun(false);
     }
@@ -213,11 +230,14 @@ const SharedLayout = () => {
   // }, [width]);
 
   const supportHandle = (e) => {
-    e.preventDefault()
-    setShowSupportWidget(!showSupportWidget)
-  }
+    e.preventDefault();
+    setShowSupportWidget(!showSupportWidget);
+  };
+  const handleSubmit = () => {
+    setShowRegister(false);
+  };
 
-  console.log(showSupportWidget)
+  console.log(showRegister);
   return (
     <Wrapper>
       <Joyride
@@ -250,25 +270,64 @@ const SharedLayout = () => {
           <Outlet />
         </div>
       </main>
-      <div className="walkthrough-icon flex align-center" tabIndex='0' onBlur={supportHandle} onClick={supportHandle}>{ showSupportWidget ?  <BiX/> : <BiMessageDots />}</div>
-      <div className={`support-container ${showSupportWidget? 'show' : ''}`}> 
-          <div className="support-header flex align-center">
-            <div><SVG src={logo} alt='logo-pristine'  /></div>
-            <div className="header-text flex flex-column">
-              <p>PristineDept Tech Support</p>
-              <p>We'll be happy to assist</p>
-            </div>
-          </div>
-          <div className="support-content flex flex-column justify-end">
-            <p>PristineDept Support</p>
-            <div className="flex flex-column">
-              <p>Hello! How can we help?</p>
-              <Button title="An app walkthrough tour"  classList="support-btn"/>
-              <Button title="Register for a full version" classList="support-btn"/>
-              <Button title="Something else" classList="support-btn"/>
-            </div>
-          </div>
+      <div
+        className="walkthrough-icon flex align-center"
+        tabIndex="0"
+        onBlur={supportHandle}
+        onClick={supportHandle}
+      >
+        {showSupportWidget ? <BiX /> : <BiMessageDots />}
       </div>
+      <div className={`support-container ${showSupportWidget ? "show" : ""}`}>
+        <div className="support-header flex align-center">
+          <div>
+            <SVG src={logo} alt="logo-pristine" />
+          </div>
+          <div className="header-text flex flex-column">
+            <p>PristineDept Tech Support</p>
+            <p>We'll be happy to assist</p>
+          </div>
+        </div>
+        <div className="support-content flex flex-column justify-end">
+          <p>PristineDept Support</p>
+          <div className="flex flex-column">
+            <p>Hello! How can we help?</p>
+            <Button
+              title="An app walkthrough tour"
+              classList="support-btn"
+              onSetActive={handleClickStart}
+            />
+            <Button
+              title="Register"
+              classList="support-btn"
+              onSetActive={handleRegister}
+            />
+            <Button title="Something else" classList="support-btn" onSetActive={handleContactUs}/>
+          </div>
+        </div>
+      </div>
+      {showRegister && (
+        <div className="register-form">
+          <InputForm
+            formRows={registerFields}
+            handleSubmit={handleSubmit}
+            btnTitle="register"
+            isDefault={false}
+            isDefaultHandle={() => setShowRegister(false)}
+          />
+        </div>
+      )}
+      {showContactUs && (
+        <div className="register-form">
+          <InputForm
+            formRows={contactUsFields}
+            handleSubmit={handleSubmit}
+            btnTitle="send"
+            isDefault={false}
+            isDefaultHandle={() => setShowContactUs(false)}
+          />
+        </div>
+      )}
     </Wrapper>
   );
 };

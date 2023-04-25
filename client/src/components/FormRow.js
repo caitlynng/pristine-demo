@@ -1,22 +1,41 @@
-import Wrapper from "../assets/wrappers/FormRow"
+import Wrapper from "../assets/wrappers/FormRow";
 
-const FormRow = ({ type, name, value, id, handleChange, labelText, errors, classList, handleBlur }) => {
-
+const FormRow = ({
+  type,
+  name,
+  value,
+  id,
+  handleChange,
+  labelText,
+  errors,
+  classList,
+  handleBlur,
+}) => {
   return (
-    <Wrapper >
+    <Wrapper>
       <fieldset className="form-row">
         <label htmlFor={name} className="form-label">
-        {labelText || name}
-      </label>
-      <input
-        onBlur={handleBlur}
-        type={type}
-        value={value}
-        name={name}
-        id={id}
-        onChange={handleChange}
-        className={classList? `${classList} form-input` : 'form-input'}
-      />
+          {labelText || name}
+        </label>
+        {type === "textarea" ? (
+          <textarea
+            onBlur={handleBlur}
+            value={value}
+            id={id}
+            onChange={handleChange}
+            className={classList ? `${classList} form-input textarea-height` : "form-input textarea-height"}
+          />
+        ) : (
+          <input
+            onBlur={handleBlur}
+            type={type}
+            value={value}
+            name={name}
+            id={id}
+            onChange={handleChange}
+            className={classList ? `${classList} form-input input-height` : "form-input input-height"}
+          />
+        )}
       </fieldset>
       {errors &&
         errors.length > 0 &&
@@ -28,6 +47,6 @@ const FormRow = ({ type, name, value, id, handleChange, labelText, errors, class
         ))}
     </Wrapper>
   );
-}
+};
 
-export default FormRow
+export default FormRow;

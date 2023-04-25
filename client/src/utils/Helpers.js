@@ -49,7 +49,7 @@ export const isNameValid = (name) => {
   if (!/^[a-zA-Z ]+$/.test(name)) {
     message.push("Name should include only A-Z (a-z) letters");
   }
-  if (name.length <= 3 || name.length >= 20) {
+  if (name.length < 3 || name.length >= 20) {
     message.push("Name should be between 3 to 20 characters");
   }
   return message;
@@ -416,3 +416,58 @@ export const getTotalSum = (arr, prop) => {
     return a + b[prop];
   }, 0);
 };
+
+export const contactUsFields = [
+  {
+    type: "text",
+    name: "name",
+    labelText: "name*",
+    required: true,
+    validate: true,
+  },
+  {
+    type: "email",
+    name: "email",
+    labelText: "email address*",
+    required: true,
+    validate: true,
+  },
+  {
+    type: "textarea",
+    name: "message",
+    labelText: "your message",
+    required: true,
+    validate: true,
+  },
+];
+
+export const registerFields = [
+  {
+    type: "text",
+    name: "name",
+    labelText: "name",
+    required: true,
+    validate: true,
+  },
+  {
+    type: "email",
+    name: "email",
+    labelText: "email address",
+    required: true,
+    validate: true,
+  },
+  {
+    type: "password",
+    name: "password",
+    labelText: "password",
+    required: true,
+    validate: true,
+  },
+  {
+    type: "password",
+    name: "passwordRetype",
+    labelText: "re-type password",
+    required: true,
+    validate: true,
+  },
+];

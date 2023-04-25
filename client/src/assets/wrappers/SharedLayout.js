@@ -139,6 +139,22 @@ const Wrapper = styled.section`
         color: var(--grey-600);
       }
     }
+    .register-form {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      box-shadow: var(--shadow-dark);
+      border-radius: 16px;
+      & svg {
+        align-self: flex-end;
+        margin: 0.5em 1em 0 0;
+        font-size: 2em;
+        cursor: pointer;
+        color: var(--primary)
+      }
+    }
   }
 `;
 export default Wrapper;

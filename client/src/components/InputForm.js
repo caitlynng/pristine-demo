@@ -5,16 +5,16 @@ import Button from "./Button";
 import Wrapper from "../assets/wrappers/InputForm";
 import { isEmailValid, isPWValid, isRequired, isRetypePWValid, isNameValid } from "../utils/Helpers";
 
-const InputForm = ({ formRows, handleSubmit, btnTitle }) => {
+const InputForm = ({ formRows, handleSubmit, btnTitle, isDefault, isDefaultHandle }) => {
 
   const [value, setValue] = useState({
     name: {
-      value: "Demo User",
+      value: isDefault?  "Demo User": "",
       isValid: false,
       errors: [],
     },
     email: {
-      value: "Demo_user@fakeemail.com",
+      value: isDefault?  "Demo_user@fakeemail.com": "",
       isValid: false,
       errors: [],
     },
@@ -24,6 +24,7 @@ const InputForm = ({ formRows, handleSubmit, btnTitle }) => {
       isValid: false,
       errors: [],
     },
+    message: {value: "", isValid: false, errors: []}
   });
 
   const handleInputChange = (e) => {
@@ -97,12 +98,14 @@ const InputForm = ({ formRows, handleSubmit, btnTitle }) => {
             />
           );
         })}
-
+       <div className="flex align-center justify-end">
+       {!isDefault && <Button title="cancel" classList="plain-btn" onSetActive={isDefaultHandle}/>}
         <Button
           classList="save-btn float-right-btn"
           type="submit"
           title={btnTitle}
         />
+       </div>
       </form>
     </Wrapper>
   );

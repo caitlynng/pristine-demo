@@ -16,12 +16,12 @@ const Wrapper = styled.div`
   }
   .form-input {
     flex: 1;
-    height: 40px;
     border: 1px solid var(--grey-200);
     padding: 4px 1em;
     border-radius: 8px;
     background-color: var(--grey-200);
     margin: 1em 0;
+    min-width: 100%;
     &:focus,
     &:hover {
       background-color: white;
@@ -33,6 +33,12 @@ const Wrapper = styled.div`
       /* border-color: var(--error-color); */
       box-shadow: 0 0 0 4px var(--error-border);
     }
+  }
+  .form-input.input-height {
+    height: 40px;
+  }
+  .form-input.textarea-height {
+    height: 80px;
   }
   .error-message {
     color: var(--error-text);
@@ -46,7 +52,9 @@ const Wrapper = styled.div`
   }
   @media screen and (min-width: 1000px) {
     .error-message {
-      padding-left: 15em;
+      padding: 1em;
+      margin: 0 2em;
+      background-color: #f8d7daa9;
     }
   }
 `;

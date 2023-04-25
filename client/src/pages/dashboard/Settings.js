@@ -9,14 +9,14 @@ const Settings = () => {
     {
       type: "text",
       name: "name",
-      labelText: "name",
+      labelText: "name*",
       required: true,
       validate: true,
     },
     {
       type: "email",
       name: "email",
-      labelText: "email address",
+      labelText: "email address*",
       required: true,
       validate: true,
     },
@@ -49,6 +49,7 @@ const Settings = () => {
           formRows={formRows}
           handleSubmit={handleSubmit}
           btnTitle="save"
+          isDefault={true}
         />
       ),
     },
