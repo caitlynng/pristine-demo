@@ -105,7 +105,6 @@ const reducer = (state, action) => {
     case GET_REPORT_SUCCESS:
       return {
         ...state,
-        isLoading: false,
         isBack: false,
         reportData: action.payload.reportData,
         activeHeaders: action.payload.activeHeaders,

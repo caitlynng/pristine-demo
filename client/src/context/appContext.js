@@ -170,7 +170,7 @@ const AppProvider = ({ children }) => {
   const handleDateChange = (dates) => {
     const inputDate = getDate(dates);
     showStats(inputDate);
-    getReport(inputDate);
+    getReport();
     const formatedDate = [new Date(inputDate[0]), new Date(inputDate[1])];
 
     dispatch({

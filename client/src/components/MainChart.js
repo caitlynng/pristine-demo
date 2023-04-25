@@ -37,7 +37,7 @@ const MainChart = () => {
     setViewBy(val);
   };
   const chartTypeHandle = (val) => {
-    setChartType(val);
+    setChartType(val.toLowerCase());
   };
 
   return (
@@ -48,7 +48,6 @@ const MainChart = () => {
           name="viewBy"
           list={viewByList}
           inputType="radio"
-          defaultChecked={viewByList.findIndex((i) => i === viewBy)}
           onClickHandle={viewByHandle}
           id="viewBy"
         />

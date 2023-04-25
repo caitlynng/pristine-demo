@@ -10,26 +10,18 @@ const FormRowDropDown = ({
   list,
   inputType,
   onClickHandle,
-  defaulChecked,
-  id
+  id,
 }) => {
   const [isActive, setIsActive] = useState(false);
 
-  const [checkedState, setCheckedState] = useState([]);
+  const [selectedItem, setSelectedItem] = useState(list[0]);
 
+  const handleSelect = (e) => {
+    const val = e.target.textContent
+    setSelectedItem(val);
+    onClickHandle(val)
+  };
 
-  // const handleCheckState = (position) => {
-  //   const updatedCheckedState = checkedState.map((item, index) => {
-  //     let key = Object.keys(item);
-  //     if (index === position) {
-  //       return { [key]: !item[key] };
-  //     } else {
-  //       return item;
-  //     }
-  //   });
-  //   setCheckedState(updatedCheckedState);
-  //   handleChange({ [name]: updatedCheckedState });
-  // };
   return (
     <Wrapper isFilter={isActive} id={id}>
       <div
@@ -54,11 +46,11 @@ const FormRowDropDown = ({
                   id={itemValue}
                   type={inputType}
                   value={itemValue}
-                  defaultChecked={defaulChecked ?? (ind === 0 && true)}
                   name={name}
-                  onChange={() => console.log(value)}
+                  checked={selectedItem === itemValue}
+                  onChange={() => {}}
                 />
-                <label htmlFor={`${itemValue}`}>{itemValue}</label>
+                <label htmlFor={`${itemValue}`} onMouseDown={handleSelect}>{itemValue}</label>
               </li>
             );
           })}

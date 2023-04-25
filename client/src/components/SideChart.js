@@ -18,13 +18,13 @@ const SideChart = () => {
 
   const [dataset, setDataset] = useState(dashboardDoughnutChart_SalesData);
   const [redraw, setRedraw] = useState(false); //for chart redraw, update when button is clicked
-  const [active, setActive] = useState("Sales");
+  const [active, setActive] = useState("Total Sales");
 
   //create a deep copy of data to prevent our defined functions from mutating the data array order
   let deepCopy = JSON.parse(JSON.stringify(dataset));
 
   const dataSum =
-    active === "Sales"
+    active === "Total Sales"
       ? dashboardTable_TotalSales
       : dashboardTable_TotalExpenses;
   const profitPercentage =
@@ -92,7 +92,7 @@ const SideChart = () => {
   const setCategoryHandle = (e) => {
     const value = e.currentTarget.attributes.category.value;
     setRedraw(true);
-    if (value === "Expenses") {
+    if (value === "Total Expenses") {
       setDataset(dashboardDoughnutChart_ExpensesData);
     } else {
       setDataset(dashboardDoughnutChart_SalesData);
@@ -129,12 +129,12 @@ const SideChart = () => {
 
   const contentPillData = [
     {
-      title: "Sales",
+      title: "Total Sales",
       total: dashboardTable_TotalSales,
       key: 0,
     },
     {
-      title: "Expenses",
+      title: "Total Expenses",
       total: dashboardTable_TotalExpenses,
       key: 1,
     },

@@ -27,17 +27,17 @@ const Dashboard = () => {
       </div>
       <StatsContainer />
       <section className="section-container flex-1">
-        <div className="flex align-center justify-end flex-wrap padding-0-1">
+        <div className="flex align-center justify-end flex-wrap padding-1">
           <h5 className="margin-auto-r">Sales activities</h5>
           <div className="flex flex-nowrap align-center">
             <div className="daterangpicker-joyride"><DatePicker/></div>
-            <FormRowDropDown
+            {/* <FormRowDropDown
               labelText="compare to"
               name="compareTo"
               list={compareToList}
               inputType="radio"
               id="comparedTo"
-            />
+            /> */}
           </div>
         </div>
         <div className="chart-container">

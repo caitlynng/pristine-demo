@@ -76,11 +76,11 @@ const SharedLayout = () => {
       target: ".daterangpicker-joyride",
       placement: "top",
     },
-    {
-      content: "compare to",
-      target: "#comparedTo",
-      placement: "top",
-    },
+    // {
+    //   content: "compare to",
+    //   target: "#comparedTo",
+    //   placement: "top",
+    // },
     {
       content: "mainchart",
       target: ".mainchart-joyride",
@@ -197,11 +197,11 @@ const SharedLayout = () => {
         navigate("/demo/uploads");
       } else if (index === 3) {
         navigate("/demo");
-      } else if (index === 16) {
+      } else if (index === 15) {
         navigate("/demo/statements");
-      } else if (index === 18) {
+      } else if (index === 17) {
         navigate("/demo/reports");
-      } else if (index === 21) {
+      } else if (index === 20) {
         navigate("/demo/settings");
       }
 
@@ -236,8 +236,6 @@ const SharedLayout = () => {
   const handleSubmit = () => {
     setShowRegister(false);
   };
-
-  console.log(showRegister);
   return (
     <Wrapper>
       <Joyride

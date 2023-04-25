@@ -414,8 +414,8 @@ div[role="dialog"] {
 .w-full {
   width: 100%;
 }
-.padding-0-1 {
-  padding: 0 1em;
+.padding-1 {
+  padding: 1em;
 }
 .margin-auto {
   margin: 0 auto;
