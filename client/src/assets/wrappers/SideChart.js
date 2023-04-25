@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
     max-height: 450px;
     overflow: auto;
     margin: 0 auto;
-    padding: 15%;
+    padding: 10%;
   }
   .legend-container-outer {
     margin-bottom: 2em;
@@ -59,9 +59,6 @@ export const Wrapper = styled.div`
       border-radius: 10px;
       padding: 0;
       overflow: auto;
-    }
-    .chart-container {
-      padding: 20%;
     }
   }
 `;

@@ -144,6 +144,21 @@ const Wrapper = styled.button`
       color: var(--primary)
     }
   }
+  &.support-btn {
+    color: var(--primary);
+    text-align: left;
+    padding: 7px 16px;
+    border-radius: 16px;
+    background-color: #fff;
+    border: solid 1px #e1e1e1;
+    vertical-align: middle;
+    margin: 0 4px 10px;
+    cursor: pointer;
+    max-width: 97%;
+    &:hover {
+      border: 1.5px solid;
+    }
+  }
   @media screen and (min-width: 499px) {
     .icon-btn {
       color: var(--grey-500);

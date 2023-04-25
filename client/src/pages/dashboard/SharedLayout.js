@@ -1,6 +1,16 @@
 import Wrapper from "../../assets/wrappers/SharedLayout";
+import {
+  TopNav,
+  BigSideNav,
+  SmallSideNav,
+  Alert,
+  PopUp,
+  Button
+} from "../../components";
+import logo from '../../assets/images/logo.svg'
+import {BiMessageDots, BiX} from 'react-icons/bi'
 import { useWindowDimensions } from "../../utils/Helpers";
-import { useState, useRef, useImperativeHandle } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useAppContext } from "../../context/appContext";
 import Joyride, {
@@ -10,14 +20,7 @@ import Joyride, {
   STATUS,
   Step,
 } from "react-joyride";
-import {
-  TopNav,
-  BigSideNav,
-  SmallSideNav,
-  Alert,
-  PopUp,
-} from "../../components";
-import { useEffect } from "react";
+import SVG from "react-inlinesvg";
 
 const SharedLayout = () => {
   const {
@@ -33,6 +36,7 @@ const SharedLayout = () => {
 
   const [stepIndex, setStepIndex] = useState(0);
   const [run, setRun] = useState(false);
+  const [showSupportWidget, setShowSupportWidget] = useState(false)
   const BigSideNavRef = useRef();
 
   const steps = [
@@ -44,8 +48,7 @@ const SharedLayout = () => {
     },
     {
       content: "Now you're in Uploads",
-      target: ".uploads-header",
-      placement: "right",
+      target: ".uploads-joyride",
     },
     {
       content: "Select file type",
@@ -59,14 +62,20 @@ const SharedLayout = () => {
       disableBeacon: true,
     },
     {
+      content: "Now you're in Dashboard",
+      target: ".dashboard-joyride",
+      placement: "top-end",
+      spotlightPadding: 0
+    },
+    {
       content: "date range picker",
       target: ".daterangpicker-joyride",
-      placement: "bottom",
+      placement: "top",
     },
     {
       content: "compare to",
       target: "#comparedTo",
-      placement: "bottom",
+      placement: "top",
     },
     {
       content: "mainchart",
@@ -74,19 +83,19 @@ const SharedLayout = () => {
       placement: "right",
     },
     {
+      content: "chart",
+      target: ".main-chart-container",
+      placement: "right",
+    },
+    {
       content: "view by",
       target: "#viewBy",
-      placement: "bottom",
+      placement: "top",
     },
     {
       content: "chart type",
       target: "#chartType",
-      placement: "bottom",
-    },
-    {
-      content: "chart",
-      target: ".main-chart-container",
-      placement: "right",
+      placement: "top",
     },
     {
       content: "side chart",
@@ -122,7 +131,7 @@ const SharedLayout = () => {
     {
       content: "statements-joyride",
       target: ".statements-joyride",
-      placement: "top",
+      placement: "bottom",
     },
     {
       content: "Click Reports",
@@ -133,7 +142,7 @@ const SharedLayout = () => {
     {
       content: "reports-joyride",
       target: ".reports-joyride",
-      placement: "top",
+      placement: "top-end",
     },
     {
       content: "search",
@@ -149,19 +158,18 @@ const SharedLayout = () => {
     {
       content: "profiles",
       target: ".profiles-joyride",
-      placement: "bottom",
+      placement: "right-start",
     },
     {
       content: "profiles",
       target: ".manageUploads-joyride",
-      placement: "bottom",
+      placement: "right-start",
     },
   ];
   const handleClickStart = () => {
     closeDemoMessage();
     setRun(true);
   };
-
 
   const handleJoyrideCallback = (data) => {
     const { action, index, lifecycle, type, status, size } = data;
@@ -170,34 +178,46 @@ const SharedLayout = () => {
       if (index === 0) {
         navigate("/demo/uploads");
       } else if (index === 3) {
-        navigate('/demo')
-      } else if (index === 15) {
-        navigate('/demo/statements')
+        navigate("/demo");
+      } else if (index === 16) {
+        navigate("/demo/statements");
       } else if (index === 18) {
-        navigate('/demo/reports')
+        navigate("/demo/reports");
       } else if (index === 21) {
-        navigate('/demo/settings')
+        navigate("/demo/settings");
       }
-      // Update state to advance the tour
-      setStepIndex(index + (action === ACTIONS.PREV ? -1 : 1));
+
+        setStepIndex(index + (action === ACTIONS.PREV ? -1 : 1));
+      
     } else if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status)) {
       setRun(false);
     }
   };
 
   useEffect(() => {
-    showDemoMessage(
-      handleClickStart,
-      "Let's start a tour",
-      "Let's get started",
-      "skip"
-    );
-  }, []);
-
-  useEffect(() => {
     if (width) handleScreenResize(width);
   }, [width]);
 
+  // useEffect(() => {
+  //   //callback,defaultText, callbackBtnText, closeBtnText
+  //   if (width && width > 1000) {
+  //     showDemoMessage({
+  //       callback: handleClickStart,
+  //       defaultText: "Let's start a tour",
+  //       callbackBtnText: "Let's get started",
+  //       closeBtnText: "skip",
+  //     });
+  //   } else {
+  //     showDemoMessage({ defaultText: "Demo test" });
+  //   }
+  // }, [width]);
+
+  const supportHandle = (e) => {
+    e.preventDefault()
+    setShowSupportWidget(!showSupportWidget)
+  }
+
+  console.log(showSupportWidget)
   return (
     <Wrapper>
       <Joyride
@@ -210,14 +230,9 @@ const SharedLayout = () => {
         showSkipButton
         steps={steps}
         stepIndex={stepIndex}
-        debug
+        // debug
         disableOverlayClose
         spotlightClicks
-        styles={{
-          options: {
-            zIndex: 10000,
-          },
-        }}
       />
       {demoMessage && <PopUp />}
       <SmallSideNav />
@@ -235,6 +250,25 @@ const SharedLayout = () => {
           <Outlet />
         </div>
       </main>
+      <div className="walkthrough-icon flex align-center" tabIndex='0' onBlur={supportHandle} onClick={supportHandle}>{ showSupportWidget ?  <BiX/> : <BiMessageDots />}</div>
+      <div className={`support-container ${showSupportWidget? 'show' : ''}`}> 
+          <div className="support-header flex align-center">
+            <div><SVG src={logo} alt='logo-pristine'  /></div>
+            <div className="header-text flex flex-column">
+              <p>PristineDept Tech Support</p>
+              <p>We'll be happy to assist</p>
+            </div>
+          </div>
+          <div className="support-content flex flex-column justify-end">
+            <p>PristineDept Support</p>
+            <div className="flex flex-column">
+              <p>Hello! How can we help?</p>
+              <Button title="An app walkthrough tour"  classList="support-btn"/>
+              <Button title="Register for a full version" classList="support-btn"/>
+              <Button title="Something else" classList="support-btn"/>
+            </div>
+          </div>
+      </div>
     </Wrapper>
   );
 };

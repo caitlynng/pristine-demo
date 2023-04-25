@@ -20,7 +20,7 @@ const Dashboard = () => {
 
   const compareToList = ["Last week", "Last month", "Last Year"];
   return (
-    <Wrapper className="max-width flex flex-column">
+    <Wrapper className="max-width dashboard-joyride flex flex-column">
       {isLoading && <Loading />}
       <div className="page-header analytics__page-header">
         <h4 className="page-title">Dashboard</h4>
@@ -30,7 +30,7 @@ const Dashboard = () => {
         <div className="flex align-center justify-end flex-wrap padding-0-1">
           <h5 className="margin-auto-r">Sales activities</h5>
           <div className="flex flex-nowrap align-center">
-            <DatePicker/>
+            <div className="daterangpicker-joyride"><DatePicker/></div>
             <FormRowDropDown
               labelText="compare to"
               name="compareTo"

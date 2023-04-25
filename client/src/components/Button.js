@@ -14,8 +14,8 @@ const Button = ({
     <Wrapper
       className={
         disabled
-          ? `btn ${classList} disabled ${id}`
-          : `btn ${classList} ${id}`
+          ? `btn ${classList} disabled ${id ?? ""}`
+          : `btn ${classList} ${id ?? ""}`
       }
       onMouseDown={onSetActive}
       type={type}

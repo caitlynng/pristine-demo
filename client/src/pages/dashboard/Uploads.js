@@ -26,7 +26,7 @@ const Uploads = () => {
 
 
   return (
-    <Wrapper className="max-width">
+    <Wrapper className="max-width uploads-joyride">
       <div className="page-header">
         <h4 className="page-title uploads-header">Uploads</h4>
       </div>

@@ -9,9 +9,7 @@ import ReportTable from './ReportTable'
 import DatePicker from './DatePicker'
 import StatsContainer from './StatsContainer'
 import Loading from './Loading'
-import OverviewPanel from "./OverviewPanel";
 import MainChart from './MainChart'
-import OverviewChart from './OverviewChart'
 import IncomeTable from './IncomeTable'
 import Button from './Button'
 import MultiColorBar from './MultiColorBar'
@@ -32,9 +30,7 @@ export {
   DatePicker,
   StatsContainer,
   Loading,
-  OverviewPanel,
   MainChart,
-  OverviewChart,
   IncomeTable,
   Button,
   MultiColorBar,

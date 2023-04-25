@@ -197,8 +197,9 @@ select:focus-visible {
   border-left: 4px solid var(--dark-brown);
   color: var(--dark-brown);
 }
-/* Loading spinner */
 
+
+/* Loading spinner */
 @keyframes spinner {
   to {
     transform: rotate(360deg);
@@ -400,6 +401,9 @@ div[role="dialog"] {
 }
 .align-center {
   align-items: center;
+}
+.align-end {
+  align-items: end;
 }
 .grid {
   display: grid;

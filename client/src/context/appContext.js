@@ -122,7 +122,7 @@ const AppProvider = ({ children }) => {
     }
   );
 
-  const showDemoMessage = (callback,defaultText, callbackBtnText, closeBtnText) => {
+  const showDemoMessage = ({callback,defaultText, callbackBtnText, closeBtnText}) => {
     dispatch({type: SHOW_DEMO_MESSAGE,
     payload: {
         defaultDemoText: defaultText ?? "This is only a demo version. Please sign in to use the full features.",
