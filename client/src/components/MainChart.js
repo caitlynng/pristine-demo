@@ -9,10 +9,10 @@ const MainChart = () => {
   const { noData, monthsDuration, yearsDuration, screenSize } = useAppContext();
 
   const viewByOptions = () => {
-    let options = ["Daily"];
-    if (monthsDuration >= 2) options.push("Monthly");
+    let options = ["Day"];
+    if (monthsDuration >= 2) options.push("Month");
 
-    if (yearsDuration >= 2) options.push("Yearly");
+    if (yearsDuration >= 2) options.push("Year");
     return options;
   };
   const [chartType, setChartType] = useState("line");
@@ -20,11 +20,11 @@ const MainChart = () => {
 
   useEffect(() => {
     if (yearsDuration >= 2) {
-      setViewBy("Yearly");
+      setViewBy("Year");
     } else if (monthsDuration >= 5) {
-      setViewBy("Monthly");
+      setViewBy("Month");
     } else {
-      setViewBy("Daily");
+      setViewBy("Day");
     }
   }, [yearsDuration, monthsDuration]);
 

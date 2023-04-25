@@ -45,7 +45,7 @@ const ChartJs = ({ chartType, viewBy }) => {
   useEffect(() => {
     if (dashboardLineChart_Date.day && dashboardLineChart_Date.day.length) {
       switch (viewBy) {
-        case "Daily":
+        case "Day":
           setChartData({
             expData: dashboardLineChart_ExpensesData?.day,
             salesData: dashboardLineChart_SalesData?.day,
@@ -53,7 +53,7 @@ const ChartJs = ({ chartType, viewBy }) => {
           });
           break;
 
-        case "Monthly":
+        case "Month":
           setChartData({
             expData: dashboardLineChart_ExpensesData?.month,
             salesData: dashboardLineChart_SalesData?.month,
@@ -61,19 +61,13 @@ const ChartJs = ({ chartType, viewBy }) => {
           });
           break;
 
-        case "Yearly":
+        case "Year":
           setChartData({
             expData: dashboardLineChart_ExpensesData?.year,
             salesData: dashboardLineChart_SalesData?.year,
             date: dashboardLineChart_Date?.year,
           });
           break;
-        default:
-          setChartData({
-            expData: dashboardLineChart_ExpensesData?.day,
-            salesData: dashboardLineChart_SalesData?.day,
-            date: dashboardLineChart_Date?.day,
-          });
       }
     }
   }, [
@@ -323,15 +317,14 @@ const ChartJs = ({ chartType, viewBy }) => {
           minRotation: 0,
           callback(value, index) {
             const item = this.getLabelForValue(value);
-            if (viewBy === "Daily") {
-              const date = new Date(item);
+            const date = new Date(item);
+            if (viewBy === "Day") {
               // if (index === 0) {
               //   return format(date, "MMM d yyyy").split(" ");
               // }
               return format(date, "d");
             }
-            if (viewBy === "Monthly") {
-              const date = new Date(item);
+            if (viewBy === "Month") {
               // if (index === 0) {
               //   return format(date, "MMM yyyy").split(" ");
               // }
