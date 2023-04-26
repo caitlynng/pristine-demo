@@ -215,19 +215,19 @@ const SharedLayout = () => {
     if (width) handleScreenResize(width);
   }, [width]);
 
-  // useEffect(() => {
-  //   //callback,defaultText, callbackBtnText, closeBtnText
-  //   if (width && width > 1000) {
-  //     showDemoMessage({
-  //       callback: handleClickStart,
-  //       defaultText: "Let's start a tour",
-  //       callbackBtnText: "Let's get started",
-  //       closeBtnText: "skip",
-  //     });
-  //   } else {
-  //     showDemoMessage({ defaultText: "Demo test" });
-  //   }
-  // }, [width]);
+  useEffect(() => {
+    //callback,defaultText, callbackBtnText, closeBtnText
+    if (width && width > 1000) {
+      showDemoMessage({
+        callback: handleClickStart,
+        defaultText: "Let's start a tour",
+        callbackBtnText: "Let's get started",
+        closeBtnText: "skip",
+      });
+    } else {
+      showDemoMessage({ defaultText: "Demo test" });
+    }
+  }, [width]);
 
   const supportHandle = (e) => {
     e.preventDefault();
