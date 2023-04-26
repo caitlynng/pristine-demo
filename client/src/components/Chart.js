@@ -1,6 +1,6 @@
 import { Chart, Line } from "react-chartjs-2";
 import { useEffect, useState } from "react";
-import { format } from "date-fns";
+import { format, startOfYear, startOfWeek, addWeeks, parse} from "date-fns";
 import { useAppContext } from "../context/appContext.js";
 import "chartjs-adapter-date-fns";
 import {
@@ -38,6 +38,7 @@ const ChartJs = ({ chartType, viewBy }) => {
     dashboardLineChart_SalesData,
     dashboardLineChart_Date,
     screenSize,
+    dashboardDate
   } = useAppContext();
 
   const [chartData, setChartData] = useState({});
@@ -61,11 +62,11 @@ const ChartJs = ({ chartType, viewBy }) => {
           });
           break;
 
-        case "Year":
+        case "Week":
           setChartData({
-            expData: dashboardLineChart_ExpensesData?.year,
-            salesData: dashboardLineChart_SalesData?.year,
-            date: dashboardLineChart_Date?.year,
+            expData: dashboardLineChart_ExpensesData?.week,
+            salesData: dashboardLineChart_SalesData?.week,
+            date: dashboardLineChart_Date?.week,
           });
           break;
       }
@@ -262,10 +263,12 @@ const ChartJs = ({ chartType, viewBy }) => {
         callbacks: {
           title: function (context) {
             let title = context[0].label || "";
-            if (viewBy === "Daily") {
+            if (viewBy === "Day") {
               return format(new Date(title), "MMM d");
-            } else if (viewBy === "Monthly") {
+            } else if (viewBy === "Month") {
               return format(new Date(title), "MMM");
+            } else if (viewBy === "Week") {
+              return `Week ${title}`;
             } else {
               return format(new Date(title), "yyyy");
             }
@@ -329,6 +332,9 @@ const ChartJs = ({ chartType, viewBy }) => {
               //   return format(date, "MMM yyyy").split(" ");
               // }
               return format(date, "MMM");
+            }
+            if (viewBy === "Week") {
+              return item
             }
           },
         },

@@ -10,11 +10,13 @@ import {
   getDatesBetween,
   getIndexIfSameDate,
   getMonthsBetween,
+  getWeeksBetween,
 } from "../utils/Helpers";
+
+import { differenceInWeeks, startOfWeek } from "date-fns";
 
 import reducer from "./reducer";
 import axios from "axios";
-
 
 import {
   CLEAR_ALERT,
@@ -33,6 +35,7 @@ import {
 } from "./actions";
 import {
   differenceInCalendarDays,
+  differenceInCalendarWeeks,
   differenceInCalendarYears,
   differenceInMonths,
   isEqual,
@@ -74,6 +77,7 @@ export const initialState = {
   dashboardDoughnutChart_SalesData: {},
   dashboardDoughnutChart_ExpensesData: {},
   monthsDuration: 0,
+  weeksDuration: 0,
 
   //statements
   statementTable_ExpensesData: [],
@@ -90,7 +94,7 @@ export const initialState = {
   defaultDemoText: "",
   callbackBtnText: "",
   closeBtnText: "",
-  callbackDemo: ""
+  callbackDemo: "",
 };
 
 const AppContext = React.createContext();
@@ -122,18 +126,27 @@ const AppProvider = ({ children }) => {
     }
   );
 
-  const showDemoMessage = ({callback,defaultText, callbackBtnText, closeBtnText}) => {
-    dispatch({type: SHOW_DEMO_MESSAGE,
-    payload: {
-        defaultDemoText: defaultText ?? "This is only a demo version. Please sign in to use the full features.",
-       callbackDemo: callback ?? undefined,
-       callbackBtnText: callbackBtnText ?? "", 
-       closeBtnText: closeBtnText ?? "Got it"
-    }})
-  }
+  const showDemoMessage = ({
+    callback,
+    defaultText,
+    callbackBtnText,
+    closeBtnText,
+  }) => {
+    dispatch({
+      type: SHOW_DEMO_MESSAGE,
+      payload: {
+        defaultDemoText:
+          defaultText ??
+          "This is only a demo version. Please sign in to use the full features.",
+        callbackDemo: callback ?? undefined,
+        callbackBtnText: callbackBtnText ?? "",
+        closeBtnText: closeBtnText ?? "Got it",
+      },
+    });
+  };
   const closeDemoMessage = () => {
     dispatch({ type: CLOSE_DEMO_MESSAGE });
-  }
+  };
   const getAPISuggestions = async (query) => {
     const { data } = await axiosFetch.post("/autocomplete", {
       query,
@@ -147,11 +160,11 @@ const AppProvider = ({ children }) => {
         const { data } = await axiosFetch.post("/search", {
           query,
         });
-        
+
         // const dataWithScoreGT1 = data.result.filter((i) => {
         //   if (i.score >= 1) return i;
         // });
-        console.log(data.result)
+        console.log(data.result);
         dispatch({
           type: HANDLE_SEARCH_TO_REPORT,
           payload: {
@@ -200,28 +213,27 @@ const AppProvider = ({ children }) => {
   };
 
   const manageUpload = async () => {
-     dispatch({ type: LOADING_BEGIN });
-     try {
-       const { data } = await axiosFetch.get("/settings/manage-upload");
+    dispatch({ type: LOADING_BEGIN });
+    try {
+      const { data } = await axiosFetch.get("/settings/manage-upload");
 
-       let result = data.uploads.length > 0 ? data.uploads : [];
-       dispatch({
-         type: MANAGE_UPLOADS_SUCCESS,
-         payload: {
-           uploads: result,
-         },
-       });
-     } catch (error) {
-       dispatch({
-         type: LOADING_ERROR,
-         payload: {
-           msg: "There was an error. Please try again later",
-         },
-       });
-     }
-     clearAlert();
-   };
-
+      let result = data.uploads.length > 0 ? data.uploads : [];
+      dispatch({
+        type: MANAGE_UPLOADS_SUCCESS,
+        payload: {
+          uploads: result,
+        },
+      });
+    } catch (error) {
+      dispatch({
+        type: LOADING_ERROR,
+        payload: {
+          msg: "There was an error. Please try again later",
+        },
+      });
+    }
+    clearAlert();
+  };
 
   const getReport = async () => {
     dispatch({ type: LOADING_BEGIN });
@@ -256,7 +268,7 @@ const AppProvider = ({ children }) => {
       const datesDuration =
         differenceInCalendarDays(new Date(dates[1]), new Date(dates[0])) + 1;
 
-      const today =  new Date()
+      const today = new Date();
       const yesterday = today.setDate(today.getDate() - 1);
 
       // if (datesDuration > 730){
@@ -281,14 +293,17 @@ const AppProvider = ({ children }) => {
       //prepare line chart data
       const monthsDuration =
         differenceInMonths(new Date(dates[1]), new Date(dates[0])) + 1;
-      const yearsDuration =
-        differenceInCalendarYears(new Date(dates[1]), new Date(dates[0])) + 1;
+      const weeksDuration =
+        differenceInWeeks(
+          new Date(dates[1]),
+          startOfWeek(new Date(dates[0]), { weekStartsOn: 0 })
+        ) + 1;
 
       const { data } = await axiosFetch.post("/analytics", {
-        yesterday,dates
+        yesterday,
+        dates,
       });
       console.log(data);
-
 
       let expensesData = isValue(data.expenses[0]);
       let salesData = isValue(data.sales[0]);
@@ -319,51 +334,75 @@ const AppProvider = ({ children }) => {
       );
 
       const datesArr = ((startD, endD) => {
-        let dates = { day: [], month: [], year: [] };
-        if (monthsDuration >= 2)
+        let dates = { day: [], week: [], month: [], year: [] };
+
+        if (monthsDuration >= 2) {
           dates.month.push(...getMonthsBetween(startD, endD));
+        }
+        if (weeksDuration >= 2) {
+          dates.week.push(...getWeeksBetween(startD, endD));
+        }
         dates.day.push(...getDatesBetween(startD, endD));
         return dates;
       })(dates[0], dates[1]);
 
-      let cogs = statementsTable__sales.total ? statementsTable__sales.total*0.15 : 0;
-      const expensesAddedOn =
-        (cogs && cogs / datesDuration) +
-        (salesData?.groupByStats[0].fees &&
-          salesData?.groupByStats[0].fees / datesDuration);
+      console.log(datesArr);
+      let cogs = statementsTable__sales.total
+        ? statementsTable__sales.total * 0.15
+        : 0;
 
-      let final_expensesLineChart_data = { day: [], month: [], year: [] };
-      let final_salesLineChart_data = { day: [], month: [], year: [] };
+      let final_expensesLineChart_data = {
+        day: [],
+        week: [],
+        month: [],
+      };
+      let final_salesLineChart_data = {
+        day: [],
+        week: [],
+        month: [],
+      };
+      function getExpensesAddOn(duration) {
+        return (
+          (cogs && cogs / duration) +
+          (salesData?.groupByStats[0].fees &&
+            salesData?.groupByStats[0].fees / duration)
+        );
+      }
       if (datesArr) {
-        for (const date in datesArr) {
-          
-          if (datesArr[date].length) {
-            datesArr[date].forEach((d) => {
+        for (const dateType in datesArr) {
+          if (datesArr[dateType].length) {
+            const expensesAddedOn =
+              dateType === "week"
+                ? getExpensesAddOn(weeksDuration)
+                : dateType === "month"
+                ? getExpensesAddOn(monthsDuration)
+                : getExpensesAddOn(datesDuration);
+            datesArr[dateType].forEach((d) => {
               let exp_ind = getIndexIfSameDate(
-                expensesData[date][0].labels,
+                expensesData[dateType][0].labels,
                 d,
-                date
+                dateType
               );
               let sales_ind = getIndexIfSameDate(
-                salesData[date][0].labels,
+                salesData[dateType][0].labels,
                 d,
-                date
+                dateType
               );
 
               if (exp_ind > -1) {
-                final_expensesLineChart_data[date].push(
-                  expensesData[date][0].data[exp_ind] + expensesAddedOn
+                final_expensesLineChart_data[dateType].push(
+                  expensesData[dateType][0].data[exp_ind] + expensesAddedOn
                 );
               } else {
-                final_expensesLineChart_data[date].push(expensesAddedOn);
+                final_expensesLineChart_data[dateType].push(expensesAddedOn);
               }
 
               if (sales_ind > -1) {
-                final_salesLineChart_data[date].push(
-                  salesData[date][0].data[sales_ind]
+                final_salesLineChart_data[dateType].push(
+                  salesData[dateType][0].data[sales_ind]
                 );
               } else {
-                final_salesLineChart_data[date].push(0);
+                final_salesLineChart_data[dateType].push(0);
               }
             });
           }
@@ -394,7 +433,7 @@ const AppProvider = ({ children }) => {
 
       //add COGS
       if (cogs || cogs === 0) {
-        cogs = +cogs.toFixed(2)
+        cogs = +cogs.toFixed(2);
         statementsTable__expenses = addNewCategoryToStatementTable(
           statementsTable__expenses,
           "Cost of Goods Sold",
@@ -409,7 +448,6 @@ const AppProvider = ({ children }) => {
         salesData?.groupByStats[0].fees
       );
 
-    
       //Doughnut Chart Data
       const doughnutChartData__sales = getChartDataAndLabels(
         statementsTable__sales?.incomeTableData
@@ -422,40 +460,39 @@ const AppProvider = ({ children }) => {
       const totalProfits =
         statementsTable__sales?.total - statementsTable__expenses?.total;
 
-      
-         dispatch({
-           type: SHOW_STATS_SUCCESS,
-           payload: {
-             dashboardTable_TotalSales: statementsTable__sales.total,
-             dashboardTable_TotalExpenses: statementsTable__expenses.total,
-             dashboardTable_TotalProfits: totalProfits,
+      dispatch({
+        type: SHOW_STATS_SUCCESS,
+        payload: {
+          dashboardTable_TotalSales: statementsTable__sales.total,
+          dashboardTable_TotalExpenses: statementsTable__expenses.total,
+          dashboardTable_TotalProfits: totalProfits,
 
-             dashboardStats_Sales: stats,
+          dashboardStats_Sales: stats,
 
-             dashboardLineChart_Date: datesArr,
-             dashboardLineChart_SalesData: final_salesLineChart_data,
-             dashboardLineChart_ExpensesData: final_expensesLineChart_data,
+          dashboardLineChart_Date: datesArr,
+          dashboardLineChart_SalesData: final_salesLineChart_data,
+          dashboardLineChart_ExpensesData: final_expensesLineChart_data,
 
-             dashboardDoughnutChart_SalesData: doughnutChartData__sales,
-             dashboardDoughnutChart_ExpensesData: doughnutChartData__expenses,
+          dashboardDoughnutChart_SalesData: doughnutChartData__sales,
+          dashboardDoughnutChart_ExpensesData: doughnutChartData__expenses,
 
-             statementTable_SalesData: statementsTable__sales.incomeTableData,
-             statementTable_ExpensesData:
-               statementsTable__expenses.incomeTableData,
+          statementTable_SalesData: statementsTable__sales.incomeTableData,
+          statementTable_ExpensesData:
+            statementsTable__expenses.incomeTableData,
 
-             cogs: cogs,
-             monthsDuration: monthsDuration,
-           },
-         });
-       
+          cogs: cogs,
+          monthsDuration: monthsDuration,
+          weeksDuration: weeksDuration
+        },
+      });
     } catch (error) {
-      let msg = error.response.data
+      let msg = error.response.data;
       console.log(error.response.data);
-      
+
       dispatch({
         type: LOADING_ERROR,
         payload: {
-          msg: `${msg? msg : "There was an error. Try again later"}`,
+          msg: `${msg ? msg : "There was an error. Try again later"}`,
         },
       });
     }
@@ -476,7 +513,7 @@ const AppProvider = ({ children }) => {
         handleSearchResults,
         showDemoMessage,
         closeDemoMessage,
-        manageUpload
+        manageUpload,
       }}
     >
       {children}

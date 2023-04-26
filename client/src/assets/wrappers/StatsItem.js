@@ -56,9 +56,11 @@ const Wrapper = styled.div`
         }
       `}
   }
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: 1250px) {
     align-items: center;
-   
+    .stats-content-container {
+      height: 100%;
+    }
   }
   @media screen and (min-width: 1500px) {
     .icon-container {

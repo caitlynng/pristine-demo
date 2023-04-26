@@ -13,12 +13,18 @@ import {
   getWeek,
   getMonth,
   subDays,
+  startOfWeek,
+  differenceInWeeks,
+  startOfYear,
 } from "date-fns";
 import { zonedTimeToUtc } from "date-fns-tz";
 
 export const getIndexIfSameDate = (obj, date, type) => {
   if (type === "month") {
     return obj.findIndex((i) => isEqual(i, getMonth(date) + 1));
+  }
+  if (type === "week") {
+    return obj.findIndex((i) => i === date);
   }
   // const formatedDate = format(date, "yyyy-MM-dd");
   const dateToUTC = zonedTimeToUtc(date, "UTC").toISOString();
@@ -30,6 +36,23 @@ export const getDatesBetween = (startDate, endDate) => {
     end: new Date(endDate),
   });
 };
+export const getWeeksBetween = (startDate, endDate) => {
+  const startYear = startOfYear(new Date(startDate));
+  const weeks = eachWeekOfInterval(
+    {
+      start: new Date(startDate),
+      end: new Date(endDate),
+    },
+    { weekStartsOn: 0 }
+  );
+  const weeksList = weeks.map((week) => {
+    const start = startOfWeek(week, { weekStartsOn: 0 }); // Assuming Sunday instead of Thursday (in ISOweek case) is the first day of the week
+    const weekIndex = differenceInWeeks(start, startYear) + 1; // Add 1 to start with week 1
+    return weekIndex;
+  });
+  return weeksList;
+};
+
 export const getMonthsBetween = (startDate, endDate) => {
   return eachMonthOfInterval({
     start: new Date(startDate),

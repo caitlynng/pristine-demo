@@ -6,27 +6,27 @@ import ChartJs from "./Chart.js";
 import { useFullscreen } from "../context/fullscreenContext.js";
 import FormRowDropDown from "./FormRowDropDown.js";
 const MainChart = () => {
-  const { noData, monthsDuration, yearsDuration, screenSize } = useAppContext();
+  const { noData, monthsDuration, weeksDuration, screenSize } = useAppContext();
 
   const viewByOptions = () => {
     let options = ["Day"];
     if (monthsDuration >= 2) options.push("Month");
 
-    if (yearsDuration >= 2) options.push("Year");
+    if (weeksDuration >= 2) options.push("Week");
     return options;
   };
   const [chartType, setChartType] = useState("line");
   const [viewBy, setViewBy] = useState("");
 
   useEffect(() => {
-    if (yearsDuration >= 2) {
-      setViewBy("Year");
+    if (weeksDuration >= 4) {
+      setViewBy("Week");
     } else if (monthsDuration >= 5) {
       setViewBy("Month");
     } else {
       setViewBy("Day");
     }
-  }, [yearsDuration, monthsDuration]);
+  }, [weeksDuration, monthsDuration]);
 
   const { fullscreenRef, enterFullscreen, exitFullscreen, fullscreenActive } =
     useFullscreen();
@@ -50,6 +50,7 @@ const MainChart = () => {
           inputType="radio"
           onClickHandle={viewByHandle}
           id="viewBy"
+          defaultChecked={viewBy}
         />
 
         <FormRowDropDown
@@ -59,6 +60,7 @@ const MainChart = () => {
           inputType="radio"
           onClickHandle={chartTypeHandle}
           id="chartType"
+          defaultChecked={chartType}
         />
 
         {screenSize <= 450 ? null : fullscreenActive && screenSize >= 450 ? (

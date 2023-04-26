@@ -31,19 +31,19 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 app.use(express.static(path.resolve(__dirname, './client/build')))
 
 
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 50, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
-  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
-  message: 'Too many request from this IP adress, please try again after 15 minutes.'
-});
+// const limiter = rateLimit({
+//   windowMs: 15 * 60 * 1000, // 15 minutes
+//   max: 50, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+//   standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+//   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+//   message: 'Too many request from this IP adress, please try again after 15 minutes.'
+// });
 
 app.use(express.json({ limit: "16mb" }));
 app.use(helmet());
 app.use(xss());
 app.use(mongoSanitize());
-app.use(limiter); // Apply the rate limiting middleware to all requests
+// app.use(limiter); // Apply the rate limiting middleware to all requests
 
 app.use("/api/v1/demo", demoRouter);
 

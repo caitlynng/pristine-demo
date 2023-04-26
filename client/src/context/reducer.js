@@ -155,7 +155,7 @@ const reducer = (state, action) => {
           action.payload.dashboardDoughnutChart_ExpensesData,
         cogs: action.payload.cogs,
         monthsDuration: action.payload.monthsDuration,
-        yearsDuration: action.payload.yearsDuration,
+        weeksDuration: action.payload.weeksDuration,
       };
     case HANDLE_DATE_CHANGE:
       return {

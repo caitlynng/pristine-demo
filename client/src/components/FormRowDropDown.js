@@ -11,11 +11,15 @@ const FormRowDropDown = ({
   inputType,
   onClickHandle,
   id,
+  defaultChecked
 }) => {
   const [isActive, setIsActive] = useState(false);
 
-  const [selectedItem, setSelectedItem] = useState(list[0]);
+  const [selectedItem, setSelectedItem] = useState("");
 
+  if (selectedItem !== defaultChecked){
+    setSelectedItem(defaultChecked)
+  }
   const handleSelect = (e) => {
     const val = e.target.textContent
     setSelectedItem(val);
@@ -47,7 +51,7 @@ const FormRowDropDown = ({
                   type={inputType}
                   value={itemValue}
                   name={name}
-                  checked={selectedItem === itemValue}
+                  checked={selectedItem.toLowerCase() === itemValue.toLowerCase()}
                   onChange={() => {}}
                 />
                 <label htmlFor={`${itemValue}`} onMouseDown={handleSelect}>{itemValue}</label>
