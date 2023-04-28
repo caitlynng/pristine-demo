@@ -262,11 +262,13 @@ const SharedLayout = () => {
 
       setStepIndex(index + (action === ACTIONS.PREV ? -1 : 1));
     } else if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status)) {
-      showDemoMessage({
-        defaultText:
-          "Great job completing the tour! If you need a refresher, simply click the chat icon at the bottom right. We're always here to help. Thanks for choosing our platform!",
-        closeBtnText: "Got it",
-      });
+      if (status === 'finished'){
+        showDemoMessage({
+          defaultText:
+            "Great job completing the tour! If you need a refresher, simply click the chat icon at the bottom right. We're always here to help. Thanks for choosing our platform!",
+          closeBtnText: "Got it",
+        });
+      }
       setRun(false);
     }
   };
