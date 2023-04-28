@@ -8,13 +8,14 @@ const PopUp = () => {
     callbackBtnText,
     closeBtnText,
     callbackDemo,
+    demoContent
   } = useAppContext();
 
   return (
     <div className="popup">
       <div className="popup_inner">
-        <p>{defaultDemoText}</p>
-        <div className="flex align-center justify-center">
+        {demoContent ? demoContent : <p>{defaultDemoText}</p> }
+        <div className="flex align-center justify-center popup-btn-container">
           {callbackBtnText && (
             <Button
               onSetActive={() => callbackDemo()}

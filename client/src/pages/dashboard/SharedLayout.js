@@ -9,6 +9,7 @@ import {
   InputForm,
 } from "../../components";
 import logo from "../../assets/images/logo.svg";
+import header from "../../assets/images/header.svg";
 import { BiMessageDots, BiX } from "react-icons/bi";
 import { useWindowDimensions } from "../../utils/Helpers";
 import { useState, useRef, useEffect } from "react";
@@ -45,36 +46,63 @@ const SharedLayout = () => {
 
   const steps = [
     {
-      content: "Click Upload",
+      content: (
+        <div>
+          <p>
+            To get insights of how your business has been doing, it's important
+            to first upload all of your reports.
+          </p>
+          <p>Please click "Next" to continue."</p>
+        </div>
+      ),
       target: BigSideNavRef.current?.uploads,
       placement: "right",
       disableBeacon: true,
     },
     {
-      content: "Now you're in Uploads",
+      content:
+        "You can then choose the file type when you're ready to upload your files.",
       target: ".uploads-joyride",
     },
     {
-      content: "Select file type",
+      content:
+        "It's helpful to take a look at the file requirements before uploading! You can click on the info icon anytime for more instructions.",
       target: "#fileType",
       placement: "right",
     },
     {
-      content: "Click Dashboard",
+      content: (
+        <div>
+          <p>
+            Once your files are uploaded, you can navigate to Dashboard to gain
+            insights of your business performance.
+          </p>
+          <p>Please click "Next" to continue."</p>
+        </div>
+      ),
       target: BigSideNavRef.current?.dashboard,
       placement: "right",
       disableBeacon: true,
     },
     {
-      content: "Now you're in Dashboard",
+      content:
+        "Dashboard provides reliable results and aims to aid you in tracking and monitoring the performance of your business strategies.",
       target: ".dashboard-joyride",
       placement: "top-end",
       spotlightPadding: 0,
     },
     {
-      content: "date range picker",
+      content:
+        "These metrics can provide valuable insights into customer behavior and help you make data-driven decisions to improve your bottom line.",
+      target: ".statscontainer-joyride",
+      placement: "bottom",
+    },
+    {
+      content:
+        "You can choose the time period that works for you to check out the business activities",
       target: ".daterangpicker-joyride",
       placement: "top",
+      disableOverlay: true,
     },
     // {
     //   content: "compare to",
@@ -82,110 +110,136 @@ const SharedLayout = () => {
     //   placement: "top",
     // },
     {
-      content: "mainchart",
+      content:
+        "This main chart can be a useful tool for tracking your business profits and expenses and makes it easier to see trends and identify areas where you can cut costs or increase revenue!",
       target: ".mainchart-joyride",
       placement: "right",
     },
     {
-      content: "chart",
+      content:
+        "If you want to see just the Revenues or Expenses data, simply click on the legend located at the bottom of the chart.",
       target: ".main-chart-container",
       placement: "right",
     },
     {
-      content: "view by",
+      content:
+        "You can also check out the data by selecting different time frames.",
       target: "#viewBy",
       placement: "top",
+      disableOverlay: true,
     },
     {
-      content: "chart type",
+      content:
+        "Switching between a Line or Bar chart can make it easier for you to compare data. Simply choose the type of chart that works best for you.",
       target: "#chartType",
       placement: "top",
+      disableOverlay: true,
     },
     {
-      content: "side chart",
+      content:
+        "This side chart makes it simple to compare the breakdown of Total sales and Total expenses, and see how they contribute to the total.",
       target: ".sidechart-joyride",
       placement: "left",
     },
     {
-      content: "side chart",
+      content:
+        "To customize your view of the doughnut chart, you can click on either the Total sales or Total expenses button to choose which data sets to display.",
       target: ".contentpill-container",
       placement: "left",
+      disableOverlay: true,
     },
+    // {
+    //   content: "doughnut-chart-container",
+    //   target: ".doughnut-chart-container",
+    //   placement: "left",
+    // },
     {
-      content: "doughnut-chart-container",
-      target: ".doughnut-chart-container",
-      placement: "left",
-    },
-    {
-      content: "multicolorbar",
+      content:
+        "The ratio section is a key metric in evaluating the financial health of a business. It shows how efficiently your business is operating, and whether your revenue streams are generating enough profits to cover your expenses.",
       target: ".multicolorbar-joyride",
       placement: "left",
+      disableOverlay: true,
     },
     {
-      content: "statscontainer-joyride",
-      target: ".statscontainer-joyride",
-      placement: "bottom",
-    },
-    {
-      content: "Click Statements",
+      content: (
+        <div>
+          <p>
+            The "Statements" tab gives you access to more detailed information
+            about the breakdown of your sales and expenses.
+          </p>
+          <p>Please click "Next" to continue."</p>
+        </div>
+      ),
       target: BigSideNavRef.current?.statements,
       placement: "right",
       disableBeacon: true,
     },
     {
-      content: "statements-joyride",
+      content:
+        "This table provides a snapshot of your business financial performance over a specific period of time. It can also be used to identify tax-deductible expenses, which can help you to minimize your tax liability.",
       target: ".statements-joyride",
       placement: "bottom",
     },
     {
-      content: "Click Reports",
+      content: (
+        <div>
+          <p>
+            The Reports section provides a centralized location for you to
+            easily keep track of all your transaction records.
+          </p>
+          <p>Please click "Next" to continue."</p>
+        </div>
+      ),
       target: BigSideNavRef.current?.reports,
       placement: "right",
       disableBeacon: true,
     },
     {
-      content: "reports-joyride",
+      content:
+        "With just one click of a button, you can easily search, filter, adjust headers, and download all of your report data.",
       target: ".reports-joyride",
       placement: "top-end",
     },
     {
-      content: "search",
+      content:
+        "You also have the option to search for transactions by various criteria, such as the customer's name, email, shipping address, tracking number, or transaction ID",
       target: ".search-form",
       placement: "right",
+      disableOverlay: true,
     },
-    {
-      content: "Click Settings",
-      target: BigSideNavRef.current?.settings,
-      placement: "right",
-      disableBeacon: true,
-    },
-    {
-      content: "profiles",
-      target: ".profiles-joyride",
-      placement: "right-start",
-    },
-    {
-      content: "profiles",
-      target: ".manageUploads-joyride",
-      placement: "right-start",
-    },
+    // {
+    //   content: "Click Settings",
+    //   target: BigSideNavRef.current?.settings,
+    //   placement: "right",
+    //   disableBeacon: true,
+    // },
+    // {
+    //   content: "profiles",
+    //   target: ".profiles-joyride",
+    //   placement: "right-start",
+    // },
+    // {
+    //   content: "profiles",
+    //   target: ".manageUploads-joyride",
+    //   placement: "right-start",
+    // },
   ];
   const handleClickStart = () => {
     closeDemoMessage();
-    setShowContactUs(false)
-    setShowRegister(false)
+    setShowContactUs(false);
+    setShowRegister(false);
     setRun(true);
   };
   const handleRegister = () => {
     closeDemoMessage();
-    setShowContactUs(false)
+    setShowContactUs(false);
     setRun(false);
-    setShowRegister(true)
+    setShowRegister(true);
   };
   const handleContactUs = () => {
     closeDemoMessage();
-    setShowContactUs(true)
-    setShowRegister(false)
+    setShowContactUs(true);
+    setShowRegister(false);
     setRun(false);
   };
 
@@ -197,16 +251,21 @@ const SharedLayout = () => {
         navigate("/demo/uploads");
       } else if (index === 3) {
         navigate("/demo");
-      } else if (index === 15) {
+      } else if (index === 14) {
         navigate("/demo/statements");
-      } else if (index === 17) {
+      } else if (index === 16) {
         navigate("/demo/reports");
-      } else if (index === 20) {
+      } else if (index === 19) {
         navigate("/demo/settings");
       }
 
       setStepIndex(index + (action === ACTIONS.PREV ? -1 : 1));
     } else if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status)) {
+      showDemoMessage({
+        defaultText:
+          "Great job completing the tour! If you need a refresher, simply click the chat icon at the bottom right. We're always here to help. Thanks for choosing our platform!",
+        closeBtnText: "Got it",
+      });
       setRun(false);
     }
   };
@@ -215,14 +274,30 @@ const SharedLayout = () => {
     if (width) handleScreenResize(width);
   }, [width]);
 
+  const welcomeMessage = () => {
+    return (
+      <div>
+        <div className="welcome-header">
+          <SVG src={header} alt="popup-header"></SVG>
+        </div>
+        <div className="welcome-content">
+          <p>Welcome to Pristine! </p>
+          <p>
+            Take our quick tour to learn about all the features and how to use
+            them.
+          </p>
+        </div>
+      </div>
+    );
+  };
   useEffect(() => {
     //callback,defaultText, callbackBtnText, closeBtnText
     if (width && width > 1000) {
       showDemoMessage({
         callback: handleClickStart,
-        defaultText: "Let's start a tour",
         callbackBtnText: "Let's get started",
         closeBtnText: "skip",
+        demoContent: welcomeMessage(),
       });
     } else {
       showDemoMessage({ defaultText: "Demo test" });
@@ -300,7 +375,11 @@ const SharedLayout = () => {
               classList="support-btn"
               onSetActive={handleRegister}
             />
-            <Button title="Something else" classList="support-btn" onSetActive={handleContactUs}/>
+            <Button
+              title="Something else"
+              classList="support-btn"
+              onSetActive={handleContactUs}
+            />
           </div>
         </div>
       </div>

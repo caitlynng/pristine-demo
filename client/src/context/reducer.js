@@ -53,7 +53,8 @@ const reducer = (state, action) => {
         defaultDemoText: action.payload.defaultDemoText,
        callbackDemo: action.payload.callbackDemo,
        callbackBtnText: action.payload.callbackBtnText, 
-       closeBtnText: action.payload.closeBtnText
+       closeBtnText: action.payload.closeBtnText,
+       demoContent: action.payload.demoContent
       };
     case CLOSE_DEMO_MESSAGE:
       return {

@@ -91,10 +91,11 @@ export const initialState = {
   uploads: [],
 
   //demo popup
-  defaultDemoText: "",
+  defaultDemoText: "This is only a demo version. Please sign in to use the full features.",
   callbackBtnText: "",
   closeBtnText: "",
   callbackDemo: "",
+  demoContent: ""
 };
 
 const AppContext = React.createContext();
@@ -131,16 +132,17 @@ const AppProvider = ({ children }) => {
     defaultText,
     callbackBtnText,
     closeBtnText,
+    demoContent
   }) => {
     dispatch({
       type: SHOW_DEMO_MESSAGE,
       payload: {
         defaultDemoText:
-          defaultText ??
-          "This is only a demo version. Please sign in to use the full features.",
+          defaultText ,
         callbackDemo: callback ?? undefined,
         callbackBtnText: callbackBtnText ?? "",
         closeBtnText: closeBtnText ?? "Got it",
+        demoContent: demoContent
       },
     });
   };

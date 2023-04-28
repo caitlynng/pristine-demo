@@ -49,7 +49,7 @@ const Wrapper = styled.button`
   }
   &.save-btn {
     background-color: white;
-    background-color: var(--grey-600);
+    background-color: var(--blue-700);
     margin-left: 10px;
     display: inline-flex;
     align-items: center;

@@ -11,6 +11,19 @@ const Wrapper = styled.section`
     min-height: 100vh;
   }
 
+  .welcome-header {
+    & svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .welcome-content {
+    margin-top: -1em;
+    background-color: white;
+    padding: 2em;
+    font-size: 17px;
+    line-height: 1.7;
+  }
   @media (min-width: 400px) {
     .dashboard-container.toggle-sidebar {
       /*push the page content to the right when open the side navigation */
@@ -152,7 +165,7 @@ const Wrapper = styled.section`
         margin: 0.5em 1em 0 0;
         font-size: 2em;
         cursor: pointer;
-        color: var(--primary)
+        color: var(--primary);
       }
     }
   }
