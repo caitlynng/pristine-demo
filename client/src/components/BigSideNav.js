@@ -29,6 +29,5 @@ const BigSidebar =  forwardRef((props, ref) => {
       </span>
     </Wrapper>
   );
-});
-
+})
 export default BigSidebar;

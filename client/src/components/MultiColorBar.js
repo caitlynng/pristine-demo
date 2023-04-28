@@ -1,5 +1,6 @@
 import Wrapper from "../assets/wrappers/MultiColorBar.js";
 import { useAppContext } from "../context/appContext.js";
+import {MdOutlineInfo} from 'react-icons/md'
 
 const MultiColorBar = ({ category, profitPercentage }) => {
   const { dashboardTable_TotalSales, dashboardTable_TotalExpenses } =
@@ -138,7 +139,7 @@ const MultiColorBar = ({ category, profitPercentage }) => {
       <div className="flex align-center tooltip-gap">
         <h6>Ratio</h6>
         <div className="tooltip">
-          ?{" "}
+          <MdOutlineInfo className="fill-primary"/>
           <span className="tooltiptext right">
             Ratio shows the percentage of total profits or costs compared to total sales.
           </span>

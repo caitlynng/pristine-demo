@@ -3,9 +3,9 @@ import { useAppContext } from "../context/appContext";
 import { Wrapper, DropDownButton } from "../assets/wrappers/IncomeTable.js";
 import { currencyFormatter } from "../utils/Helpers";
 import InputField from "./InputField";
-import DatePicker from "./DatePicker";
 import Button from "./Button";
-import { MdKeyboardArrowRight } from "react-icons/md";
+import { MdKeyboardArrowRight, MdOutlineInfo } from "react-icons/md";
+import { FaInfo } from "react-icons/fa";
 import Loading from "./Loading";
 
 const IncomeTable = () => {
@@ -14,11 +14,10 @@ const IncomeTable = () => {
     dashboardTable_TotalSales,
     statementTable_ExpensesData,
     dashboardTable_TotalExpenses,
-    handleDataSave,
     cogs,
     dashboardTable_TotalProfits,
     isLoading,
-    showDemoMessage
+    showDemoMessage,
   } = useAppContext();
   const [expanded, setExpanded] = useState({
     expandedRows: [],
@@ -31,7 +30,6 @@ const IncomeTable = () => {
   const [selection, showSelection] = useState(false);
   const [disabled, setDisabled] = useState(true);
 
-  //https://stackoverflow.com/questions/58818727/react-usestate-not-setting-initial-value
   useEffect(() => {
     setCOGS(cogs);
   }, [cogs]);
@@ -48,8 +46,7 @@ const IncomeTable = () => {
         break;
       case "overwrite":
       case "add on":
-        // handleDataSave({ select: key, cost: COGS });
-        showDemoMessage()
+        showDemoMessage();
         setCOGS(cogs);
         showSelection(!selection);
         break;
@@ -128,18 +125,15 @@ const IncomeTable = () => {
         setExpanded({ expandedRows: [...newExpandedRows] });
         isExpandedAll(newExpandedRows, category);
       } else {
-        //or expand item if not currently expanded
         setExpanded({
           expandedRows: [...expanded.expandedRows, ...newExpandedRows],
         });
         isExpandedAll(newExpandedRows, category);
       }
     };
-
     const getRows = (item, lastItem) => {
       let rows = [];
       const subRows = item.subRows || [];
-
       const firstRow = (
         <>
           <div className="col-1 col" onClick={() => handleExpand(item)}>
@@ -165,6 +159,18 @@ const IncomeTable = () => {
                     value={COGS}
                     type="number"
                   />
+                  <div className="tooltip upload-requirement">
+                    <FaInfo className="fill-primary" />
+                    <div className="tooltiptext right">
+                      <div>
+                        <b>Direct Material Cost</b> refers to the amount of
+                        money your bussiness spends on the production of goods
+                        or services. <br></br> 
+                        <div>Please select the desired time
+                        frame before updating your cost.</div>
+                      </div>
+                    </div>
+                  </div>
                 </form>
                 <div className="statements__btn-container">
                   <Button
@@ -214,8 +220,6 @@ const IncomeTable = () => {
       </>
     );
   };
-
-  //https://codesandbox.io/s/react-expandable-table-rows-uzzqz?from-embed=&file=/src/mytable.js
   return (
     <Wrapper className="item-box">
       {isLoading && <Loading center />}
@@ -244,7 +248,9 @@ const IncomeTable = () => {
               .format(dashboardTable_TotalExpenses)
               .replace(/\.00$/, "")}
           </span>
-          <span className="col-2 bold-text border no-border-right">Total Profits: </span>
+          <span className="col-2 bold-text border no-border-right">
+            Total Profits:{" "}
+          </span>
           <span className="col-3 bold-text border highlight no-border-left">
             {currencyFormatter
               .format(dashboardTable_TotalProfits)

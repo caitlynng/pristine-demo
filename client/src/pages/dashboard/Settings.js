@@ -23,14 +23,14 @@ const Settings = () => {
     {
       type: "password",
       name: "password",
-      labelText: "password",
+      labelText: "password*",
       required: false,
       validate: true,
     },
     {
       type: "password",
       name: "passwordRetype",
-      labelText: "re-type password",
+      labelText: "re-enter password*",
       required: false,
       validate: true,
     },

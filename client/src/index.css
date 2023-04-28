@@ -353,16 +353,25 @@ div[role="dialog"] {
 
 .popup_inner {
   position: absolute;
+  width: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   margin: auto;
   text-align: center;
   border-radius: var(--borderRadius);
 }
+.popup_inner .demo-text {
+  background-color: white;
+  margin-bottom: 0;
+  padding: 2em 1em 0.5em 1em;
+}
 .popup_inner p {
-  width: 90%;
   font-size: 1em;
   font-weight: 600;
   margin-bottom: 1em;
 }
+
 .popup-btn-container {
   background-color: white;
   padding-bottom: 2em;
@@ -437,36 +446,46 @@ div[role="dialog"] {
   margin:0.5em;
   border-radius: var(--boxBorder);
 }
+.font-16 {
+  font-size: 16px;
+}
+.fill-primary {
+  fill: var(--primary);
+  font-size: 1.5em;
+}
 
 /* Tooltip container */
 .tooltip {
   position: relative;
-  display: inline-block;
-  /* border-bottom: 1px dotted black; */
-  /* If you want dots under the hoverable text */
+  display: flex;
+  align-items: center;
 }
 
 /* Tooltip text */
 .tooltip .tooltiptext {
-  display: grid;
-  place-items: center;
   visibility: hidden;
-  font-size: 12px;
-  background-color: var(--grey-600);
-  color: #fff;
-  text-align: center;
+  font-size: 14px;
+  color: var(--blue-700);
+  background-color: white;
+  text-align: left;
   padding: 5px 10px;
   border-radius: 6px;
-
+  box-shadow: var(--shadow-dark);
+  
   /* Position the tooltip text - see examples below! */
   position: absolute;
   z-index: 100;
 }
-
+.tooltip .tooltiptext .title {
+  color: red;
+}
+.tooltip .tooltiptext p{
+  font-size: 14px;
+}
 /* tooltip position */
 .tooltip .tooltiptext.right {
-  top: -25px;
-  left: 110%;
+  top: -50px;
+  left: 130%;
 }
 .tooltip .tooltiptext.left {
   top: -5px;
@@ -491,6 +510,10 @@ div[role="dialog"] {
 }
 .tooltip.hide .tooltiptext {
   visibility: hidden;
+}
+
+.max-width {
+  padding: 0 1em;
 }
 
 @media screen and (min-width: 450px) {
@@ -526,7 +549,8 @@ div[role="dialog"] {
   }
   .popup_inner {
     width: 40%;
-    top: 17%;
-    left: 32%;
+  }
+  .tooltip .tooltiptext {
+    min-width: 20em;
   }
 }

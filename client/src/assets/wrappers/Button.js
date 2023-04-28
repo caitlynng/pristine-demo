@@ -6,12 +6,12 @@ const Wrapper = styled.button`
     border: transparent;
     padding: 0.375em 1.5em;
     text-transform: capitalize;
-    /* display: inline-block; */
-    border-radius: 0.25em;
     margin: 0 10px;
     height: 100%;
     letter-spacing: 1px;
-    height: 3em;
+    height: 2.5em;
+    font-size: 1.2em;
+    border-radius: 10px;
   }
   &.btn-danger {
     background: var(--red-light);
@@ -48,14 +48,12 @@ const Wrapper = styled.button`
     }
   }
   &.save-btn {
-    background-color: white;
     background-color: var(--blue-700);
     margin-left: 10px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     color: white;
-    border-radius: 10px;
     &:hover {
       background-color: var(--grey-700);
       box-shadow: var(--shadow-dark);
@@ -64,6 +62,7 @@ const Wrapper = styled.button`
     &.small {
       height: 80%;
       width: 40%;
+      font-size: 0.9em;
     }
   }
   &.dropdown-btn {
@@ -112,14 +111,12 @@ const Wrapper = styled.button`
 
   &.plain-btn {
     cursor: pointer;
-    font-size: 1em;
     color: var(--primary);
     font-weight: 600;
     background-color: transparent;
     padding: 0;
   }
   &.contact-btn {
-    font-size: 17px;
     background-color: black;
     color: white;
     font-weight: 600;
@@ -148,7 +145,6 @@ const Wrapper = styled.button`
     color: var(--primary);
     text-align: left;
     padding: 7px 16px;
-    border-radius: 16px;
     background-color: #fff;
     border: solid 1px #e1e1e1;
     vertical-align: middle;

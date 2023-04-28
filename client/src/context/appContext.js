@@ -438,7 +438,7 @@ const AppProvider = ({ children }) => {
         cogs = +cogs.toFixed(2);
         statementsTable__expenses = addNewCategoryToStatementTable(
           statementsTable__expenses,
-          "Cost of Goods Sold",
+          "Direct Material Cost",
           "Estimated Cost",
           cogs
         );

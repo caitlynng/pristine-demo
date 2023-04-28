@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { useAppContext } from "../../context/appContext";
 import { IoCloudUploadOutline } from "react-icons/io5";
+import {MdOutlineInfo} from 'react-icons/md'
 
 import Wrapper from "../../assets/wrappers/Uploads";
 // import Loading from "../../components/Loading";
@@ -46,6 +47,14 @@ const Uploads = () => {
             );
           })}
         </select>
+        <div className="tooltip upload-requirement">
+          <MdOutlineInfo className="fill-primary"/>
+          <div className="tooltiptext right">
+            <p className="title">*Requirements:</p>
+            <p>- The uploaded files should not exceed 10MB in size, and you can upload up to 5 files at once</p>
+            <p>- Make sure to include all report header fields in your files.</p>
+          </div>
+        </div>
       </div>
       {type === "Shipping reports" && (
         <div className="type-selection-container">

@@ -47,7 +47,7 @@ const SharedLayout = () => {
   const steps = [
     {
       content: (
-        <div>
+        <div className="font-16">
           <p>
             To get insights of how your business has been doing, it's important
             to first upload all of your reports.
@@ -67,12 +67,13 @@ const SharedLayout = () => {
     {
       content:
         "It's helpful to take a look at the file requirements before uploading! You can click on the info icon anytime for more instructions.",
-      target: "#fileType",
+      target: ".upload-requirement",
       placement: "right",
+      disableOverlay: true,
     },
     {
       content: (
-        <div>
+        <div className="font-16">
           <p>
             Once your files are uploaded, you can navigate to Dashboard to gain
             insights of your business performance.
@@ -99,7 +100,7 @@ const SharedLayout = () => {
     },
     {
       content:
-        "You can choose the time period that works for you to check out the business activities",
+        "You can choose the time period that works for you to check out the business activities.",
       target: ".daterangpicker-joyride",
       placement: "top",
       disableOverlay: true,
@@ -162,7 +163,7 @@ const SharedLayout = () => {
     },
     {
       content: (
-        <div>
+        <div className="font-16">
           <p>
             The "Statements" tab gives you access to more detailed information
             about the breakdown of your sales and expenses.
@@ -182,7 +183,7 @@ const SharedLayout = () => {
     },
     {
       content: (
-        <div>
+        <div className="font-16">
           <p>
             The Reports section provides a centralized location for you to
             easily keep track of all your transaction records.
@@ -248,15 +249,15 @@ const SharedLayout = () => {
 
     if ([EVENTS.STEP_AFTER, EVENTS.TARGET_NOT_FOUND].includes(type)) {
       if (index === 0) {
-        navigate("/demo/uploads");
+        navigate("/uploads");
       } else if (index === 3) {
-        navigate("/demo");
+        navigate("/");
       } else if (index === 14) {
-        navigate("/demo/statements");
+        navigate("/statements");
       } else if (index === 16) {
-        navigate("/demo/reports");
+        navigate("/reports");
       } else if (index === 19) {
-        navigate("/demo/settings");
+        navigate("/settings");
       }
 
       setStepIndex(index + (action === ACTIONS.PREV ? -1 : 1));
@@ -274,7 +275,9 @@ const SharedLayout = () => {
     if (width) handleScreenResize(width);
   }, [width]);
 
-  const welcomeMessage = () => {
+  const welcomeMessage = (width) => {
+    const bigScreenMsg = "Come and join us for a quick tour to explore all the exciting features and learn how to make the most out of our app!"
+    const smScreenMsg = "We've got you covered with our comprehensive desktop tour to help you discover and explore all of our features. We encourage you to take advantage of this opportunity!"
     return (
       <div>
         <div className="welcome-header">
@@ -283,24 +286,22 @@ const SharedLayout = () => {
         <div className="welcome-content">
           <p>Welcome to Pristine! </p>
           <p>
-            Take our quick tour to learn about all the features and how to use
-            them.
+          {width > 1000 ? bigScreenMsg : smScreenMsg}
           </p>
         </div>
       </div>
     );
   };
   useEffect(() => {
-    //callback,defaultText, callbackBtnText, closeBtnText
     if (width && width > 1000) {
       showDemoMessage({
         callback: handleClickStart,
         callbackBtnText: "Let's get started",
         closeBtnText: "skip",
-        demoContent: welcomeMessage(),
+        demoContent: welcomeMessage(width),
       });
     } else {
-      showDemoMessage({ defaultText: "Demo test" });
+      showDemoMessage({ demoContent: welcomeMessage(width) });
     }
   }, [width]);
 

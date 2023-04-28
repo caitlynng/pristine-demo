@@ -12,35 +12,35 @@ const NavLinks = forwardRef((props, ref) => {
 
   const links = [
     {
-      id: 'routeA',
+      id: '1',
       text: "dashboard",
-      path: "/demo",
+      path: "/",
       icon: <BsFillGridFill />,
       // ref: dashboardBtnRef,
     },
     {
-      id: 'routeB',
+      id: '2',
       text: "statements",
       path: "statements",
       icon: <FaWpforms />,
       // ref: statementsBtnRef,
     },
     {
-      id: 'routeC',
+      id: '3',
       text: "reports",
       path: "reports",
       icon: <MdQueryStats />,
       // ref: reportsBtnRef,
     },
     {
-      id: 'routeD',
+      id: '4',
       text: "uploads",
       path: "uploads",
       icon: <FiUploadCloud />,
       // ref: uploadsBtnRef,
     },
     {
-      id: 'routeE',
+      id: '5',
       text: "settings",
       path: "settings",
       icon: <MdSettings />,

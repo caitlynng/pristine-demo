@@ -21,7 +21,7 @@ const FormRowDropDown = ({
     setSelectedItem(defaultChecked)
   }
   const handleSelect = (e) => {
-    const val = e.target.textContent
+    const val = e.currentTarget.textContent
     setSelectedItem(val);
     onClickHandle(val)
   };
@@ -45,7 +45,7 @@ const FormRowDropDown = ({
         <ul value={value} className="form-dropdown-content">
           {list.map((itemValue, ind) => {
             return (
-              <li key={itemValue}>
+              <li key={itemValue} onMouseDown={handleSelect}>
                 <input
                   id={itemValue}
                   type={inputType}
@@ -54,7 +54,7 @@ const FormRowDropDown = ({
                   checked={selectedItem.toLowerCase() === itemValue.toLowerCase()}
                   onChange={() => {}}
                 />
-                <label htmlFor={`${itemValue}`} onMouseDown={handleSelect}>{itemValue}</label>
+                <label htmlFor={`${itemValue}`} >{itemValue}</label>
               </li>
             );
           })}

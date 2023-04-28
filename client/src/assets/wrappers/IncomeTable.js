@@ -19,6 +19,10 @@ export const Wrapper = styled.div`
 
   .statement-table * {
     padding: 5px 0;
+    & .tooltiptext {
+      padding: 1em;
+      font-style: normal;
+    }
   }
   .sub-header {
     font-size: 15px;
@@ -162,7 +166,7 @@ export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     flex-wrap: nowrap;
-    max-height: 3em;
+    max-height: 4em;
     & > * {
       padding: 0.375em 1.5em;
     }
@@ -174,6 +178,7 @@ export const Wrapper = styled.div`
   }
   @media screen and (min-width: 1000px) {
     padding: 3em;
+    overflow: hidden;
     .user-selection-container {
       display: flex;
       justify-content: space-between;
