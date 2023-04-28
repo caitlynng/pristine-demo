@@ -259,7 +259,6 @@ const SharedLayout = () => {
       } else if (index === 19) {
         navigate("/settings");
       }
-
       setStepIndex(index + (action === ACTIONS.PREV ? -1 : 1));
     } else if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status)) {
       if (status === 'finished'){
