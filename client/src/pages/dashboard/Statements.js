@@ -15,7 +15,6 @@ const Statements = () => {
       <div className="page-header analytics__page-header">
         <h4 className="page-title">Statements</h4>
         <div className="date-picker-container">
-          <DatePicker />
         </div>
       </div>
       <IncomeTable />

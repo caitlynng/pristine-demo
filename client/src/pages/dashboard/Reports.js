@@ -1,6 +1,5 @@
 import { Loading, ReportTable, Button } from "../../components";
 import Wrapper from "../../assets/wrappers/Reports";
-import { DatePicker } from "../../components";
 import { useEffect, useState } from "react";
 import {BiArrowBack} from 'react-icons/bi'
 import { useAppContext } from "../../context/appContext";
@@ -146,7 +145,6 @@ const Reports = () => {
       <div className="page-header analytics__page-header">
         <h4 className="page-title">Filter</h4>
         <div className="date-picker-container">
-          <DatePicker />
         </div>
       </div>
       {isBack && (

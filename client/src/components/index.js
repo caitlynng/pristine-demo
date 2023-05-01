@@ -6,7 +6,6 @@ import TopNav from './TopNav'
 import SmallSideNav from './SmallSideNav'
 import FilterFormContainer from './FilterFormContainer'
 import ReportTable from './ReportTable'
-import DatePicker from './DatePicker'
 import StatsContainer from './StatsContainer'
 import Loading from './Loading'
 import MainChart from './MainChart'
@@ -27,7 +26,6 @@ export {
   SmallSideNav,
   FilterFormContainer,
   ReportTable,
-  DatePicker,
   StatsContainer,
   Loading,
   MainChart,
