@@ -1,6 +1,6 @@
 import { IncomeTable, DatePicker } from "../../components";
 import Wrapper from "../../assets/wrappers/Statements.js";
-import { useState, useEffect } from "react";
+import {useEffect } from "react";
 import { useAppContext } from "../../context/appContext";
 
 const Statements = () => {
@@ -15,6 +15,7 @@ const Statements = () => {
       <div className="page-header">
         <h2 className="page-title">Statements</h2>
         <div className="date-picker-container">
+          <DatePicker />
         </div>
       </div>
       <IncomeTable />

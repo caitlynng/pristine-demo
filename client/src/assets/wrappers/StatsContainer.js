@@ -31,6 +31,7 @@ const Wrapper = styled.div`
       bottom: 0;
       background: transparent;
       z-index: 20;
+      border: none;
       svg {
         font-size: calc(18px + 0.3vw);
         color: var(--grey-600);

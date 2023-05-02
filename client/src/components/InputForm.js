@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAppContext } from "../context/appContext";
 import FormRow from "./FormRow";
 import Button from "./Button";
@@ -7,6 +7,8 @@ import { isEmailValid, isPWValid, isRequired, isRetypePWValid, isNameValid } fro
 
 const InputForm = ({ formRows, handleSubmit, btnTitle, isDefault, isDefaultHandle }) => {
 
+  const { showDemoMessage } = useAppContext()
+  
   const [value, setValue] = useState({
     name: {
       value: isDefault?  "Demo User": "",
@@ -103,7 +105,8 @@ const InputForm = ({ formRows, handleSubmit, btnTitle, isDefault, isDefaultHandl
         <Button
           classList="save-btn float-right-btn"
           type="submit"
-          title={btnTitle}
+            title={btnTitle}
+            onSetActive={showDemoMessage}
         />
        </div>
       </form>

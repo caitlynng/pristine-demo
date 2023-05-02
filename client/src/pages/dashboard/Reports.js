@@ -1,4 +1,4 @@
-import { Loading, ReportTable, Button } from "../../components";
+import { Loading, ReportTable, Button, DatePicker } from "../../components";
 import Wrapper from "../../assets/wrappers/Reports";
 import { useEffect, useState } from "react";
 import {BiArrowBack} from 'react-icons/bi'
@@ -145,6 +145,7 @@ const Reports = () => {
       <div className="page-header">
         <h2 className="page-title">Filter</h2>
         <div className="date-picker-container">
+          <DatePicker />
         </div>
       </div>
       {isBack && (

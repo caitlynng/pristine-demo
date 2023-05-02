@@ -35,8 +35,6 @@ import {
 } from "./actions";
 import {
   differenceInCalendarDays,
-  differenceInCalendarWeeks,
-  differenceInCalendarYears,
   differenceInMonths,
   isEqual,
 } from "date-fns";
@@ -91,7 +89,7 @@ export const initialState = {
   uploads: [],
 
   //demo popup
-  defaultDemoText: "This is only a demo version. Please sign in to use the full features.",
+  defaultDemoText: "",
   callbackBtnText: "",
   closeBtnText: "",
   callbackDemo: "",
@@ -137,10 +135,9 @@ const AppProvider = ({ children }) => {
     dispatch({
       type: SHOW_DEMO_MESSAGE,
       payload: {
-        defaultDemoText:
-          defaultText ,
+        defaultDemoText: defaultText ?? "This is only a demo version. Please register for a full version to use all the features.",
         callbackDemo: callback ?? undefined,
-        callbackBtnText: callbackBtnText ?? "",
+        callbackBtnText: callbackBtnText ?? null,
         closeBtnText: closeBtnText ?? "Got it",
         demoContent: demoContent
       },
