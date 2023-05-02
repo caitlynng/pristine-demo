@@ -22,6 +22,7 @@ const DatePicker = () => {
         wrap: false,
       ...allowedDateRange,
       onChange: (selectedDates) => {
+        console.log(selectedDates)
         handleDateChange(selectedDates);
         },
     });

@@ -1,12 +1,9 @@
 import Wrapper from "../assets/wrappers/StatsItem";
-import SVG from "react-inlinesvg";
 
 const StatsItem = ({
   amount,
   title,
   icon,
-  color,
-  bgc,
   isActive,
 }) => {
 

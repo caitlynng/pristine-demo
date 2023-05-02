@@ -163,7 +163,6 @@ async function getShippingCost() {
   return await Shipping.find({});
 }
 
-//https://www.mongodb.com/community/forums/t/putting-the-results-of-2-queries-together-in-the-returned-data/5593/2
 async function getSales(startD, endD) {
   return await TransactionDetail.aggregate([
     {

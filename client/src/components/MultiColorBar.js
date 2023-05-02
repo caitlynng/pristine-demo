@@ -13,7 +13,7 @@ const MultiColorBar = ({ category, profitPercentage }) => {
         ).toFixed(0)
       : 0;
   let categoryControl =
-    category === "Sales"
+    category === "Total Sales"
       ? {
           denominator: profitPercentage,
           name: "Profits",

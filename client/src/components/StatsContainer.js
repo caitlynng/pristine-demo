@@ -1,8 +1,5 @@
-import { useAppContext } from "../context/appContext";
 import StatsItem from "./StatsItem";
-import { useElementSize } from "../utils/Helpers";
-
-import { BsPeopleFill } from "react-icons/bs";
+import { useAppContext } from "../context/appContext";
 import { FaBoxes } from "react-icons/fa";
 import {
   GiBoxUnpacking,
@@ -15,17 +12,10 @@ import {
   IoIosArrowDroprightCircle,
 } from "react-icons/io";
 
-// import AverageIcon from "../assets/images/average-order-icon.svg";
-// import TotalOrderIcon from "../assets/images/total-order-icon.svg";
-// import ReturnCustomerIcon from "../assets/images/return-customer-icon.svg";
-// import MinOrderIcon from "../assets/images/min-order-icon.svg";
-// import MaxOrderIcon from "../assets/images/max-order-icon.svg";
-// import RefundIcon from "../assets/images/refund-icon.svg";
-
 import Wrapper from "../assets/wrappers/StatsContainer";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { useSwiperRef, roundToInt } from "../utils/Helpers.js";
+import { useSwiperRef } from "../utils/Helpers.js";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -36,7 +26,6 @@ import { Pagination, Navigation, Keyboard, Mousewheel } from "swiper";
 const StatsContainer = () => {
   const { dashboardStats_Sales } = useAppContext();
 
-  //https://www.manypixels.co/gallery
   let dashboardStats = [
     {
       id: "avgOrder",
@@ -72,7 +61,7 @@ const StatsContainer = () => {
     },
     {
       id: "none",
-      amount: 10,
+      amount: 0,
       icon: <GiReturnArrow />,
       color: "#e9b949",
       bgc: "#fcefc7",
@@ -88,14 +77,10 @@ const StatsContainer = () => {
         };
       }
     }
-    //https://stackoverflow.com/questions/4689856/how-to-change-value-of-object-which-is-inside-an-array-using-javascript-or-jquer
-  
-
-  //custom swiper navigation buttons
+   
   const [nextEl, nextElRef] = useSwiperRef();
   const [prevEl, prevElRef] = useSwiperRef();
 
-  //https://swiperjs.com/swiper-api#param-initialSlide
   return (
     <Wrapper className="statscontainer-joyride">
       <Swiper
@@ -134,7 +119,6 @@ const StatsContainer = () => {
         <IoIosArrowDroprightCircle />
       </button>
     </Wrapper>
-    //https://github.com/nolimits4web/swiper/issues/3855
   );
 };
 

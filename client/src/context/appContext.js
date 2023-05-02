@@ -195,7 +195,6 @@ const AppProvider = ({ children }) => {
 
   const displayAlert = () => {
     dispatch({ type: DISPLAY_ALERT });
-    // clearAlert(3000);
   };
   const clearAlert = () => {
     setTimeout(() => {
@@ -269,26 +268,6 @@ const AppProvider = ({ children }) => {
 
       const today = new Date();
       const yesterday = today.setDate(today.getDate() - 1);
-
-      // if (datesDuration > 730){
-      //   dispatch({
-      //     type: LOADING_ERROR,
-      //     payload: {
-      //       msg: "Out of range: selected time frame should not be more than two years."
-      //     },
-      //   });
-      //   return
-      // }
-      // if (new Date(dates[1]) > new Date()) {
-      //   dispatch({
-      //     type: LOADING_ERROR,
-      //     payload: {
-      //       msg: "Out of range: selected date cannot be greater than today's date."
-      //     },
-      //   });
-      //   return
-      // }
-
       //prepare line chart data
       const monthsDuration =
         differenceInMonths(new Date(dates[1]), new Date(dates[0])) + 1;
@@ -429,7 +408,6 @@ const AppProvider = ({ children }) => {
           }
         });
       }
-
       //add COGS
       if (cogs || cogs === 0) {
         cogs = +cogs.toFixed(2);
@@ -454,11 +432,9 @@ const AppProvider = ({ children }) => {
       const doughnutChartData__expenses = getChartDataAndLabels(
         statementsTable__expenses?.incomeTableData
       );
-
       //profit
       const totalProfits =
         statementsTable__sales?.total - statementsTable__expenses?.total;
-
       dispatch({
         type: SHOW_STATS_SUCCESS,
         payload: {
