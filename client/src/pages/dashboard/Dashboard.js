@@ -5,6 +5,7 @@ import {
   StatsContainer,
   Loading,
   MainChart,
+  DatePicker,
 } from "../../components";
 import SideChart from "../../components/SideChart";
 import FormRowDropDown from "../../components/FormRowDropDown";
@@ -21,15 +22,15 @@ const Dashboard = () => {
   return (
     <Wrapper className="max-width dashboard-joyride flex flex-column">
       {isLoading && <Loading />}
-      <div className="page-header analytics__page-header">
-        <h4 className="page-title">Dashboard</h4>
+      <div className="page-header">
+        <h2 className="page-title">Dashboard</h2>
       </div>
       <StatsContainer />
       <section className="section-container flex-1">
         <div className="flex align-center justify-end flex-wrap padding-1">
-          <h5 className="margin-auto-r">Sales activities</h5>
+          <h3 className="margin-auto-r">Sales activities</h3>
           <div className="flex flex-nowrap align-center">
-           
+           <DatePicker />
           </div>
         </div>
         <div className="chart-container">

@@ -78,11 +78,6 @@ html {
   --select-border: #777;
   --select-focus: var(--primary-1000);
   --select-arrow: var(--select-border);
-  /* rsuite date picker */
-  --rs-bg-active: var(--grey-600) !important;
-  --rs-btn-primary-bg: var(--grey-600) !important;
-  --rs-input-focus-border: var(--grey-800) !important;
-  --rs-calendar-range-bg: #0eb9c552 !important;
 }
 
 .primary-light {
@@ -198,7 +193,6 @@ select:focus-visible {
   color: var(--dark-brown);
 }
 
-
 /* Loading spinner */
 @keyframes spinner {
   to {
@@ -243,8 +237,6 @@ select:focus-visible {
 
 /* title */
 .logo-container {
-  display: flex;
-  align-items: center;
   height: 4em;
   width: 7em;
 }
@@ -252,7 +244,7 @@ select:focus-visible {
 .logo {
   height: 100%;
   margin-left: 1.8em;
-  margin-right: 1em;
+  margin-right: 1.3em;
 }
 
 .logo-name {
@@ -272,9 +264,6 @@ select:focus-visible {
 }
 
 .no-data {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-style: italic;
   text-align: center;
   min-height: 300px;
@@ -290,6 +279,24 @@ div[role="dialog"] {
   font-weight: 600;
 }
 
+/* date range picker */
+.datepicker-input {
+  border-radius: 1.625em;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid #dadce0;
+  padding: 0.5em;
+  text-align: center;
+  letter-spacing: 1px;
+  min-width: 250px;
+}
+.flatpickr-day.selected {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+.flatpickr-day.today {
+  color: var(--primary) !important;
+}
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
 * {
@@ -443,7 +450,7 @@ div[role="dialog"] {
   box-shadow: 0 3px 9px -8px rgba(0, 0, 0, 0.23);
   border: var(--border);
   background-color: white;
-  margin:0.5em;
+  margin: 0.5em;
   border-radius: var(--boxBorder);
 }
 .font-16 {
@@ -471,7 +478,7 @@ div[role="dialog"] {
   padding: 5px 10px;
   border-radius: 6px;
   box-shadow: var(--shadow-dark);
-  
+
   /* Position the tooltip text - see examples below! */
   position: absolute;
   z-index: 100;
@@ -479,7 +486,7 @@ div[role="dialog"] {
 .tooltip .tooltiptext .title {
   color: red;
 }
-.tooltip .tooltiptext p{
+.tooltip .tooltiptext p {
   font-size: 14px;
 }
 /* tooltip position */
@@ -541,7 +548,7 @@ div[role="dialog"] {
     display: inline-block;
   }
   .logo-container {
-    width: 15em;
+    width: 200px;
     background-color: var(--primary);
     padding-top: 1em;
     padding-bottom: 0.5em;

@@ -167,7 +167,7 @@ const SideChart = () => {
       </div>
       <div className="doughnut-chart-container">
         {noData ? (
-          <div className="no-data">No records to display</div>
+          <div className="no-data flex align-center justify-center">No records to display</div>
         ) : (
           <DoughnutChart
             chartData={deepCopy.data}

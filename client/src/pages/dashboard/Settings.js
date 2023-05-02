@@ -69,8 +69,8 @@ const Settings = () => {
 
   return (
     <Wrapper className="max-width">
-      <div className="page-header analytics__page-header">
-        <h4 className="page-title">Settings</h4>
+      <div className="page-header">
+        <h2 className="page-title">Settings</h2>
       </div>
 
       <div className="btn-container">

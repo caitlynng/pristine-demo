@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import SVG from "react-inlinesvg";
 const Logo = () => {
   return (
-    <Link to="/" className="logo-container">
+    <Link to="/" className="logo-container flex align-center">
       <SVG src={logo} alt='logo-pristine' className='logo' />
       <SVG src={logoName} alt='pristine' className='logo-name' />
     </Link>

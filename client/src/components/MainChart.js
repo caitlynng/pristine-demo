@@ -80,7 +80,7 @@ const MainChart = () => {
       </div>
 
       {noData ? (
-        <div className="no-data">No records to display</div>
+        <div className="no-data flex align-center justify-center">No records to display</div>
       ) : (
         <ChartJs chartType={chartType} viewBy={viewBy} />
       )}

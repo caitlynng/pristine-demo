@@ -137,7 +137,7 @@ const MultiColorBar = ({ category, profitPercentage }) => {
   return (
     <Wrapper className="multicolorbar-joyride">
       <div className="flex align-center tooltip-gap">
-        <h6>Ratio</h6>
+        <h3>Ratio</h3>
         <div className="tooltip">
           <MdOutlineInfo className="fill-primary"/>
           <span className="tooltiptext right">

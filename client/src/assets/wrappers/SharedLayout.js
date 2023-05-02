@@ -24,6 +24,9 @@ const Wrapper = styled.section`
     font-size: 17px;
     line-height: 1.7;
   }
+  .walkthrough-icon { 
+    display: none;
+  }
   @media (min-width: 400px) {
     .dashboard-container.toggle-sidebar {
       /*push the page content to the right when open the side navigation */
@@ -67,6 +70,7 @@ const Wrapper = styled.section`
       content: none;
     }
     .walkthrough-icon {
+      display: block;
       position: fixed;
       bottom: 5%;
       right: 1em;

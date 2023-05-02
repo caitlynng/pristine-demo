@@ -29,7 +29,7 @@ const Uploads = () => {
   return (
     <Wrapper className="max-width uploads-joyride">
       <div className="page-header">
-        <h4 className="page-title uploads-header">Uploads</h4>
+        <h2 className="page-title uploads-header">Uploads</h2>
       </div>
       <div className="type-selection-container">
         <label htmlFor="fileType">Select file type to upload:</label>

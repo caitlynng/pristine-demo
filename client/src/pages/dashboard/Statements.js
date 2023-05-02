@@ -12,8 +12,8 @@ const Statements = () => {
 
   return (
     <Wrapper className="max-width statements-joyride">
-      <div className="page-header analytics__page-header">
-        <h4 className="page-title">Statements</h4>
+      <div className="page-header">
+        <h2 className="page-title">Statements</h2>
         <div className="date-picker-container">
         </div>
       </div>

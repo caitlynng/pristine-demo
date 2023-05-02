@@ -16,6 +16,7 @@ import DoughnutChart from './DoughnutChart'
 import InputForm from './InputForm'
 import ManageUpload from './ManageUpload'
 import PopUp from './Popup'
+import DatePicker from './DatePicker'
 
 export {
   Logo,
@@ -35,5 +36,6 @@ export {
   DoughnutChart,
   InputForm,
   ManageUpload,
-  PopUp
+  PopUp,
+  DatePicker
 };
