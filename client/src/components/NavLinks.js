@@ -52,7 +52,7 @@ const NavLinks = forwardRef((props, ref) => {
   useImperativeHandle(ref, () => childRefs.current);
 
   return (
-    <div className="nav-links">
+    <div className="nav-links flex flex-column">
       {links.map((link) => {
         const { text, path, id, icon } = link;
 
@@ -63,7 +63,9 @@ const NavLinks = forwardRef((props, ref) => {
             key={id}
             onClick={props.toggleSidebar}
             className={({ isActive }) =>
-              isActive ? `nav-link active ${id}` : `nav-link ${id}`
+              isActive
+                ? `nav-link flex align-center active ${id}`
+                : `nav-link flex align-center ${id}`
             }
             ref={(ref) => (childRefs.current[text] = ref)}
           >

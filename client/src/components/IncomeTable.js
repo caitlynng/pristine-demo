@@ -72,7 +72,7 @@ const IncomeTable = () => {
     return (
       <div className="user-selection-container alert alert-info">
         <p>Do you want to overwrite or add on top of the current cost?</p>
-        <div className="select-btn-container">
+        <div className=" flex justify-center">
           <Button
             title="overwrite"
             onSetActive={handleSave}
@@ -152,7 +152,7 @@ const IncomeTable = () => {
             <div className="sub-col col-italic col-1">{i.type}</div>
             {lastItem && category === "expenses" ? (
               <>
-                <form className="col-italic col-2 statements__form">
+                <form className="col-italic col-2 statements__form flex align-center">
                   <span>$</span>
                   <InputField
                     onChange={handleCOGS}
@@ -172,7 +172,7 @@ const IncomeTable = () => {
                     </div>
                   </div>
                 </form>
-                <div className="statements__btn-container">
+                <div className="statements__btn-container flex align-center">
                   <Button
                     classList="save-btn small col-3"
                     onSetActive={handleSave}

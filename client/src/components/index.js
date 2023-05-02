@@ -4,7 +4,6 @@ import FormRow from './FormRow'
 import Logo from './Logo'
 import TopNav from './TopNav'
 import SmallSideNav from './SmallSideNav'
-import FilterFormContainer from './FilterFormContainer'
 import ReportTable from './ReportTable'
 import StatsContainer from './StatsContainer'
 import Loading from './Loading'
@@ -25,7 +24,6 @@ export {
   TopNav,
   BigSideNav,
   SmallSideNav,
-  FilterFormContainer,
   ReportTable,
   StatsContainer,
   Loading,

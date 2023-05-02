@@ -10,8 +10,6 @@ const Wrapper = styled.div`
   background-color: white;
 
   .form-label-container {
-    display: flex;
-    align-items: center;
     padding: 4px 0px;
   }
   .form-label {

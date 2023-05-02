@@ -73,11 +73,6 @@ export const Wrapper = styled.div`
   .col-italic {
     font-style: italic;
   }
-  .statement-date-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  }
   .table-title {
     text-align: center;
     padding: 2em 0;
@@ -127,16 +122,8 @@ export const Wrapper = styled.div`
     border-radius: 1.5em;
     margin: 2em 0;
   }
-  .statistic-btn-container {
-    display: flex;
-    height: 2em;
-    margin: 1em 0;
-  }
 
   .statements__form {
-    display: flex;
-    display: flex;
-    align-items: center;
     padding: 0 0  0 10px;
     & input {
       width: 80%;
@@ -147,15 +134,6 @@ export const Wrapper = styled.div`
       padding-left: 5px;
     }
   }
-  /* .statements__check-mark {
-    color: lightgreen;
-    font-size: 17px;
-    font-weight: 700;
-    font-style: italic;
-    padding-left: 10px;
-    display: flex;
-    align-items: center;
-  } */
   .user-selection-container {
     grid-column: 1/5;
     width: 95%;
@@ -163,8 +141,6 @@ export const Wrapper = styled.div`
     padding: 1em;
   }
   .select-btn-container {
-    display: flex;
-    justify-content: center;
     flex-wrap: nowrap;
     max-height: 4em;
     & > * {
@@ -172,8 +148,6 @@ export const Wrapper = styled.div`
     }
   }
   .statements__btn-container {
-    display: flex;
-    align-items: center;
     padding: 0
   }
   @media screen and (min-width: 1000px) {

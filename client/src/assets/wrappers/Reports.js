@@ -14,10 +14,6 @@ const Wrapper = styled.div`
     padding: 2% 10% 2% 2%;
     border-bottom: 2px solid black;
   }
-  .detail-panel-row {
-    display: flex;
-    flex-wrap: wrap;
-  }
   .detail-panel-title {
     width: 25%;
     font-weight: 600;
@@ -26,10 +22,7 @@ const Wrapper = styled.div`
     padding-left: 2em;
     border-left: 1px solid var(--grey-300);
   }
-  .onbackbtn-container {
-    display: flex;
-    align-items: center;
-  }
+  
   @media screen and (min-width: 600px) {
     .detail-panel-container {
       &:hover {

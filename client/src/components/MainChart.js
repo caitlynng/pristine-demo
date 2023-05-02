@@ -42,7 +42,7 @@ const MainChart = () => {
 
   return (
     <Wrapper ref={fullscreenRef} className="item-box mainchart-joyride">
-      <div className="header-wrapper">
+      <div className="header-wrapper flex align-center">
         <FormRowDropDown
           labelText="View By"
           name="viewBy"

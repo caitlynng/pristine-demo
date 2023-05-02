@@ -7,9 +7,6 @@ const Wrapper = styled.main`
     display: block;
     margin-bottom: 2em;
   }
-  display: flex;
-  align-items: center;
-  justify-content: center;
   h3 {
     margin-bottom: 0.5em;
   }

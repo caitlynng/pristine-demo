@@ -28,45 +28,8 @@ export const Wrapper = styled.div`
       color: var(--grey-600);
     }
   }
-  .full-screen {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* background: 'white'; */
-  }
-
-  .viewby-container {
-    display: flex;
-    align-items: center;
-    padding: 0 0.8em;
-    cursor: pointer;
-    gap: 3px;
-
-    border-radius: 25px;
-    background-color: var(--grey-10);
-    &:hover {
-      box-shadow: var(--shadow-dark);
-    }
-    & svg {
-      font-size: 18px;
-    }
-  }
-  .no-border {
-    text-align: center;
-    border: none;
-    background: transparent;
-    /* text-indent: 1px;
-    text-overflow: ""; */
-    appearance: none;
-    padding: 0;
-  }
   .header-wrapper {
-    display: flex;
     justify-content: flex-end;
-    align-items: center;
     padding: 1em;
     gap: 10px;
     & .title-wrapper {

@@ -30,12 +30,8 @@ const Wrapper = styled.aside`
     }
     .nav-links {
       padding-top: calc(100vh / 6);
-      display: flex;
-      flex-direction: column;
     }
     .nav-link {
-      display: flex;
-      align-items: center;
       position: relative;
       padding-left: 1.8em;
       min-height: 50px;

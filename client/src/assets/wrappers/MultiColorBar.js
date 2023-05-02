@@ -5,8 +5,6 @@ padding: 1em;
   .multicolorbar-container {
     margin: 5% 0;
     width: 100%;
-    display: flex;
-    flex-direction: column;
   }
   .values .value {
     float: left;

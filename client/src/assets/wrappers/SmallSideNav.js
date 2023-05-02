@@ -42,12 +42,8 @@ const Wrapper = styled.aside`
   }
   .nav-links {
     padding-top: 2em;
-    display: flex;
-    flex-direction: column;
   }
   .nav-link {
-    display: flex;
-    align-items: center;
     color: var(--grey-400);
     padding: 1em 0;
     text-transform: capitalize;

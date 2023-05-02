@@ -145,7 +145,7 @@ const MultiColorBar = ({ category, profitPercentage }) => {
           </span>
         </div>
       </div>
-      <div className="multicolorbar-container">
+      <div className="multicolorbar-container flex flex-column">
         <div className="bars tooltip">{bars == "" ? "" : bars}</div>
         <div className="scale">{calibrations == "" ? "" : calibrations}</div>
         <div className="values">{values == "" ? "" : values}</div>

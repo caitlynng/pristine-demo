@@ -1,7 +1,6 @@
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { useState, useRef } from "react";
 import Wrapper from "../assets/wrappers/FormRowDropDown";
-import { useClickOutsideComponent } from "../utils/Helpers";
 
 const FormRowDropDown = ({
   labelText,
@@ -29,7 +28,7 @@ const FormRowDropDown = ({
   return (
     <Wrapper isFilter={isActive} id={id}>
       <div
-        className="form-label-container"
+        className="form-label-container flex align-center"
         onClick={() => setIsActive(!isActive)}
         onBlur={() => setIsActive(false)}
         tabIndex="0"

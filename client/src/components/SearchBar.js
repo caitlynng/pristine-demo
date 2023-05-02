@@ -57,7 +57,7 @@ const updateValue = (newValue) => {
   return (
     //https://stackoverflow.com/questions/44142273/react-ul-with-onblur-event-is-preventing-onclick-from-firing-on-li
     <Wrapper className={visible && "active"} onBlur={() => setIsVisible(false)} tabIndex='0'> 
-      <form className="search-form "
+      <form className="search-form flex align-center"
           onSubmit={handleSearch}>
         <InputField
           type="search"

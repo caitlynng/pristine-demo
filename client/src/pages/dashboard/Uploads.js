@@ -31,7 +31,7 @@ const Uploads = () => {
       <div className="page-header">
         <h2 className="page-title uploads-header">Uploads</h2>
       </div>
-      <div className="type-selection-container">
+      <div className="type-selection-container flex align-center flex-wrap">
         <label htmlFor="fileType">Select file type to upload:</label>
         <select
           id="fileType"

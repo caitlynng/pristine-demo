@@ -42,7 +42,7 @@ const Reports = () => {
           category.includes(i)
         ) {
           return (
-            <div className="detail-panel-row" key={`${i}-${ind}`}>
+            <div className="detail-panel-row flex flex-wrap" key={`${i}-${ind}`}>
               <div className="detail-panel-title">
                 {addSpaceBeforeEachCapitalLetter(i)}
               </div>
@@ -148,7 +148,7 @@ const Reports = () => {
         </div>
       </div>
       {isBack && (
-        <div className="onbackbtn-container">
+        <div className="onbackbtn-container flex align-center">
           <BiArrowBack />
           <Button
             title="Back"
