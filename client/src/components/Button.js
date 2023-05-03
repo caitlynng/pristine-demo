@@ -1,4 +1,4 @@
-import Wrapper from '../assets/wrappers/Button.js'
+import Wrapper from "../assets/wrappers/Button.js";
 import SVG from "react-inlinesvg";
 
 const Button = ({
@@ -8,10 +8,11 @@ const Button = ({
   disabled,
   icon,
   type,
-  id
+  id,
 }) => {
   return (
     <Wrapper
+      data-testid="button-component"
       className={
         disabled
           ? `btn ${classList} disabled ${id ?? ""}`
@@ -26,4 +27,4 @@ const Button = ({
   );
 };
 
-export default Button
+export default Button;

@@ -5,13 +5,12 @@ import Wrapper from "../assets/wrappers/BigSideNav";
 import Logo from './Logo'
 import { MdArrowRight, MdArrowLeft } from "react-icons/md";
 
-const BigSidebar =  forwardRef((props, ref) => {
+const BigSideNav =  forwardRef((props, ref) => {
   const { showSidebar, toggleSidebar, screenSize } = useAppContext();
+  const grandChildRef = useRef(null);
 
-    const grandChildRef = useRef(null);
+  useImperativeHandle(ref, () => grandChildRef.current);
 
-   useImperativeHandle(ref, () => grandChildRef.current);
-  
   return (
     <Wrapper className="primary-dark">
       <div
@@ -24,10 +23,10 @@ const BigSidebar =  forwardRef((props, ref) => {
           <NavLinks toggleSidebar={screenSize < 1000 && toggleSidebar} ref={grandChildRef}/>
         </div>
       </div>
-      <span className="toggle-icon" onClick={toggleSidebar}>
+      <span data-testid="toggle-icon" className="toggle-icon" onClick={toggleSidebar}>
         {showSidebar ? <MdArrowLeft /> : <MdArrowRight />}
       </span>
     </Wrapper>
   );
 })
-export default BigSidebar;
+export default BigSideNav;
