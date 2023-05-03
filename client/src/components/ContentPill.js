@@ -8,6 +8,7 @@ const ContentPill = ({ onClickHandle, category, total, active }) => {
         onClick={onClickHandle}
         className="btn-container"
         category={category}
+        data-testid="content-pill"
       >
         <div className="content-container">
           <div className="subtitle">{category}</div>
