@@ -1,5 +1,5 @@
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Wrapper from "../assets/wrappers/FormRowDropDown";
 
 const FormRowDropDown = ({
@@ -16,7 +16,7 @@ const FormRowDropDown = ({
 
   const [selectedItem, setSelectedItem] = useState("");
 
-  if (selectedItem !== defaultChecked){
+  if (defaultChecked && selectedItem !== defaultChecked){
     setSelectedItem(defaultChecked)
   }
   const handleSelect = (e) => {

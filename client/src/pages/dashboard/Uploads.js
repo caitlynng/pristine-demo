@@ -1,30 +1,27 @@
 import { useState, useRef } from "react";
 import { useAppContext } from "../../context/appContext";
 import { IoCloudUploadOutline } from "react-icons/io5";
-import {MdOutlineInfo} from 'react-icons/md'
+import { MdOutlineInfo } from "react-icons/md";
 
 import Wrapper from "../../assets/wrappers/Uploads";
-// import Loading from "../../components/Loading";
-// import Alert from "../../components/Alert";
+import { Button } from "../../components";
 import FormRowDropDown from "../../components/FormRowDropDown";
-import { Button, Loading, Alert } from '../../components'
 
 const Uploads = () => {
-  const { fileUpload, showDemoMessage, fileType, shippingCompany } =
-    useAppContext();
+  const { showDemoMessage, fileType, shippingCompany } = useAppContext();
 
   const [type, setType] = useState(fileType[0]);
   const [shipping, setShipping] = useState(shippingCompany[0]);
   const [dragActive, setDragActive] = useState(false);
   const inputRef = useRef(null);
 
-  const handleTypeChange = (e) => {
-    setType(e.target.value);
+  const handleTypeChange = (val) => {
+    setType(val);
+    
   };
-  const handleShippingChange = (e) => {
-    setShipping(e.target.value);
+  const handleShippingChange = (val) => {
+    setShipping(val);
   };
-
 
   return (
     <Wrapper className="max-width uploads-joyride">
@@ -32,47 +29,38 @@ const Uploads = () => {
         <h2 className="page-title uploads-header">Uploads</h2>
       </div>
       <div className="type-selection-container flex align-center flex-wrap">
-        <label htmlFor="fileType">Select file type to upload:</label>
-        <select
-          id="fileType"
-          value={type}
-          className="dropdown-select"
-          onChange={handleTypeChange}
-        >
-          {fileType.map((item, ind) => {
-            return (
-              <option key={ind} value={item}>
-                {item}
-              </option>
-            );
-          })}
-        </select>
+        <FormRowDropDown
+          name="fileType"
+          labelText="select uploading file type"
+          list={fileType}
+          onClickHandle={handleTypeChange}
+          inputType="radio"
+          defaultChecked={type}
+        />
         <div className="tooltip upload-requirement">
-          <MdOutlineInfo className="fill-primary"/>
+          <MdOutlineInfo className="fill-primary" />
           <div className="tooltiptext right">
             <p className="title">*Requirements:</p>
-            <p>- The uploaded files should not exceed 10MB in size, and you can upload up to 5 files at once</p>
-            <p>- Make sure to include all report header fields in your files.</p>
+            <p>
+              - The uploaded files should not exceed 10MB in size, and you can
+              upload up to 5 files at once
+            </p>
+            <p>
+              - Make sure to include all report header fields in your files.
+            </p>
           </div>
         </div>
       </div>
       {type === "Shipping reports" && (
         <div className="type-selection-container">
-          <label htmlFor="fileType">Select shipping company:</label>
-          <select
-            id="fileType"
-            value={shipping}
-            className="dropdown-select"
-            onChange={handleShippingChange}
-          >
-            {shippingCompany.map((item, ind) => {
-              return (
-                <option key={ind} value={item}>
-                  {item}
-                </option>
-              );
-            })}
-          </select>
+          <FormRowDropDown
+          name="fileType"
+          labelText="shipping company"
+          list={shippingCompany}
+          onClickHandle={handleShippingChange}
+          inputType="radio"
+          defaultChecked={shipping}
+        />
         </div>
       )}
       <div>

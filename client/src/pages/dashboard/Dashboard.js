@@ -8,7 +8,6 @@ import {
   DatePicker,
 } from "../../components";
 import SideChart from "../../components/SideChart";
-import FormRowDropDown from "../../components/FormRowDropDown";
 
 const Dashboard = () => {
   const { handleDateChange, isLoading } = useAppContext();

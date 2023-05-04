@@ -26,20 +26,19 @@ const Wrapper = styled.div`
     align-items: center;
   }
   .form-dropdown-content {
+    position: absolute;
     margin: 10px;
     overflow-y: auto;
     padding: 15px 20px;
-    position: absolute;
+    min-width: 100%;
     cursor: pointer;
+    right: -10px;
     transition: all 0.5s;
     z-index: 20;
-    min-width: 9em;
-    max-height: 15em;
     border-radius: 5px;
     border: var(--border);
     box-shadow: var(--shadow-dark);
     background: white;
-    right: -5px;
     & > li {
       display: flex;
       gap: 10px;
