@@ -49,12 +49,15 @@ export const Wrapper = styled.div`
       color: black;
     }
   }
+  [type="search"] {
+    color: white;
+  }
   input[type="search"]::-webkit-search-cancel-button {
     display: none;
   }
   .clear-search-icon {
-    right: 2.5em;
-    top: 10px;
+    right: 3em;
+    height: 100%;
     position: absolute;
     background: transparent;
     color: var(--grey-500);
@@ -86,6 +89,9 @@ export const Wrapper = styled.div`
       & > li:hover {
         background-color: var(--grey-300);
       }
+    }
+    [type="search"] {
+      color: black;
     }
   }
   @media screen and (min-width: 1000px) {

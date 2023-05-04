@@ -2,7 +2,6 @@ import { useEffect, useState, useCallback } from "react";
 import { FaSearch, FaTimes } from "react-icons/fa";
 import { Wrapper } from "../assets/wrappers/SearchBar.js";
 import Button from "./Button.js";
-import InputField from "./InputField.js";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../context/appContext.js";
 import debounce from 'lodash.debounce';
@@ -59,10 +58,10 @@ const updateValue = (newValue) => {
     <Wrapper className={visible && "active"} onBlur={() => setIsVisible(false)} tabIndex='0'> 
       <form className="search-form flex align-center"
           onSubmit={handleSearch}>
-        <InputField
+        <input
           type="search"
           placeHolder="Search Transactions..."
-          classList="search-input"
+          className="search-input"
           value={search}
           onChange={(e) => updateValue(e.target.value)}
         />
@@ -72,7 +71,7 @@ const updateValue = (newValue) => {
           icon={<FaSearch />}
         />
         {search !== "" && (
-          <span className="clear-search-icon" onClick={(e) => setSearch("")}>
+          <span className="clear-search-icon grid grid-center" onClick={(e) => setSearch("")}>
             <FaTimes />
           </span>
         )}

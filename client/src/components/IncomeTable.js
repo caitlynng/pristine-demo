@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 import { useAppContext } from "../context/appContext";
 import { Wrapper, DropDownButton } from "../assets/wrappers/IncomeTable.js";
 import { currencyFormatter } from "../utils/Helpers";
-import InputField from "./InputField";
 import Button from "./Button";
-import { MdKeyboardArrowRight, MdOutlineInfo } from "react-icons/md";
+import { MdKeyboardArrowRight } from "react-icons/md";
 import { FaInfo } from "react-icons/fa";
 import Loading from "./Loading";
 
@@ -154,11 +153,7 @@ const IncomeTable = () => {
               <>
                 <form className="col-italic col-2 statements__form flex align-center">
                   <span>$</span>
-                  <InputField
-                    onChange={handleCOGS}
-                    value={COGS}
-                    type="number"
-                  />
+                  <input  onChange={handleCOGS} value={COGS} type="number" />
                   <div className="tooltip upload-requirement">
                     <FaInfo className="fill-primary" />
                     <div className="tooltiptext right">
