@@ -1,39 +1,55 @@
 import Wrapper from "../assets/wrappers/FormRow";
 
 const FormRow = ({
-  type,
+  component="input",
   name,
   value,
-  id,
+  labelId = "",
   handleChange,
   labelText,
   errors,
-  classList,
+  classNames = [],
   handleBlur,
+  checked,
+  ...otherProps
 }) => {
+  const inputId = labelId ? `${labelId}-input` : `${name}-input`;
+  const inputClassNames = classNames.concat([`${component}-height`]);
   return (
     <Wrapper>
       <fieldset className="form-row">
-        <label htmlFor={name} className="form-label">
+        <label htmlFor={inputId} className="form-label">
           {labelText || name}
         </label>
-        {type === "textarea" ? (
+        {component === "textarea" ? (
           <textarea
             onBlur={handleBlur}
             value={value}
-            id={id}
+            id={inputId}
             onChange={handleChange}
-            className={classList ? `${classList} form-input textarea-height` : "form-input textarea-height"}
+            className={`form-input ${inputClassNames.join(" ")}`}
           />
-        ) : (
+        )  : component === "checkbox" || component === "radio" ? (
+          <input
+            type={component}
+            name={name}
+            value={value}
+            id={inputId}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={`form-input ${inputClassNames.join(" ")}`}
+            checked={checked}
+            {...otherProps}
+          />
+        ) :(
           <input
             onBlur={handleBlur}
-            type={type}
+            type={component}
             value={value}
             name={name}
-            id={id}
+            id={inputId}
             onChange={handleChange}
-            className={classList ? `${classList} form-input input-height` : "form-input input-height"}
+            className={`form-input ${inputClassNames.join(" ")}`}
           />
         )}
       </fieldset>

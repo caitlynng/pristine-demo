@@ -89,8 +89,8 @@ const InputForm = ({ formRows, handleSubmit, btnTitle, isDefault, isDefaultHandl
         {formRows.map((i, ind) => {
           return (
             <FormRow
-              classList={value[i.name].errors.length > 0 ? "has-error" : ""}
-              type={i.type}
+              classList={value[i.name].errors.length > 0 && ["has-error"]}
+              component={i.type}
               name={i.name}
               labelText={i.labelText}
               value={value[i.name].value}

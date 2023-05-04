@@ -34,7 +34,10 @@ const Wrapper = styled.div`
       box-shadow: 0 0 0 4px var(--error-border);
     }
   }
-  .form-input.input-height {
+  .form-input.input-height,
+  .form-input.text-height,
+  .form-input.email-height,
+  .form-input.password-height {
     height: 40px;
   }
   .form-input.textarea-height {
