@@ -9,6 +9,7 @@ import { fileURLToPath } from "url";
 import helmet from 'helmet'
 import xss from 'xss-clean'
 import mongoSanitize from 'express-mongo-sanitize'
+import compression  from "compression"
 
 import connectDB from "./db/connect.js";
 
@@ -24,16 +25,11 @@ const app = express();
 if (process.env.NODE_ENV !== "production") {
   app.use(morgan("dev"));
 }
-
 const __dirname = dirname(fileURLToPath(import.meta.url))
-
-//only when ready to deploy
-app.use(express.static(path.resolve(__dirname, './client/build')))
-
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 50, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+  max: 50, // Limit each IP to 50 requests per `window` (here, per 15 minutes)
   standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
   message: 'Too many request from this IP adress, please try again after 15 minutes.'
@@ -43,7 +39,9 @@ app.use(express.json({ limit: "16mb" }));
 app.use(helmet());
 app.use(xss());
 app.use(mongoSanitize());
+app.use(compression());
 app.use(limiter); // Apply the rate limiting middleware to all requests
+app.use(express.static(path.resolve(__dirname, './client/build')))
 
 app.use("/api/v1/demo", demoRouter);
 
