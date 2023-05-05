@@ -1,3 +1,14 @@
+import { Outlet, useNavigate } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
+import Joyride, {
+  ACTIONS,
+  CallBackProps,
+  EVENTS,
+  STATUS,
+  Step,
+} from "react-joyride";
+import SVG from "react-inlinesvg";
+
 import Wrapper from "../../assets/wrappers/SharedLayout";
 import {
   TopNav,
@@ -10,21 +21,13 @@ import {
 } from "../../components";
 import header from "../../assets/images/header.svg";
 import { BiMessageDots, BiX } from "react-icons/bi";
-import { useWindowDimensions } from "../../utils/Helpers";
-import { useState, useRef, useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
 import { useAppContext } from "../../context/appContext";
-import Joyride, {
-  ACTIONS,
-  CallBackProps,
-  EVENTS,
-  STATUS,
-  Step,
-} from "react-joyride";
-import SVG from "react-inlinesvg";
-import { registerFields, contactUsFields } from "../../utils/Helpers";
+import { useWindowDimensions } from "../../utils/Helpers";
 import LogoFormHeader from "../../components/LogoFormHeader";
+
+import { registerFields, contactUsFields } from "../../utils/Helpers";
 import { useClickOutsideComponent } from "../../utils/Helpers";
+
 const SharedLayout = () => {
   const {
     showSidebar,
@@ -43,6 +46,7 @@ const SharedLayout = () => {
   const [showSupportWidget, setShowSupportWidget] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
   const [showContactUs, setShowContactUs] = useState(false);
+
   const BigSideNavRef = useRef();
   const SmallSideNavRef = useRef();
   const TopNavRef = useRef();
@@ -50,7 +54,7 @@ const SharedLayout = () => {
 
   useClickOutsideComponent(supportContainerRef, setShowSupportWidget);
 
-  const getTarget = (stepInd, others) => {
+  const getJoyrideStepTarget = (stepInd, others) => {
     if (width > 1000) {
       switch (stepInd) {
         case 0:
@@ -81,7 +85,7 @@ const SharedLayout = () => {
       ),
       disableBeacon: true,
       disableOverlay: true,
-      target: getTarget(0),
+      target: getJoyrideStepTarget(0),
       placement: width < 1000 ? "center" : "right",
     },
     {
@@ -107,7 +111,7 @@ const SharedLayout = () => {
         </div>
       ),
       disableBeacon: true,
-      target: getTarget(3),
+      target: getJoyrideStepTarget(3),
       placement: width < 1000 ? "center" : "right",
       styles: {
         options: {
@@ -190,7 +194,7 @@ const SharedLayout = () => {
         </div>
       ),
       disableBeacon: true,
-      target: getTarget(12),
+      target: getJoyrideStepTarget(12),
       placement: width < 1000 ? "center" : "right",
       styles: {
         options: {
@@ -214,7 +218,7 @@ const SharedLayout = () => {
           <p>Please click "Next" to continue.</p>
         </div>
       ),
-      target: getTarget(14),
+      target: getJoyrideStepTarget(14),
       placement: width < 1000 ? "center" : "right",
       styles: {
         options: {
@@ -232,7 +236,7 @@ const SharedLayout = () => {
     {
       content:
         "You also have the option to search for transactions by various criteria, such as the customer's name, email, shipping address, tracking number, or transaction ID",
-      target: getTarget(17, true),
+      target: getJoyrideStepTarget(17, true),
       placement: "right",
       disableOverlay: true,
     },
@@ -315,11 +319,7 @@ const SharedLayout = () => {
     if (width) handleScreenResize(width);
   }, [width]);
 
-  const welcomeMessage = (width) => {
-    const bigScreenMsg =
-      "Come and join us for a quick tour to explore all the exciting features and learn how to make the most out of our app!";
-    const smScreenMsg =
-      "We've got you covered with our comprehensive desktop tour to help you discover and explore all of our features. We encourage you to take advantage of this opportunity!";
+  const welcomeMessage = () => {
     return (
       <div>
         <div className="welcome-header">
@@ -327,7 +327,7 @@ const SharedLayout = () => {
         </div>
         <div className="welcome-content">
           <p>Welcome to Pristine! </p>
-          <p>{width > 1000 ? bigScreenMsg : smScreenMsg}</p>
+          <p>Come and join us for a quick tour to explore all the exciting features and learn how to make the most out of our app!</p>
         </div>
       </div>
     );
@@ -337,9 +337,9 @@ const SharedLayout = () => {
       callback: handleClickStart,
       callbackBtnText: "start the tour",
       closeBtnText: "explore by myself",
-      demoContent: welcomeMessage(width),
+      demoContent: welcomeMessage(),
     });
-  }, [width]);
+  }, []);
 
   const supportHandle = () => {
     setShowSupportWidget(!showSupportWidget);
