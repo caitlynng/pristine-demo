@@ -366,12 +366,13 @@ div[role="dialog"] {
   transform: translate(-50%, -50%);
   margin: auto;
   text-align: center;
-  border-radius: var(--borderRadius);
+  border-radius: 10px;
+  background-color: white;
 }
 .popup_inner .demo-text {
   background-color: white;
   margin-bottom: 0;
-  padding: 2em 1em 0.5em 1em;
+  padding: 2em 3em 0.5em 3em;
 }
 .popup_inner p {
   font-size: 1.1em;
@@ -382,6 +383,7 @@ div[role="dialog"] {
 .popup-btn-container {
   background-color: white;
   padding-bottom: 2em;
+  border-radius: 10px;
 }
 
 /* reusable classes */
