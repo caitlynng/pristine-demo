@@ -8,7 +8,7 @@ import { Button } from "../../components";
 import FormRowDropDown from "../../components/FormRowDropDown";
 
 const Uploads = () => {
-  const { showDemoMessage, fileType, shippingCompany } = useAppContext();
+  const { showDemoMessage, fileType, shippingCompany, screenSize } = useAppContext();
 
   const [type, setType] = useState(fileType[0]);
   const [shipping, setShipping] = useState(shippingCompany[0]);
@@ -39,7 +39,7 @@ const Uploads = () => {
         />
         <div className="tooltip upload-requirement">
           <MdOutlineInfo className="fill-primary" />
-          <div className="tooltiptext right">
+          <div className={`tooltiptext ${screenSize < 499 ? "bottom" :"right"}`}>
             <p className="title">*Requirements:</p>
             <p>
               - The uploaded files should not exceed 10MB in size, and you can

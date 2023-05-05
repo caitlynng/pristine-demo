@@ -10,7 +10,7 @@ const Wrapper = styled.button`
     height: 100%;
     letter-spacing: 1px;
     height: 2.5em;
-    font-size: 1.2em;
+    font-size: 0.9em;
     border-radius: 10px;
   }
   &.btn-danger {
@@ -121,7 +121,7 @@ const Wrapper = styled.button`
     color: white;
     font-weight: 600;
     &:hover {
-      background: linear-gradient(90deg,#235af4,#a208d9);
+      background: linear-gradient(90deg, #235af4, #a208d9);
       transition: 0.3s all;
     }
   }
@@ -138,7 +138,7 @@ const Wrapper = styled.button`
     color: black;
     letter-spacing: normal;
     &:hover {
-      color: var(--primary)
+      color: var(--primary);
     }
   }
   &.support-btn {
@@ -157,12 +157,20 @@ const Wrapper = styled.button`
     }
   }
   @media screen and (min-width: 499px) {
+    &.btn {
+      font-size: 1em;
+    }
     .icon-btn {
       color: var(--grey-500);
     }
     &:hover .icon-btn,
     &:focus .icon-btn {
       color: var(--grey-700);
+    }
+  }
+  @media screen and (min-width: 499px) {
+    &.btn {
+      font-size: 1.2em;
     }
   }
 `;

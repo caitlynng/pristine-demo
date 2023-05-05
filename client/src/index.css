@@ -254,7 +254,7 @@ select:focus-visible {
 .page-header {
   display: flex;
   align-items: center;
-  justify-content: end;
+  flex-wrap: wrap;
 }
 
 .page-title {
@@ -375,7 +375,7 @@ div[role="dialog"] {
   padding: 2em 3em 0.5em 3em;
 }
 .popup_inner p {
-  font-size: 1.1em;
+  font-size: 0.75em;
   font-weight: 600;
   margin-bottom: 1em;
 }
@@ -383,7 +383,7 @@ div[role="dialog"] {
 .popup-btn-container {
   background-color: white;
   padding-bottom: 2em;
-  border-radius: 10px;
+  border-radius: 4px;
 }
 
 /* reusable classes */
@@ -507,7 +507,7 @@ div[role="dialog"] {
 }
 .tooltip .tooltiptext.bottom {
   top: 100%;
-  margin-left: -35px;
+  top: 30px;
 }
 .tooltip-gap {
   gap: 5px;
@@ -538,6 +538,9 @@ div[role="dialog"] {
   .show-850mw {
     display: inline-block;
   }
+  .popup_inner p {
+    font-size: 0.9em;
+}
 }
 @media screen and (min-width: 1000px) {
   .max-width {
@@ -557,8 +560,11 @@ div[role="dialog"] {
     padding-right: 2em;
   }
   .popup_inner {
-    width: 40%;
+    width: 35%;
   }
+   .popup_inner p {
+    font-size: 1.1em;
+}
   .tooltip .tooltiptext {
     min-width: 20em;
   }

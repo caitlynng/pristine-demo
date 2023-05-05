@@ -371,70 +371,70 @@ const SharedLayout = () => {
           {showAlert && <Alert />}
           <Outlet />
         </div>
-      </main>
-      <div
-        className="walkthrough-icon flex align-center"
-        tabIndex="0"
-        onBlur={supportHandle}
-        onClick={supportHandle}
-      >
-        {showSupportWidget ? <BiX /> : <BiMessageDots />}
-      </div>
-      <div className={`support-container ${showSupportWidget ? "show" : ""}`}>
-        <LogoFormHeader
-          headerText="We'll be happy to assist"
-          headerTitle="PristineDept Tech Support"
-          showLogo={true}
-        />
-        <div className="support-content flex flex-column justify-end">
-          <p>PristineDept Support</p>
-          <div className="flex flex-column">
-            <p>Hello! How can we help?</p>
-            <Button
-              title="An app walkthrough tour"
-              classList="support-btn"
-              onSetActive={handleClickStart}
-              ariaLabel="walkthrough-btn"
-            />
-            <Button
-              title="Register"
-              classList="support-btn"
-              onSetActive={handleRegister}
-              ariaLabel="register"
-            />
-            <Button
-              title="Something else"
-              classList="support-btn"
-              onSetActive={handleContactUs}
-              ariaLabel="contact-us"
-            />
+        <div
+          className="walkthrough-icon flex align-center"
+          tabIndex="0"
+          onBlur={supportHandle}
+          onClick={supportHandle}
+        >
+          {showSupportWidget ? <BiX /> : <BiMessageDots />}
+        </div>
+        <div className={`support-container ${showSupportWidget ? "show" : ""}`}>
+          <LogoFormHeader
+            headerText="We'll be happy to assist"
+            headerTitle="PristineDept Tech Support"
+            showLogo={true}
+          />
+          <div className="support-content flex flex-column justify-end">
+            <p>PristineDept Support</p>
+            <div className="flex flex-column">
+              <p>Hello! How can we help?</p>
+              <Button
+                title="An app walkthrough tour"
+                classList="support-btn"
+                onSetActive={handleClickStart}
+                ariaLabel="walkthrough-btn"
+              />
+              <Button
+                title="Register"
+                classList="support-btn"
+                onSetActive={handleRegister}
+                ariaLabel="register"
+              />
+              <Button
+                title="Something else"
+                classList="support-btn"
+                onSetActive={handleContactUs}
+                ariaLabel="contact-us"
+              />
+            </div>
           </div>
         </div>
-      </div>
-      {showRegister && (
-        <div className="contact-form">
-          <LogoFormHeader showLogo={false} headerTitle="Register" />
-          <InputForm
-            formRows={registerFields}
-            handleSubmit={handleSubmit}
-            btnTitle="register"
-            isDefault={false}
-            isDefaultHandle={() => setShowRegister(false)}
-          />
-        </div>
-      )}
-      {showContactUs && (
-        <div className="contact-form">
-          <LogoFormHeader headerTitle="Contact Us" showLogo={false} />
-          <InputForm
-            formRows={contactUsFields}
-            handleSubmit={handleSubmit}
-            btnTitle="send"
-            isDefault={false}
-            isDefaultHandle={() => setShowContactUs(false)}
-          />
-        </div>
-      )}
+        {showRegister && (
+          <div className="contact-form">
+            <LogoFormHeader showLogo={false} headerTitle="Register" />
+            <InputForm
+              formRows={registerFields}
+              handleSubmit={handleSubmit}
+              btnTitle="register"
+              isDefault={false}
+              isDefaultHandle={() => setShowRegister(false)}
+            />
+          </div>
+        )}
+        {showContactUs && (
+          <div className="contact-form">
+            <LogoFormHeader headerTitle="Contact Us" showLogo={false} />
+            <InputForm
+              formRows={contactUsFields}
+              handleSubmit={handleSubmit}
+              btnTitle="send"
+              isDefault={false}
+              isDefaultHandle={() => setShowContactUs(false)}
+            />
+          </div>
+        )}
+      </main>
     </Wrapper>
   );
 };
