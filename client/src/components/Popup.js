@@ -12,9 +12,9 @@ const PopUp = () => {
   } = useAppContext();
 
   return (
-    <div className="popup">
+    <div className="popup"> 
       <div className="popup_inner">
-        {demoContent ? demoContent : <p className="demo-text">{defaultDemoText}</p> }
+        {demoContent ? demoContent: <p className="demo-text">{defaultDemoText}</p> }
         <div className="flex align-center justify-center popup-btn-container">
           {callbackBtnText && (
             <Button

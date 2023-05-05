@@ -9,7 +9,7 @@ import Logo from "./Logo";
 const TopBar = forwardRef((props, ref) => {
   const [showSearchPanel, setShowSearchPanel] = useState(false);
   const [showLogout, setShowLogout] = useState(false);
-  const { showSidebar, toggleSidebar, showDemoMessage } = useAppContext();
+  const { showSidebar, toggleSidebar, showPopupMessage } = useAppContext();
 
   const grandChildRef = useRef(null);
   useImperativeHandle(ref, () => grandChildRef.current);
@@ -53,7 +53,7 @@ const TopBar = forwardRef((props, ref) => {
           {showLogout && (
             <div className="dropdown nav-btn-height">
               <Button
-                onSetActive={showDemoMessage}
+                onSetActive={showPopupMessage}
                 classList="dropdown-btn"
                 title="log out"
                 ariaLabel="log-out"
@@ -61,7 +61,7 @@ const TopBar = forwardRef((props, ref) => {
               <Button
                 title="settings"
                 classList="dropdown-btn"
-                onSetActive={showDemoMessage}
+                onSetActive={showPopupMessage}
                 ariaLabel="settings"
               />
             </div>

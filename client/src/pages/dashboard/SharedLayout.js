@@ -8,7 +8,6 @@ import {
   Button,
   InputForm,
 } from "../../components";
-import logo from "../../assets/images/logo.svg";
 import header from "../../assets/images/header.svg";
 import { BiMessageDots, BiX } from "react-icons/bi";
 import { useWindowDimensions } from "../../utils/Helpers";
@@ -25,14 +24,14 @@ import Joyride, {
 import SVG from "react-inlinesvg";
 import { registerFields, contactUsFields } from "../../utils/Helpers";
 import LogoFormHeader from "../../components/LogoFormHeader";
-
+import { useClickOutsideComponent } from "../../utils/Helpers";
 const SharedLayout = () => {
   const {
     showSidebar,
     toggleSidebar,
     showAlert,
     demoMessage,
-    showDemoMessage,
+    showPopupMessage,
     closeDemoMessage,
     handleScreenResize,
   } = useAppContext();
@@ -46,8 +45,11 @@ const SharedLayout = () => {
   const [showContactUs, setShowContactUs] = useState(false);
   const BigSideNavRef = useRef();
   const SmallSideNavRef = useRef();
-  const TopNavRef = useRef()
-  
+  const TopNavRef = useRef();
+  const supportContainerRef = useRef();
+
+  useClickOutsideComponent(supportContainerRef, setShowSupportWidget);
+
   const getTarget = (stepInd, others) => {
     if (width > 1000) {
       switch (stepInd) {
@@ -63,7 +65,7 @@ const SharedLayout = () => {
           return ".search-form";
       }
     }
-    if (others) return TopNavRef.current
+    if (others) return TopNavRef.current;
     return SmallSideNavRef.current;
   };
   const steps = [
@@ -238,18 +240,21 @@ const SharedLayout = () => {
   const handleClickStart = () => {
     if (width < 1000) toggleSidebar();
     closeDemoMessage();
+    setShowSupportWidget(false);
     setShowContactUs(false);
     setShowRegister(false);
     setRun(true);
   };
   const handleRegister = () => {
     closeDemoMessage();
+    setShowSupportWidget(false);
     setShowContactUs(false);
     setRun(false);
     setShowRegister(true);
   };
   const handleContactUs = () => {
     closeDemoMessage();
+    setShowSupportWidget(false);
     setShowContactUs(true);
     setShowRegister(false);
     setRun(false);
@@ -268,31 +273,39 @@ const SharedLayout = () => {
         toggleSidebar();
       } else if (index === 3) {
         navigate("/");
-         if (width < 1000) {
-           toggleSidebar();
-         }
+        if (width < 1000) {
+          toggleSidebar();
+        }
       } else if (index === 11 && width < 1000) {
         toggleSidebar();
       } else if (index === 12) {
         navigate("/statements");
-         if (width < 1000) {
-           toggleSidebar();
-         }
-      }else if (index === 13 && width < 1000) {
+        if (width < 1000) {
+          toggleSidebar();
+        }
+      } else if (index === 13 && width < 1000) {
         toggleSidebar();
       } else if (index === 14) {
         navigate("/reports");
-         if (width < 1000) {
-           toggleSidebar();
-         }
-      } 
+        if (width < 1000) {
+          toggleSidebar();
+        }
+      }
       setStepIndex(index + (action === ACTIONS.PREV ? -1 : 1));
     } else if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status)) {
       if (status === "finished") {
-        showDemoMessage({
-          defaultText:
-            "Great job completing the tour! If you need a refresher, simply click the chat icon at the bottom right. We're always here to help. Thanks for choosing our platform!",
-          closeBtnText: "Got it",
+        showPopupMessage({
+          demoContent: (
+            <div className="success-msg">
+              <p> Great job completing the tour!</p>
+              <p>
+                If you need a refresher, simply click the chat icon at the
+                bottom right. We're always here to help!
+              </p>
+              <p>Thank you for choosing our platform!</p>
+            </div>
+          ),
+          closeBtnText: "Ok",
         });
       }
       setRun(false);
@@ -320,7 +333,7 @@ const SharedLayout = () => {
     );
   };
   useEffect(() => {
-    showDemoMessage({
+    showPopupMessage({
       callback: handleClickStart,
       callbackBtnText: "start the tour",
       closeBtnText: "explore by myself",
@@ -328,13 +341,41 @@ const SharedLayout = () => {
     });
   }, [width]);
 
-  const supportHandle = (e) => {
-    e.preventDefault();
+  const supportHandle = () => {
     setShowSupportWidget(!showSupportWidget);
   };
-  const handleSubmit = () => {
-    setShowRegister(false);
+  const handleContactUsSubmit = () => {
+    setShowContactUs(false);
+    showPopupMessage({
+      callbackBtnText: "ok",
+      demoContent: (
+        <div className="success-msg">
+          <p> Welcome on board! </p>
+          <p>Your registration has been successfully completed!</p>
+          <p>
+            Our team will be reaching out to you shortly with more information,
+            so please keep an eye out for our message.
+          </p>
+        </div>
+      ),
+    });
   };
+  const handleRegisterSubmit = () => {
+    setShowRegister(false);
+    showPopupMessage({
+      callbackBtnText: "ok",
+      demoContent: (
+        <div className="text-align-left">
+          <p> Thank you for sending us a message! </p>
+          <p>
+            We appreciate your interest and value your input. Your message has
+            been received and we will respond to it as quickly as possible.
+          </p>
+        </div>
+      ),
+    });
+  };
+
   return (
     <Wrapper>
       <Joyride
@@ -374,12 +415,14 @@ const SharedLayout = () => {
         <div
           className="walkthrough-icon flex align-center"
           tabIndex="0"
-          onBlur={supportHandle}
           onClick={supportHandle}
         >
           {showSupportWidget ? <BiX /> : <BiMessageDots />}
         </div>
-        <div className={`support-container ${showSupportWidget ? "show" : ""}`}>
+        <div
+          className={`support-container ${showSupportWidget ? "show" : ""}`}
+          ref={supportContainerRef}
+        >
           <LogoFormHeader
             headerText="We'll be happy to assist"
             headerTitle="PristineDept Tech Support"
@@ -411,27 +454,31 @@ const SharedLayout = () => {
           </div>
         </div>
         {showRegister && (
-          <div className="contact-form">
-            <LogoFormHeader showLogo={false} headerTitle="Register" />
-            <InputForm
-              formRows={registerFields}
-              handleSubmit={handleSubmit}
-              btnTitle="register"
-              isDefault={false}
-              isDefaultHandle={() => setShowRegister(false)}
-            />
+          <div className="blur">
+            <div className="contact-form">
+              <LogoFormHeader showLogo={false} headerTitle="Register" />
+              <InputForm
+                formRows={registerFields}
+                handleSubmit={handleRegisterSubmit}
+                btnTitle="register"
+                isDefault={false}
+                isDefaultHandle={() => setShowRegister(false)}
+              />
+            </div>
           </div>
         )}
         {showContactUs && (
-          <div className="contact-form">
-            <LogoFormHeader headerTitle="Contact Us" showLogo={false} />
-            <InputForm
-              formRows={contactUsFields}
-              handleSubmit={handleSubmit}
-              btnTitle="send"
-              isDefault={false}
-              isDefaultHandle={() => setShowContactUs(false)}
-            />
+          <div className="blur">
+            <div className="contact-form">
+              <LogoFormHeader headerTitle="Contact Us" showLogo={false} />
+              <InputForm
+                formRows={contactUsFields}
+                handleSubmit={handleContactUsSubmit}
+                btnTitle="send"
+                isDefault={false}
+                isDefaultHandle={() => setShowContactUs(false)}
+              />
+            </div>
           </div>
         )}
       </main>

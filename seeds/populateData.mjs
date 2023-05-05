@@ -11,7 +11,6 @@ import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.resolve(__dirname, "../.env") });
-console.log(process.env.MONGO_URL);
 
 const start = async () => {
   try {
@@ -49,7 +48,6 @@ const readCSV = async (filePath) => {
         return rows.join("\r\n");
       },
       complete: (results) => {
-        // console.log('Complete', results.data.length, 'records.');
         resolve(results.data);
       },
     });

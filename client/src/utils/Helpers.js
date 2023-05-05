@@ -204,7 +204,6 @@ export const useDynamicSVGImport = (name) => {
           await import(`../assets/images/${name}.svg`)
         ).ReactComponent;
       } catch (err) {
-        console.log(err);
       }
     };
     importIcon();
@@ -306,7 +305,6 @@ export const saveDataToSessionStorage = (name, data, options) => {
       if (!item) {
         sessionStorage.setItem(name, JSON.stringify([data]));
       } else {
-        console.log(name);
         item.push(data);
         sessionStorage.setItem(name, JSON.stringify(item));
       }
@@ -401,8 +399,6 @@ export const filteredByType = (arr) => {
 };
 
 export const createRow = (category, total, type, subRowTotal) => {
-  // console.log(type)
-  // console.log(subRowTotal)
   return {
     _id: Math.floor(Math.random() * 200),
     category: category,

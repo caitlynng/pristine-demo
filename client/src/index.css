@@ -97,7 +97,6 @@ body {
 }
 
 p {
-  margin-bottom: 1.5em;
   font-size: var(--small-text);
 }
 
@@ -365,8 +364,7 @@ div[role="dialog"] {
   left: 50%;
   transform: translate(-50%, -50%);
   margin: auto;
-  text-align: center;
-  border-radius: 10px;
+  border-radius: 8px;
   background-color: white;
 }
 .popup_inner .demo-text {
@@ -383,7 +381,7 @@ div[role="dialog"] {
 .popup-btn-container {
   background-color: white;
   padding-bottom: 2em;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 
 /* reusable classes */

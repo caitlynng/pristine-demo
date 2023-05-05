@@ -39,7 +39,6 @@ import {
   isEqual,
 } from "date-fns";
 
-
 export const initialState = {
   isLoading: false,
   showAlert: false,
@@ -89,7 +88,7 @@ export const initialState = {
   callbackBtnText: "",
   closeBtnText: "",
   callbackDemo: "",
-  demoContent: ""
+  demoContent: "",
 };
 
 const AppContext = React.createContext();
@@ -116,26 +115,27 @@ const AppProvider = ({ children }) => {
       return response;
     },
     (error) => {
-      console.log(error.response);
       return Promise.reject(error);
     }
   );
 
-  const showDemoMessage = ({
+  const showPopupMessage = ({
     callback,
     defaultText,
     callbackBtnText,
     closeBtnText,
-    demoContent
+    demoContent,
   }) => {
     dispatch({
       type: SHOW_DEMO_MESSAGE,
       payload: {
-        defaultDemoText: defaultText ?? "This is only a demo version. Please register for a full version to use all the features.",
+        defaultDemoText:
+          defaultText ??
+          "This is only a demo version. Please register for a full version to use all the features.",
         callbackDemo: callback ?? undefined,
         callbackBtnText: callbackBtnText ?? null,
         closeBtnText: closeBtnText ?? "Got it",
-        demoContent: demoContent
+        demoContent: demoContent,
       },
     });
   };
@@ -155,11 +155,6 @@ const AppProvider = ({ children }) => {
         const { data } = await axiosFetch.post("/search", {
           query,
         });
-
-        // const dataWithScoreGT1 = data.result.filter((i) => {
-        //   if (i.score >= 1) return i;
-        // });
-        console.log(data.result);
         dispatch({
           type: HANDLE_SEARCH_TO_REPORT,
           payload: {
@@ -277,7 +272,6 @@ const AppProvider = ({ children }) => {
         yesterday,
         dates,
       });
-      console.log(data);
 
       let expensesData = isValue(data.expenses[0]);
       let salesData = isValue(data.sales[0]);
@@ -319,8 +313,6 @@ const AppProvider = ({ children }) => {
         dates.day.push(...getDatesBetween(startD, endD));
         return dates;
       })(dates[0], dates[1]);
-
-      console.log(datesArr);
       let cogs = statementsTable__sales.total
         ? statementsTable__sales.total * 0.15
         : 0;
@@ -382,8 +374,6 @@ const AppProvider = ({ children }) => {
           }
         }
       }
-
-      // console.log(final_expensesLineChart_data);
 
       //add shipping cost to Statement Table
       if (shippingData && shippingData !== 0) {
@@ -453,12 +443,11 @@ const AppProvider = ({ children }) => {
 
           cogs: cogs,
           monthsDuration: monthsDuration,
-          weeksDuration: weeksDuration
+          weeksDuration: weeksDuration,
         },
       });
     } catch (error) {
       let msg = error.response.data;
-      console.log(error.response.data);
 
       dispatch({
         type: LOADING_ERROR,
@@ -482,7 +471,7 @@ const AppProvider = ({ children }) => {
         handleScreenResize,
         getAPISuggestions,
         handleSearchResults,
-        showDemoMessage,
+        showPopupMessage,
         closeDemoMessage,
         manageUpload,
       }}

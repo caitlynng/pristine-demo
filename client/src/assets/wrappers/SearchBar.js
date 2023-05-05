@@ -82,7 +82,7 @@ export const Wrapper = styled.div`
     .search-input {
       &:focus,
       &:hover {
-        border: 1px solid var(--grey-600);
+        outline: 1px solid var(--grey-600);
       }
     }
     .search-autocomplete {

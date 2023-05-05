@@ -3,7 +3,7 @@ import { InputForm, Button, Loading, ManageUpload } from "../../components";
 import { useAppContext } from "../../context/appContext";
 import Wrapper from "../../assets/wrappers/Settings";
 const Settings = () => {
-  const { isLoading, showDemoMessage } = useAppContext();
+  const { isLoading, showPopupMessage } = useAppContext();
 
   const formRows = [
     {
@@ -37,7 +37,7 @@ const Settings = () => {
   ];
 
   const handleSubmit = () => {
-    showDemoMessage()
+    showPopupMessage();
   };
   const tabs = [
     {

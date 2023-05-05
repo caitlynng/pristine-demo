@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useAppContext } from "../context/appContext";
 import ReportTable from "./ReportTable";
-import Loading from './Loading'
+import Loading from "./Loading";
 import PopUp from "./Popup";
 
-
 const ManageUpload = () => {
-  const { manageUpload, uploads, isLoading, showDemoMessage } = useAppContext();
+  const { manageUpload, uploads, isLoading, showPopupMessage } =
+    useAppContext();
 
   const [data, setData] = useState(uploads);
 
@@ -31,7 +31,7 @@ const ManageUpload = () => {
       tooltip: "Remove All Selected Rows",
       icon: "delete",
       onClick: (evt, data) => {
-        showDemoMessage()
+        showPopupMessage();
       },
     },
   ];
@@ -46,10 +46,10 @@ const ManageUpload = () => {
     setData(dataCopy);
   };
 
-    useEffect(() => {
-      manageUpload();
-    }, []);
-  
+  useEffect(() => {
+    manageUpload();
+  }, []);
+
   return (
     <div>
       {isLoading && <Loading />}

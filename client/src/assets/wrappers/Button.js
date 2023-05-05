@@ -153,7 +153,7 @@ const Wrapper = styled.button`
     max-width: 97%;
     height: auto;
     &:hover {
-      border: 1.5px solid;
+      outline: 1.5px solid;
     }
   }
   @media screen and (min-width: 499px) {

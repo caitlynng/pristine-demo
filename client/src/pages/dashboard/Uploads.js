@@ -8,7 +8,8 @@ import { Button } from "../../components";
 import FormRowDropDown from "../../components/FormRowDropDown";
 
 const Uploads = () => {
-  const { showDemoMessage, fileType, shippingCompany, screenSize } = useAppContext();
+  const { showPopupMessage, fileType, shippingCompany, screenSize } =
+    useAppContext();
 
   const [type, setType] = useState(fileType[0]);
   const [shipping, setShipping] = useState(shippingCompany[0]);
@@ -17,7 +18,6 @@ const Uploads = () => {
 
   const handleTypeChange = (val) => {
     setType(val);
-    
   };
   const handleShippingChange = (val) => {
     setShipping(val);
@@ -39,7 +39,9 @@ const Uploads = () => {
         />
         <div className="tooltip upload-requirement">
           <MdOutlineInfo className="fill-primary" />
-          <div className={`tooltiptext ${screenSize < 499 ? "bottom" :"right"}`}>
+          <div
+            className={`tooltiptext ${screenSize < 499 ? "bottom" : "right"}`}
+          >
             <p className="title">*Requirements:</p>
             <p>
               - The uploaded files should not exceed 10MB in size, and you can
@@ -54,18 +56,18 @@ const Uploads = () => {
       {type === "Shipping reports" && (
         <div className="type-selection-container">
           <FormRowDropDown
-          name="fileType"
-          labelText="shipping company"
-          list={shippingCompany}
-          onClickHandle={handleShippingChange}
-          inputType="radio"
-          defaultChecked={shipping}
-        />
+            name="fileType"
+            labelText="shipping company"
+            list={shippingCompany}
+            onClickHandle={handleShippingChange}
+            inputType="radio"
+            defaultChecked={shipping}
+          />
         </div>
       )}
       <div>
         <div></div>
-        <form className="form-file-upload" onDragEnter={showDemoMessage}>
+        <form className="form-file-upload" onDragEnter={showPopupMessage}>
           <input ref={inputRef} type="file" className="input-file-upload" />
           <label
             htmlFor="input-file-upload"
@@ -76,7 +78,7 @@ const Uploads = () => {
               <p>Drag and drop to upload</p>
               <Button
                 classList="plain-btn"
-                onSetActive={showDemoMessage}
+                onSetActive={showPopupMessage}
                 title="or browse"
                 ariaLabel="browse"
               />

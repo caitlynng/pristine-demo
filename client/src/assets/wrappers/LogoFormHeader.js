@@ -29,12 +29,19 @@ const Wrapper = styled.div`
     color: white;
     & p {
       margin: 0;
-      font-size: 1.2em;
+      font-size: 1em;
     }
     & p:first-child {
-      font-size: 1.7em;
+      font-size: 1.3em;
     }
 
+  }
+  @media screen and (min-width: 500px) {
+    .support-header-content {
+      & p:first-child {
+        font-size: 1.7em;
+      }
+    }
   }
   @media screen and (min-width: 1000px) {
     .support-header-content {

@@ -16,7 +16,7 @@ const IncomeTable = () => {
     cogs,
     dashboardTable_TotalProfits,
     isLoading,
-    showDemoMessage,
+    showPopupMessage,
   } = useAppContext();
   const [expanded, setExpanded] = useState({
     expandedRows: [],
@@ -45,7 +45,7 @@ const IncomeTable = () => {
         break;
       case "overwrite":
       case "add on":
-        showDemoMessage();
+        showPopupMessage();
         setCOGS(cogs);
         showSelection(!selection);
         break;

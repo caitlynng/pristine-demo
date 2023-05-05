@@ -3,20 +3,31 @@ import { useAppContext } from "../context/appContext";
 import FormRow from "./FormRow";
 import Button from "./Button";
 import Wrapper from "../assets/wrappers/InputForm";
-import { isEmailValid, isPWValid, isRequired, isRetypePWValid, isNameValid } from "../utils/Helpers";
+import {
+  isEmailValid,
+  isPWValid,
+  isRequired,
+  isRetypePWValid,
+  isNameValid,
+} from "../utils/Helpers";
 
-const InputForm = ({ formRows, handleSubmit, btnTitle, isDefault, isDefaultHandle }) => {
+const InputForm = ({
+  formRows,
+  handleSubmit,
+  btnTitle,
+  isDefault,
+  isDefaultHandle,
+}) => {
+  const { showPopupMessage } = useAppContext();
 
-  const { showDemoMessage } = useAppContext()
-  
   const [value, setValue] = useState({
     name: {
-      value: isDefault?  "Demo User": "",
+      value: isDefault ? "Demo User" : "",
       isValid: false,
       errors: [],
     },
     email: {
-      value: isDefault?  "Demo_user@fakeemail.com": "",
+      value: isDefault ? "Demo_user@fakeemail.com" : "",
       isValid: false,
       errors: [],
     },
@@ -26,7 +37,7 @@ const InputForm = ({ formRows, handleSubmit, btnTitle, isDefault, isDefaultHandl
       isValid: false,
       errors: [],
     },
-    message: {value: "", isValid: false, errors: []}
+    message: { value: "", isValid: false, errors: [] },
   });
 
   const handleInputChange = (e) => {
@@ -44,7 +55,7 @@ const InputForm = ({ formRows, handleSubmit, btnTitle, isDefault, isDefaultHandl
       newState[targetName].errors.push(isRequired(targetValue));
     } else if (targetValue && oTarget.validate) {
       switch (targetName) {
-        case "name": 
+        case "name":
           let nameErr = isNameValid(targetValue);
           nameErr.length > 0 && newState[targetName].errors.push(nameErr);
           break;
@@ -100,16 +111,22 @@ const InputForm = ({ formRows, handleSubmit, btnTitle, isDefault, isDefaultHandl
             />
           );
         })}
-       <div className="flex align-center justify-end">
-       {!isDefault && <Button title="cancel" classList="plain-btn" onSetActive={isDefaultHandle}/>}
-        <Button
+        <div className="flex align-center justify-end">
+          {!isDefault && (
+            <Button
+              title="cancel"
+              classList="plain-btn"
+              onSetActive={isDefaultHandle}
+            />
+          )}
+          <Button
             classList="save-btn float-right-btn"
             ariaLabel="submit"
-          type="submit"
+            type="submit"
             title={btnTitle}
-            onSetActive={showDemoMessage}
-        />
-       </div>
+            onSetActive={showPopupMessage}
+          />
+        </div>
       </form>
     </Wrapper>
   );
