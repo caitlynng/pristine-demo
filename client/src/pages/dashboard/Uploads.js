@@ -78,6 +78,7 @@ const Uploads = () => {
                 classList="plain-btn"
                 onSetActive={showDemoMessage}
                 title="or browse"
+                ariaLabel="browse"
               />
             </div>
           </label>

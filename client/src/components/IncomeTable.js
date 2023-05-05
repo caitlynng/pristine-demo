@@ -76,16 +76,19 @@ const IncomeTable = () => {
             title="overwrite"
             onSetActive={handleSave}
             classList="save-btn"
+            ariaLabel="overwrite"
           />
           <Button
             title="add on"
             onSetActive={handleSave}
             classList="save-btn"
+            ariaLabel="add"
           />
           <Button
             title="cancel"
             classList="btn-cancel"
             onSetActive={handleSave}
+            ariaLabel="cancel"
           />
         </div>
       </div>

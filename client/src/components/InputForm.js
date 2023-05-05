@@ -103,7 +103,8 @@ const InputForm = ({ formRows, handleSubmit, btnTitle, isDefault, isDefaultHandl
        <div className="flex align-center justify-end">
        {!isDefault && <Button title="cancel" classList="plain-btn" onSetActive={isDefaultHandle}/>}
         <Button
-          classList="save-btn float-right-btn"
+            classList="save-btn float-right-btn"
+            ariaLabel="submit"
           type="submit"
             title={btnTitle}
             onSetActive={showDemoMessage}

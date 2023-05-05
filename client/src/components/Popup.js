@@ -21,12 +21,14 @@ const PopUp = () => {
               onSetActive={() => callbackDemo()}
               title={callbackBtnText}
               classList="save-btn"
+              ariaLabel="agree"
             />
           )}
           <Button
             onSetActive={closeDemoMessage}
             title={closeBtnText}
             classList="plain-btn"
+            ariaLabel="cancel"
           />
         </div>
       </div>

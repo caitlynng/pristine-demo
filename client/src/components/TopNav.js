@@ -24,6 +24,7 @@ const TopBar = forwardRef((props, ref) => {
         type="button"
         className={showSidebar ? "toggle-btn active" : "toggle-btn"}
         onClick={toggleSidebar}
+        aria-label="Toggle Button"
       >
         <FaBars />
       </button>
@@ -34,6 +35,7 @@ const TopBar = forwardRef((props, ref) => {
           className="btn-container smallscreen"
           type="button"
           onClick={() => setShowSearchPanel(true)}
+          aria-label="Search"
         >
           <FaSearch />
         </button>
@@ -54,11 +56,13 @@ const TopBar = forwardRef((props, ref) => {
                 onSetActive={showDemoMessage}
                 classList="dropdown-btn"
                 title="log out"
+                ariaLabel="log-out"
               />
               <Button
                 title="settings"
                 classList="dropdown-btn"
                 onSetActive={showDemoMessage}
+                ariaLabel="settings"
               />
             </div>
           )}
@@ -70,6 +74,7 @@ const TopBar = forwardRef((props, ref) => {
             <button
               className="back-btn"
               onClick={() => setShowSearchPanel(false)}
+              aria-label="search"
             >
               <MdKeyboardArrowLeft />
             </button>

@@ -69,6 +69,7 @@ const updateValue = (newValue) => {
           classList="search-btn"
           type="button"
           icon={<FaSearch />}
+          ariaLabel="Search"
         />
         {search !== "" && (
           <span className="clear-search-icon grid grid-center" onClick={(e) => setSearch("")}>

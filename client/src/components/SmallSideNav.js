@@ -19,7 +19,7 @@ const SmallSideNav = forwardRef((props, ref) => {
         }
       >
         <div className="content" ref={grandChildRef}>
-          <button className="close-btn" onClick={toggleSidebar}>
+          <button className="close-btn" onClick={toggleSidebar} aria-label="Close">
             <FaTimes />
           </button>
           <NavLinks toggleSidebar={toggleSidebar} />

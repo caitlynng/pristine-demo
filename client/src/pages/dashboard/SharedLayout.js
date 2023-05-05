@@ -394,16 +394,19 @@ const SharedLayout = () => {
               title="An app walkthrough tour"
               classList="support-btn"
               onSetActive={handleClickStart}
+              ariaLabel="walkthrough-btn"
             />
             <Button
               title="Register"
               classList="support-btn"
               onSetActive={handleRegister}
+              ariaLabel="register"
             />
             <Button
               title="Something else"
               classList="support-btn"
               onSetActive={handleContactUs}
+              ariaLabel="contact-us"
             />
           </div>
         </div>

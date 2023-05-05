@@ -81,6 +81,7 @@ const Settings = () => {
             title={item.name}
             classList={`tab-btn ${activeTabId === item.id ? "active" : ""}`}
             onSetActive={() => setActiveTab(item.id)}
+            ariaLabel={`${item.name}-tab`}
           />
         ))}
       </div>

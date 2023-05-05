@@ -155,6 +155,7 @@ const Reports = () => {
             title="Back"
             onSetActive={() => handleDateChange()}
             classList="plain-btn"
+            ariaLabel="back"
           />
         </div>
       )}

@@ -1,6 +1,4 @@
 import Wrapper from "../assets/wrappers/Button.js";
-import SVG from "react-inlinesvg";
-
 const Button = ({
   title,
   onSetActive,
@@ -9,6 +7,7 @@ const Button = ({
   icon,
   type,
   id,
+  ariaLabel
 }) => {
   return (
     <Wrapper
@@ -20,6 +19,7 @@ const Button = ({
       }
       onMouseDown={onSetActive}
       type={type}
+      aria-label={ariaLabel}
     >
       {title}
       <span className="icon-btn">{icon}</span>
