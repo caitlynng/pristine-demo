@@ -53,7 +53,7 @@ const SharedLayout = () => {
             To get insights of how your business has been doing, it's important
             to first upload all of your reports.
           </p>
-          <p>Please click "Next" to continue."</p>
+          <p>Please click "Next" to continue.</p>
         </div>
       ),
       target: BigSideNavRef.current?.uploads,
@@ -76,22 +76,15 @@ const SharedLayout = () => {
       content: (
         <div className="font-16">
           <p>
-            Once your files are uploaded, you can navigate to Dashboard to gain
-            insights of your business performance.
+            Dashboard provides reliable results and aims to aid you in tracking
+            and monitoring the performance of your business strategies.
           </p>
-          <p>Please click "Next" to continue."</p>
+          <p>Please click "Next" to continue.</p>
         </div>
       ),
       target: BigSideNavRef.current?.dashboard,
       placement: "right",
       disableBeacon: true,
-    },
-    {
-      content:
-        "Dashboard provides reliable results and aims to aid you in tracking and monitoring the performance of your business strategies.",
-      target: ".dashboard-joyride",
-      placement: "top-end",
-      spotlightPadding: 0,
     },
     {
       content:
@@ -106,21 +99,21 @@ const SharedLayout = () => {
       placement: "top",
       disableOverlay: true,
     },
-    // {
-    //   content: "compare to",
-    //   target: "#comparedTo",
-    //   placement: "top",
-    // },
     {
-      content:
-        "This main chart can be a useful tool for tracking your business profits and expenses and makes it easier to see trends and identify areas where you can cut costs or increase revenue!",
+      content: (
+        <div className="font-16">
+          <p>
+            This main chart can be a useful tool for tracking your business
+            profits and expenses and makes it easier to see trends and identify
+            areas where you can cut costs or increase revenue!
+          </p>
+          <p>
+            If you want to see just the Revenues or Expenses data, simply click
+            on the legend located at the bottom of the chart.
+          </p>
+        </div>
+      ),
       target: ".mainchart-joyride",
-      placement: "right",
-    },
-    {
-      content:
-        "If you want to see just the Revenues or Expenses data, simply click on the legend located at the bottom of the chart.",
-      target: ".main-chart-container",
       placement: "right",
     },
     {
@@ -150,11 +143,6 @@ const SharedLayout = () => {
       placement: "left",
       disableOverlay: true,
     },
-    // {
-    //   content: "doughnut-chart-container",
-    //   target: ".doughnut-chart-container",
-    //   placement: "left",
-    // },
     {
       content:
         "The ratio section is a key metric in evaluating the financial health of a business. It shows how efficiently your business is operating, and whether your revenue streams are generating enough profits to cover your expenses.",
@@ -169,7 +157,7 @@ const SharedLayout = () => {
             The "Statements" tab gives you access to more detailed information
             about the breakdown of your sales and expenses.
           </p>
-          <p>Please click "Next" to continue."</p>
+          <p>Please click "Next" to continue</p>
         </div>
       ),
       target: BigSideNavRef.current?.statements,
@@ -189,7 +177,7 @@ const SharedLayout = () => {
             The Reports section provides a centralized location for you to
             easily keep track of all your transaction records.
           </p>
-          <p>Please click "Next" to continue."</p>
+          <p>Please click "Next" to continue.</p>
         </div>
       ),
       target: BigSideNavRef.current?.reports,
@@ -209,22 +197,6 @@ const SharedLayout = () => {
       placement: "right",
       disableOverlay: true,
     },
-    // {
-    //   content: "Click Settings",
-    //   target: BigSideNavRef.current?.settings,
-    //   placement: "right",
-    //   disableBeacon: true,
-    // },
-    // {
-    //   content: "profiles",
-    //   target: ".profiles-joyride",
-    //   placement: "right-start",
-    // },
-    // {
-    //   content: "profiles",
-    //   target: ".manageUploads-joyride",
-    //   placement: "right-start",
-    // },
   ];
   const handleClickStart = () => {
     closeDemoMessage();
@@ -253,11 +225,11 @@ const SharedLayout = () => {
         navigate("/uploads");
       } else if (index === 3) {
         navigate("/");
-      } else if (index === 14) {
+      } else if (index === 12) {
         navigate("/statements");
-      } else if (index === 16) {
+      } else if (index === 14) {
         navigate("/reports");
-      } else if (index === 19) {
+      } else if (index === 17) {
         navigate("/settings");
       }
       setStepIndex(index + (action === ACTIONS.PREV ? -1 : 1));
@@ -329,6 +301,7 @@ const SharedLayout = () => {
         // debug
         disableOverlayClose
         spotlightClicks
+
       />
       {demoMessage && <PopUp />}
       <SmallSideNav />

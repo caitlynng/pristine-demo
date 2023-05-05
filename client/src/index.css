@@ -460,7 +460,7 @@ div[role="dialog"] {
   fill: var(--primary);
   font-size: 1.5em;
 }
-
+ 
 /* Tooltip container */
 .tooltip {
   position: relative;
@@ -481,7 +481,7 @@ div[role="dialog"] {
 
   /* Position the tooltip text - see examples below! */
   position: absolute;
-  z-index: 100;
+  z-index: 1000;
 }
 .tooltip .tooltiptext .title {
   color: red;
