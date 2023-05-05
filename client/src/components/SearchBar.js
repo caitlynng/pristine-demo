@@ -60,7 +60,7 @@ const updateValue = (newValue) => {
           onSubmit={handleSearch}>
         <input
           type="search"
-          placeHolder="Search Transactions..."
+          placeholder="Search Transactions..."
           className="search-input"
           value={search}
           onChange={(e) => updateValue(e.target.value)}

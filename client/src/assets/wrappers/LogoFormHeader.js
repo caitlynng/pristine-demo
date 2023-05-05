@@ -39,7 +39,7 @@ const Wrapper = styled.div`
   @media screen and (min-width: 1000px) {
     .support-header-content {
       & p:first-child {
-        font-size: 1.9em;
+        font-size: 2.2em;
       }
     }
   }

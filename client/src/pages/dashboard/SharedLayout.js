@@ -358,6 +358,7 @@ const SharedLayout = () => {
         <LogoFormHeader
           headerText="We'll be happy to assist"
           headerTitle="PristineDept Tech Support"
+          showLogo={true}
         />
         <div className="support-content flex flex-column justify-end">
           <p>PristineDept Support</p>
@@ -383,10 +384,7 @@ const SharedLayout = () => {
       </div>
       {showRegister && (
         <div className="contact-form">
-          <LogoFormHeader
-            
-            headerTitle="Register"
-          />
+          <LogoFormHeader showLogo={false} headerTitle="Register" />
           <InputForm
             formRows={registerFields}
             handleSubmit={handleSubmit}
@@ -398,9 +396,7 @@ const SharedLayout = () => {
       )}
       {showContactUs && (
         <div className="contact-form">
-          <LogoFormHeader
-            headerTitle="Contact Us"
-          />
+          <LogoFormHeader headerTitle="Contact Us" showLogo={false} />
           <InputForm
             formRows={contactUsFields}
             handleSubmit={handleSubmit}

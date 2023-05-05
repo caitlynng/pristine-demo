@@ -39,8 +39,6 @@ import {
   isEqual,
 } from "date-fns";
 
-const token = "HDJ4567FGH456VBNYT";
-// const user = localStorage.getItem("user");
 
 export const initialState = {
   isLoading: false,
@@ -51,8 +49,6 @@ export const initialState = {
   showSidebar: false,
   screenSize: 0,
 
-  // user: user ? JSON.parse(user) : null,
-  token: token,
   noData: false,
 
   //report
