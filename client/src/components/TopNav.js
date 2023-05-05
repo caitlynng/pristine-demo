@@ -1,15 +1,18 @@
-import { useState } from "react";
+import { useState, forwardRef, useRef, useImperativeHandle } from "react";
 import Wrapper from "../assets/wrappers/TopNav";
-import { FaUserAlt, FaBars, FaSearch} from "react-icons/fa";
+import { FaUserAlt, FaBars, FaSearch } from "react-icons/fa";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useAppContext } from "../context/appContext.js";
 import SearchBar from "./SearchBar.js";
 import Button from "./Button";
 import Logo from "./Logo";
-const TopBar = () => {
+const TopBar = forwardRef((props, ref) => {
   const [showSearchPanel, setShowSearchPanel] = useState(false);
-    const [showLogout, setShowLogout] = useState(false);
+  const [showLogout, setShowLogout] = useState(false);
   const { showSidebar, toggleSidebar, showDemoMessage } = useAppContext();
+
+  const grandChildRef = useRef(null);
+  useImperativeHandle(ref, () => grandChildRef.current);
 
   const handleDropDown = () => {
     setShowLogout(!showLogout);
@@ -27,6 +30,7 @@ const TopBar = () => {
       <Logo />
       <div className="nav-container max-width">
         <button
+          ref={grandChildRef}
           className="btn-container smallscreen"
           type="button"
           onClick={() => setShowSearchPanel(true)}
@@ -78,6 +82,6 @@ const TopBar = () => {
       )}
     </Wrapper>
   );
-};
+});
 
 export default TopBar;

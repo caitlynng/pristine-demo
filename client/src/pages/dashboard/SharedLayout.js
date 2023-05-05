@@ -29,6 +29,7 @@ import LogoFormHeader from "../../components/LogoFormHeader";
 const SharedLayout = () => {
   const {
     showSidebar,
+    toggleSidebar,
     showAlert,
     demoMessage,
     showDemoMessage,
@@ -44,7 +45,27 @@ const SharedLayout = () => {
   const [showRegister, setShowRegister] = useState(false);
   const [showContactUs, setShowContactUs] = useState(false);
   const BigSideNavRef = useRef();
-
+  const SmallSideNavRef = useRef();
+  const TopNavRef = useRef()
+  
+  const getTarget = (stepInd, others) => {
+    if (width > 1000) {
+      switch (stepInd) {
+        case 0:
+          return BigSideNavRef.current?.uploads;
+        case 3:
+          return BigSideNavRef.current?.dashboard;
+        case 12:
+          return BigSideNavRef.current?.statements;
+        case 14:
+          return BigSideNavRef.current?.reports;
+        case 17:
+          return ".search-form";
+      }
+    }
+    if (others) return TopNavRef.current
+    return SmallSideNavRef.current;
+  };
   const steps = [
     {
       content: (
@@ -56,9 +77,10 @@ const SharedLayout = () => {
           <p>Please click "Next" to continue.</p>
         </div>
       ),
-      target: BigSideNavRef.current?.uploads,
-      placement: "right",
       disableBeacon: true,
+      disableOverlay: true,
+      target: getTarget(0),
+      placement: width < 1000 ? "center" : "right",
     },
     {
       content:
@@ -82,9 +104,14 @@ const SharedLayout = () => {
           <p>Please click "Next" to continue.</p>
         </div>
       ),
-      target: BigSideNavRef.current?.dashboard,
-      placement: "right",
       disableBeacon: true,
+      target: getTarget(3),
+      placement: width < 1000 ? "center" : "right",
+      styles: {
+        options: {
+          zIndex: 10000,
+        },
+      },
     },
     {
       content:
@@ -160,9 +187,14 @@ const SharedLayout = () => {
           <p>Please click "Next" to continue</p>
         </div>
       ),
-      target: BigSideNavRef.current?.statements,
-      placement: "right",
       disableBeacon: true,
+      target: getTarget(12),
+      placement: width < 1000 ? "center" : "right",
+      styles: {
+        options: {
+          zIndex: 10000,
+        },
+      },
     },
     {
       content:
@@ -180,8 +212,13 @@ const SharedLayout = () => {
           <p>Please click "Next" to continue.</p>
         </div>
       ),
-      target: BigSideNavRef.current?.reports,
-      placement: "right",
+      target: getTarget(14),
+      placement: width < 1000 ? "center" : "right",
+      styles: {
+        options: {
+          zIndex: 10000,
+        },
+      },
       disableBeacon: true,
     },
     {
@@ -193,12 +230,13 @@ const SharedLayout = () => {
     {
       content:
         "You also have the option to search for transactions by various criteria, such as the customer's name, email, shipping address, tracking number, or transaction ID",
-      target: ".search-form",
+      target: getTarget(17, true),
       placement: "right",
       disableOverlay: true,
     },
   ];
   const handleClickStart = () => {
+    if (width < 1000) toggleSidebar();
     closeDemoMessage();
     setShowContactUs(false);
     setShowRegister(false);
@@ -223,15 +261,31 @@ const SharedLayout = () => {
     if ([EVENTS.STEP_AFTER, EVENTS.TARGET_NOT_FOUND].includes(type)) {
       if (index === 0) {
         navigate("/uploads");
+        if (width < 1000) {
+          toggleSidebar();
+        }
+      } else if (index === 2 && width < 1000) {
+        toggleSidebar();
       } else if (index === 3) {
         navigate("/");
+         if (width < 1000) {
+           toggleSidebar();
+         }
+      } else if (index === 11 && width < 1000) {
+        toggleSidebar();
       } else if (index === 12) {
         navigate("/statements");
+         if (width < 1000) {
+           toggleSidebar();
+         }
+      }else if (index === 13 && width < 1000) {
+        toggleSidebar();
       } else if (index === 14) {
         navigate("/reports");
-      } else if (index === 17) {
-        navigate("/settings");
-      }
+         if (width < 1000) {
+           toggleSidebar();
+         }
+      } 
       setStepIndex(index + (action === ACTIONS.PREV ? -1 : 1));
     } else if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status)) {
       if (status === "finished") {
@@ -244,7 +298,6 @@ const SharedLayout = () => {
       setRun(false);
     }
   };
-
   useEffect(() => {
     if (width) handleScreenResize(width);
   }, [width]);
@@ -267,16 +320,12 @@ const SharedLayout = () => {
     );
   };
   useEffect(() => {
-    if (width && width > 1000) {
-      showDemoMessage({
-        callback: handleClickStart,
-        callbackBtnText: "start the tour",
-        closeBtnText: "explore by myself",
-        demoContent: welcomeMessage(width),
-      });
-    } else {
-      showDemoMessage({ demoContent: welcomeMessage(width) });
-    }
+    showDemoMessage({
+      callback: handleClickStart,
+      callbackBtnText: "start the tour",
+      closeBtnText: "explore by myself",
+      demoContent: welcomeMessage(width),
+    });
   }, [width]);
 
   const supportHandle = (e) => {
@@ -301,10 +350,14 @@ const SharedLayout = () => {
         // debug
         disableOverlayClose
         spotlightClicks
-
+        styles={{
+          options: {
+            zIndex: 1000,
+          },
+        }}
       />
       {demoMessage && <PopUp />}
-      <SmallSideNav />
+      <SmallSideNav ref={SmallSideNavRef} />
       <main className="joyride-start">
         <BigSideNav ref={BigSideNavRef} />
         <div
@@ -314,7 +367,7 @@ const SharedLayout = () => {
               : "dashboard-container"
           }
         >
-          <TopNav />
+          <TopNav ref={TopNavRef} />
           {showAlert && <Alert />}
           <Outlet />
         </div>
