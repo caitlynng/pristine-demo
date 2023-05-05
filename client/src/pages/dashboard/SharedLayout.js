@@ -24,6 +24,7 @@ import Joyride, {
 } from "react-joyride";
 import SVG from "react-inlinesvg";
 import { registerFields, contactUsFields } from "../../utils/Helpers";
+import LogoFormHeader from "../../components/LogoFormHeader";
 
 const SharedLayout = () => {
   const {
@@ -261,7 +262,7 @@ const SharedLayout = () => {
       }
       setStepIndex(index + (action === ACTIONS.PREV ? -1 : 1));
     } else if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status)) {
-      if (status === 'finished'){
+      if (status === "finished") {
         showDemoMessage({
           defaultText:
             "Great job completing the tour! If you need a refresher, simply click the chat icon at the bottom right. We're always here to help. Thanks for choosing our platform!",
@@ -277,8 +278,10 @@ const SharedLayout = () => {
   }, [width]);
 
   const welcomeMessage = (width) => {
-    const bigScreenMsg = "Come and join us for a quick tour to explore all the exciting features and learn how to make the most out of our app!"
-    const smScreenMsg = "We've got you covered with our comprehensive desktop tour to help you discover and explore all of our features. We encourage you to take advantage of this opportunity!"
+    const bigScreenMsg =
+      "Come and join us for a quick tour to explore all the exciting features and learn how to make the most out of our app!";
+    const smScreenMsg =
+      "We've got you covered with our comprehensive desktop tour to help you discover and explore all of our features. We encourage you to take advantage of this opportunity!";
     return (
       <div>
         <div className="welcome-header">
@@ -286,9 +289,7 @@ const SharedLayout = () => {
         </div>
         <div className="welcome-content">
           <p>Welcome to Pristine! </p>
-          <p>
-          {width > 1000 ? bigScreenMsg : smScreenMsg}
-          </p>
+          <p>{width > 1000 ? bigScreenMsg : smScreenMsg}</p>
         </div>
       </div>
     );
@@ -297,8 +298,8 @@ const SharedLayout = () => {
     if (width && width > 1000) {
       showDemoMessage({
         callback: handleClickStart,
-        callbackBtnText: "Let's get started",
-        closeBtnText: "skip",
+        callbackBtnText: "start the tour",
+        closeBtnText: "explore by myself",
         demoContent: welcomeMessage(width),
       });
     } else {
@@ -354,15 +355,10 @@ const SharedLayout = () => {
         {showSupportWidget ? <BiX /> : <BiMessageDots />}
       </div>
       <div className={`support-container ${showSupportWidget ? "show" : ""}`}>
-        <div className="support-header flex align-center">
-          <div>
-            <SVG src={logo} alt="logo-pristine" />
-          </div>
-          <div className="header-text flex flex-column">
-            <p>PristineDept Tech Support</p>
-            <p>We'll be happy to assist</p>
-          </div>
-        </div>
+        <LogoFormHeader
+          headerText="We'll be happy to assist"
+          headerTitle="PristineDept Tech Support"
+        />
         <div className="support-content flex flex-column justify-end">
           <p>PristineDept Support</p>
           <div className="flex flex-column">
@@ -386,7 +382,11 @@ const SharedLayout = () => {
         </div>
       </div>
       {showRegister && (
-        <div className="register-form">
+        <div className="contact-form">
+          <LogoFormHeader
+            
+            headerTitle="Register"
+          />
           <InputForm
             formRows={registerFields}
             handleSubmit={handleSubmit}
@@ -397,7 +397,10 @@ const SharedLayout = () => {
         </div>
       )}
       {showContactUs && (
-        <div className="register-form">
+        <div className="contact-form">
+          <LogoFormHeader
+            headerTitle="Contact Us"
+          />
           <InputForm
             formRows={contactUsFields}
             handleSubmit={handleSubmit}

@@ -151,6 +151,7 @@ const Wrapper = styled.button`
     margin: 0 4px 10px;
     cursor: pointer;
     max-width: 97%;
+    height: auto;
     &:hover {
       border: 1.5px solid;
     }

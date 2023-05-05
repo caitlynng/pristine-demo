@@ -1,17 +1,18 @@
 import logo from "../assets/images/logo.svg";
 import SVG from "react-inlinesvg";
+import Wrapper from "../assets/wrappers/LogoFormHeader";
 
 const LogoFormHeader = ({headerTitle, headerText}) => {
   return (
-    <div className="support-header flex align-center">
-      <div>
+    <Wrapper className="flex align-center">
+      <div className="support-header-logo">
         <SVG src={logo} alt="logo-pristine" />
       </div>
-      <div className="header-text flex flex-column">
+      <div className="support-header-content flex flex-column">
         <p>{headerTitle}</p>
-        <p>{headerText}</p>
+        {headerText && <p>{headerText}</p>}
       </div>
-    </div>
+    </Wrapper>
   );
 };
 
