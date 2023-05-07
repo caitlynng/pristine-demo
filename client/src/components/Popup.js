@@ -1,5 +1,6 @@
 import { useAppContext } from "../context/appContext";
 import Button from "./Button";
+import Wrapper from "../assets/wrappers/Popup";
 
 const PopUp = () => {
   const {
@@ -12,8 +13,8 @@ const PopUp = () => {
   } = useAppContext();
 
   return (
-    <div className="popup"> 
-      <div className="popup_inner">
+    <Wrapper>
+      <div className="popup_inner flex flex-column">
         {demoContent ? demoContent: <p className="demo-text">{defaultDemoText}</p> }
         <div className="flex align-center justify-center popup-btn-container">
           {callbackBtnText && (
@@ -29,10 +30,10 @@ const PopUp = () => {
             title={closeBtnText}
             classList="plain-btn"
             ariaLabel="cancel"
-          />
+          /> 
         </div>
       </div>
-    </div>
+    </Wrapper>
   );
 };
 

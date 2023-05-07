@@ -7,7 +7,6 @@ import Joyride, {
   STATUS,
   Step,
 } from "react-joyride";
-import SVG from "react-inlinesvg";
 
 import Wrapper from "../../assets/wrappers/SharedLayout";
 import {
@@ -19,14 +18,23 @@ import {
   Button,
   InputForm,
 } from "../../components";
-import header from "../../assets/images/header.svg";
+
 import { BiMessageDots, BiX } from "react-icons/bi";
 import { useAppContext } from "../../context/appContext";
 import { useWindowDimensions } from "../../utils/Helpers";
 import LogoFormHeader from "../../components/LogoFormHeader";
 
-import { registerFields, contactUsFields } from "../../utils/Helpers";
-import { useClickOutsideComponent } from "../../utils/Helpers";
+import {
+  registerFields,
+  contactUsFields,
+  useClickOutsideComponent,
+} from "../../utils/Helpers";
+import {
+  welcomeMsg,
+  contactUsSuccessMsg,
+  registerSuccessMsg,
+  finishJoyrideSuccessMsg,
+} from "../../utils/ShareLayoutConfig";
 
 const SharedLayout = () => {
   const {
@@ -299,16 +307,7 @@ const SharedLayout = () => {
     } else if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status)) {
       if (status === "finished") {
         showPopupMessage({
-          demoContent: (
-            <div className="success-msg">
-              <p> Great job completing the tour!</p>
-              <p>
-                If you need a refresher, simply click the chat icon at the
-                bottom right. We're always here to help!
-              </p>
-              <p>Thank you for choosing our platform!</p>
-            </div>
-          ),
+          demoContent: finishJoyrideSuccessMsg,
           closeBtnText: "Ok",
         });
       }
@@ -319,60 +318,31 @@ const SharedLayout = () => {
     if (width) handleScreenResize(width);
   }, [width]);
 
-  const welcomeMessage = () => {
-    return (
-      <div>
-        <div className="welcome-header">
-          <SVG src={header} alt="popup-header"></SVG>
-        </div>
-        <div className="welcome-content">
-          <p>Welcome to Pristine! </p>
-          <p>Come and join us for a quick tour to explore all the exciting features and learn how to make the most out of our app!</p>
-        </div>
-      </div>
-    );
-  };
   useEffect(() => {
     showPopupMessage({
       callback: handleClickStart,
       callbackBtnText: "start the tour",
       closeBtnText: "explore by myself",
-      demoContent: welcomeMessage(),
+      demoContent: welcomeMsg(),
     });
   }, []);
 
   const supportHandle = () => {
     setShowSupportWidget(!showSupportWidget);
   };
-  const handleContactUsSubmit = () => {
+  const handleContactUsSubmit = (val) => {
+    console.log(val);
     setShowContactUs(false);
     showPopupMessage({
       callbackBtnText: "ok",
-      demoContent: (
-        <div className="success-msg">
-          <p> Welcome on board! </p>
-          <p>Your registration has been successfully completed!</p>
-          <p>
-            Our team will be reaching out to you shortly with more information,
-            so please keep an eye out for our message.
-          </p>
-        </div>
-      ),
+      demoContent: contactUsSuccessMsg,
     });
   };
-  const handleRegisterSubmit = () => {
+  const handleRegisterSubmit = (val) => {
     setShowRegister(false);
     showPopupMessage({
       callbackBtnText: "ok",
-      demoContent: (
-        <div className="text-align-left">
-          <p> Thank you for sending us a message! </p>
-          <p>
-            We appreciate your interest and value your input. Your message has
-            been received and we will respond to it as quickly as possible.
-          </p>
-        </div>
-      ),
+      demoContent: registerSuccessMsg,
     });
   };
 

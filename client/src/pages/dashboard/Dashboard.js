@@ -29,7 +29,7 @@ const Dashboard = () => {
         <div className="flex align-center justify-end flex-wrap padding-1">
           <h3 className="margin-auto-r">Sales activities</h3>
           <div className="flex flex-nowrap align-center">
-           <DatePicker />
+            <DatePicker />
           </div>
         </div>
         <div className="chart-container">

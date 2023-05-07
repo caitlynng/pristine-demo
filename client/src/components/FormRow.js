@@ -1,7 +1,7 @@
 import Wrapper from "../assets/wrappers/FormRow";
 
 const FormRow = ({
-  component="input",
+  component = "input",
   name,
   value,
   labelId = "",
@@ -28,8 +28,9 @@ const FormRow = ({
             id={inputId}
             onChange={handleChange}
             className={`form-input ${inputClassNames.join(" ")}`}
+            name={name}
           />
-        )  : component === "checkbox" || component === "radio" ? (
+        ) : component === "checkbox" || component === "radio" ? (
           <input
             type={component}
             name={name}
@@ -41,7 +42,7 @@ const FormRow = ({
             checked={checked}
             {...otherProps}
           />
-        ) :(
+        ) : (
           <input
             onBlur={handleBlur}
             type={component}

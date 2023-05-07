@@ -33,7 +33,7 @@ const StatsContainer = () => {
       icon: <GiBoxUnpacking />,
       color: "#e9b949",
       bgc: "#fcefc7",
-      title: "Average Value Per Order",
+      title: "Average Price Per Order",
     },
     {
       id: "totalOrders",
@@ -49,7 +49,7 @@ const StatsContainer = () => {
       icon: <GiReceiveMoney />,
       color: "#e9b949",
       bgc: "#fcefc7",
-      title: "Lowest Value Per Order",
+      title: "Lowest Price Per Order",
     },
     {
       id: "maxOrder",
@@ -57,7 +57,7 @@ const StatsContainer = () => {
       icon: <GiTakeMyMoney />,
       color: "#e9b949",
       bgc: "#fcefc7",
-      title: "Highest Value Per Order",
+      title: "Highest Price Per Order",
     },
     {
       id: "none",
@@ -68,23 +68,23 @@ const StatsContainer = () => {
       title: "Total Refunds",
     },
   ];
-  
-    if (dashboardStats_Sales){
-      for (const key in dashboardStats_Sales) {
-        const index = dashboardStats.findIndex((i) => i.title === key);
-        if(index > -1){
-          dashboardStats[index].amount = dashboardStats_Sales[key]
-        };
+
+  if (dashboardStats_Sales) {
+    for (const key in dashboardStats_Sales) {
+      const index = dashboardStats.findIndex((i) => i.title === key);
+      if (index > -1) {
+        dashboardStats[index].amount = dashboardStats_Sales[key];
       }
     }
-   
+  }
+
   const [nextEl, nextElRef] = useSwiperRef();
   const [prevEl, prevElRef] = useSwiperRef();
 
   return (
     <Wrapper className="statscontainer-joyride">
       <Swiper
-        slidesPerView={'auto'}
+        slidesPerView={"auto"}
         loop={true}
         spaceBetween={10}
         navigation={{
@@ -101,13 +101,11 @@ const StatsContainer = () => {
       >
         {dashboardStats.map((item, index) => {
           return (
-            <SwiperSlide style={{ height: 'auto', width: '24%', minWidth: '165px' }} key={index}>
-              {(isActive) => (
-                <StatsItem
-                  {...item}
-                  isActive={isActive}
-                />
-              )}
+            <SwiperSlide
+              style={{ height: "auto", width: "24%", minWidth: "165px" }}
+              key={index}
+            >
+              {(isActive) => <StatsItem {...item} isActive={isActive} />}
             </SwiperSlide>
           );
         })}

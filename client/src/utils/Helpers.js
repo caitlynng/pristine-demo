@@ -77,6 +77,13 @@ export const isNameValid = (name) => {
   }
   return message;
 };
+export const isMessageValid = (msg) => {
+  let message = [];
+  if (msg.length <= 0) {
+    message.push("Message can't be blank");
+  }
+  return message;
+};
 export const isRequired = (val) => {
   let isValid = val !== null && val !== undefined && val !== "";
   if (!isValid) {
@@ -126,12 +133,11 @@ export const getUniqueValues = (obj, key) => {
   ]
     .sort()
     .reduce((o, key) => Object.assign(o, { [key]: key }), {});
-}; //https://stackoverflow.com/questions/15125920/how-to-get-distinct-values-from-an-array-of-objects-in-javascript
+};
 export const removeWhiteSpace = (word) => {
   return word.replace(/\/|\s/g, "").trim();
 };
 export const useClickOutsideComponent = (ref, setIsActive) => {
-  //https://stackoverflow.com/questions/32553158/detect-click-outside-react-component
   useEffect(() => {
     function handleClickOutside(event) {
       if (ref.current && !ref.current.contains(event.target)) {
@@ -148,7 +154,6 @@ export const useClickOutsideComponent = (ref, setIsActive) => {
 };
 
 export const GetSize = () => {
-  //https://stackoverflow.com/questions/73247936/how-to-dynamically-track-width-height-of-div-in-react-js
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   // useRef allows us to "store" the div in a constant,
@@ -203,8 +208,7 @@ export const useDynamicSVGImport = (name) => {
         ImportedIconRef.current = (
           await import(`../assets/images/${name}.svg`)
         ).ReactComponent;
-      } catch (err) {
-      }
+      } catch (err) {}
     };
     importIcon();
   }, [name]);
