@@ -319,12 +319,14 @@ const SharedLayout = () => {
   }, [width]);
 
   useEffect(() => {
-    showPopupMessage({
-      callback: handleClickStart,
-      callbackBtnText: "start the tour",
-      closeBtnText: "explore by myself",
-      demoContent: welcomeMsg(),
-    });
+    setTimeout(() => {
+      showPopupMessage({
+        callback: handleClickStart,
+        callbackBtnText: "start the tour",
+        closeBtnText: "explore by myself",
+        demoContent: welcomeMsg(),
+      });
+    }, 5000);
   }, []);
 
   const supportHandle = () => {

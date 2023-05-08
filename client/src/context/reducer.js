@@ -45,21 +45,21 @@ const reducer = (state, action) => {
         user: null,
         token: null,
       };
-    
+
     case SHOW_DEMO_MESSAGE:
       return {
         ...state,
         demoMessage: true,
         defaultDemoText: action.payload.defaultDemoText,
-       callbackDemo: action.payload.callbackDemo,
-       callbackBtnText: action.payload.callbackBtnText, 
-       closeBtnText: action.payload.closeBtnText,
-       demoContent: action.payload.demoContent
+        callbackDemo: action.payload.callbackDemo,
+        callbackBtnText: action.payload.callbackBtnText,
+        closeBtnText: action.payload.closeBtnText,
+        demoContent: action.payload.demoContent,
       };
     case CLOSE_DEMO_MESSAGE:
       return {
         ...state,
-        demoMessage: false
+        demoMessage: false,
       };
     case LOADING_BEGIN:
       return { ...state, isLoading: true };
@@ -144,8 +144,7 @@ const reducer = (state, action) => {
         dashboardTable_TotalProfits: action.payload.dashboardTable_TotalProfits,
         dashboardTable_TotalExpenses:
           action.payload.dashboardTable_TotalExpenses,
-        dashboardLineChart_Date:
-          action.payload.dashboardLineChart_Date,
+        dashboardLineChart_Date: action.payload.dashboardLineChart_Date,
         dashboardLineChart_SalesData:
           action.payload.dashboardLineChart_SalesData,
         dashboardLineChart_ExpensesData:
@@ -189,7 +188,6 @@ const reducer = (state, action) => {
         isLoading: false,
         uploads: action.payload.uploads,
       };
-
   }
   return state;
 };

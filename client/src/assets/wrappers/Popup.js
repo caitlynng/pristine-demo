@@ -13,14 +13,16 @@ const Wrapper = styled.div`
   z-index: 1000;
   .popup_inner {
     position: absolute;
-    width: 90%;
-    height: 60%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     margin: auto;
     border-radius: 8px;
     background-color: white;
+    &:has(.welcome-container) {
+      width: 90%;
+      height: auto;
+    }
   }
   .popup_inner .demo-text {
     background-color: white;
@@ -46,6 +48,7 @@ const Wrapper = styled.div`
     & svg {
       max-width: 100%;
       height: auto;
+      flex: 1;
     }
   }
   .welcome-content {
@@ -60,14 +63,16 @@ const Wrapper = styled.div`
       font-size: 0.9em;
     }
     .popup_inner {
-      width: 60%;
-      height: 60%;
+      &:has(.welcome-container) {
+        width: 60%;
+      }
     }
   }
   @media screen and (min-width: 1000px) {
     .popup_inner {
-      width: 40%;
-      height: 60%;
+      &:has(.welcome-container) {
+        width: 40%;
+      }
     }
     .popup_inner p {
       font-size: 1.1em;
