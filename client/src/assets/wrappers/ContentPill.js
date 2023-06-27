@@ -21,7 +21,13 @@ export const Wrapper = styled.div`
           }
         `};
 
+  .btn-container {
+    display: flex;
+    height: 100%;
+  }
   .content-container {
+    display: flex;
+    flex-direction: column;
     & .amount {
       padding-right: 1em;
       font-weight: 700;
@@ -30,7 +36,7 @@ export const Wrapper = styled.div`
       line-height: 1.5;
     }
     & .subtitle {
-      /* font-size: 16px; */
+      flex: 2;
     }
   }
 

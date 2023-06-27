@@ -16,6 +16,7 @@ const Wrapper = styled.section`
     gap: 10px;
     margin-bottom: 3em;
     flex-wrap: wrap;
+    margin-top: 1em;
   }
   .form-file-upload {
     height: 20em;
@@ -41,7 +42,7 @@ const Wrapper = styled.section`
     border-radius: 1em;
     border-style: dashed;
     border-color: #cbd5e1;
-    background-color:white;
+    background-color: white;
   }
 
   .form-file-upload label p {
@@ -55,7 +56,6 @@ const Wrapper = styled.section`
     background-color: #ffffff;
   }
 
-  
   #drag-file-element {
     position: absolute;
     width: 100%;
