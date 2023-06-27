@@ -33,7 +33,7 @@ const StatsContainer = () => {
       icon: <GiBoxUnpacking />,
       color: "#e9b949",
       bgc: "#fcefc7",
-      title: "Average Price Per Order",
+      title: "Average Value Per Order",
     },
     {
       id: "totalOrders",
@@ -49,7 +49,7 @@ const StatsContainer = () => {
       icon: <GiReceiveMoney />,
       color: "#e9b949",
       bgc: "#fcefc7",
-      title: "Lowest Price Per Order",
+      title: "Lowest Value Per Order",
     },
     {
       id: "maxOrder",
@@ -57,7 +57,7 @@ const StatsContainer = () => {
       icon: <GiTakeMyMoney />,
       color: "#e9b949",
       bgc: "#fcefc7",
-      title: "Highest Price Per Order",
+      title: "Highest Value Per Order",
     },
     {
       id: "none",
